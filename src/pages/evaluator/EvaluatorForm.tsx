@@ -78,16 +78,16 @@ export default function EvaluatorForm({ initialInput, onEvaluate, onReset }: Pro
 
       <div className={styles.row}>
         <div className={styles.field}>
-          <label className={styles.label} htmlFor="opp-rate">Daily Rate (€)</label>
+          <label className={styles.label} htmlFor="opp-rate">Hourly Rate (€)</label>
           <input
             id="opp-rate"
             type="number"
             className={styles.input}
             min={0}
-            max={5000}
-            step={50}
-            value={form.dailyRate}
-            onChange={e => handleChange('dailyRate', Number(e.target.value))}
+            max={500}
+            step={5}
+            value={form.hourlyRate}
+            onChange={e => handleChange('hourlyRate', Number(e.target.value))}
           />
         </div>
         <div className={styles.field}>

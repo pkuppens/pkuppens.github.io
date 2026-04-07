@@ -27,7 +27,7 @@ const EXPERIENCE = [
 const PREFERENCES = [
   { label: 'Location', value: 'Netherlands (flexible hybrid/remote)' },
   { label: 'Preferred domains', value: 'Finance, Healthcare, Logistics, Technology' },
-  { label: 'Rate range', value: '€850–€1100/day' },
+  { label: 'Rate range', value: '€100–€140/hour' },
   { label: 'Contract duration', value: '3–12 months preferred' },
   { label: 'Min. hours/week', value: '32 hours minimum' },
   { label: 'Travel', value: 'Max 1 hour commute, or remote' },
@@ -47,7 +47,7 @@ export default function ProfilePage() {
     <>
       <section className={styles.hero}>
         <div className="container">
-          <h1 className={styles.title}>Peter Kuppens</h1>
+          <h1 className={styles.title}>Pieter Kuppens</h1>
           <p className={styles.subtitle}>Senior Software Engineer · AI Integration Specialist</p>
           <p className={styles.bio}>
             I have 15+ years of experience building production-grade software across diverse industries.

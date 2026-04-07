@@ -57,27 +57,27 @@ export default function PreferencesPanel({ prefs, onChange }: Props) {
           <h3 className={styles.groupTitle}>Rate</h3>
           <div className={styles.row}>
             <div className={styles.field}>
-              <label className={styles.label} htmlFor="pref-min-rate">Min Daily Rate (€)</label>
+              <label className={styles.label} htmlFor="pref-min-rate">Min Hourly Rate (€)</label>
               <input
                 id="pref-min-rate"
                 type="number"
                 className={styles.input}
-                value={prefs.minDailyRate}
+                value={prefs.minHourlyRate}
                 min={0}
-                step={50}
-                onChange={e => update('minDailyRate', Number(e.target.value))}
+                step={5}
+                onChange={e => update('minHourlyRate', Number(e.target.value))}
               />
             </div>
             <div className={styles.field}>
-              <label className={styles.label} htmlFor="pref-target-rate">Target Daily Rate (€)</label>
+              <label className={styles.label} htmlFor="pref-target-rate">Target Hourly Rate (€)</label>
               <input
                 id="pref-target-rate"
                 type="number"
                 className={styles.input}
-                value={prefs.targetDailyRate}
+                value={prefs.targetHourlyRate}
                 min={0}
-                step={50}
-                onChange={e => update('targetDailyRate', Number(e.target.value))}
+                step={5}
+                onChange={e => update('targetHourlyRate', Number(e.target.value))}
               />
             </div>
           </div>

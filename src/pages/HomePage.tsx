@@ -42,7 +42,7 @@ export default function HomePage() {
           <div className={styles.heroContent}>
             <div className={styles.heroBadge}>Available for assignments</div>
             <h1 className={styles.heroTitle}>
-              Peter Kuppens
+              Pieter Kuppens
               <span className={styles.heroSub}>Senior Software Engineer</span>
             </h1>
             <p className={styles.heroLead}>

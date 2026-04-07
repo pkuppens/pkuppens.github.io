@@ -16,7 +16,7 @@ const DEFAULT_INPUT: OpportunityInput = {
   title: '',
   domain: '',
   hoursPerWeek: 40,
-  dailyRate: 900,
+  hourlyRate: 110,
   commuteMinutes: 30,
   hybridDaysOnsite: 2,
   durationMonths: 6,

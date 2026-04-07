@@ -19,7 +19,7 @@ export interface OpportunityInput {
   title: string
   domain: string
   hoursPerWeek: number
-  dailyRate: number             // EUR
+  hourlyRate: number            // EUR per hour (standard in the Netherlands)
   commuteMinutes: number
   hybridDaysOnsite: number      // days per week onsite
   durationMonths: number
@@ -38,8 +38,8 @@ export interface ProfilePreferences {
   preferredDomains: string[]
   minHoursPerWeek: number
   maxHoursPerWeek: number
-  minDailyRate: number
-  targetDailyRate: number
+  minHourlyRate: number
+  targetHourlyRate: number
   maxCommuteMinutes: number
   maxOnsiteDaysPerWeek: number
   minDurationMonths: number

@@ -8,7 +8,7 @@ const perfectInput: OpportunityInput = {
   title: 'Senior Python Developer',
   domain: 'Finance',
   hoursPerWeek: 40,
-  dailyRate: 1000,
+  hourlyRate: 125,
   commuteMinutes: 0,
   hybridDaysOnsite: 2,
   durationMonths: 6,
@@ -20,7 +20,7 @@ const poorInput: OpportunityInput = {
   title: 'Junior Developer',
   domain: 'Unknown',
   hoursPerWeek: 20,
-  dailyRate: 400,
+  hourlyRate: 50,
   commuteMinutes: 120,
   hybridDaysOnsite: 5,
   durationMonths: 1,
@@ -96,15 +96,15 @@ describe('evaluateOpportunity', () => {
     expect(['poor', 'fair']).toContain(result.level)
   })
 
-  it('scores rate at 100 when dailyRate >= targetDailyRate', () => {
-    const input = { ...perfectInput, dailyRate: 1200 }
+  it('scores rate at 100 when hourlyRate >= targetHourlyRate', () => {
+    const input = { ...perfectInput, hourlyRate: 150 }
     const result = evaluateOpportunity(input, DEFAULT_PREFERENCES, CRITERIA)
     const rateScore = result.criterionScores.find(cs => cs.criterionId === 'rate')
     expect(rateScore?.rawScore).toBe(100)
   })
 
-  it('scores rate at 0 when dailyRate < minDailyRate', () => {
-    const input = { ...perfectInput, dailyRate: 200 }
+  it('scores rate at 0 when hourlyRate < minHourlyRate', () => {
+    const input = { ...perfectInput, hourlyRate: 25 }
     const result = evaluateOpportunity(input, DEFAULT_PREFERENCES, CRITERIA)
     const rateScore = result.criterionScores.find(cs => cs.criterionId === 'rate')
     expect(rateScore?.rawScore).toBe(0)

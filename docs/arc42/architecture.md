@@ -3,7 +3,7 @@
 ## 1. Introduction and Goals
 
 ### Purpose
-A professional GitHub Pages website for Peter Kuppens with an interactive Opportunity Evaluator.
+A professional GitHub Pages website for Pieter Kuppens with an interactive Opportunity Evaluator.
 
 ### Quality Goals
 | Priority | Goal | Measure |

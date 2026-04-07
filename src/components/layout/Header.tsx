@@ -7,7 +7,7 @@ export default function Header() {
       <div className={`container ${styles.inner}`}>
         <NavLink to="/" className={styles.brand}>
           <span className={styles.brandMono}>{'<'}</span>
-          Peter Kuppens
+          Pieter Kuppens
           <span className={styles.brandMono}>{'/>'}</span>
         </NavLink>
         <nav className={styles.nav}>

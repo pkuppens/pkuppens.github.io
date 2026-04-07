@@ -25,13 +25,13 @@ export const CRITERIA: CriterionConfig[] = [
   },
   {
     id: 'rate',
-    label: 'Daily Rate',
+    label: 'Hourly Rate',
     weight: 25,
     evaluate(input: OpportunityInput, prefs: ProfilePreferences): number {
-      const { minDailyRate, targetDailyRate } = prefs
-      if (input.dailyRate >= targetDailyRate) return 100
-      if (input.dailyRate < minDailyRate) return 0
-      return lerp(input.dailyRate, minDailyRate, targetDailyRate)
+      const { minHourlyRate, targetHourlyRate } = prefs
+      if (input.hourlyRate >= targetHourlyRate) return 100
+      if (input.hourlyRate < minHourlyRate) return 0
+      return lerp(input.hourlyRate, minHourlyRate, targetHourlyRate)
     },
   },
   {

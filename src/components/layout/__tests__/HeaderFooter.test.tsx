@@ -15,7 +15,7 @@ describe('Header', () => {
 
   it('renders the brand name', () => {
     renderHeader()
-    expect(screen.getByText('Peter Kuppens')).toBeInTheDocument()
+    expect(screen.getByText('Pieter Kuppens')).toBeInTheDocument()
   })
 
   it('renders all navigation links', () => {
@@ -68,9 +68,9 @@ describe('Footer', () => {
     expect(screen.getByText(new RegExp(String(year)))).toBeInTheDocument()
   })
 
-  it('renders Peter Kuppens in copyright', () => {
+  it('renders Pieter Kuppens in copyright', () => {
     renderFooter()
-    expect(screen.getByText(/Peter Kuppens/)).toBeInTheDocument()
+    expect(screen.getByText(/Pieter Kuppens/)).toBeInTheDocument()
   })
 
   it('renders GitHub link', () => {
@@ -84,7 +84,7 @@ describe('Footer', () => {
   it('renders LinkedIn link', () => {
     renderFooter()
     const linkedInLink = screen.getByRole('link', { name: /LinkedIn/i })
-    expect(linkedInLink).toHaveAttribute('href', 'https://linkedin.com/in/peterkuppens')
+    expect(linkedInLink).toHaveAttribute('href', 'https://linkedin.com/in/pieterkuppens/nl/')
     expect(linkedInLink).toHaveAttribute('target', '_blank')
     expect(linkedInLink).toHaveAttribute('rel', 'noopener noreferrer')
   })

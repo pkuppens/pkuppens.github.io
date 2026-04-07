@@ -7,7 +7,7 @@ const defaultInput: OpportunityInput = {
   title: '',
   domain: '',
   hoursPerWeek: 40,
-  dailyRate: 900,
+  hourlyRate: 110,
   commuteMinutes: 30,
   hybridDaysOnsite: 2,
   durationMonths: 6,
@@ -20,7 +20,7 @@ describe('EvaluatorForm', () => {
     render(<EvaluatorForm initialInput={defaultInput} onEvaluate={vi.fn()} onReset={vi.fn()} />)
     expect(screen.getByLabelText(/Title \/ Role/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/Domain \/ Industry/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/Daily Rate/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/Hourly Rate/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/Hours \/ Week/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/Duration/i)).toBeInTheDocument()
   })
@@ -36,7 +36,7 @@ describe('EvaluatorForm', () => {
     render(<EvaluatorForm initialInput={defaultInput} onEvaluate={onEvaluate} onReset={vi.fn()} />)
     fireEvent.click(screen.getByRole('button', { name: /Evaluate/i }))
     expect(onEvaluate).toHaveBeenCalledTimes(1)
-    expect(onEvaluate).toHaveBeenCalledWith(expect.objectContaining({ dailyRate: 900, hoursPerWeek: 40 }))
+    expect(onEvaluate).toHaveBeenCalledWith(expect.objectContaining({ hourlyRate: 110, hoursPerWeek: 40 }))
   })
 
   it('calls onReset when reset button is clicked', () => {

@@ -1,6 +1,6 @@
 # pkuppens.github.io
 
-Personal professional website for Peter Kuppens, built with React + TypeScript + Vite.
+Personal professional website for Pieter Kuppens, built with React + TypeScript + Vite.
 
 **Live site:** https://pkuppens.github.io
 
@@ -23,6 +23,19 @@ npm install
 npm run dev       # start dev server at http://localhost:5173
 npm test          # run unit tests
 npm run build     # production build
+```
+
+## Local Quality Checks
+The same checks that run in CI (typecheck, tests, build) can be run locally before committing:
+
+```bash
+npm run typecheck && npm test && npm run build
+```
+
+To enforce this automatically on every commit, add a pre-commit hook (e.g. using [Husky](https://typicode.github.io/husky/)):
+```bash
+npx husky init
+echo "npm run typecheck && npm test" > .husky/pre-commit
 ```
 
 ## Architecture
