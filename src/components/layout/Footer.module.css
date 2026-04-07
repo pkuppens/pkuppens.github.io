@@ -1,0 +1,35 @@
+.footer {
+  background: var(--color-text);
+  color: rgba(255,255,255,0.7);
+  padding: 1.5rem 0;
+  margin-top: auto;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.copyright {
+  font-size: 0.875rem;
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.links a {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.links a:hover {
+  color: #fff;
+  text-decoration: none;
+}
