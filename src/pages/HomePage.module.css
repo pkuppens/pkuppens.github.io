@@ -1,0 +1,128 @@
+.hero {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 60%, #0ea5e9 100%);
+  color: #fff;
+  padding: 6rem 0 5rem;
+}
+
+.heroContent {
+  max-width: 680px;
+}
+
+.heroBadge {
+  display: inline-block;
+  padding: 0.3em 1em;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1.25rem;
+}
+
+.heroSub {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.heroLead {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 560px;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.heroCtas {
+  margin-top: 0;
+}
+
+.sectionTitle {
+  font-size: 1.75rem;
+  color: var(--color-text);
+}
+
+.highlightCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.highlightIcon {
+  font-size: 2rem;
+}
+
+.highlightTitle {
+  font-size: 1.1rem;
+}
+
+.skillsSection {
+  background: var(--color-surface);
+}
+
+.skillsGrid {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.skillItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.skillHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.skillName {
+  color: var(--color-text);
+}
+
+.skillPct {
+  color: var(--color-text-muted);
+}
+
+.skillBar {
+  height: 8px;
+  background: var(--color-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skillFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: 999px;
+  transition: width 0.8s ease;
+}
+
+.ctaSection {
+  background: linear-gradient(135deg, #f0f9ff, #eff6ff);
+}
+
+.ctaTitle {
+  font-size: 1.75rem;
+}
+
+.ctaDesc {
+  font-size: 1.05rem;
+}
