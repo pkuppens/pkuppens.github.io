@@ -7,7 +7,7 @@ import type {
 } from './types'
 
 export function getScoreLevel(score: number): ScoreLevel {
-  if (score >= 80) return 'excellent'
+  if (score >= 90) return 'excellent'
   if (score >= 60) return 'good'
   if (score >= 40) return 'fair'
   return 'poor'

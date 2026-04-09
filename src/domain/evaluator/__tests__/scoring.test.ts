@@ -29,14 +29,15 @@ const poorInput: OpportunityInput = {
 }
 
 describe('getScoreLevel', () => {
-  it('returns excellent for scores >= 80', () => {
-    expect(getScoreLevel(80)).toBe('excellent')
+  it('returns excellent for scores >= 90', () => {
+    expect(getScoreLevel(90)).toBe('excellent')
     expect(getScoreLevel(100)).toBe('excellent')
   })
 
-  it('returns good for scores 60-79', () => {
+  it('returns good for scores 60-89 (including low-acceptable totals around 85)', () => {
     expect(getScoreLevel(60)).toBe('good')
-    expect(getScoreLevel(79)).toBe('good')
+    expect(getScoreLevel(85)).toBe('good')
+    expect(getScoreLevel(89)).toBe('good')
   })
 
   it('returns fair for scores 40-59', () => {
@@ -86,7 +87,7 @@ describe('evaluateOpportunity', () => {
     expect(Math.abs(sum - result.totalScore)).toBeLessThan(1)
   })
 
-  it('assigns excellent level to perfect input', () => {
+  it('assigns excellent or good level to perfect input', () => {
     const result = evaluateOpportunity(perfectInput, DEFAULT_PREFERENCES, CRITERIA)
     expect(['excellent', 'good']).toContain(result.level)
   })
