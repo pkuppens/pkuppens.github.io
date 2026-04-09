@@ -1,0 +1,12 @@
+# Dependabot version updates — complements Dependabot alerts / security updates in repo settings.
+# See docs/adr/004-commit-package-lock.md
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: saturday
+      time: "06:00"
+      timezone: Europe/Amsterdam
+    open-pull-requests-limit: 10

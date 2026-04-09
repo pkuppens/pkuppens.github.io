@@ -1,3 +1,6 @@
+# package-lock.json is intentionally committed (not ignored).
+# npm ci in GitHub Actions requires it; see docs/adr/004-commit-package-lock.md.
+
 # Logs
 logs
 *.log

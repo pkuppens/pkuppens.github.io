@@ -45,3 +45,11 @@ See [docs/arc42/architecture.md](docs/arc42/architecture.md) for full documentat
 - [ADR 001: React + TypeScript + Vite](docs/adr/001-react-typescript-vite.md)
 - [ADR 002: Pure Functions for Scoring](docs/adr/002-pure-functions-scoring.md)
 - [ADR 003: localStorage Persistence](docs/adr/003-localstorage-persistence.md)
+- [ADR 004: Commit package-lock.json](docs/adr/004-commit-package-lock.md)
+
+## Security and dependencies
+- **`package-lock.json` is committed** so `npm ci` in CI matches installs; see ADR 004.
+- **Dependabot** (`.github/dependabot.yml`) opens weekly version-update PRs (Saturday 06:00, `Europe/Amsterdam`).
+
+  In the GitHub repo: enable **Dependabot alerts** and **Dependabot security updates** if your org allows (Settings → Code security and analysis). Org defaults may override.
+- **Weekly `npm audit`** runs via [`.github/workflows/security-audit.yml`](.github/workflows/security-audit.yml) with `--audit-level=high` (moderate dev-only noise is reviewed locally with `npm audit`). Scheduled runs use UTC; `workflow_dispatch` is available for manual runs. See workflow comments for local-time notes.

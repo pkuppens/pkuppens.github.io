@@ -1,0 +1,32 @@
+# Weekly npm audit — belt-and-braces alongside Dependabot (see docs/adr/004-commit-package-lock.md).
+# Schedule uses UTC; Europe/Amsterdam Saturday 06:00 is not one fixed UTC hour year-round (DST).
+# This runs Saturday 05:00 UTC (~06:00 CET winter / ~07:00 CEST summer local).
+name: Security audit
+
+on:
+  schedule:
+    - cron: "0 5 * * 6"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # moderate: fails on current vite/esbuild dev chain until upgraded; use high for weekly signal.
+      - name: npm audit
+        run: npm audit --audit-level=high

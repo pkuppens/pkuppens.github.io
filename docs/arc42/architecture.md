@@ -60,6 +60,10 @@ src/
 
 ## 8. Crosscutting Concepts
 
+### Dependencies and supply chain
+- `package-lock.json` is committed so CI (`npm ci`) and local installs stay aligned; see [ADR 004: Commit package-lock](../adr/004-commit-package-lock.md).
+- Weekly **Dependabot** version updates and a scheduled **`npm audit`** workflow support dependency hygiene (see `.github/dependabot.yml` and `.github/workflows/security-audit.yml`).
+
 ### Testing Strategy
 - Unit tests: pure scoring functions (Vitest)
 - Component tests: React Testing Library
