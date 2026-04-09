@@ -1,6 +1,6 @@
-# ADR 001: Use React 18 + TypeScript 5 + Vite 5 as Frontend Technology Stack
+# ADR 001: Use React 18 + TypeScript 5 + Vite 8 as Frontend Technology Stack
 
-*Date: December 2025*
+*Date: December 2025 (stack versions updated April 2026)*
 
 ## Status
 Accepted
@@ -13,15 +13,16 @@ A static professional portfolio site needs a modern, maintainable frontend stack
 - Aligns with Pieter Kuppens' existing expertise and tooling
 
 ## Decision
-Use the following stack (versions current as of December 2025):
+Use the following stack (versions current as of April 2026):
 
 | Tool | Version | Role |
 |------|---------|------|
 | **React** | 18.3 | Declarative UI library for building component-based, reactive web interfaces |
 | **TypeScript** | 5.5 | Typed superset of JavaScript enabling safe domain modelling, IDE autocompletion, and compile-time error detection |
-| **Vite** | 5.4 | Build tool that serves source files as native ES modules in development, providing instant HMR (Hot Module Replacement — live update of changed modules without a full page reload) and optimised, tree-shaken production bundles |
+| **Vite** | 8.0 | Build tool that serves source files as native ES modules in development, providing instant HMR (Hot Module Replacement — live update of changed modules without a full page reload) and optimised, tree-shaken production bundles |
+| **@vitejs/plugin-react** | 6.x | Official React plugin for Vite (Fast Refresh, JSX) |
 | **React Router** | 6.26 | Client-side routing library for multi-page navigation without server round-trips |
-| **Vitest** | 2.0 | Unit test runner sharing Vite's module graph and configuration, enabling fast, consistent test execution |
+| **Vitest** | 4.1 | Unit test runner sharing Vite's module graph and configuration, enabling fast, consistent test execution |
 
 All versions are mutually compatible and receive active community and security support.
 

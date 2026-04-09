@@ -25,7 +25,7 @@ Separately, [ADR 003](003-localstorage-persistence.md) documents **client-side p
 - Lockfile changes are **explicit** commits or PRs; reviewers see full dependency moves.
 - **Merge conflicts** on `package-lock.json` are resolved by checking out the target branch, running `npm install` (or the minimal change needed), and committing the regenerated lockfile—not by hand-editing JSON.
 - **Repository settings (manual):** Enable [Dependabot alerts](https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts) and [Dependabot security updates](https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates) for this repo if your organisation allows it (org defaults may apply). Version updates are configured in `.github/dependabot.yml`; alerts depend on GitHub’s dependency graph and your plan.
-- The scheduled **`npm audit`** workflow uses `--audit-level=high` so weekly runs do not fail on moderate dev-toolchain noise; run `npm audit` locally to review moderate/low findings.
+- The scheduled **`npm audit`** workflow uses `--audit-level=moderate` (align with local `npm audit` defaults for high+moderate findings).
 
 ## Related
 - [ADR 003: localStorage persistence](003-localstorage-persistence.md) — why client-side data and supply-chain hygiene matter together.

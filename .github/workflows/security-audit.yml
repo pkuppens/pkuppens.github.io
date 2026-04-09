@@ -27,6 +27,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # moderate: fails on current vite/esbuild dev chain until upgraded; use high for weekly signal.
       - name: npm audit
-        run: npm audit --audit-level=high
+        run: npm audit --audit-level=moderate

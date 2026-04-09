@@ -12,7 +12,7 @@ Personal professional website for Pieter Kuppens, built with React + TypeScript 
 
 ## Tech Stack
 - React 18 + TypeScript 5
-- Vite 5
+- Vite 8
 - React Router 6
 - Vitest + Testing Library
 
@@ -52,4 +52,4 @@ See [docs/arc42/architecture.md](docs/arc42/architecture.md) for full documentat
 - **Dependabot** (`.github/dependabot.yml`) opens weekly version-update PRs (Saturday 06:00, `Europe/Amsterdam`).
 
   In the GitHub repo: enable **Dependabot alerts** and **Dependabot security updates** if your org allows (Settings → Code security and analysis). Org defaults may override.
-- **Weekly `npm audit`** runs via [`.github/workflows/security-audit.yml`](.github/workflows/security-audit.yml) with `--audit-level=high` (moderate dev-only noise is reviewed locally with `npm audit`). Scheduled runs use UTC; `workflow_dispatch` is available for manual runs. See workflow comments for local-time notes.
+- **Weekly `npm audit`** runs via [`.github/workflows/security-audit.yml`](.github/workflows/security-audit.yml) with `--audit-level=moderate`. Scheduled runs use UTC; `workflow_dispatch` is available for manual runs. See workflow comments for local-time notes.
