@@ -1,6 +1,15 @@
 # Weekly npm audit — belt-and-braces alongside Dependabot (see docs/adr/004-commit-package-lock.md).
 # Schedule uses UTC; Europe/Amsterdam Saturday 06:00 is not one fixed UTC hour year-round (DST).
 # This runs Saturday 05:00 UTC (~06:00 CET winter / ~07:00 CEST summer local).
+#
+# TODO(cleanup): Remove FORCE_JAVASCRIPT_ACTIONS_TO_NODE24 once Node 24 is the runner default
+# (expected >= 2026-06-02). Preconditions before removing:
+#   1. Date >= 2026-06-02 (forced Node 24 default date per GitHub changelog).
+#   2. ubuntu-latest runner images no longer warn about Node.js 20 deprecation.
+#   3. actions/checkout@v4 (or newer) ships a Node 24 runtime (verify release notes).
+#   4. actions/setup-node@v4 (or newer) ships a Node 24 runtime (verify release notes).
+#   5. A workflow_dispatch run WITHOUT FORCE_JAVASCRIPT_ACTIONS_TO_NODE24 produces no Node 20 warning.
+# See: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
 name: Security audit
 
 on:
@@ -14,6 +23,8 @@ permissions:
 jobs:
   audit:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
