@@ -2,44 +2,85 @@ import styles from './ProfilePage.module.css'
 
 const EXPERIENCE = [
   {
-    period: '2020 – Present',
-    role: 'Senior Software Engineer / Tech Lead',
-    company: 'Various Clients (Freelance)',
-    desc: 'AI integration, data engineering and full-stack development for clients in finance, logistics and healthcare sectors.',
-    tags: ['Python', 'Azure', 'LLMs', 'React', 'FastAPI'],
+    period: '2026 – Present',
+    role: 'Senior Consultant (Software, Data, and AI)',
+    company: 'Bright Cubes',
+    desc: 'Consulting on software, data, and AI assignments with focus on practical delivery and business value.',
+    tags: ['Software Engineering', 'Data', 'AI', 'Consulting'],
   },
   {
-    period: '2015 – 2020',
-    role: 'Software Engineer',
-    company: 'Enterprise Projects',
-    desc: 'Backend services, data pipelines and cloud migrations. Led small teams and drove technical direction.',
-    tags: ['Python', 'Java', 'SQL', 'Docker', 'CI/CD'],
+    period: '2025',
+    role: 'Software-Data-AI Professional',
+    company: 'Angiogenesis Analytics',
+    desc: 'Software and data work in a medical equipment context, with focus on healthcare-oriented AI solutions.',
+    tags: ['Healthcare', 'AI', 'Python', 'Data'],
   },
   {
-    period: '2009 – 2015',
-    role: 'Developer',
-    company: 'Various',
-    desc: 'Full-stack web development, system integrations and tooling.',
-    tags: ['Java', 'JavaScript', 'SQL', 'Spring'],
+    period: '2013 – Present',
+    role: 'Software and Data Professional',
+    company: 'pieterkuppens.net (Self-employed/Freelance)',
+    desc: 'Long-running independent practice delivering software and data projects for different industries.',
+    tags: ['Python', 'C#', 'SQL', 'Freelance'],
+  },
+  {
+    period: '2022 – 2025',
+    role: 'AI Transaction Monitoring Workflow Optimization',
+    company: 'Rent a Pin',
+    desc: 'Built and improved AI-supported transaction monitoring workflows in a financial services context.',
+    tags: ['AI', 'Finance', 'Workflow', 'Optimization'],
+  },
+  {
+    period: '2020 – 2021',
+    role: 'Software and Data Professional (Deep Learning)',
+    company: 'CART-Tech',
+    desc: 'Developed deep learning segmentation for medical imaging and supported migration to cloud scalability.',
+    tags: ['Deep Learning', 'Medical Imaging', 'Python', 'AWS'],
+  },
+  {
+    period: '2018 – 2020',
+    role: 'Software Architect and Coach',
+    company: 'Nemo Healthcare',
+    desc: 'Supported regulated software workflows and built Python solutions in healthcare environments.',
+    tags: ['ISO 13485', 'IEC 62304', 'Python', 'Coaching'],
+  },
+  {
+    period: '2011 – 2012',
+    role: 'Software Designer',
+    company: 'Philips Healthcare',
+    desc: 'Contributed to medical software with 3D visualization support for ablation treatment use cases.',
+    tags: ['Healthcare', 'Scientific Software', 'C/C++', 'Visualization'],
+  },
+  {
+    period: '1997 – 2014',
+    role: 'Software Designer',
+    company: 'ASML',
+    desc: 'Long-tenure high-tech engineering on complex software projects in large-scale semiconductor systems.',
+    tags: ['High-Tech', 'C/C++', 'Engineering', 'Long-term'],
+  },
+  {
+    period: '2012',
+    role: 'Technical Engineer and Security Specialist',
+    company: 'ABN AMRO and ABN AMRO Lease',
+    desc: 'Implemented secure enterprise features including SMS 2FA and password policy improvements.',
+    tags: ['Security', '2FA', 'C#', 'MSSQL'],
   },
 ]
 
 const PREFERENCES = [
-  { label: 'Location', value: 'Netherlands (flexible hybrid/remote)' },
-  { label: 'Preferred domains', value: 'Finance, Healthcare, Logistics, Technology' },
+  { label: 'Location', value: 'Netherlands (Den Bosch-Eindhoven), hybrid/remote' },
+  { label: 'Preferred domains', value: 'Healthcare, Finance, High-Tech, Data and AI' },
   { label: 'Rate range', value: '€100–€140/hour' },
-  { label: 'Contract duration', value: '3–12 months preferred' },
+  { label: 'Contract duration', value: '3–18 months preferred' },
   { label: 'Min. hours/week', value: '32 hours minimum' },
-  { label: 'Travel', value: 'Max 1 hour commute, or remote' },
+  { label: 'Travel', value: 'Max 3-4 hour commute weekly, rest remote' },
 ]
 
 const TECH = {
-  'Languages': ['Python', 'TypeScript', 'JavaScript', 'SQL', 'Java'],
-  'Frontend': ['React', 'Vite', 'CSS Modules', 'Testing Library'],
-  'Backend': ['FastAPI', 'Django', 'Node.js', 'REST', 'GraphQL'],
-  'Data & AI': ['LangChain', 'OpenAI', 'HuggingFace', 'Pandas', 'dbt'],
-  'Cloud & Infra': ['Azure', 'Docker', 'Kubernetes', 'GitHub Actions', 'Terraform'],
-  'Databases': ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch'],
+  'Core Languages': ['Python', 'C#/.NET', 'C/C++', 'SQL', 'JavaScript'],
+  'Data and AI': ['GenAI / LLM / RAG', 'Deep Learning', 'NLP Support', 'Transaction Monitoring AI', 'Data Pipelines'],
+  'Cloud and DevOps': ['Azure', 'AWS', 'CI/CD', 'Docker', 'Jira/Confluence/Bitbucket'],
+  'Security and Compliance': ['SMS 2FA', 'Password Policies', 'ISO 13485 Context', 'IEC 62304 Context'],
+  'Databases and Storage': ['MSSQL', 'SQLite', 'MySQL', 'PostgreSQL'],
 }
 
 export default function ProfilePage() {
@@ -48,11 +89,11 @@ export default function ProfilePage() {
       <section className={styles.hero}>
         <div className="container">
           <h1 className={styles.title}>Pieter Kuppens</h1>
-          <p className={styles.subtitle}>Senior Software Engineer · AI Integration Specialist</p>
+          <p className={styles.subtitle}>Software, Data, and AI Professional · Healthcare, Finance, High-Tech</p>
           <p className={styles.bio}>
-            I have 15+ years of experience building production-grade software across diverse industries.
-            I specialise in Python backend engineering, AI/LLM integration, and full-stack TypeScript development.
-            I value clean architecture, pragmatic delivery, and working with teams that care about quality.
+            I am a software and data engineer with 30+ years of experience. I build production systems with Python,
+            C#/.NET, C/C++, SQL, and cloud platforms. My recent work spans GenAI and non-LLM AI, including deep-learning
+            medical imaging and transaction monitoring. I work best in teams that value quality and clear communication.
           </p>
         </div>
       </section>
@@ -78,7 +119,7 @@ export default function ProfilePage() {
           <h2 className="mb-4">Experience</h2>
           <div className={styles.timeline}>
             {EXPERIENCE.map(e => (
-              <div key={e.role} className={styles.timelineItem}>
+              <div key={`${e.company}-${e.period}`} className={styles.timelineItem}>
                 <div className={styles.timelineDot} />
                 <div className={styles.timelineContent}>
                   <div className={styles.timelinePeriod}>{e.period}</div>

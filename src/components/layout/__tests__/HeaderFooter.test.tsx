@@ -84,7 +84,7 @@ describe('Footer', () => {
   it('renders LinkedIn link', () => {
     renderFooter()
     const linkedInLink = screen.getByRole('link', { name: /LinkedIn/i })
-    expect(linkedInLink).toHaveAttribute('href', 'https://linkedin.com/in/pieterkuppens/nl/')
+    expect(linkedInLink).toHaveAttribute('href', 'https://www.linkedin.com/in/pieterkuppens/')
     expect(linkedInLink).toHaveAttribute('target', '_blank')
     expect(linkedInLink).toHaveAttribute('rel', 'noopener noreferrer')
   })

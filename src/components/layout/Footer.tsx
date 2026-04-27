@@ -12,7 +12,7 @@ export default function Footer() {
           <a href="https://github.com/pkuppens" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
-          <a href="https://linkedin.com/in/pieterkuppens/nl/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/pieterkuppens/" target="_blank" rel="noopener noreferrer">
             LinkedIn
           </a>
         </div>
