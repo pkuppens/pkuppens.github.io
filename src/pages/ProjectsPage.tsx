@@ -3,6 +3,36 @@ import styles from './ProjectsPage.module.css'
 
 const PROJECTS = [
   {
+    slug: 'on-prem-rag',
+    title: 'On-Prem RAG for Healthcare',
+    icon: '🏥',
+    status: 'Active',
+    desc: 'Problem: healthcare teams need private AI search over internal knowledge. Approach: on-prem RAG pipeline with grounded answers and citations. Outcome: practical GenAI proof in a privacy-sensitive domain.',
+    tags: ['Python', 'RAG', 'Healthcare', 'On-Prem'],
+    link: 'https://github.com/pkuppens/on_prem_rag',
+    isInternal: false,
+  },
+  {
+    slug: 'transaction-monitoring',
+    title: 'Transaction Monitoring ML/AI',
+    icon: '💳',
+    status: 'Active',
+    desc: 'Problem: detect risky transaction patterns and improve monitoring workflows. Approach: MLFlow-based experimentation and operational workflow support. Outcome: stronger evidence for non-LLM AI in finance.',
+    tags: ['MLFlow', 'Fraud Detection', 'Finance', 'Python'],
+    link: 'https://github.com/pkuppens/mlflow_transaction_monitoring',
+    isInternal: false,
+  },
+  {
+    slug: 'medical-imaging',
+    title: 'Medical Imaging Deep Learning',
+    icon: '🫀',
+    status: 'Case Study',
+    desc: 'Problem: support cardiac intervention planning with better image understanding. Approach: deep-learning segmentation on DICOM MRI and cloud migration support. Outcome: production-oriented non-LLM AI in medtech.',
+    tags: ['Deep Learning', 'DICOM', 'MRI', 'AWS'],
+    link: '/profile',
+    isInternal: true,
+  },
+  {
     slug: 'evaluator',
     title: 'Opportunity Evaluator',
     icon: '🎯',
@@ -13,13 +43,13 @@ const PROJECTS = [
     isInternal: true,
   },
   {
-    slug: 'github',
-    title: 'Open Source Contributions',
-    icon: '📦',
+    slug: 'healthcare-ai-agent',
+    title: 'Healthcare AI Agent PoC',
+    icon: '🧭',
     status: 'Active',
-    desc: 'Collection of open-source projects and contributions on GitHub, including utilities, data tools, and AI experiments.',
-    tags: ['Python', 'Various', 'Open Source'],
-    link: 'https://github.com/pkuppens',
+    desc: 'Problem: explore AI-agent support in healthcare context. Approach: proof-of-concept agent architecture and domain workflows. Outcome: practical baseline for future healthcare AI solutions.',
+    tags: ['Healthcare', 'AI Agent', 'PoC', 'Python'],
+    link: 'https://github.com/pkuppens/healthcare-aigent',
     isInternal: false,
   },
 ]
@@ -31,7 +61,7 @@ export default function ProjectsPage() {
         <div className="container">
           <h1 className={styles.title}>Projects & Demos</h1>
           <p className={styles.subtitle}>
-            Selected work demonstrating technical skills and problem-solving approach.
+            Selected work showing software, data, and AI delivery across healthcare, finance, and high-tech.
           </p>
         </div>
       </section>
