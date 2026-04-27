@@ -2,35 +2,43 @@ import { Link } from 'react-router-dom'
 import styles from './HomePage.module.css'
 
 const SKILLS = [
-  { name: 'Python', level: 95 },
-  { name: 'TypeScript', level: 85 },
-  { name: 'React', level: 80 },
-  { name: 'AI/ML Integration', level: 90 },
-  { name: 'Azure / Cloud', level: 80 },
-  { name: 'Data Engineering', level: 85 },
+  { name: 'Python', level: 90 },
+  { name: 'C / C++', level: 90 },
+  { name: 'C# / .NET', level: 85 },
+  { name: 'SQL & Data Engineering', level: 85 },
+  { name: 'Applied AI (LLM + non-LLM)', level: 90 },
+  { name: 'Azure / AWS / Cloud', level: 85 },
+  { name: 'CI / CD / GitHub', level: 90 },
+  { name: 'Docker / Containers', level: 85 },
 ]
 
 const HIGHLIGHTS = [
   {
     icon: '🤖',
-    title: 'AI Integration',
-    desc: 'LLM-backed solutions, prompt engineering, RAG pipelines and AI-assisted development workflows.',
+    title: 'Applied AI (LLM + non-LLM)',
+    desc: 'Built GenAI and RAG solutions, and non-LLM systems for deep learning, NLP support, and transaction monitoring.',
   },
   {
-    icon: '⚙️',
-    title: 'Backend Engineering',
-    desc: 'Scalable Python services, REST & event-driven APIs, robust data pipelines.',
+    icon: '🗄️',
+    title: 'Data and SQL Engineering',
+    desc: 'Designed and optimized SQL-heavy backends, data pipelines, and integration workflows across enterprise and SME systems.',
   },
   {
-    icon: '🌐',
-    title: 'Frontend Craft',
-    desc: 'React + TypeScript SPAs, accessible design, performance-focused UI engineering.',
+    icon: '🧪',
+    title: 'Scientific and Regulated Software',
+    desc: 'Delivered medical and high-tech software with quality process awareness in ISO 13485 and IEC 62304 contexts.',
   },
   {
-    icon: '☁️',
-    title: 'Cloud & DevOps',
-    desc: 'Azure-native architecture, CI/CD automation, IaC, containerisation.',
+    icon: '🤝',
+    title: 'Leadership and Delivery',
+    desc: 'Hands-on engineer who mentors teammates, supports architecture decisions, and improves team workflows.',
   },
+]
+
+const PROOF_POINTS = [
+  'Deep-learning medical imaging (CART-Tech)',
+  'AI transaction monitoring (Rent a Pin)',
+  'Regulated healthcare software (Nemo, Philips, CART-Tech, Isatis Health)',
 ]
 
 export default function HomePage() {
@@ -43,12 +51,17 @@ export default function HomePage() {
             <div className={styles.heroBadge}>Available for assignments</div>
             <h1 className={styles.heroTitle}>
               Pieter Kuppens
-              <span className={styles.heroSub}>Senior Software Engineer</span>
+              <span className={styles.heroSub}>Software, Data, and AI Engineer</span>
             </h1>
             <p className={styles.heroLead}>
-              15+ years building production software — Python, TypeScript, React and AI integration.
-              I combine strong engineering fundamentals with pragmatic delivery.
+              30+ years building production systems in high-tech, healthcare, and finance. I deliver practical
+              solutions across Python, C#/.NET, C/C++, SQL, cloud, and AI.
             </p>
+            <div className="flex flex-wrap gap-1 mt-2">
+              {PROOF_POINTS.map(point => (
+                <span key={point} className="tag">{point}</span>
+              ))}
+            </div>
             <div className={`flex flex-wrap gap-2 ${styles.heroCtas}`}>
               <Link to="/evaluator" className="btn btn-primary">
                 🎯 Evaluate Your Opportunity
