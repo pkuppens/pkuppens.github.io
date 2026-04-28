@@ -1,0 +1,88 @@
+name: "[BUG] GitHub Pages shows no content"
+description: "The live site loads but the React content is missing/blank."
+title: "[BUG]: GitHub Pages loads but shows no content"
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. This issue is for cases where **the GitHub Pages site loads, but the expected UI content does not render** (blank/empty page, missing header, etc.).
+
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Where did you observe the problem?
+      placeholder: "https://pkuppens.github.io/"
+    validations:
+      required: true
+
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behaviour
+      description: What did you see? Mention if the header/nav or main content is missing.
+      placeholder: |
+        Example: The page loads but remains blank. I do not see the header with “Pieter Kuppens”, and the main content area is empty.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: What should you see when the site works?
+      value: |
+        The home page should render the React app with:
+        - Title: “Pieter Kuppens | Software, Data and AI Engineer”
+        - Header brand “Pieter Kuppens” and nav links (Home, Profile, Projects, Opportunity Evaluator)
+        - Home hero heading “Pieter Kuppens”
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps to reproduce reliably.
+      placeholder: |
+        1) Open the URL in a private/incognito window
+        2) Hard refresh (Ctrl+F5)
+        3) Confirm header and hero are missing
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: Browser(s)
+      description: Which browsers did you try?
+      multiple: true
+      options:
+        - Chrome
+        - Edge
+        - Firefox
+        - Safari
+        - Mobile (iOS)
+        - Mobile (Android)
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Browser console errors (copy/paste)
+      description: Open DevTools → Console, then copy/paste any errors.
+      render: shell
+
+  - type: textarea
+    id: network
+    attributes:
+      label: Network failures (copy/paste)
+      description: Open DevTools → Network, then reload and check for failed JS/CSS requests. Paste the failing URLs/status codes.
+      render: shell
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / suspected cause (optional)
+      description: If you have a hypothesis (asset paths, JS bundle failed, runtime exception, etc.), add it here.
