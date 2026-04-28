@@ -1,0 +1,46 @@
+name: Site health (GitHub Pages)
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Saturday 05:00 UTC (~06:00 CET winter / ~07:00 CEST summer local)
+    - cron: "0 5 * * 6"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "site-health"
+  cancel-in-progress: false
+
+jobs:
+  healthcheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright (Chromium)
+        run: npx playwright install --with-deps chromium
+
+      - name: Wait for Pages deploy (push to main only)
+        if: github.event_name == 'push'
+        run: sleep 180
+
+      - name: Run live site healthcheck
+        run: npm run test:site-health
+
