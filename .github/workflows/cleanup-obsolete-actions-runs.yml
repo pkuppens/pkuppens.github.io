@@ -40,7 +40,7 @@ jobs:
       # Defaults for push-to-main runs (real deletion).
       MIN_AGE_DAYS: 0
       MAX_DELETIONS: 200
-      DRY_RUN: "false"
+      DRY_RUN: "true"
 
     steps:
       - name: Cleanup obsolete runs (push)
