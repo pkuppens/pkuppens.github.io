@@ -1,0 +1,25 @@
+name: '[CHORE] Maintenance or hygiene'
+description: Refactors, dependency bumps, tooling, CI, docs housekeeping — behaviour unchanged for users unless noted.
+title: '[CHORE]: '
+labels:
+  - chore
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What
+      description: The change — keep it small and reversible when possible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: risk
+    attributes:
+      label: Impact / risk
+      placeholder: e.g. bumps deploy.yml only; npm audit clean
+
+  - type: textarea
+    id: verify
+    attributes:
+      label: Verification
+      placeholder: Commands or checks — npm test, workflows green, ...

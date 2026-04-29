@@ -1,5 +1,5 @@
-name: "[BUG] GitHub Pages shows no content"
-description: "The live site loads but the React content is missing/blank."
+name: '[BUG] GitHub Pages blank or missing React'
+description: Specialized — site loads but the React shell shows no usable content. Prefer **Something is wrong** for other bugs.
 title: "[BUG]: GitHub Pages loads but shows no content"
 labels:
   - bug

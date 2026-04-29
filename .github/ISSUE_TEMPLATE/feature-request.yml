@@ -1,0 +1,34 @@
+name: '[FEAT] New feature'
+description: Propose a new capability or user-visible behaviour.
+title: '[FEAT]: '
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / opportunity
+      description: What user or maintenance pain does this address?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What should happen instead? Keep scope clear.
+    validations:
+      required: true
+
+  - type: textarea
+    id: ac
+    attributes:
+      label: Suggested acceptance criteria
+      placeholder: |-
+        - [ ] Behaviour X works when ...
+        - [ ] Regression tests ...
+
+  - type: textarea
+    id: out
+    attributes:
+      label: Out of scope (optional)
