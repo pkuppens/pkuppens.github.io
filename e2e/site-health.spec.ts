@@ -25,7 +25,7 @@ test('live site renders content and nav works', async ({ page, request }) => {
   await expect(page.getByRole('heading', { level: 1, name: /Pieter Kuppens/i })).toBeVisible()
 
   // Click-through checks (SPA navigation via header links)
-  await page.getByRole('link', { name: 'Profile' }).click()
+  await page.getByRole('link', { name: 'Profile', exact: true }).click()
   await expect(page.getByRole('heading', { level: 2, name: 'Work Preferences' })).toBeVisible()
 
   await page.getByRole('link', { name: 'Projects' }).click()
@@ -33,5 +33,14 @@ test('live site renders content and nav works', async ({ page, request }) => {
 
   await page.getByRole('link', { name: 'Opportunity Evaluator' }).click()
   await expect(page.getByRole('heading', { level: 1, name: /Opportunity Evaluator/i })).toBeVisible()
+})
+
+test('deep link /profile loads SPA (GitHub Pages 404.html shell)', async ({ page }) => {
+  const profileUrl = new URL('/profile', LIVE_URL).href
+  await page.goto(profileUrl, { waitUntil: 'domcontentloaded' })
+  // Pages may respond 404 while still serving 404.html as the app shell; the client router must run.
+  await expect(page.getByRole('heading', { level: 2, name: 'Work Preferences' })).toBeVisible({
+    timeout: 20_000,
+  })
 })
 
