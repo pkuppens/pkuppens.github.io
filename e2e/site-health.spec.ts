@@ -25,6 +25,7 @@ test('live site renders content and nav works', async ({ page, request }) => {
   await expect(page.getByRole('heading', { level: 1, name: /Pieter Kuppens/i })).toBeVisible()
 
   // Click-through checks (SPA navigation via header links)
+  // exact: header link is "Profile"; hero also has "View Profile" — substring matching would resolve to two nodes.
   await page.getByRole('link', { name: 'Profile', exact: true }).click()
   await expect(page.getByRole('heading', { level: 2, name: 'Work Preferences' })).toBeVisible()
 

@@ -1,0 +1,57 @@
+name: '[CHORE] Periodic maintenance review'
+description: Quarterly (or manual) upkeep — CI, tooling, audits, Pages health.
+title: '[CHORE]: Periodic maintenance '
+labels:
+  - chore
+  - maintenance
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use **after** the scheduled quarterly reminder opens an issue **or** when you voluntarily run hygiene. Tick items that apply.
+
+  - type: checkboxes
+    id: workflows
+    attributes:
+      label: GitHub Actions
+      options:
+        - label: Review pin versions (actions/checkout, actions/setup-node, deploy-pages, …) against release notes / Node rollout
+          required: false
+        - label: Re-check FORCE_JAVASCRIPT_ACTIONS_TO_NODE24 workflow env — remove once defaults match deploy.yml checklist
+          required: false
+        - label: Confirm Site health (GitHub Pages) workflow last run is green on main
+          required: false
+        - label: Confirm Security audit weekly workflow still meets policy
+          required: false
+
+  - type: checkboxes
+    id: deps
+    attributes:
+      label: Dependencies and supply chain
+      options:
+        - label: npm audit locally with same policy as CI (moderate+) and address new findings
+          required: false
+        - label: Review Dependabot PRs — merge or postpone with reason
+          required: false
+
+  - type: checkboxes
+    id: app
+    attributes:
+      label: Live site sanity
+      options:
+        - label: Smoke key routes (Home, Profile, Projects, Opportunity Evaluator) on production URL after last deploy
+          required: false
+
+  - type: checkboxes
+    id: extra
+    attributes:
+      label: Tooling (if present in repo)
+      options:
+        - label: pre-commit hooks refreshed (autoupdate) — skip if repo has no pre-commit
+          required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / follow-ups
+      description: PR links, bumped versions, postponed items.

@@ -1,0 +1,52 @@
+name: '[BUG] Something is wrong'
+description: Report a defect (generic). Use specialized templates if your case matches them.
+title: '[BUG]: '
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the problem clearly. If the site loads but React content is blank, use **“GitHub Pages blank or missing content”** instead.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: One short sentence on what is broken.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps so someone else can see the same behaviour.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+    validations:
+      required: true
+
+  - type: input
+    id: scope
+    attributes:
+      label: Environment / context (browser, CI, localhost, …)
+      placeholder: Chrome 139, localhost; or GitHub Actions run URL
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes (errors, screenshots, suspects)
+      description: Optional.

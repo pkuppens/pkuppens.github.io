@@ -1,0 +1,26 @@
+name: '[TASK] Tracked piece of work'
+description: Planned work item (engineering or ops) — not urgent defect, not necessarily a net-new feature.
+title: '[TASK]: '
+labels:
+  - task
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What needs to happen and why now?
+    validations:
+      required: true
+
+  - type: textarea
+    id: done
+    attributes:
+      label: Definition of done
+      placeholder: |-
+        - [ ] ...
+
+  - type: textarea
+    id: links
+    attributes:
+      label: Links / context
+      placeholder: Related issue PR, docs, ...

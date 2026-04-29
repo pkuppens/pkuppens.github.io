@@ -1,0 +1,88 @@
+# Opens a housekeeping issue Feb/May/Aug/Nov — first Saturday, ~local 05:30 Europe/Amsterdam.
+# Cron is UTC-only; gate uses Europe/Amsterdam and a narrow local time band.
+#
+# Same FORCE_JAVASCRIPT_ACTIONS_TO_NODE24 stance as deploy.yml until upstream actions drop Node20 shims.
+# See: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+name: Periodic maintenance reminder
+
+on:
+  schedule:
+    # Every Saturday UTC — narrowed in `slot` to quarterly Amsterdam window.
+    - cron: '30 4 * * 6'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: periodic-maintenance
+  cancel-in-progress: false
+
+jobs:
+  reminder:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - name: Decide whether today is maintenance slot (quarterly + Amsterdam Saturday + morning window)
+        id: slot
+        env:
+          TRIGGER_EVENT: ${{ github.event_name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "${TRIGGER_EVENT}" == 'workflow_dispatch' ]]; then
+            echo 'should_run=true' >>"${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
+          MONTH=$((10#$(TZ=Europe/Amsterdam date +%m)))
+          DOW=$((10#$(TZ=Europe/Amsterdam date +%u)))
+          DOM=$((10#$(TZ=Europe/Amsterdam date +%e | tr -d ' ')))
+          HOUR=$((10#$(TZ=Europe/Amsterdam date +%H)))
+          MIN=$((10#$(TZ=Europe/Amsterdam date +%M)))
+          TOTAL=$((HOUR * 60 + MIN))
+
+          WANT_MONTH=false
+          for M in 2 5 8 11; do
+            if [[ "${MONTH}" -eq "${M}" ]]; then WANT_MONTH=true; break; fi
+          done
+
+          if [[ "${WANT_MONTH}" != 'true' ]] || [[ "${DOW}" -ne 6 ]] || [[ "${DOM}" -gt 7 ]]; then
+            echo 'should_run=false' >>"${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
+          # ~05:15–05:59 local — tune if DST edge duplicates fire.
+          if [[ "${TOTAL}" -lt 315 ]] || [[ "${TOTAL}" -gt 359 ]]; then
+            echo 'should_run=false' >>"${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
+          echo 'should_run=true' >>"${GITHUB_OUTPUT}"
+
+      - name: Checkout repo (issue body template)
+        if: ${{ steps.slot.outputs.should_run == 'true' }}
+        uses: actions/checkout@v6
+
+      - name: Open maintenance reminder issue
+        if: ${{ steps.slot.outputs.should_run == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x .github/scripts/render-maintenance-issue-body.sh
+          chmod +x .github/scripts/render-maintenance-issue-body.sh || true
+          BODY_FILE="$(mktemp)"
+          ./.github/scripts/render-maintenance-issue-body.sh >"${BODY_FILE}"
+          TITLE="$(printf 'Chore: periodic maintenance review (%s)' "$(TZ=Europe/Amsterdam date +"%Y-%m-%d Amsterdam")")"
+          OWNER="${GITHUB_REPOSITORY_OWNER:-pkuppens}"
+          gh issue create \
+            --assignee "${OWNER}" \
+            --label chore \
+            --label maintenance \
+            --title "${TITLE}" \
+            --body-file "${BODY_FILE}"
