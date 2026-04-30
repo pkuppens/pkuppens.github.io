@@ -2,9 +2,9 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--header-bg);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--header-border);
   box-shadow: var(--shadow-sm);
 }
 
@@ -42,6 +42,30 @@
   gap: 0.25rem;
 }
 
+.themeToggle {
+  margin-left: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  border-radius: var(--radius);
+  padding: 0.35rem 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.themeToggle:hover {
+  color: var(--color-text);
+  background: var(--nav-hover-bg);
+  border-color: color-mix(in srgb, var(--color-border) 60%, var(--color-primary) 40%);
+}
+
+.themeToggle:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
 .link, .activeLink {
   padding: 0.4rem 0.8rem;
   border-radius: var(--radius);
@@ -52,15 +76,36 @@
   transition: color 0.15s, background 0.15s;
 }
 
+.link::before,
+.activeLink::before {
+  content: '<';
+  font-family: var(--font-mono);
+  color: color-mix(in srgb, var(--color-text-muted) 70%, var(--color-primary) 30%);
+  margin-right: 0.25rem;
+}
+
+.link::after,
+.activeLink::after {
+  content: ' />';
+  font-family: var(--font-mono);
+  color: color-mix(in srgb, var(--color-text-muted) 70%, var(--color-primary) 30%);
+  margin-left: 0.25rem;
+}
+
 .link:hover {
   color: var(--color-primary);
-  background: #eff6ff;
+  background: var(--nav-hover-bg);
   text-decoration: none;
 }
 
 .activeLink {
   color: var(--color-primary);
-  background: #eff6ff;
+  background: var(--nav-hover-bg);
+}
+
+.activeLink::before,
+.activeLink::after {
+  color: color-mix(in srgb, var(--color-primary) 70%, var(--color-text-muted) 30%);
 }
 
 .cta {
@@ -81,5 +126,8 @@
   .link, .activeLink {
     padding: 0.4rem 0.5rem;
     font-size: 0.82rem;
+  }
+  .themeToggle {
+    margin-left: 0.25rem;
   }
 }

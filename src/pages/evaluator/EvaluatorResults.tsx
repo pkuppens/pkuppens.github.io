@@ -6,10 +6,10 @@ interface Props {
 }
 
 const LEVEL_CONFIG: Record<ScoreLevel, { label: string; color: string; bg: string }> = {
-  excellent: { label: '🌟 Excellent Fit', color: '#16a34a', bg: '#f0fdf4' },
-  good: { label: '✅ Good Fit', color: '#2563eb', bg: '#eff6ff' },
-  fair: { label: '⚠️ Fair Fit', color: '#d97706', bg: '#fffbeb' },
-  poor: { label: '❌ Poor Fit', color: '#dc2626', bg: '#fef2f2' },
+  excellent: { label: 'Excellent fit', color: '#16a34a', bg: '#f0fdf4' },
+  good: { label: 'Good fit', color: '#2563eb', bg: '#eff6ff' },
+  fair: { label: 'Fair fit', color: '#d97706', bg: '#fffbeb' },
+  poor: { label: 'Poor fit', color: '#dc2626', bg: '#fef2f2' },
 }
 
 function ScoreBar({ score, color }: { score: number; color: string }) {

@@ -26,6 +26,11 @@ describe('Header', () => {
     expect(screen.getByRole('link', { name: /Opportunity Evaluator/i })).toBeInTheDocument()
   })
 
+  it('renders a theme toggle button', () => {
+    renderHeader()
+    expect(screen.getByRole('button', { name: /Switch to/i })).toBeInTheDocument()
+  })
+
   it('Home link points to /', () => {
     renderHeader()
     expect(screen.getByRole('link', { name: /^Home$/i })).toHaveAttribute('href', '/')
