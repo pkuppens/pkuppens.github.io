@@ -217,7 +217,7 @@ export default function EvaluatorForm({ initialInput, onEvaluate, onReset }: Pro
 
       <div className={styles.actions}>
         <button type="submit" className="btn btn-primary">
-          🎯 Evaluate
+          Evaluate
         </button>
         <button type="button" className="btn btn-outline" onClick={handleReset}>
           Reset

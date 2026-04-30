@@ -5,7 +5,6 @@ const PROJECTS = [
   {
     slug: 'on-prem-rag',
     title: 'On-Prem RAG for Healthcare',
-    icon: '🏥',
     status: 'Active',
     desc: 'Problem: healthcare teams need private AI search over internal knowledge. Approach: on-prem RAG pipeline with grounded answers and citations. Outcome: practical GenAI proof in a privacy-sensitive domain.',
     tags: ['Python', 'RAG', 'Healthcare', 'On-Prem'],
@@ -15,7 +14,6 @@ const PROJECTS = [
   {
     slug: 'transaction-monitoring',
     title: 'Transaction Monitoring ML/AI',
-    icon: '💳',
     status: 'Active',
     desc: 'Problem: detect risky transaction patterns and improve monitoring workflows. Approach: MLFlow-based experimentation and operational workflow support. Outcome: stronger evidence for non-LLM AI in finance.',
     tags: ['MLFlow', 'Fraud Detection', 'Finance', 'Python'],
@@ -25,7 +23,6 @@ const PROJECTS = [
   {
     slug: 'medical-imaging',
     title: 'Medical Imaging Deep Learning',
-    icon: '🫀',
     status: 'Case Study',
     desc: 'Problem: support cardiac intervention planning with better image understanding. Approach: deep-learning segmentation on DICOM MRI and cloud migration support. Outcome: production-oriented non-LLM AI in medtech.',
     tags: ['Deep Learning', 'DICOM', 'MRI', 'AWS'],
@@ -35,7 +32,6 @@ const PROJECTS = [
   {
     slug: 'evaluator',
     title: 'Opportunity Evaluator',
-    icon: '🎯',
     status: 'Live',
     desc: 'An interactive tool that scores assignment fit based on configurable criteria: domain, rate, commute, technology, and more. Built with React and TypeScript with pure-function scoring logic.',
     tags: ['React', 'TypeScript', 'Scoring Engine', 'localStorage'],
@@ -45,7 +41,6 @@ const PROJECTS = [
   {
     slug: 'healthcare-ai-agent',
     title: 'Healthcare AI Agent PoC',
-    icon: '🧭',
     status: 'Active',
     desc: 'Problem: explore AI-agent support in healthcare context. Approach: proof-of-concept agent architecture and domain workflows. Outcome: practical baseline for future healthcare AI solutions.',
     tags: ['Healthcare', 'AI Agent', 'PoC', 'Python'],
@@ -72,7 +67,6 @@ export default function ProjectsPage() {
             {PROJECTS.map(project => (
               <div key={project.slug} className={`card ${styles.projectCard}`}>
                 <div className={styles.projectHeader}>
-                  <span className={styles.projectIcon}>{project.icon}</span>
                   <span className={`badge ${project.status === 'Live' ? '' : 'badge-secondary'}`}>
                     {project.status}
                   </span>
@@ -84,11 +78,11 @@ export default function ProjectsPage() {
                 </div>
                 {project.isInternal ? (
                   <Link to={project.link} className="btn btn-primary">
-                    Open Demo →
+                    Open Demo
                   </Link>
                 ) : (
                   <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
-                    View on GitHub ↗
+                    View on GitHub
                   </a>
                 )}
               </div>

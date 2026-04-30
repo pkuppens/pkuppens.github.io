@@ -14,22 +14,18 @@ const SKILLS = [
 
 const HIGHLIGHTS = [
   {
-    icon: '🤖',
     title: 'Applied AI (LLM + non-LLM)',
     desc: 'Built GenAI and RAG solutions, and non-LLM systems for deep learning, NLP support, and transaction monitoring.',
   },
   {
-    icon: '🗄️',
     title: 'Data and SQL Engineering',
     desc: 'Designed and optimized SQL-heavy backends, data pipelines, and integration workflows across enterprise and SME systems.',
   },
   {
-    icon: '🧪',
     title: 'Scientific and Regulated Software',
     desc: 'Delivered medical and high-tech software with quality process awareness in ISO 13485 and IEC 62304 contexts.',
   },
   {
-    icon: '🤝',
     title: 'Leadership and Delivery',
     desc: 'Hands-on engineer who mentors teammates, supports architecture decisions, and improves team workflows.',
   },
@@ -64,9 +60,9 @@ export default function HomePage() {
             </div>
             <div className={`flex flex-wrap gap-2 ${styles.heroCtas}`}>
               <Link to="/evaluator" className="btn btn-primary">
-                🎯 Evaluate Your Opportunity
+                Evaluate Your Opportunity
               </Link>
-              <Link to="/profile" className="btn btn-outline">
+              <Link to="/profile" className={`btn btn-outline ${styles.heroOutlineBtn}`}>
                 View Profile
               </Link>
             </div>
@@ -81,7 +77,6 @@ export default function HomePage() {
           <div className="grid-2">
             {HIGHLIGHTS.map(h => (
               <div key={h.title} className={`card ${styles.highlightCard}`}>
-                <div className={styles.highlightIcon}>{h.icon}</div>
                 <h3 className={styles.highlightTitle}>{h.title}</h3>
                 <p className="text-muted">{h.desc}</p>
               </div>
@@ -126,7 +121,7 @@ export default function HomePage() {
             Use the interactive Opportunity Evaluator to see how well an assignment matches my profile.
           </p>
           <Link to="/evaluator" className="btn btn-primary">
-            Open Opportunity Evaluator →
+            Open Opportunity Evaluator
           </Link>
         </div>
       </section>

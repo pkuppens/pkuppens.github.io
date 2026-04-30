@@ -45,22 +45,22 @@ describe('EvaluatorResults', () => {
 
   it('renders excellent level label', () => {
     render(<EvaluatorResults result={excellentResult} />)
-    expect(screen.getByText('🌟 Excellent Fit')).toBeInTheDocument()
+    expect(screen.getByText('Excellent fit')).toBeInTheDocument()
   })
 
   it('renders poor level label', () => {
     render(<EvaluatorResults result={poorResult} />)
-    expect(screen.getByText('❌ Poor Fit')).toBeInTheDocument()
+    expect(screen.getByText('Poor fit')).toBeInTheDocument()
   })
 
   it('renders fair level label', () => {
     render(<EvaluatorResults result={fairResult} />)
-    expect(screen.getByText('⚠️ Fair Fit')).toBeInTheDocument()
+    expect(screen.getByText('Fair fit')).toBeInTheDocument()
   })
 
   it('renders good level label', () => {
     render(<EvaluatorResults result={goodResult} />)
-    expect(screen.getByText('✅ Good Fit')).toBeInTheDocument()
+    expect(screen.getByText('Good fit')).toBeInTheDocument()
   })
 
   it('renders the recommendation text', () => {

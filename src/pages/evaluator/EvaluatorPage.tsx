@@ -58,7 +58,7 @@ export default function EvaluatorPage() {
     <>
       <section className={styles.hero}>
         <div className="container">
-          <h1 className={styles.title}>🎯 Opportunity Evaluator</h1>
+          <h1 className={styles.title}>Opportunity Evaluator</h1>
           <p className={styles.subtitle}>
             Score any assignment against your profile criteria — rate, domain, commute, hybrid arrangement, tech stack and more.
           </p>
@@ -80,7 +80,7 @@ export default function EvaluatorPage() {
               onClick={() => setActiveTab('preferences')}
               aria-selected={activeTab === 'preferences'}
             >
-              ⚙️ My Preferences
+              My Preferences
             </button>
           </div>
 
