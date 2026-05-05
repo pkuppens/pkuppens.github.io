@@ -41,6 +41,8 @@ echo "npm run typecheck && npm test" > .husky/pre-commit
 ## Architecture
 See [docs/arc42/architecture.md](docs/arc42/architecture.md) for full documentation.
 
+LinkedIn local mirror tooling (experience XSD, optional legacy scrape helpers): [`scripts/linkedin/README.md`](scripts/linkedin/README.md).
+
 ## ADRs
 - [ADR 001: React + TypeScript + Vite](docs/adr/001-react-typescript-vite.md)
 - [ADR 002: Pure Functions for Scoring](docs/adr/002-pure-functions-scoring.md)

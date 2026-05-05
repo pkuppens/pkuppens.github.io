@@ -1,4 +1,8 @@
 /**
+ * Status: Live LinkedIn scraping is legacy / best-effort (DOM and auth breakage). Prefer a local
+ * mirror edited via the web-assisted workflow tracked in scripts/linkedin/README.md. This script may
+ * still be useful with saved HTML fixtures and npm run linkedin:xml.
+ *
  * Capture LinkedIn experience details HTML (logged-in view) and optionally fetch
  * full skill lists per position via overlay URLs.
  *
