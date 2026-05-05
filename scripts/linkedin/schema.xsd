@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  XSD for local Experience data modeled like LinkedIn (scripts/linkedin/to-xml.mjs).
+  XSD for local Experience data modeled like LinkedIn.
   Use for validated mirrors under data/linkedin/<slug>.xml, not only for scraped exports.
   Dates use xs:gYearMonth on attributes so “present” roles use current=true without a bogus date.
   Top-level experience vs experience inside experienceGroup share the element name but differ by context.
