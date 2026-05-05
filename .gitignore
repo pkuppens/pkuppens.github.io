@@ -32,3 +32,6 @@ coverage
 # Playwright
 playwright-report
 test-results
+
+# Local scratch (LinkedIn scrape output, persistent browser profile)
+tmp/

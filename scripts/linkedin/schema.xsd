@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  XSD for local Experience data modeled like LinkedIn (scripts/linkedin/to-xml.mjs).
+  Use for validated mirrors under data/linkedin/<slug>.xml, not only for scraped exports.
+  Dates use xs:gYearMonth on attributes so “present” roles use current=true without a bogus date.
+  Top-level experience vs experience inside experienceGroup share the element name but differ by context.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="https://pkuppens.github.io/ns/linkedin-experience"
+           xmlns:lx="https://pkuppens.github.io/ns/linkedin-experience">
+
+  <xs:element name="experiences" type="lx:ExperiencesType"/>
+
+  <xs:complexType name="ExperiencesType">
+    <xs:sequence>
+      <xs:element name="meta" type="lx:MetaType" minOccurs="0"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="experience" type="lx:ExperienceType"/>
+        <xs:element name="experienceGroup" type="lx:ExperienceGroupType"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MetaType">
+    <xs:attribute name="sourceUrl" type="xs:anyURI" use="optional"/>
+    <xs:attribute name="scrapedAt" type="xs:dateTime" use="optional"/>
+    <xs:attribute name="locale" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="ExperienceType">
+    <xs:sequence>
+      <xs:element name="tagline" type="xs:string"/>
+      <xs:element name="company" type="xs:string"/>
+      <xs:element name="employmentType" type="xs:string" minOccurs="0"/>
+      <xs:element name="period" type="lx:PeriodType"/>
+      <xs:element name="location" type="xs:string" minOccurs="0"/>
+      <xs:element name="workMode" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="tasks" type="lx:TasksType" minOccurs="0"/>
+      <xs:element name="skills" type="lx:SkillsType" minOccurs="0"/>
+      <xs:element name="skillsTruncatedSummary" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="linkedinComponentKey" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="ExperienceGroupType">
+    <xs:sequence>
+      <xs:element name="company" type="xs:string"/>
+      <xs:element name="groupSummary" type="lx:GroupSummaryType" minOccurs="0"/>
+      <xs:element name="location" type="xs:string" minOccurs="0"/>
+      <!-- Same NCName as top-level experience; valid as local element under experienceGroup only. -->
+      <xs:element name="experience" type="lx:GroupedExperienceType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="linkedinComponentKey" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="GroupSummaryType">
+    <xs:sequence>
+      <xs:element name="employmentType" type="xs:string" minOccurs="0"/>
+      <xs:element name="totalDurationText" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GroupedExperienceType">
+    <xs:sequence>
+      <xs:element name="tagline" type="xs:string"/>
+      <xs:element name="period" type="lx:PeriodType"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="tasks" type="lx:TasksType" minOccurs="0"/>
+      <xs:element name="skills" type="lx:SkillsType" minOccurs="0"/>
+      <xs:element name="skillsTruncatedSummary" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="PeriodType">
+    <xs:sequence>
+      <xs:element name="startDate" type="lx:DateYmType" minOccurs="0"/>
+      <xs:element name="endDate" type="lx:EndDateYmType" minOccurs="0"/>
+      <xs:element name="duration" type="lx:DurationType" minOccurs="0"/>
+      <xs:element name="raw" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DateYmType">
+    <xs:attribute name="yearMonth" type="xs:gYearMonth" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="EndDateYmType">
+    <xs:attribute name="yearMonth" type="xs:gYearMonth" use="optional"/>
+    <xs:attribute name="current" type="xs:boolean" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="DurationType">
+    <xs:attribute name="years" type="xs:nonNegativeInteger" use="optional"/>
+    <xs:attribute name="months" type="xs:nonNegativeInteger" use="optional"/>
+    <xs:attribute name="raw" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="TasksType">
+    <xs:sequence>
+      <xs:element name="task" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SkillsType">
+    <xs:sequence>
+      <xs:element name="skill" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
