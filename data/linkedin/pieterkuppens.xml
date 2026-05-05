@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<experiences xmlns="https://pkuppens.github.io/ns/linkedin-experience"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://pkuppens.github.io/ns/linkedin-experience ../../scripts/linkedin/schema.xsd">
+  <meta sourceUrl="https://www.linkedin.com/in/pieterkuppens/details/experience/" locale="nl"/>
+</experiences>
+
