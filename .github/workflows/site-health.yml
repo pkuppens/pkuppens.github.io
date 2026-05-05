@@ -1,8 +1,12 @@
+# Live Playwright checks against https://pkuppens.github.io/
+# Post-deploy runs use workflow_run so we do not race Pages propagation (see #44).
 name: Site health (GitHub Pages)
 
 on:
-  push:
-    branches: [main]
+  workflow_run:
+    workflows: ["Deploy to GitHub Pages"]
+    types:
+      - completed
   schedule:
     # Saturday 05:00 UTC (~06:00 CET winter / ~07:00 CEST summer local)
     - cron: "0 5 * * 6"
@@ -19,11 +23,21 @@ jobs:
   healthcheck:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    if: |
+      github.event_name == 'schedule' ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main' &&
+       (github.event.workflow_run.event == 'push' ||
+        github.event.workflow_run.event == 'workflow_dispatch'))
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -37,10 +51,9 @@ jobs:
       - name: Install Playwright (Chromium)
         run: npx playwright install --with-deps chromium
 
-      - name: Wait for Pages deploy (push to main only)
-        if: github.event_name == 'push'
-        run: sleep 180
+      - name: Short wait for CDN (after deploy only)
+        if: github.event_name == 'workflow_run'
+        run: sleep 45
 
       - name: Run live site healthcheck
         run: npm run test:site-health
-
