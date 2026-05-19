@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && node scripts/copy-github-pages-spa-fallback.mjs",
+    "validate:site-metadata": "node scripts/validate-site-metadata.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
