@@ -29,7 +29,7 @@ npm run build     # production build
 The same checks that run in CI (typecheck, tests, build) can be run locally before committing:
 
 ```bash
-npm run typecheck && npm test && npm run build
+npm run typecheck && npm test && npm run build && npm run validate:site-metadata
 ```
 
 To enforce this automatically on every commit, add a pre-commit hook (e.g. using [Husky](https://typicode.github.io/husky/)):
