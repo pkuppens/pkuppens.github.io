@@ -5,13 +5,9 @@ import type {
   ProfilePreferences,
   ScoreLevel,
 } from './types'
+import { getScoreLevel } from './scoreBands'
 
-export function getScoreLevel(score: number): ScoreLevel {
-  if (score >= 90) return 'excellent'
-  if (score >= 60) return 'good'
-  if (score >= 40) return 'fair'
-  return 'poor'
-}
+export { getScoreLevel } from './scoreBands'
 
 export function getRecommendation(_score: number, level: ScoreLevel): string {
   switch (level) {

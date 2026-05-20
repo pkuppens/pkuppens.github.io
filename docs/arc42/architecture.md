@@ -35,13 +35,16 @@ Single-page application built with React + TypeScript + Vite.
 src/
 ├── components/layout/   – Header, Footer, Layout (shell)
 ├── pages/               – Route-level page components
-│   └── evaluator/       – Opportunity Evaluator UI
+│   └── evaluator/       – Opportunity Evaluator UI + useEvaluatorSession
+├── domain/profile/      – Canonical Profile data (CV + evaluator defaults)
 ├── domain/evaluator/    – Pure scoring logic (no React)
 │   ├── types.ts         – Domain types
 │   ├── criteria.ts      – Criterion definitions + evaluation functions
 │   ├── scoring.ts       – Score aggregation engine
-│   └── defaultPreferences.ts
-└── infrastructure/      – Storage abstraction (localStorage)
+│   ├── scoreBands.ts    – Shared score thresholds and presentation
+│   ├── evaluatorSession.ts – Load/save/evaluate session (no React)
+│   └── defaultPreferences.ts – Re-exports profile scoring preferences
+└── infrastructure/      – Storage, theme, storage key registry
 ```
 
 ## 6. Runtime View
@@ -65,9 +68,9 @@ src/
 - Weekly **Dependabot** version updates and a scheduled **`npm audit`** workflow support dependency hygiene (see `.github/dependabot.yml` and `.github/workflows/security-audit.yml`).
 
 ### Testing Strategy
-- Unit tests: pure scoring functions (Vitest)
+- Unit tests: criteria, scoring, profile consistency, evaluator session, storage (Vitest)
 - Component tests: React Testing Library
-- E2E tests: Playwright (future)
+- E2E tests: Playwright site-health smoke (`e2e/site-health.spec.ts`)
 
 ### State Management
 - Local component state (useState) for UI

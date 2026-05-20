@@ -1,19 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import { applyThemeToDocument, loadTheme } from './infrastructure/themeStorage'
 import './index.css'
 
-function applyInitialTheme() {
-  const stored = localStorage.getItem('theme')
-  if (stored === 'light' || stored === 'dark') {
-    document.documentElement.dataset.theme = stored
-    return
-  }
-
-  document.documentElement.dataset.theme = 'dark'
-}
-
-applyInitialTheme()
+applyThemeToDocument(loadTheme())
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

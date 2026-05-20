@@ -1,17 +1,15 @@
 import { NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import {
+  applyThemeToDocument,
+  saveTheme,
+  type Theme,
+} from '../../infrastructure/themeStorage'
 import styles from './Header.module.css'
-
-type Theme = 'light' | 'dark'
 
 function getCurrentTheme(): Theme {
   const t = document.documentElement.dataset.theme
   return t === 'dark' ? 'dark' : 'light'
-}
-
-function setTheme(theme: Theme) {
-  document.documentElement.dataset.theme = theme
-  localStorage.setItem('theme', theme)
 }
 
 export default function Header() {
@@ -22,8 +20,9 @@ export default function Header() {
   }, [])
 
   function onToggleTheme() {
-    const next = theme === 'dark' ? 'light' : 'dark'
-    setTheme(next)
+    const next: Theme = theme === 'dark' ? 'light' : 'dark'
+    applyThemeToDocument(next)
+    saveTheme(next)
     setThemeState(next)
   }
 
