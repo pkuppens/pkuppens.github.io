@@ -1,15 +1,9 @@
-import type { EvaluationResult, ScoreLevel } from '../../domain/evaluator/types'
+import type { EvaluationResult } from '../../domain/evaluator/types'
+import { getRawScoreColor, LEVEL_PRESENTATION } from '../../domain/evaluator/scoreBands'
 import styles from './EvaluatorResults.module.css'
 
 interface Props {
   result: EvaluationResult
-}
-
-const LEVEL_CONFIG: Record<ScoreLevel, { label: string; color: string; bg: string }> = {
-  excellent: { label: 'Excellent fit', color: '#16a34a', bg: '#f0fdf4' },
-  good: { label: 'Good fit', color: '#2563eb', bg: '#eff6ff' },
-  fair: { label: 'Fair fit', color: '#d97706', bg: '#fffbeb' },
-  poor: { label: 'Poor fit', color: '#dc2626', bg: '#fef2f2' },
 }
 
 function ScoreBar({ score, color }: { score: number; color: string }) {
@@ -17,10 +11,10 @@ function ScoreBar({ score, color }: { score: number; color: string }) {
     <div className={styles.scoreBarTrack}>
       <div
         className={styles.scoreBarFill}
-        style={{ width: `${score}%`, background: color }}
+        style={{ width: `${Math.max(0, Math.min(100, score))}%`, background: color }}
         role="progressbar"
         aria-valuenow={score}
-        aria-valuemin={0}
+        aria-valuemin={-100}
         aria-valuemax={100}
       />
     </div>
@@ -28,7 +22,7 @@ function ScoreBar({ score, color }: { score: number; color: string }) {
 }
 
 export default function EvaluatorResults({ result }: Props) {
-  const cfg = LEVEL_CONFIG[result.level]
+  const cfg = LEVEL_PRESENTATION[result.level]
 
   return (
     <div className={styles.results} aria-label="Evaluation results">
@@ -51,10 +45,7 @@ export default function EvaluatorResults({ result }: Props) {
               <span className={styles.criterionLabel}>{cs.label}</span>
               <span className={styles.criterionScore}>{cs.rawScore}%</span>
             </div>
-            <ScoreBar
-              score={cs.rawScore}
-              color={cs.rawScore >= 80 ? '#16a34a' : cs.rawScore >= 60 ? '#2563eb' : cs.rawScore >= 40 ? '#d97706' : '#dc2626'}
-            />
+            <ScoreBar score={cs.rawScore} color={getRawScoreColor(cs.rawScore)} />
             <div className={styles.criterionMeta}>
               Weight: {cs.weight} · Contribution: {cs.weightedScore.toFixed(1)} pts
             </div>

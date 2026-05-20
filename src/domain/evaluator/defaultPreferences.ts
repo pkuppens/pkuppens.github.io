@@ -1,17 +1,4 @@
-import type { ProfilePreferences } from './types'
+import { PROFILE_EVALUATOR_PREFERENCES } from '../profile/profileData'
 
-export const DEFAULT_PREFERENCES: ProfilePreferences = {
-  preferredDomains: ['Finance', 'Healthcare', 'Logistics', 'Technology', 'AI', 'Data'],
-  minHoursPerWeek: 32,
-  maxHoursPerWeek: 40,
-  minHourlyRate: 75,
-  targetHourlyRate: 110,
-  maxCommuteMinutes: 60,
-  maxOnsiteDaysPerWeek: 3,
-  minDurationMonths: 3,
-  maxDurationMonths: 12,
-  preferredTechnologies: [
-    'Python', 'TypeScript', 'React', 'FastAPI', 'Azure',
-    'LangChain', 'OpenAI', 'Docker', 'SQL', 'AWS',
-  ],
-}
+/** Default scoring preferences for the Opportunity Evaluator (canonical Profile data). */
+export const DEFAULT_PREFERENCES = PROFILE_EVALUATOR_PREFERENCES

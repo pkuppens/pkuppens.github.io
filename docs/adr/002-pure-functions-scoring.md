@@ -11,11 +11,17 @@ The Opportunity Evaluator scores assignments across multiple criteria (domain fi
 - Easy to extend with new criteria or adjusted weights
 - Deterministic and transparent so scores can be explained to users
 
-**Example — commute scoring:**
-The total effective commute is calculated as `commuteMinutes × (onsiteDaysPerWeek + 1)` (round trip × frequency). This combined score is then evaluated as:
-- 0 minutes on-site → 100% (fully remote is the best case)
-- ≤ configured max commute minutes → interpolated linearly from 100% down to ~50%
-- Exceeding max commute → score drops steeply toward 0%
+**Example — commute scoring (`commuteScore.ts`):**
+Uses **one-way** `commuteMinutes` and `hybridDaysOnsite` (onsite days per week):
+- **0 onsite days** (fully remote) → 100%, commute ignored
+- **≥ 1 onsite day**: degradation from 100, then `score = 100 - degradation × sqrt(onsite days)` (clamped to -100)
+  - ≤ 10 min/day → no degradation
+  - 10–60 min → linear degradation 0→100%
+  - 60–90 min → +0→60 penalty on top (max degradation 160 before weighting)
+- Example: 60 min, 1 onsite day → 0%; 60 min, 4 onsite days → -100%
+
+**Example — hybrid scoring:**
+Onsite days per week (`hybridDaysOnsite`) are compared to `maxOnsiteDaysPerWeek`; excess days reduce the score.
 
 Each criterion returns a raw score (0–100) that is multiplied by its configured weight, then normalised against the sum of all weights to produce a weighted contribution to the final 0–100 score.
 

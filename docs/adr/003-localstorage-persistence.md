@@ -24,6 +24,7 @@ Use `localStorage` via a thin infrastructure abstraction (`src/infrastructure/st
 - Sufficient for the intended per-browser use case
 
 ## Consequences
+- **Visitor preference sandbox**: The evaluator UI allows editing the full `ProfilePreferences` object; overrides are stored per browser under `evaluator_preferences`. Repo defaults in `src/domain/profile/` apply when storage is empty. This is intentional so recruiters can try “what-if” weights without a backend.
 - **Single-user per browser profile**: `localStorage` is scoped to the browser origin per browser profile. Each visitor — whether a recruiter evaluating a specific role, or Pieter himself — has their own isolated storage. A recruiter on their own PC starts with a clean state, independently of any other user on any other device. This is intentional.
 - Data is device-local and not synced across devices or browser profiles
 - Not suitable for shared or multi-user storage scenarios

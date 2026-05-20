@@ -1,3 +1,4 @@
+import { scoreCommute } from './commuteScore'
 import type { CriterionConfig, OpportunityInput, ProfilePreferences } from './types'
 
 function clamp(value: number, min: number, max: number): number {
@@ -53,12 +54,8 @@ export const CRITERIA: CriterionConfig[] = [
     id: 'commute',
     label: 'Commute',
     weight: 15,
-    evaluate(input: OpportunityInput, prefs: ProfilePreferences): number {
-      if (input.commuteMinutes === 0) return 100
-      if (input.commuteMinutes > prefs.maxCommuteMinutes) {
-        return clamp(100 - (input.commuteMinutes - prefs.maxCommuteMinutes) * 2, 0, 30)
-      }
-      return lerp(prefs.maxCommuteMinutes - input.commuteMinutes, 0, prefs.maxCommuteMinutes) * 0.5 + 50
+    evaluate(input: OpportunityInput, _prefs: ProfilePreferences): number {
+      return Math.round(scoreCommute(input.commuteMinutes, input.hybridDaysOnsite))
     },
   },
   {
