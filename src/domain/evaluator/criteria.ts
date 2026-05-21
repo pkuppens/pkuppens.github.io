@@ -54,7 +54,8 @@ export const CRITERIA: CriterionConfig[] = [
     id: 'commute',
     label: 'Commute',
     weight: 15,
-    evaluate(input: OpportunityInput, _prefs: ProfilePreferences): number {
+    evaluate(input: OpportunityInput, prefs: ProfilePreferences): number {
+      void prefs
       return Math.round(scoreCommute(input.commuteMinutes, input.hybridDaysOnsite))
     },
   },

@@ -1,7 +1,7 @@
 {
   "name": "pkuppens-github-io",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.9.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,6 +13,7 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "test:site-health": "playwright test e2e/site-health.spec.ts",
+    "test:site-health:retry": "bash scripts/run-site-health-with-retry.sh",
     "linkedin:validate": "node scripts/linkedin/validate.mjs",
     "linkedin:export:json": "node scripts/linkedin/export-json.mjs",
     "linkedin:export:csv": "node scripts/linkedin/export-csv.mjs",

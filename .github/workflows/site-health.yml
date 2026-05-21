@@ -1,5 +1,7 @@
 # Live Playwright checks against https://pkuppens.github.io/
 # Post-deploy runs use workflow_run so we do not race Pages propagation (see #44).
+# Post-deploy health uses incremental retry (scripts/run-site-health-with-retry.sh).
+# On final failure, GitHub sends workflow-failure emails to watchers (repo notification settings).
 name: Site health (GitHub Pages)
 
 on:
@@ -22,7 +24,7 @@ concurrency:
 jobs:
   healthcheck:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 75
     if: |
       github.event_name == 'schedule' ||
       github.event_name == 'workflow_dispatch' ||
@@ -51,9 +53,10 @@ jobs:
       - name: Install Playwright (Chromium)
         run: npx playwright install --with-deps chromium
 
-      - name: Short wait for CDN (after deploy only)
+      - name: Run live site healthcheck (post-deploy retry)
         if: github.event_name == 'workflow_run'
-        run: sleep 45
+        run: bash scripts/run-site-health-with-retry.sh
 
       - name: Run live site healthcheck
+        if: github.event_name != 'workflow_run'
         run: npm run test:site-health

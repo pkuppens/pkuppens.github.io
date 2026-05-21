@@ -70,7 +70,7 @@ src/
 ### Testing Strategy
 - Unit tests: criteria, scoring, profile consistency, evaluator session, storage (Vitest)
 - Component tests: React Testing Library
-- E2E tests: Playwright site-health smoke (`e2e/site-health.spec.ts`)
+- E2E tests: Playwright site-health smoke (`e2e/site-health.spec.ts`); post-deploy runs retry with incremental backoff (`scripts/run-site-health-with-retry.sh`)
 
 ### State Management
 - Local component state (useState) for UI

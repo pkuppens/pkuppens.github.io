@@ -30,6 +30,9 @@ All `localStorage` access uses the `pkuppens_` prefix via `src/infrastructure/st
 **Visitor preference overrides**
 Visitors may edit scoring preferences in the UI; those overrides are stored per browser. The versioned **Profile** in the repo remains the default when storage is empty. See ADR 003.
 
+**Post-deploy verification**
+Automated check that the live GitHub Pages site matches expectations after a deploy. May retry with backoff when the CDN has not caught up yet.
+
 ## Out of scope (parked)
 
 **LinkedIn experience mirror**
