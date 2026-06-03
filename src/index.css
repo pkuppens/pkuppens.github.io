@@ -107,17 +107,56 @@ img {
   height: auto;
 }
 
+.page-hero {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 60%, #0ea5e9 100%);
+  color: #fff;
+  padding: 6rem 0 5rem;
+}
+
+/* Fixed row height so hero titles stay aligned when badge labels differ in length. */
+.page-hero-badge-wrap {
+  display: flex;
+  align-items: flex-start;
+  min-height: calc(0.8rem * 1.4 + 0.6em + 2px);
+  margin-bottom: 1.25rem;
+}
+
 .page-hero-badge {
   display: inline-block;
+  box-sizing: border-box;
   padding: 0.3em 1em;
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 600;
+  line-height: 1.4;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin-bottom: 1.25rem;
+}
+
+.page-hero-title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin: 0 0 1.25rem;
+}
+
+.page-hero-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.page-hero-lead {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 640px;
+  margin: 0 0 2rem;
+  line-height: 1.7;
 }
 
 .container {

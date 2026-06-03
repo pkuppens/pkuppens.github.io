@@ -8,11 +8,18 @@ import styles from './ProfilePage.module.css'
 export default function ProfilePage() {
   return (
     <>
-      <section className={styles.hero}>
+      <section className="page-hero">
         <div className="container">
-          <h1 className={styles.title}>Pieter Kuppens</h1>
-          <p className={styles.subtitle}>Software, Data, and AI Professional · Healthcare, Finance, High-Tech</p>
-          <p className={styles.bio}>
+          <div className="page-hero-badge-wrap">
+            <div className="page-hero-badge">Professional profile</div>
+          </div>
+          <h1 className="page-hero-title">
+            Pieter Kuppens
+            <span className="page-hero-subtitle">
+              Software, Data, and AI Professional · Healthcare, Finance, High-Tech
+            </span>
+          </h1>
+          <p className="page-hero-lead">
             I am a software and data engineer with 30+ years of experience. I build production systems with Python,
             C#/.NET, C/C++, SQL, and cloud platforms. My recent work spans GenAI and non-LLM AI, including deep-learning
             medical imaging and transaction monitoring. I work best in teams that value quality and clear communication.

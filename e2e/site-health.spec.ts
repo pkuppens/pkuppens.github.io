@@ -44,7 +44,9 @@ test('live site renders content and nav works', async ({ page, request }) => {
   await expect(page.getByRole('heading', { level: 2, name: 'Work Preferences' })).toBeVisible()
 
   await page.getByRole('link', { name: 'Projects' }).click()
-  await expect(page.getByRole('heading', { level: 1, name: 'Projects & Demos' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1, name: /Pieter Kuppens/i })).toBeVisible()
+  await expect(page.getByText(/^Portfolio$/i)).toBeVisible()
+  await expect(page.getByText(/Projects & demos/i)).toBeVisible()
 
   await page.getByRole('link', { name: 'Opportunity Evaluator' }).click()
   await expect(page.getByRole('heading', { level: 1, name: /Opportunity Evaluator/i })).toBeVisible()

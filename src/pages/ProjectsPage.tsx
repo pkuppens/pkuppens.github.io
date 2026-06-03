@@ -52,10 +52,16 @@ const PROJECTS = [
 export default function ProjectsPage() {
   return (
     <>
-      <section className={styles.hero}>
+      <section className="page-hero">
         <div className="container">
-          <h1 className={styles.title}>Projects & Demos</h1>
-          <p className={styles.subtitle}>
+          <div className="page-hero-badge-wrap">
+            <div className="page-hero-badge">Portfolio</div>
+          </div>
+          <h1 className="page-hero-title">
+            Pieter Kuppens
+            <span className="page-hero-subtitle">Projects & demos</span>
+          </h1>
+          <p className="page-hero-lead">
             Selected work showing software, data, and AI delivery across healthcare, finance, and high-tech.
           </p>
         </div>

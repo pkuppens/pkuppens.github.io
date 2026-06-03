@@ -41,15 +41,17 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className={styles.hero}>
+      <section className="page-hero">
         <div className="container">
           <div className={styles.heroContent}>
-            <div className={styles.heroBadge}>Available for assignments</div>
-            <h1 className={styles.heroTitle}>
+            <div className="page-hero-badge-wrap">
+              <div className="page-hero-badge">Available for assignments</div>
+            </div>
+            <h1 className="page-hero-title">
               Pieter Kuppens
-              <span className={styles.heroSub}>Software, Data, and AI Engineer</span>
+              <span className="page-hero-subtitle">Software, Data, and AI Engineer</span>
             </h1>
-            <p className={styles.heroLead}>
+            <p className="page-hero-lead">
               30+ years building production systems in high-tech, healthcare, and finance. I deliver practical
               solutions across Python, C#/.NET, C/C++, SQL, cloud, and AI.
             </p>

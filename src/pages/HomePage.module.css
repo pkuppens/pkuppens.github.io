@@ -1,52 +1,9 @@
-.hero {
-  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 60%, #0ea5e9 100%);
-  color: #fff;
-  padding: 6rem 0 5rem;
-}
-
 .heroContent {
   max-width: 680px;
 }
 
-.heroBadge {
-  display: inline-block;
-  padding: 0.3em 1em;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.35);
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 1.25rem;
-}
-
-.heroTitle {
-  font-size: clamp(2rem, 5vw, 3.25rem);
-  font-weight: 800;
-  line-height: 1.1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  margin-bottom: 1.25rem;
-}
-
-.heroSub {
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  font-weight: 400;
-  opacity: 0.85;
-}
-
-.heroLead {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  max-width: 560px;
-  margin-bottom: 2rem;
-  line-height: 1.7;
-}
-
 .heroCtas {
-  margin-top: 0;
+  margin-top: 1.75rem;
 }
 
 :global(.btn-outline).heroOutlineBtn {
