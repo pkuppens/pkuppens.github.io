@@ -12,6 +12,7 @@
   --color-text-muted: #64748b;
   --color-border: #e2e8f0;
   --color-surface-2: #f1f5f9;
+  --color-input-bg: var(--color-surface);
   --color-focus-ring: rgba(37, 99, 235, 0.35);
 
   --header-bg: rgba(255, 255, 255, 0.95);
@@ -45,6 +46,7 @@
   --color-text: #e2e8f0;
   --color-text-muted: #94a3b8;
   --color-border: #1f2a44;
+  --color-input-bg: var(--color-surface-2);
   --color-focus-ring: rgba(56, 189, 248, 0.35);
 
   --header-bg: rgba(6, 11, 21, 0.72);
@@ -103,6 +105,19 @@ h1, h2, h3, h4, h5, h6 {
 img {
   max-width: 100%;
   height: auto;
+}
+
+.page-hero-badge {
+  display: inline-block;
+  padding: 0.3em 1em;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
 }
 
 .container {
