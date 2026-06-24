@@ -55,3 +55,4 @@ LinkedIn local mirror tooling (experience XSD, optional legacy scrape helpers): 
 
   In the GitHub repo: enable **Dependabot alerts** and **Dependabot security updates** if your org allows (Settings → Code security and analysis). Org defaults may override.
 - **Weekly `npm audit`** runs via [`.github/workflows/security-audit.yml`](.github/workflows/security-audit.yml) with `--audit-level=moderate`. Scheduled runs use UTC; `workflow_dispatch` is available for manual runs. See workflow comments for local-time notes.
+- **Current state:** `npm audit --audit-level=moderate` reports **0 vulnerabilities** (last verified 2026-06-24).
