@@ -33,17 +33,29 @@
   content: '<';
   font-family: var(--font-mono);
   color: color-mix(in srgb, var(--footer-text) 85%, #ffffff 15%);
-  margin-right: 0.25rem;
 }
 
 .links a::after {
-  content: ' />';
+  content: '/>';
   font-family: var(--font-mono);
   color: color-mix(in srgb, var(--footer-text) 85%, #ffffff 15%);
-  margin-left: 0.25rem;
 }
 
 .links a:hover {
   color: #fff;
   text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  .links a::before,
+  .links a::after {
+    display: none;
+  }
+  .inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .links {
+    gap: 1rem;
+  }
 }
