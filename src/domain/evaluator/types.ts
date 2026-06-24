@@ -25,6 +25,8 @@ export interface OpportunityInput {
   durationMonths: number
   technologies: string[]
   notes: string
+  commuteOrigin?: string        // home address for commute calculation
+  commuteDestination?: string   // office address for commute calculation
 }
 
 export interface CriterionConfig {

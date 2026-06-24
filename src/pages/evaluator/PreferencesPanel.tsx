@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { ProfilePreferences } from '../../domain/evaluator/types'
 import { DEFAULT_PREFERENCES } from '../../domain/evaluator/defaultPreferences'
+import { loadFromStorage, saveToStorage } from '../../infrastructure/storage'
+import { STORAGE_KEYS } from '../../infrastructure/storageKeys'
 import styles from './PreferencesPanel.module.css'
 
 interface Props {
@@ -11,6 +13,26 @@ interface Props {
 export default function PreferencesPanel({ prefs, onChange }: Props) {
   const [domainInput, setDomainInput] = useState('')
   const [techInput, setTechInput] = useState('')
+  const [hereKey, setHereKey] = useState(() => loadFromStorage(STORAGE_KEYS.hereApiKey, ''))
+  const [hereKeySaved, setHereKeySaved] = useState(false)
+
+  useEffect(() => {
+    if (hereKeySaved) {
+      const timer = setTimeout(() => setHereKeySaved(false), 2000)
+      return () => clearTimeout(timer)
+    }
+  }, [hereKeySaved])
+
+  function handleHereKeySave() {
+    saveToStorage(STORAGE_KEYS.hereApiKey, hereKey)
+    setHereKeySaved(true)
+  }
+
+  function handleHereKeyClear() {
+    setHereKey('')
+    saveToStorage(STORAGE_KEYS.hereApiKey, '')
+    setHereKeySaved(true)
+  }
 
   function update<K extends keyof ProfilePreferences>(key: K, value: ProfilePreferences[K]) {
     onChange({ ...prefs, [key]: value })
@@ -222,6 +244,39 @@ export default function PreferencesPanel({ prefs, onChange }: Props) {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* HERE API key */}
+      <div className={styles.group}>
+        <h3 className={styles.groupTitle}>Commute Calculator API Key</h3>
+        <p className={styles.desc}>
+          The commute calculator uses the HERE Routing API. Provide a key to enable
+          address-based commute calculation.{" "}
+          <a href="https://platform.here.com/" target="_blank" rel="noopener noreferrer">
+            Get a free key at platform.here.com
+          </a>
+          . Select the <strong>Geocoding & Search API v7</strong> and{" "}
+          <strong>Routing API v8</strong> products.
+        </p>
+        <div className={styles.addRow}>
+          <input
+            type="text"
+            className={styles.input}
+            placeholder="Paste your HERE API key..."
+            value={hereKey}
+            onChange={e => setHereKey(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), handleHereKeySave())}
+          />
+          <button type="button" className="btn btn-outline" onClick={handleHereKeySave}>
+            Save
+          </button>
+          {hereKey && (
+            <button type="button" className="btn btn-outline" onClick={handleHereKeyClear}>
+              Clear
+            </button>
+          )}
+        </div>
+        {hereKeySaved && <span className={styles.saved} style={{ marginTop: '0.3rem', display: 'inline-block' }}>✓ Saved</span>}
       </div>
 
       <div className={styles.footer}>
