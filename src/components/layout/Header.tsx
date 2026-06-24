@@ -45,7 +45,7 @@ export default function Header() {
             Projects
           </NavLink>
           <NavLink to="/evaluator" className={({ isActive }) => isActive ? `${styles.activeLink} ${styles.cta}` : `${styles.link} ${styles.cta}`}>
-            Opportunity Evaluator
+            Opportunity<span className={styles.fullLabel}> Evaluator</span>
           </NavLink>
           <button
             type="button"

@@ -113,6 +113,12 @@ img {
   padding: 6rem 0 5rem;
 }
 
+@media (max-width: 480px) {
+  .page-hero {
+    padding: 4rem 0 3rem;
+  }
+}
+
 /* Fixed row height so hero titles stay aligned when badge labels differ in length. */
 .page-hero-badge-wrap {
   display: flex;
@@ -277,3 +283,18 @@ img {
 .gap-2 { gap: 1rem; }
 .gap-3 { gap: 1.5rem; }
 .flex-wrap { flex-wrap: wrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+  .card:hover {
+    transform: none;
+  }
+  .btn:hover {
+    transform: none;
+  }
+}

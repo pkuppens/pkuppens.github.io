@@ -23,7 +23,7 @@ describe('Header', () => {
     expect(screen.getByRole('link', { name: /Home/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /Profile/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /Projects/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /Opportunity Evaluator/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /Opportunity/i })).toBeInTheDocument()
   })
 
   it('renders a theme toggle button', () => {
@@ -48,7 +48,7 @@ describe('Header', () => {
 
   it('Opportunity Evaluator link points to /evaluator', () => {
     renderHeader()
-    expect(screen.getByRole('link', { name: /Opportunity Evaluator/i })).toHaveAttribute('href', '/evaluator')
+    expect(screen.getByRole('link', { name: /Opportunity/i })).toHaveAttribute('href', '/evaluator')
   })
 
   it('renders a banner landmark', () => {
