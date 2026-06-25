@@ -1,6 +1,6 @@
 import { it, expect, vi, beforeEach } from "vitest"
 import { geocodeAddress, fetchRoute, fetchCommute } from "../hereApi"
-import type { LatLng, RouteResult } from "../hereApi"
+import type { LatLng, RouteResult, HereApiError } from "../hereApi"
 
 const mockFetch = vi.fn()
 globalThis.fetch = mockFetch
@@ -52,8 +52,8 @@ it("returns rate_limited on HTTP 429", async () => {
 
   const result = await geocodeAddress("Something")
   expect(result).toHaveProperty("category", "rate_limited")
-  expect((result as any).correlationId).toBe("abc-123")
-  expect((result as any).httpStatus).toBe(429)
+  expect((result as HereApiError).correlationId).toBe("abc-123")
+  expect((result as HereApiError).httpStatus).toBe(429)
 })
 
 it("returns network_error on fetch rejection", async () => {
@@ -75,8 +75,8 @@ it("returns api_error on HTTP 403", async () => {
 
   const result = await geocodeAddress("Something")
   expect(result).toHaveProperty("category", "api_error")
-  expect((result as any).httpStatus).toBe(403)
-  expect((result as any).correlationId).toBe("req-403")
+  expect((result as HereApiError).httpStatus).toBe(403)
+  expect((result as HereApiError).correlationId).toBe("req-403")
 })
 
 // ---- fetchRoute ----
