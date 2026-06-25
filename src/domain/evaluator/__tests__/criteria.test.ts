@@ -78,16 +78,16 @@ describe('criteria', () => {
       ).toBeLessThan(0)
     })
 
-    it('returns 0 for 60 minutes with 1 onsite day', () => {
+    it('scores 25 for 60 minutes with 1 onsite day', () => {
       expect(
         scoreCriterion('commute', { ...baseInput, commuteMinutes: 60, hybridDaysOnsite: 1 }),
-      ).toBe(0)
+      ).toBe(25)
     })
 
-    it('returns -100 for 60 minutes with 4 onsite days', () => {
+    it('scores -50 for 60 minutes with 4 onsite days', () => {
       expect(
         scoreCriterion('commute', { ...baseInput, commuteMinutes: 60, hybridDaysOnsite: 4 }),
-      ).toBe(-100)
+      ).toBe(-50)
     })
   })
 

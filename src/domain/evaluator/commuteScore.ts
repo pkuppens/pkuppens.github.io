@@ -1,39 +1,42 @@
 /**
  * Commute criterion scoring (0–100 raw score; may go negative before weighting).
  *
- * One-way `commuteMinutes` is compared to per-day thresholds. Degradation is
- * multiplied by sqrt(onsite days per week) so more office days amplify the penalty.
+ * The first 30 minutes of round-trip commute per day are free (15 min one-way).
+ * Degradation is based on round-trip excess beyond 30 min/day:
+ *   - 0 min excess → 0 degradation (100% score)
+ *   - 120 min excess → 100 degradation (0% score)
+ *   - 240 min excess → 200 degradation (-100% score)
+ * Degradation is amplified by sqrt(onsite days per week).
  */
 
-const ACCEPTABLE_MINUTES = 10
-const LINEAR_MAX_MINUTES = 60
-const PENALTY_MAX_MINUTES = 90
-const MAX_EXTRA_PENALTY = 60
+const FREE_ROUND_TRIP_MINUTES = 30
+const EXCESS_TO_ZERO_SCORE = 120
+const MAX_EXCESS = 240
 
 function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max)
 }
 
 /**
- * Degradation points subtracted from 100 before onsite-day weighting.
- * Up to 10 min/day: 0. Linear 10→60: 0→100. Extra 60→90: up to +60 penalty.
+ * Degradation points (0–200) based on round-trip commute excess.
  */
 export function commuteDegradation(commuteMinutes: number): number {
-  if (commuteMinutes <= ACCEPTABLE_MINUTES) return 0
+  const roundTrip = 2 * commuteMinutes
+  const excess = Math.max(0, roundTrip - FREE_ROUND_TRIP_MINUTES)
 
-  if (commuteMinutes <= LINEAR_MAX_MINUTES) {
-    return ((commuteMinutes - ACCEPTABLE_MINUTES) / (LINEAR_MAX_MINUTES - ACCEPTABLE_MINUTES)) * 100
+  if (excess <= 0) return 0
+
+  if (excess <= EXCESS_TO_ZERO_SCORE) {
+    return (excess / EXCESS_TO_ZERO_SCORE) * 100
   }
 
-  const linearDegradation = 100
-  if (commuteMinutes <= PENALTY_MAX_MINUTES) {
-    const extra =
-      ((commuteMinutes - LINEAR_MAX_MINUTES) / (PENALTY_MAX_MINUTES - LINEAR_MAX_MINUTES)) *
-      MAX_EXTRA_PENALTY
-    return linearDegradation + extra
+  if (excess <= MAX_EXCESS) {
+    const extraExcess = excess - EXCESS_TO_ZERO_SCORE
+    const extraDegradation = (extraExcess / (MAX_EXCESS - EXCESS_TO_ZERO_SCORE)) * 100
+    return 100 + extraDegradation
   }
 
-  return linearDegradation + MAX_EXTRA_PENALTY
+  return 200
 }
 
 /**
