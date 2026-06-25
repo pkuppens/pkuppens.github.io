@@ -48,15 +48,20 @@ export default function CommuteCalculator({
     setDiagnostics(null)
     setShowDiag(false)
 
-    const res = await fetchCommute(origin.trim(), destination.trim())
-    setResult(res)
+    try {
+      const res = await fetchCommute(origin.trim(), destination.trim())
+      setResult(res)
 
-    if ("category" in res.car) {
+      if ("category" in res.car) {
+        setStatus("error")
+        setErrorMsg(res.car.message)
+        setDiagnostics(formatDiagnostics(res.car))
+      } else {
+        setStatus("success")
+      }
+    } catch {
       setStatus("error")
-      setErrorMsg(res.car.message)
-      setDiagnostics(formatDiagnostics(res.car))
-    } else {
-      setStatus("success")
+      setErrorMsg("An unexpected error occurred. Please try again.")
     }
   }
 

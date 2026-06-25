@@ -4,9 +4,17 @@ import userEvent from "@testing-library/user-event"
 import CommuteCalculator from "../CommuteCalculator"
 
 const mockFetchCommute = vi.fn()
+const mockSaveHomeAddress = vi.fn()
+const mockRemoveHomeAddress = vi.fn()
 
 vi.mock("../../../infrastructure/hereApi", () => ({
   fetchCommute: (...args: unknown[]) => mockFetchCommute(...args),
+}))
+
+vi.mock("../../../infrastructure/homeAddressStorage", () => ({
+  loadHomeAddress: () => undefined,
+  saveHomeAddress: (...args: unknown[]) => mockSaveHomeAddress(...args),
+  removeHomeAddress: (...args: unknown[]) => mockRemoveHomeAddress(...args),
 }))
 
 beforeEach(() => {
@@ -168,4 +176,70 @@ it("shows PT not available when PT is null", async () => {
   await user.click(screen.getByRole("button", { name: /calculate commute/i }))
 
   expect(await screen.findByText(/not available for this route/i)).toBeInTheDocument()
+})
+
+it("shows PT error message when PT returns HereApiError but car succeeds", async () => {
+  mockFetchCommute.mockResolvedValue({
+    car: { durationMinutes: 20, distanceKm: 15 },
+    publicTransport: {
+      category: "no_route",
+      message: "Public transport routing is not available for this route or API plan.",
+    },
+  })
+
+  renderCalculator()
+
+  const user = userEvent.setup()
+  await user.type(screen.getByLabelText(/origin/i), "O")
+  await user.type(screen.getByLabelText(/destination/i), "D")
+  await user.click(screen.getByRole("button", { name: /calculate commute/i }))
+
+  expect(await screen.findByText(/^20 min · 15 km$/)).toBeInTheDocument()
+  expect(
+    screen.getByText(/public transport routing is not available/i),
+  ).toBeInTheDocument()
+  expect(screen.getByRole("button", { name: /apply to commute/i })).toBeInTheDocument()
+})
+
+it("saves origin address when Remember origin is checked and Apply is clicked", async () => {
+  mockFetchCommute.mockResolvedValue({
+    car: { durationMinutes: 35, distanceKm: 42.5 },
+    publicTransport: null,
+  })
+
+  renderCalculator()
+
+  const user = userEvent.setup()
+  await user.type(screen.getByLabelText(/origin/i), "Keizersgracht 123, Amsterdam")
+  await user.type(screen.getByLabelText(/destination/i), "D")
+  await user.click(screen.getByRole("button", { name: /calculate commute/i }))
+
+  const rememberCb = await screen.findByLabelText(/remember origin/i)
+  await user.click(rememberCb)
+
+  const applyBtn = await screen.findByRole("button", { name: /apply to commute/i })
+  await user.click(applyBtn)
+
+  expect(mockSaveHomeAddress).toHaveBeenCalledWith("Keizersgracht 123, Amsterdam")
+  expect(mockRemoveHomeAddress).not.toHaveBeenCalled()
+})
+
+it("removes saved origin when Remember origin is unchecked and Apply is clicked", async () => {
+  mockFetchCommute.mockResolvedValue({
+    car: { durationMinutes: 35, distanceKm: 42.5 },
+    publicTransport: null,
+  })
+
+  renderCalculator()
+
+  const user = userEvent.setup()
+  await user.type(screen.getByLabelText(/origin/i), "Keizersgracht 123, Amsterdam")
+  await user.type(screen.getByLabelText(/destination/i), "D")
+  await user.click(screen.getByRole("button", { name: /calculate commute/i }))
+
+  const applyBtn = await screen.findByRole("button", { name: /apply to commute/i })
+  await user.click(applyBtn)
+
+  expect(mockRemoveHomeAddress).toHaveBeenCalled()
+  expect(mockSaveHomeAddress).not.toHaveBeenCalled()
 })

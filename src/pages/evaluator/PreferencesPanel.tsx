@@ -260,7 +260,7 @@ export default function PreferencesPanel({ prefs, onChange }: Props) {
         </p>
         <div className={styles.addRow}>
           <input
-            type="text"
+            type="password"
             className={styles.input}
             placeholder="Paste your HERE API key..."
             value={hereKey}

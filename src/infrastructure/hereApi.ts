@@ -165,10 +165,16 @@ export async function fetchRoute(
     }
   }
 
-  const summary = data.routes[0].sections[0].summary
+  const section = data.routes[0].sections?.[0]
+  if (!section) {
+    return {
+      category: "no_route",
+      message: "No route sections found.",
+    }
+  }
   return {
-    durationMinutes: Math.round(summary.duration / 60),
-    distanceKm: Math.round((summary.length / 1000) * 10) / 10,
+    durationMinutes: Math.round(section.summary.duration / 60),
+    distanceKm: Math.round((section.summary.length / 1000) * 10) / 10,
   }
 }
 

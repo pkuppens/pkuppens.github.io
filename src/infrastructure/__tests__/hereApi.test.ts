@@ -148,27 +148,25 @@ it("returns api_error for car on HTTP 500", async () => {
 // ---- fetchCommute ----
 
 it("returns results for both modes when all requests succeed", async () => {
-  const geocodeResponse = () =>
-    Promise.resolve({
-      ok: true,
-      status: 200,
-      headers: new Map(),
-      json: async () => ({
-        items: [{ position: { lat: 51.69, lng: 5.3 } }],
-      }),
-    })
+  const geocodeResponse = () => ({
+    ok: true,
+    status: 200,
+    headers: new Map(),
+    json: async () => ({
+      items: [{ position: { lat: 51.69, lng: 5.3 } }],
+    }),
+  })
 
-  const routeResponse = () =>
-    Promise.resolve({
-      ok: true,
-      status: 200,
-      headers: new Map(),
-      json: async () => ({
-        routes: [
-          { sections: [{ summary: { duration: 2700, length: 85000 } }] },
-        ],
-      }),
-    })
+  const routeResponse = () => ({
+    ok: true,
+    status: 200,
+    headers: new Map(),
+    json: async () => ({
+      routes: [
+        { sections: [{ summary: { duration: 2700, length: 85000 } }] },
+      ],
+    }),
+  })
 
   mockFetch
     .mockResolvedValueOnce(geocodeResponse())
