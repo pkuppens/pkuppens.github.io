@@ -35,3 +35,6 @@ test-results
 
 # Local scratch (LinkedIn scrape output, persistent browser profile)
 tmp/
+
+# Environment variables (API keys, local overrides)
+.env

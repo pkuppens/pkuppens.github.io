@@ -25,13 +25,27 @@ A labelled range for a 0–100 score (excellent / good / fair / poor) with share
 ## Persistence
 
 **Storage keys**
-All `localStorage` access uses the `pkuppens_` prefix via `src/infrastructure/storage.ts`. Keys are listed in `storageKeys.ts` (evaluator input, evaluator preferences, theme).
+All `localStorage` access uses the `pkuppens_` prefix via `src/infrastructure/storage.ts`. Keys are listed in `storageKeys.ts` (evaluator input, evaluator preferences, theme, home address, HERE API key).
 
 **Visitor preference overrides**
 Visitors may edit scoring preferences in the UI; those overrides are stored per browser. The versioned **Profile** in the repo remains the default when storage is empty. See ADR 003.
 
 **Post-deploy verification**
 Automated check that the live GitHub Pages site matches expectations after a deploy. May retry with backoff when the CDN has not caught up yet.
+
+## Commute calculator
+
+**HERE API client**
+`src/infrastructure/hereApi.ts` provides `geocodeAddress`, `fetchRoute`, and `fetchCommute` functions that call HERE Geocoding & Search API v7 and Routing API v8. The API key is resolved from localStorage (user-provided) or `VITE_HERE_API_KEY` (build-time fallback).
+
+**CommuteCalculator component**
+`src/pages/evaluator/CommuteCalculator.tsx` renders address inputs, a Calculate button, and result cards for car and public transport. It lives inline in `EvaluatorForm` below the commute minutes field. An "Apply" button fills `commuteMinutes` from the calculated car duration.
+
+**API Key**
+Users enter their key in the Preferences panel; it is stored in localStorage via `homeAddressStorage.ts` / `storageKeys.ts`. When no key is present the calculator shows a message prompting configuration rather than crashing. See ADR 004.
+
+**Origin persistence**
+The "Remember origin" checkbox allows optional localStorage persistence of the origin address.
 
 ## Out of scope (parked)
 

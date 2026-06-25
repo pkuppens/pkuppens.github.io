@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import type { OpportunityInput } from '../../domain/evaluator/types'
+import CommuteCalculator from './CommuteCalculator'
 import styles from './EvaluatorForm.module.css'
 
 interface Props {
@@ -214,6 +215,11 @@ export default function EvaluatorForm({ initialInput, onEvaluate, onReset }: Pro
           rows={3}
         />
       </div>
+
+      <CommuteCalculator
+        commuteDestination={form.commuteDestination}
+        onApply={(minutes) => handleChange('commuteMinutes', minutes)}
+      />
 
       <div className={styles.actions}>
         <button type="submit" className="btn btn-primary">
