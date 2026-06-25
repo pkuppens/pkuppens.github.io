@@ -3,6 +3,7 @@ import type { ProfilePreferences } from '../../domain/evaluator/types'
 import { DEFAULT_PREFERENCES } from '../../domain/evaluator/defaultPreferences'
 import { loadFromStorage, saveToStorage } from '../../infrastructure/storage'
 import { STORAGE_KEYS } from '../../infrastructure/storageKeys'
+import { loadHomeAddress, saveHomeAddress, removeHomeAddress } from '../../infrastructure/homeAddressStorage'
 import styles from './PreferencesPanel.module.css'
 
 interface Props {
@@ -15,6 +16,8 @@ export default function PreferencesPanel({ prefs, onChange }: Props) {
   const [techInput, setTechInput] = useState('')
   const [hereKey, setHereKey] = useState(() => loadFromStorage(STORAGE_KEYS.hereApiKey, ''))
   const [hereKeySaved, setHereKeySaved] = useState(false)
+  const [homeAddress, setHomeAddress] = useState(() => loadHomeAddress() ?? '')
+  const [homeAddressSaved, setHomeAddressSaved] = useState(false)
 
   useEffect(() => {
     if (hereKeySaved) {
@@ -22,6 +25,13 @@ export default function PreferencesPanel({ prefs, onChange }: Props) {
       return () => clearTimeout(timer)
     }
   }, [hereKeySaved])
+
+  useEffect(() => {
+    if (homeAddressSaved) {
+      const timer = setTimeout(() => setHomeAddressSaved(false), 2000)
+      return () => clearTimeout(timer)
+    }
+  }, [homeAddressSaved])
 
   function handleHereKeySave() {
     saveToStorage(STORAGE_KEYS.hereApiKey, hereKey)
@@ -32,6 +42,17 @@ export default function PreferencesPanel({ prefs, onChange }: Props) {
     setHereKey('')
     saveToStorage(STORAGE_KEYS.hereApiKey, '')
     setHereKeySaved(true)
+  }
+
+  function handleHomeAddressSave() {
+    saveHomeAddress(homeAddress)
+    setHomeAddressSaved(true)
+  }
+
+  function handleHomeAddressClear() {
+    setHomeAddress('')
+    removeHomeAddress()
+    setHomeAddressSaved(true)
   }
 
   function update<K extends keyof ProfilePreferences>(key: K, value: ProfilePreferences[K]) {
@@ -139,7 +160,33 @@ export default function PreferencesPanel({ prefs, onChange }: Props) {
         {/* Travel */}
         <div className={styles.group}>
           <h3 className={styles.groupTitle}>Travel & Location</h3>
-          <div className={styles.row}>
+          <div className={styles.field}>
+            <label className={styles.label} htmlFor="pref-home-address">Home Address</label>
+            <p className={styles.desc}>
+              Used as the default origin in the commute calculator on the Evaluate tab.
+            </p>
+            <div className={styles.addRow}>
+              <input
+                id="pref-home-address"
+                type="text"
+                className={styles.input}
+                placeholder="e.g. Keizersgracht 123, 1015CZ, Amsterdam"
+                value={homeAddress}
+                onChange={e => setHomeAddress(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), handleHomeAddressSave())}
+              />
+              <button type="button" className="btn btn-outline" onClick={handleHomeAddressSave}>
+                Save
+              </button>
+              {homeAddress && (
+                <button type="button" className="btn btn-outline" onClick={handleHomeAddressClear}>
+                  Clear
+                </button>
+              )}
+            </div>
+            {homeAddressSaved && <span className={styles.saved} style={{ marginTop: '0.3rem', display: 'inline-block' }}>✓ Saved</span>}
+          </div>
+          <div className={styles.row} style={{ marginTop: '1rem' }}>
             <div className={styles.field}>
               <label className={styles.label} htmlFor="pref-commute">Max Commute (min)</label>
               <input

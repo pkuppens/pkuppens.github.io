@@ -1,11 +1,10 @@
 import { useState } from "react"
 import { fetchCommute } from "../../infrastructure/hereApi"
 import type { CommuteResult, RouteResult, HereApiError } from "../../infrastructure/hereApi"
-import { loadHomeAddress, saveHomeAddress, removeHomeAddress } from "../../infrastructure/homeAddressStorage"
+import { loadHomeAddress } from "../../infrastructure/homeAddressStorage"
 import styles from "./CommuteCalculator.module.css"
 
 interface Props {
-  commuteOrigin?: string
   commuteDestination?: string
   onApply: (minutes: number) => void
 }
@@ -25,19 +24,16 @@ function formatDiagnostics(err: HereApiError): string {
 }
 
 export default function CommuteCalculator({
-  commuteOrigin = "",
   commuteDestination = "",
   onApply,
 }: Props) {
-  const savedOrigin = loadHomeAddress()
-  const [origin, setOrigin] = useState(commuteOrigin || savedOrigin || "")
+  const origin = loadHomeAddress() ?? ""
   const [destination, setDestination] = useState(commuteDestination || "")
   const [status, setStatus] = useState<Status>("idle")
   const [result, setResult] = useState<CommuteResult | null>(null)
   const [errorMsg, setErrorMsg] = useState("")
   const [diagnostics, setDiagnostics] = useState<string | null>(null)
   const [showDiag, setShowDiag] = useState(false)
-  const [rememberOrigin, setRememberOrigin] = useState(!!savedOrigin)
 
   async function handleCalculate() {
     if (!origin.trim() || !destination.trim()) return
@@ -68,11 +64,6 @@ export default function CommuteCalculator({
   function handleApply() {
     if (!result || "category" in result.car) return
     onApply(result.car.durationMinutes)
-    if (rememberOrigin) {
-      saveHomeAddress(origin)
-    } else {
-      removeHomeAddress()
-    }
   }
 
   const canCalculate = status !== "loading" && origin.trim() && destination.trim()
@@ -92,10 +83,15 @@ export default function CommuteCalculator({
           id="calc-origin"
           type="text"
           className={styles.input}
-          placeholder="e.g. Keizersgracht 123, 1015CZ, Amsterdam"
           value={origin}
-          onChange={e => setOrigin(e.target.value)}
+          readOnly
+          placeholder={origin ? "" : "Set your home address in My Preferences"}
         />
+        {!origin && (
+          <p className={styles.hint}>
+            Set your home address in the My Preferences tab above.
+          </p>
+        )}
       </div>
 
       <div className={styles.field}>
@@ -161,15 +157,6 @@ export default function CommuteCalculator({
               >
                 Apply to Commute ({result.car.durationMinutes} min)
               </button>
-
-              <label className={styles.checkbox}>
-                <input
-                  type="checkbox"
-                  checked={rememberOrigin}
-                  onChange={e => setRememberOrigin(e.target.checked)}
-                />
-                Remember origin address
-              </label>
             </div>
           )}
         </div>

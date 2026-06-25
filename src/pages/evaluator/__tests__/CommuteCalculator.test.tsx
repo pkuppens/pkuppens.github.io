@@ -4,28 +4,25 @@ import userEvent from "@testing-library/user-event"
 import CommuteCalculator from "../CommuteCalculator"
 
 const mockFetchCommute = vi.fn()
-const mockSaveHomeAddress = vi.fn()
-const mockRemoveHomeAddress = vi.fn()
+const mockLoadHomeAddress = vi.fn()
 
 vi.mock("../../../infrastructure/hereApi", () => ({
   fetchCommute: (...args: unknown[]) => mockFetchCommute(...args),
 }))
 
 vi.mock("../../../infrastructure/homeAddressStorage", () => ({
-  loadHomeAddress: () => undefined,
-  saveHomeAddress: (...args: unknown[]) => mockSaveHomeAddress(...args),
-  removeHomeAddress: (...args: unknown[]) => mockRemoveHomeAddress(...args),
+  loadHomeAddress: (...args: unknown[]) => mockLoadHomeAddress(...args),
 }))
 
 beforeEach(() => {
   vi.clearAllMocks()
+  mockLoadHomeAddress.mockReturnValue(undefined)
 })
 
 function renderCalculator(props?: Partial<React.ComponentProps<typeof CommuteCalculator>>) {
   const onApply = vi.fn()
   const utils = render(
     <CommuteCalculator
-      commuteOrigin=""
       commuteDestination=""
       onApply={onApply}
       {...props}
@@ -42,25 +39,51 @@ it("renders inputs and calculate button in idle state", () => {
   expect(screen.getByRole("button", { name: /calculate commute/i })).toBeInTheDocument()
 })
 
-it("disables calculate button when inputs are empty", () => {
+it("disables calculate button when destination is empty and no origin saved", () => {
   renderCalculator()
 
   const btn = screen.getByRole("button", { name: /calculate commute/i })
   expect(btn).toBeDisabled()
 })
 
-it("enables calculate button when both inputs are filled", async () => {
+it("disables calculate button when destination is empty even with saved origin", () => {
+  mockLoadHomeAddress.mockReturnValue("Amsterdam")
+  renderCalculator()
+
+  const btn = screen.getByRole("button", { name: /calculate commute/i })
+  expect(btn).toBeDisabled()
+})
+
+it("enables calculate button when origin is saved and destination is filled", async () => {
+  mockLoadHomeAddress.mockReturnValue("Amsterdam")
   renderCalculator()
 
   const user = userEvent.setup()
-  await user.type(screen.getByLabelText(/origin/i), "Amsterdam")
   await user.type(screen.getByLabelText(/destination/i), "Den Bosch")
 
   const btn = screen.getByRole("button", { name: /calculate commute/i })
   expect(btn).not.toBeDisabled()
 })
 
+it("shows hint when no origin is saved", () => {
+  renderCalculator()
+
+  expect(
+    screen.getByText(/set your home address in the my preferences tab/i),
+  ).toBeInTheDocument()
+})
+
+it("does not show hint when origin is saved", () => {
+  mockLoadHomeAddress.mockReturnValue("Keizersgracht 123, Amsterdam")
+  renderCalculator()
+
+  expect(
+    screen.queryByText(/set your home address in the my preferences tab/i),
+  ).not.toBeInTheDocument()
+})
+
 it("shows loading state while calculating", async () => {
+  mockLoadHomeAddress.mockReturnValue("Amsterdam")
   mockFetchCommute.mockImplementation(
     () =>
       new Promise(() => {
@@ -71,7 +94,6 @@ it("shows loading state while calculating", async () => {
   renderCalculator()
 
   const user = userEvent.setup()
-  await user.type(screen.getByLabelText(/origin/i), "O")
   await user.type(screen.getByLabelText(/destination/i), "D")
   await user.click(screen.getByRole("button", { name: /calculate commute/i }))
 
@@ -79,6 +101,7 @@ it("shows loading state while calculating", async () => {
 })
 
 it("displays car and PT results on success", async () => {
+  mockLoadHomeAddress.mockReturnValue("Amsterdam")
   mockFetchCommute.mockResolvedValue({
     car: { durationMinutes: 35, distanceKm: 42.5 },
     publicTransport: { durationMinutes: 55, distanceKm: 45 },
@@ -87,7 +110,6 @@ it("displays car and PT results on success", async () => {
   renderCalculator()
 
   const user = userEvent.setup()
-  await user.type(screen.getByLabelText(/origin/i), "O")
   await user.type(screen.getByLabelText(/destination/i), "D")
   await user.click(screen.getByRole("button", { name: /calculate commute/i }))
 
@@ -97,6 +119,7 @@ it("displays car and PT results on success", async () => {
 })
 
 it("calls onApply with correct minutes when Apply is clicked", async () => {
+  mockLoadHomeAddress.mockReturnValue("Amsterdam")
   mockFetchCommute.mockResolvedValue({
     car: { durationMinutes: 35, distanceKm: 42.5 },
     publicTransport: null,
@@ -105,7 +128,6 @@ it("calls onApply with correct minutes when Apply is clicked", async () => {
   const { onApply } = renderCalculator()
 
   const user = userEvent.setup()
-  await user.type(screen.getByLabelText(/origin/i), "O")
   await user.type(screen.getByLabelText(/destination/i), "D")
   await user.click(screen.getByRole("button", { name: /calculate commute/i }))
 
@@ -116,6 +138,7 @@ it("calls onApply with correct minutes when Apply is clicked", async () => {
 })
 
 it("shows friendly error on API failure", async () => {
+  mockLoadHomeAddress.mockReturnValue("Amsterdam")
   mockFetchCommute.mockResolvedValue({
     car: {
       category: "invalid_address",
@@ -127,7 +150,6 @@ it("shows friendly error on API failure", async () => {
   renderCalculator()
 
   const user = userEvent.setup()
-  await user.type(screen.getByLabelText(/origin/i), "O")
   await user.type(screen.getByLabelText(/destination/i), "D")
   await user.click(screen.getByRole("button", { name: /calculate commute/i }))
 
@@ -137,6 +159,7 @@ it("shows friendly error on API failure", async () => {
 })
 
 it("shows hidden diagnostics on API error", async () => {
+  mockLoadHomeAddress.mockReturnValue("Amsterdam")
   mockFetchCommute.mockResolvedValue({
     car: {
       category: "rate_limited",
@@ -150,7 +173,6 @@ it("shows hidden diagnostics on API error", async () => {
   renderCalculator()
 
   const user = userEvent.setup()
-  await user.type(screen.getByLabelText(/origin/i), "O")
   await user.type(screen.getByLabelText(/destination/i), "D")
   await user.click(screen.getByRole("button", { name: /calculate commute/i }))
 
@@ -163,6 +185,7 @@ it("shows hidden diagnostics on API error", async () => {
 })
 
 it("shows PT not available when PT is null", async () => {
+  mockLoadHomeAddress.mockReturnValue("Amsterdam")
   mockFetchCommute.mockResolvedValue({
     car: { durationMinutes: 20, distanceKm: 15 },
     publicTransport: null,
@@ -171,7 +194,6 @@ it("shows PT not available when PT is null", async () => {
   renderCalculator()
 
   const user = userEvent.setup()
-  await user.type(screen.getByLabelText(/origin/i), "O")
   await user.type(screen.getByLabelText(/destination/i), "D")
   await user.click(screen.getByRole("button", { name: /calculate commute/i }))
 
@@ -179,6 +201,7 @@ it("shows PT not available when PT is null", async () => {
 })
 
 it("shows PT error message when PT returns HereApiError but car succeeds", async () => {
+  mockLoadHomeAddress.mockReturnValue("Amsterdam")
   mockFetchCommute.mockResolvedValue({
     car: { durationMinutes: 20, distanceKm: 15 },
     publicTransport: {
@@ -190,7 +213,6 @@ it("shows PT error message when PT returns HereApiError but car succeeds", async
   renderCalculator()
 
   const user = userEvent.setup()
-  await user.type(screen.getByLabelText(/origin/i), "O")
   await user.type(screen.getByLabelText(/destination/i), "D")
   await user.click(screen.getByRole("button", { name: /calculate commute/i }))
 
@@ -199,47 +221,4 @@ it("shows PT error message when PT returns HereApiError but car succeeds", async
     screen.getByText(/public transport routing is not available/i),
   ).toBeInTheDocument()
   expect(screen.getByRole("button", { name: /apply to commute/i })).toBeInTheDocument()
-})
-
-it("saves origin address when Remember origin is checked and Apply is clicked", async () => {
-  mockFetchCommute.mockResolvedValue({
-    car: { durationMinutes: 35, distanceKm: 42.5 },
-    publicTransport: null,
-  })
-
-  renderCalculator()
-
-  const user = userEvent.setup()
-  await user.type(screen.getByLabelText(/origin/i), "Keizersgracht 123, Amsterdam")
-  await user.type(screen.getByLabelText(/destination/i), "D")
-  await user.click(screen.getByRole("button", { name: /calculate commute/i }))
-
-  const rememberCb = await screen.findByLabelText(/remember origin/i)
-  await user.click(rememberCb)
-
-  const applyBtn = await screen.findByRole("button", { name: /apply to commute/i })
-  await user.click(applyBtn)
-
-  expect(mockSaveHomeAddress).toHaveBeenCalledWith("Keizersgracht 123, Amsterdam")
-  expect(mockRemoveHomeAddress).not.toHaveBeenCalled()
-})
-
-it("removes saved origin when Remember origin is unchecked and Apply is clicked", async () => {
-  mockFetchCommute.mockResolvedValue({
-    car: { durationMinutes: 35, distanceKm: 42.5 },
-    publicTransport: null,
-  })
-
-  renderCalculator()
-
-  const user = userEvent.setup()
-  await user.type(screen.getByLabelText(/origin/i), "Keizersgracht 123, Amsterdam")
-  await user.type(screen.getByLabelText(/destination/i), "D")
-  await user.click(screen.getByRole("button", { name: /calculate commute/i }))
-
-  const applyBtn = await screen.findByRole("button", { name: /apply to commute/i })
-  await user.click(applyBtn)
-
-  expect(mockRemoveHomeAddress).toHaveBeenCalled()
-  expect(mockSaveHomeAddress).not.toHaveBeenCalled()
 })

@@ -217,7 +217,6 @@ export default function EvaluatorForm({ initialInput, onEvaluate, onReset }: Pro
       </div>
 
       <CommuteCalculator
-        commuteOrigin={form.commuteOrigin}
         commuteDestination={form.commuteDestination}
         onApply={(minutes) => handleChange('commuteMinutes', minutes)}
       />
