@@ -116,7 +116,6 @@ export default function EvaluatorForm({ initialInput, onEvaluate, onReset }: Pro
             className={styles.input}
             min={0}
             max={300}
-            step={5}
             value={form.commuteMinutes}
             onChange={e => handleChange('commuteMinutes', Number(e.target.value))}
           />
