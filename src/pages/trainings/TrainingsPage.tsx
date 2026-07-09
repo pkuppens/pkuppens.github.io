@@ -22,9 +22,10 @@ const TRAININGS: Training[] = [
   {
     id: 'dp-900',
     title: 'DP-900 — Azure Data Fundamentals',
-    status: 'Planned',
-    desc: 'Core data concepts and how they map to Azure data services — relational, non-relational, and analytics workloads. Same lesson-then-quiz format as AI-901.',
-    tags: ['Azure', 'Data Fundamentals'],
+    status: 'Live',
+    desc: 'Core data concepts and how they map to Azure data services — relational, non-relational, and analytics workloads. Short lessons, auto-graded quizzes, and three exam-weighted mock exams with per-domain readiness scoring. Pass mark: 700/1000.',
+    tags: ['Azure', 'Data Fundamentals', 'Quizzes', 'Mock Exams'],
+    href: '/trainings/dp-900/',
   },
   {
     id: 'ckad',

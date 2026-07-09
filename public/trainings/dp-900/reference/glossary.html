@@ -1,0 +1,123 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme-toggle.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>DP-900 Glossary — Reference</title>
+
+<p class="eyebrow">DP-900 · Reference</p>
+<h1>Glossary</h1>
+<p class="subtitle">The canonical DP-900 vocabulary. Every lesson uses these names. Where two things are easily confused, the distinction is called out — those pairs are the exam's favourite traps.</p>
+
+<div class="callout warn">
+  <span class="label">Trap pairs</span>
+  DP-900 loves near-miss distractors: OLTP vs. OLAP, ETL vs. ELT, data warehouse vs. data lake, blob
+  vs. file vs. table, batch vs. streaming. Learn each pair as a <em>contrast</em>, not two isolated facts.
+</div>
+
+<h2>Core data concepts <span class="badge d1">D1</span></h2>
+<dl class="gloss">
+  <dt>Structured data</dt>
+  <dd>Data with a fixed schema of rows and columns — the shape a relational table enforces. <span class="aka">Example: a Customers table.</span></dd>
+
+  <dt>Semi-structured data</dt>
+  <dd>Self-describing data with tags or keys but no rigid table schema — JSON, XML, key-value pairs. <span class="aka">Cosmos DB documents are semi-structured.</span></dd>
+
+  <dt>Unstructured data</dt>
+  <dd>Data with no predefined model — images, audio, video, PDFs, free text. Typically lands in Blob storage.</dd>
+
+  <dt>OLTP (transactional)</dt>
+  <dd>Online Transaction Processing: many small, fast reads/writes on current data; normalized; ACID-compliant. Runs the business. <span class="aka">Contrast: OLAP.</span></dd>
+
+  <dt>OLAP (analytical)</dt>
+  <dd>Online Analytical Processing: large aggregate queries over historical data; denormalized (star schema); read-optimized. Reports on the business.</dd>
+
+  <dt>ACID</dt>
+  <dd>The transaction guarantees: <b>A</b>tomicity, <b>C</b>onsistency, <b>I</b>solation, <b>D</b>urability — the reason relational OLTP systems are trusted for money.</dd>
+
+  <dt>Parquet / Avro / ORC</dt>
+  <dd>Columnar/binary file formats optimized for analytics (compression, column pruning). <span class="aka">Contrast: CSV/JSON, which are row-oriented and human-readable.</span></dd>
+
+  <dt>Data roles</dt>
+  <dd><b>Database administrator</b> keeps a database available, performant, secure, backed up; <b>data engineer</b> builds pipelines that move and shape data; <b>data analyst</b> models and visualizes data for insight.</dd>
+</dl>
+
+<h2>Relational on Azure <span class="badge d2">D2</span></h2>
+<dl class="gloss">
+  <dt>Normalization</dt>
+  <dd>Structuring tables to remove redundancy so each fact is stored once — prevents update anomalies. Trades some read joins for write integrity.</dd>
+
+  <dt>Primary key / foreign key</dt>
+  <dd>A <b>primary key</b> uniquely identifies a row; a <b>foreign key</b> references a primary key in another table to enforce a relationship.</dd>
+
+  <dt>SQL statement families</dt>
+  <dd><b>DDL</b> defines structure (CREATE, ALTER, DROP); <b>DML</b> manipulates data (SELECT, INSERT, UPDATE, DELETE); <b>DCL</b> controls access (GRANT, REVOKE).</dd>
+
+  <dt>Database objects</dt>
+  <dd><b>View</b> = a saved query that looks like a table; <b>stored procedure</b> = saved executable SQL; <b>index</b> = a structure that speeds lookups.</dd>
+
+  <dt>Azure SQL Database</dt>
+  <dd>Fully managed <b>PaaS</b> relational database (a single database or elastic pool). Microsoft patches and backs it up. The default cloud-native choice. <span class="aka">Contrast: SQL Managed Instance, SQL on VM.</span></dd>
+
+  <dt>Azure SQL Managed Instance</dt>
+  <dd>PaaS with near-100% SQL Server engine compatibility (SQL Agent, cross-database queries) — the <b>lift-and-shift</b> target for on-prem SQL Server.</dd>
+
+  <dt>SQL Server on Azure VMs</dt>
+  <dd><b>IaaS</b>: you run full SQL Server on a VM you manage — maximum control, most administration. Use when you need OS-level access or a feature PaaS lacks.</dd>
+
+  <dt>Azure Database for MySQL / PostgreSQL / MariaDB</dt>
+  <dd>Managed PaaS for the popular <b>open-source</b> relational engines — pick the one matching your existing app/engine.</dd>
+</dl>
+
+<h2>Non-relational on Azure <span class="badge d3">D3</span></h2>
+<dl class="gloss">
+  <dt>Azure Blob storage</dt>
+  <dd>Massively scalable <b>object</b> store for unstructured data (files, images, backups, data-lake content). Access tiers: <b>hot, cool, cold, archive</b> — cheaper storage, costlier/slower access as you go colder.</dd>
+
+  <dt>Azure Files</dt>
+  <dd>Fully managed <b>file shares</b> over SMB/NFS you can mount like a network drive. Use to lift shared folders to the cloud. <span class="aka">Contrast: Blob = objects, Files = a mountable filesystem.</span></dd>
+
+  <dt>Azure Table storage</dt>
+  <dd>A schemaless <b>key-value / NoSQL</b> store for huge volumes of structured, non-relational data, keyed by partition + row key. Cheap and simple.</dd>
+
+  <dt>Azure Cosmos DB</dt>
+  <dd>Globally distributed, multi-model NoSQL database with single-digit-millisecond latency and multi-region writes. Use when you need global scale and low latency.</dd>
+
+  <dt>Cosmos DB APIs</dt>
+  <dd>Choose by data model / migration source: <b>NoSQL (Core)</b> for documents (native), <b>MongoDB</b>, <b>Cassandra</b> (column-family), <b>Table</b> (key-value), <b>Gremlin</b> (graph).</dd>
+</dl>
+
+<h2>Analytics on Azure <span class="badge d4">D4</span></h2>
+<dl class="gloss">
+  <dt>ETL vs. ELT</dt>
+  <dd><b>ETL</b> transforms data <em>before</em> loading (transform in a staging engine); <b>ELT</b> loads raw first, then transforms <em>in</em> the target (lake/warehouse) using its compute. ELT suits big-data lakes.</dd>
+
+  <dt>Data warehouse</dt>
+  <dd>A relational analytical store holding cleaned, structured, modelled data (star schema) for BI/reporting.</dd>
+
+  <dt>Data lake</dt>
+  <dd>Low-cost storage for raw data of any structure at scale (built on Blob/ADLS). Schema-on-read. <span class="aka">Contrast: warehouse = schema-on-write, structured.</span></dd>
+
+  <dt>Lakehouse</dt>
+  <dd>Combines a data lake's cheap raw storage with warehouse-style structure/queries — the model Microsoft Fabric and Databricks promote.</dd>
+
+  <dt>Azure Databricks</dt>
+  <dd>An Apache Spark–based analytics platform on Azure for large-scale data engineering, data science, and ML.</dd>
+
+  <dt>Microsoft Fabric</dt>
+  <dd>Microsoft's unified, SaaS analytics platform — data integration, engineering, warehousing, real-time intelligence, and Power BI over one OneLake store.</dd>
+
+  <dt>Batch vs. streaming</dt>
+  <dd><b>Batch</b> processes bounded data collected over time, on a schedule (high latency, high throughput); <b>streaming</b> processes unbounded events as they arrive (low latency). <span class="aka">Stream Analytics / Fabric Real-Time Intelligence handle streaming.</span></dd>
+
+  <dt>Power BI</dt>
+  <dd>Microsoft's BI/visualization tool: author in <b>Power BI Desktop</b>, publish to the <b>Power BI service</b>, share <b>reports</b> (multi-page, detailed) and <b>dashboards</b> (single-page, pinned tiles).</dd>
+
+  <dt>Power BI data model</dt>
+  <dd>The tables, relationships, and <b>measures</b> (calculated aggregations) that a report is built on — the analyst's semantic layer.</dd>
+</dl>
+
+<div class="lesson-nav no-print">
+  <a href="./exam-blueprint.html">→ Exam Blueprint</a>
+  <a href="../lessons/0001-orientation-and-diagnostic.html">→ Lesson 01: Orientation &amp; Diagnostic</a>
+</div>

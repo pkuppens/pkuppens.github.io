@@ -1,0 +1,129 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme-toggle.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>DP-900 Exam Blueprint — Reference</title>
+
+<p class="eyebrow">DP-900 · Reference</p>
+<h1>Exam Blueprint</h1>
+<p class="subtitle">The authoritative skills-measured outline, straight from Microsoft. Everything testable lives in these four domains.</p>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/dp-900">Official Study Guide — Exam DP-900</a>
+  · Skills as of <b>2026-07-21</b> · Page updated 2026-06-23.
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Pass mark</h3>
+    <p><b style="font-size:1.6rem">700</b> / 1000. A scaled score — not a raw percentage. Aim for ~85%+ on practice to clear it comfortably.</p>
+  </div>
+  <div class="card">
+    <h3>Format</h3>
+    <p>~40–60 questions, ~45 min. Multiple-choice, multi-select, drag-and-drop, and build-list. No live labs.</p>
+  </div>
+  <div class="card">
+    <h3>Assumed skills</h3>
+    <p>Familiarity with relational vs. non-relational data, and transactional vs. analytical workloads. No coding required — mostly GA features.</p>
+  </div>
+</div>
+
+<h2>Domain 1 · Describe core data concepts <span class="badge wt">25–30%</span></h2>
+<p>Vendor-neutral fundamentals. Know the <em>kinds</em> of data, where they live, and who works with them.</p>
+
+<h3>Describe ways to represent data</h3>
+<ul>
+  <li>Features of <b>structured</b> data (fixed schema, rows &amp; columns — relational tables).</li>
+  <li>Features of <b>semi-structured</b> data (self-describing tags/keys — JSON, XML, key-value).</li>
+  <li>Features of <b>unstructured</b> data (no schema — images, audio, video, free text, PDFs).</li>
+</ul>
+
+<h3>Identify options for data storage</h3>
+<ul>
+  <li>Common <b>file formats</b>: delimited (CSV/TSV), JSON, XML, and columnar (Parquet, Avro, ORC).</li>
+  <li>Features of common <b>data stores</b> including databases (relational, document, key-value, graph, column-family).</li>
+  <li>Match an Azure datastore to a use case (SQL Database, Cosmos DB, Blob, Files, Table).</li>
+</ul>
+
+<h3>Describe common data workloads</h3>
+<ul>
+  <li><b>Transactional (OLTP)</b>: many small reads/writes, normalized, ACID, current operational data.</li>
+  <li><b>Analytical (OLAP)</b>: large aggregate reads, denormalized/star schema, historical, read-optimized.</li>
+</ul>
+
+<h3>Identify roles and responsibilities for data workloads</h3>
+<ul>
+  <li><b>Database administrator</b>: availability, performance, backup/restore, security of the database.</li>
+  <li><b>Data engineer</b>: builds and operates pipelines — ingest, transform, integrate, load.</li>
+  <li><b>Data analyst</b>: models, explores, and visualizes data to surface insight (Power BI).</li>
+</ul>
+
+<h2>Domain 2 · Identify considerations for relational data on Azure <span class="badge wt">20–25%</span></h2>
+<p>Relational fundamentals plus the Azure SQL family and open-source managed databases.</p>
+
+<h3>Describe relational concepts</h3>
+<ul>
+  <li>Features of relational data: tables, rows, columns, keys (primary/foreign), relationships.</li>
+  <li><b>Normalization</b> and why it is used (reduce duplication and update anomalies).</li>
+  <li>Common <b>SQL statements</b>: DDL (CREATE/ALTER/DROP), DML (SELECT/INSERT/UPDATE/DELETE), DCL (GRANT/REVOKE).</li>
+  <li>Common <b>database objects</b>: tables, views, stored procedures, indexes.</li>
+</ul>
+
+<h3>Describe relational Azure data services</h3>
+<ul>
+  <li>The <b>Azure SQL family</b>: Azure SQL Database (PaaS), Azure SQL Managed Instance, SQL Server on Azure VMs (IaaS).</li>
+  <li>Azure managed services for <b>open-source</b> databases: Azure Database for <b>MySQL</b>, <b>PostgreSQL</b>, and MariaDB.</li>
+</ul>
+
+<h2>Domain 3 · Describe considerations for working with non-relational data on Azure <span class="badge wt">15–20%</span></h2>
+<p>The smallest domain: Azure Storage services and Cosmos DB.</p>
+
+<h3>Describe the capabilities of Azure storage</h3>
+<ul>
+  <li><b>Azure Blob storage</b>: object storage for unstructured data; access tiers (hot / cool / cold / archive).</li>
+  <li><b>Azure Files</b>: managed SMB/NFS file shares in the cloud.</li>
+  <li><b>Azure Table storage</b>: schemaless key-value/NoSQL store for large volumes of structured non-relational data.</li>
+</ul>
+
+<h3>Describe the capabilities and features of Azure Cosmos DB</h3>
+<ul>
+  <li><b>Use cases</b>: globally distributed, low-latency, elastic apps (IoT, retail, gaming) needing multi-region writes.</li>
+  <li><b>APIs</b>: NoSQL (Core), MongoDB, Cassandra, Table, and Apache Gremlin (graph) — pick the API by data model / migration source.</li>
+</ul>
+
+<h2>Domain 4 · Describe an analytics workload on Azure <span class="badge wt">25–30%</span></h2>
+<p>Tied for the largest domain. Large-scale and real-time analytics, plus Power BI visualization.</p>
+
+<h3>Describe common elements of large-scale analytics</h3>
+<ul>
+  <li>Considerations for data <b>ingestion and processing</b> — ETL vs. ELT, pipelines, orchestration.</li>
+  <li>Options for <b>analytical data stores</b>: data warehouses vs. data lakes vs. the lakehouse.</li>
+  <li>Microsoft cloud services for large-scale analytics: <b>Azure Databricks</b> and <b>Microsoft Fabric</b>.</li>
+</ul>
+
+<h3>Describe considerations for real-time data analytics</h3>
+<ul>
+  <li>The difference between <b>batch</b> and <b>streaming</b> data.</li>
+  <li>Microsoft cloud services for real-time analytics (Azure Stream Analytics, Fabric Real-Time Intelligence).</li>
+</ul>
+
+<h3>Describe data visualization in Microsoft Power BI</h3>
+<ul>
+  <li>Capabilities of Power BI (Desktop authoring, the service, reports and dashboards).</li>
+  <li>Features of <b>data models</b> in Power BI (tables, relationships, measures).</li>
+  <li>Choose an appropriate <b>visualization</b> for the data (bar/column, line, pie, scatter, map, KPI, table/matrix).</li>
+</ul>
+
+<div class="callout key">
+  <span class="label">Where the points are</span>
+  Domains 1 and 4 are the heavyweights (25–30% each) — core concepts and analytics. Don't neglect the
+  small Domain 3 (15–20%): it is only Azure Storage + Cosmos DB, so it is the cheapest domain to master
+  fully. Relational (Domain 2) rewards knowing the <b>Azure SQL family</b> distinctions cold.
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./glossary.html">→ Glossary</a>
+  <a href="../lessons/0001-orientation-and-diagnostic.html">→ Lesson 01: Orientation &amp; Diagnostic</a>
+</div>

@@ -1,0 +1,68 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme-toggle.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 03 — Relational Data on Azure</title>
+
+<p class="eyebrow">DP-900 · Lesson 03 · <span class="badge d2">D2</span> 20–25%</p>
+<h1>Relational Data on Azure</h1>
+<p class="subtitle">Relational fundamentals, the SQL statement families, and the Azure SQL family. The single highest-value fact here: which Azure SQL product fits which scenario.</p>
+
+<h2>Relational fundamentals</h2>
+<ul>
+  <li><b>Tables</b> hold rows (records) and columns (fields).</li>
+  <li>A <b>primary key</b> uniquely identifies each row; a <b>foreign key</b> references another table's primary key to enforce a relationship.</li>
+  <li><b>Normalization</b> structures tables so each fact is stored once — reducing redundancy and update anomalies, at the cost of more joins on read.</li>
+</ul>
+
+<h2>SQL statement families</h2>
+<div class="table-wrap"><table>
+  <tr><th>Family</th><th>Purpose</th><th>Statements</th></tr>
+  <tr><td><b>DDL</b></td><td>Define structure</td><td>CREATE, ALTER, DROP</td></tr>
+  <tr><td><b>DML</b></td><td>Manipulate data</td><td>SELECT, INSERT, UPDATE, DELETE</td></tr>
+  <tr><td><b>DCL</b></td><td>Control access</td><td>GRANT, REVOKE</td></tr>
+</table></div>
+<p>Common <b>database objects</b>: <b>views</b> (a saved query used like a table), <b>stored procedures</b> (saved executable SQL), and <b>indexes</b> (structures that speed lookups).</p>
+
+<h2>The Azure SQL family — pick the right one</h2>
+<div class="table-wrap"><table>
+  <tr><th>Product</th><th>Model</th><th>Use when</th></tr>
+  <tr><td><b>Azure SQL Database</b></td><td>PaaS (single DB / elastic pool)</td><td>New cloud-native app; least administration</td></tr>
+  <tr><td><b>Azure SQL Managed Instance</b></td><td>PaaS (instance)</td><td>Lift-and-shift on-prem SQL Server; needs instance features (SQL Agent, cross-DB queries)</td></tr>
+  <tr><td><b>SQL Server on Azure VMs</b></td><td>IaaS</td><td>Full OS/engine control; a feature PaaS lacks</td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">The decision that scores points</span>
+  Managed by Microsoft, brand-new app → <b>SQL Database</b>. Move an existing SQL Server with minimal change →
+  <b>Managed Instance</b>. Need to control the OS / run legacy features → <b>SQL Server on a VM</b>.
+</div>
+
+<h2>Open-source relational services</h2>
+<p>Azure also offers managed PaaS for the popular open-source engines: <b>Azure Database for MySQL</b>, <b>Azure Database for PostgreSQL</b>, and MariaDB. Choose the one that matches your existing application/engine.</p>
+
+<div class="callout tip">
+  <span class="label">Exam cue</span>
+  "Migrate a PostgreSQL app" → Azure Database for PostgreSQL. "Near-full SQL Server compatibility, managed" → SQL Managed Instance.
+</div>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-rel"></div>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-relational-data/">Learning path: Explore relational data in Azure</a>
+  — the official module for Domain 2. The Azure SQL comparison table is worth memorizing.
+</div>
+
+
+<div class="lesson-nav no-print">
+  <a href="./0002-core-data-concepts.html">← Lesson 02</a>
+  <a href="../reference/glossary.html">Glossary</a>
+  <a href="./0004-non-relational-data-on-azure.html">Lesson 04: Non-Relational →</a>
+</div>
+
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0003.js"></script>
+<script>Quiz.render('q-rel', window.TRAINING_DATA['0003']);</script>

@@ -1,0 +1,50 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme-toggle.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 01 — Orientation & Diagnostic</title>
+
+<p class="eyebrow">DP-900 · Lesson 01</p>
+<h1>Orientation &amp; Diagnostic</h1>
+<p class="subtitle">See the whole exam in five minutes, then take a 15-question diagnostic that spans all four domains. Your misses tell you which lessons to drill.</p>
+
+<h2>The shape of the exam</h2>
+<p>DP-900 has four domains. The weighting tells you where to spend cram time:</p>
+<div class="table-wrap"><table>
+  <tr><th>Domain</th><th>Weight</th><th>What it is</th></tr>
+  <tr><td><span class="badge d1">D1</span> Describe core data concepts</td><td>25–30%</td><td>Vendor-neutral fundamentals: data types, workloads, file formats, data roles.</td></tr>
+  <tr><td><span class="badge d2">D2</span> Relational data on Azure</td><td>20–25%</td><td>Relational concepts, SQL, and the Azure SQL family + open-source databases.</td></tr>
+  <tr><td><span class="badge d3">D3</span> Non-relational data on Azure</td><td>15–20%</td><td>Azure Storage (Blob, Files, Table) and Cosmos DB.</td></tr>
+  <tr><td><span class="badge d4">D4</span> Analytics workload on Azure</td><td>25–30%</td><td>Large-scale and real-time analytics, and Power BI visualization.</td></tr>
+</table></div>
+<p>Pass mark is <b>700/1000</b>. Full details in the <a href="../reference/exam-blueprint.html">Exam Blueprint</a>; vocabulary in the <a href="../reference/glossary.html">Glossary</a>.</p>
+
+<div class="callout key">
+  <span class="label">Where the effort goes</span>
+  Domains 1 and 4 carry the most weight (25–30% each). Domain 3 is the smallest (15–20%) and narrowest —
+  just Azure Storage + Cosmos DB — so it's the cheapest domain to fully master. Learn the
+  <a href="../reference/glossary.html">trap pairs</a> (OLTP/OLAP, ETL/ELT, warehouse/lake) as contrasts.
+</div>
+
+<h2>Diagnostic (15 questions)</h2>
+<p>Answer honestly — guessing wastes the signal. Each answer reveals the explanation immediately. When you finish, note which tags (D1–D4) you missed, and drill those lessons first.</p>
+
+<div class="quiz" id="q-diag"></div>
+
+<div class="source">
+  <span class="label">Primary source to read next</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/dp-900">Official DP-900 Study Guide</a>
+  — skim the full skills list once; it is the exact contract the exam grades against.
+</div>
+
+
+<div class="lesson-nav no-print">
+  <a href="../index.html">← Course index</a>
+  <a href="../reference/exam-blueprint.html">Exam Blueprint</a>
+  <a href="./0002-core-data-concepts.html">Lesson 02: Core Data Concepts →</a>
+</div>
+
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0001.js"></script>
+<script>Quiz.render('q-diag', window.TRAINING_DATA['0001']);</script>
