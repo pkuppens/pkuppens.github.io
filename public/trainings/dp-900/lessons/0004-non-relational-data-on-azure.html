@@ -1,0 +1,71 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme-toggle.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 04 — Non-Relational Data on Azure</title>
+
+<p class="eyebrow">DP-900 · Lesson 04 · <span class="badge d3">D3</span> 15–20%</p>
+<h1>Non-Relational Data on Azure</h1>
+<p class="subtitle">The smallest, narrowest domain — just Azure Storage and Cosmos DB. Master it fully; it's the cheapest points on the exam.</p>
+
+<h2>Azure Storage — three services, three jobs</h2>
+<div class="table-wrap"><table>
+  <tr><th>Service</th><th>What it is</th><th>Use when</th></tr>
+  <tr><td><b>Blob storage</b></td><td>Object storage for unstructured data</td><td>Images, video, backups, data-lake files at scale</td></tr>
+  <tr><td><b>Azure Files</b></td><td>Managed SMB/NFS file shares</td><td>You need a mountable network drive</td></tr>
+  <tr><td><b>Table storage</b></td><td>Schemaless key-value NoSQL store</td><td>Large volumes of structured, non-relational data, cheaply</td></tr>
+</table></div>
+
+<div class="callout tip">
+  <span class="label">The one-word discriminator</span>
+  <b>Objects</b> → Blob. <b>Mountable share</b> → Files. <b>Key-value</b> → Table.
+</div>
+
+<h2>Blob access tiers</h2>
+<p>Blob storage prices access against latency. Colder = cheaper to store, slower/costlier to read.</p>
+<div class="table-wrap"><table>
+  <tr><th>Tier</th><th>Use for</th></tr>
+  <tr><td><b>Hot</b></td><td>Frequently accessed data</td></tr>
+  <tr><td><b>Cool</b></td><td>Infrequent access, stored ≥ 30 days</td></tr>
+  <tr><td><b>Cold</b></td><td>Rarely accessed, stored ≥ 90 days</td></tr>
+  <tr><td><b>Archive</b></td><td>Almost never accessed; must be rehydrated before reading — cheapest storage</td></tr>
+</table></div>
+
+<h2>Azure Cosmos DB</h2>
+<p><b>Cosmos DB</b> is a globally distributed, multi-model NoSQL database with single-digit-millisecond latency and multi-region writes. Reach for it when an app must be <b>global, elastic, and low-latency</b> (IoT, retail, gaming).</p>
+
+<p>You pick an <b>API</b> to match your data model or migration source:</p>
+<div class="table-wrap"><table>
+  <tr><th>API</th><th>Data model</th><th>Choose when</th></tr>
+  <tr><td><b>NoSQL (Core)</b></td><td>JSON documents (native)</td><td>New apps; flexible document schemas</td></tr>
+  <tr><td><b>MongoDB</b></td><td>Documents</td><td>Migrating a MongoDB app</td></tr>
+  <tr><td><b>Cassandra</b></td><td>Column-family</td><td>Migrating a Cassandra workload</td></tr>
+  <tr><td><b>Table</b></td><td>Key-value</td><td>Upgrading from Azure Table storage</td></tr>
+  <tr><td><b>Gremlin</b></td><td>Graph (vertices/edges)</td><td>Highly connected/graph data</td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">Match the API to the source</span>
+  Most Cosmos DB questions are "migrating from X → use the X API." NoSQL (Core) is the native default for new JSON apps.
+</div>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-nonrel"></div>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-non-relational-data/">Learning path: Explore non-relational data in Azure</a>
+  — the official module for Domain 3. Focus on the storage-service comparison and the Cosmos DB API list.
+</div>
+
+
+<div class="lesson-nav no-print">
+  <a href="./0003-relational-data-on-azure.html">← Lesson 03</a>
+  <a href="../reference/glossary.html">Glossary</a>
+  <a href="./0005-analytics-workloads-on-azure.html">Lesson 05: Analytics →</a>
+</div>
+
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0004.js"></script>
+<script>Quiz.render('q-nonrel', window.TRAINING_DATA['0004']);</script>

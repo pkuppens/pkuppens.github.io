@@ -1,0 +1,75 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme-toggle.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 02 — Core Data Concepts</title>
+
+<p class="eyebrow">DP-900 · Lesson 02 · <span class="badge d1">D1</span> 25–30%</p>
+<h1>Core Data Concepts</h1>
+<p class="subtitle">The vendor-neutral foundation. Know the three kinds of data, the two workload types, the common file formats, and who does what — before any Azure service names appear.</p>
+
+<h2>Three ways to represent data</h2>
+<div class="table-wrap"><table>
+  <tr><th>Type</th><th>Shape</th><th>Examples</th></tr>
+  <tr><td><b>Structured</b></td><td>Fixed schema of rows &amp; columns</td><td>A relational Customers table</td></tr>
+  <tr><td><b>Semi-structured</b></td><td>Self-describing tags/keys, flexible schema</td><td>JSON, XML, key-value pairs</td></tr>
+  <tr><td><b>Unstructured</b></td><td>No predefined model</td><td>Images, audio, video, PDFs, free text</td></tr>
+</table></div>
+
+<div class="callout tip">
+  <span class="label">Exam cue</span>
+  "Fixed columns" → structured. "JSON/XML/self-describing" → semi-structured. "Images/video/free text" → unstructured.
+</div>
+
+<h2>Where data lives — file formats &amp; stores</h2>
+<p>Common <b>file formats</b> split into two camps:</p>
+<div class="table-wrap"><table>
+  <tr><th>Camp</th><th>Formats</th><th>Best for</th></tr>
+  <tr><td>Row-based / human-readable</td><td>CSV, TSV, JSON, XML</td><td>Interchange, small/medium data, transactional export</td></tr>
+  <tr><td>Columnar / binary</td><td>Parquet, Avro, ORC</td><td>Large-scale analytics — compression + column pruning</td></tr>
+</table></div>
+<p>Common <b>data stores</b> include relational databases, document stores, key-value stores, column-family stores, and graph databases. The exam asks you to match a store to a use case (structured &amp; transactional → relational; global JSON → document/Cosmos DB; cheap unstructured → object storage).</p>
+
+<h2>Two workloads: OLTP vs OLAP</h2>
+<div class="table-wrap"><table>
+  <tr><th></th><th>Transactional (OLTP)</th><th>Analytical (OLAP)</th></tr>
+  <tr><td>Purpose</td><td>Run the business</td><td>Report on the business</td></tr>
+  <tr><td>Access pattern</td><td>Many small reads/writes</td><td>Large aggregate reads</td></tr>
+  <tr><td>Data</td><td>Current, normalized, ACID</td><td>Historical, denormalized (star schema)</td></tr>
+  <tr><td>Example</td><td>Order entry, banking</td><td>Sales trend dashboard</td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">ACID, in one line</span>
+  OLTP systems guarantee <b>A</b>tomicity, <b>C</b>onsistency, <b>I</b>solation, <b>D</b>urability — the reason
+  you trust a relational database with money.
+</div>
+
+<h2>Who does what — the three data roles</h2>
+<div class="table-wrap"><table>
+  <tr><th>Role</th><th>Owns</th></tr>
+  <tr><td><b>Database administrator</b></td><td>Availability, performance, security, backup/restore of the database</td></tr>
+  <tr><td><b>Data engineer</b></td><td>Building &amp; operating pipelines — ingest, transform, integrate, load</td></tr>
+  <tr><td><b>Data analyst</b></td><td>Modelling, exploring, and visualizing data for insight (Power BI)</td></tr>
+</table></div>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-core"></div>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-core-data-concepts/">Learning path: Explore core data concepts</a>
+  — the official Microsoft Learn module for Domain 1. Work through it once; it mirrors the exam objectives exactly.
+</div>
+
+
+<div class="lesson-nav no-print">
+  <a href="./0001-orientation-and-diagnostic.html">← Lesson 01</a>
+  <a href="../reference/glossary.html">Glossary</a>
+  <a href="./0003-relational-data-on-azure.html">Lesson 03: Relational →</a>
+</div>
+
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0002.js"></script>
+<script>Quiz.render('q-core', window.TRAINING_DATA['0002']);</script>

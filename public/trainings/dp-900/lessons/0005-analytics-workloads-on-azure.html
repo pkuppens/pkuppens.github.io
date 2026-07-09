@@ -1,0 +1,76 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme-toggle.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 05 — Analytics Workloads on Azure</title>
+
+<p class="eyebrow">DP-900 · Lesson 05 · <span class="badge d4">D4</span> 25–30%</p>
+<h1>Analytics Workloads on Azure</h1>
+<p class="subtitle">Tied for the biggest domain. Large-scale analytics (warehouse vs lake, ETL vs ELT), real-time streaming, and Power BI visualization.</p>
+
+<h2>The analytics pipeline</h2>
+<p>Large-scale analytics moves data from sources into an analytical store, then to reports. Two orderings:</p>
+<div class="table-wrap"><table>
+  <tr><th></th><th>ETL</th><th>ELT</th></tr>
+  <tr><td>Order</td><td>Extract → Transform → Load</td><td>Extract → Load → Transform</td></tr>
+  <tr><td>Transform runs</td><td>In a staging engine, before load</td><td>In the target store, using its compute</td></tr>
+  <tr><td>Suits</td><td>Structured warehouse loads</td><td>Big-data lakes/lakehouses</td></tr>
+</table></div>
+
+<h2>Analytical data stores</h2>
+<div class="table-wrap"><table>
+  <tr><th>Store</th><th>Holds</th><th>Schema</th></tr>
+  <tr><td><b>Data warehouse</b></td><td>Cleaned, modelled, structured data (star schema)</td><td>Schema-on-write</td></tr>
+  <tr><td><b>Data lake</b></td><td>Raw data of any structure, cheaply at scale</td><td>Schema-on-read</td></tr>
+  <tr><td><b>Lakehouse</b></td><td>Lake storage + warehouse-style structure/queries</td><td>Both</td></tr>
+</table></div>
+<p>Microsoft's big-analytics services: <b>Azure Databricks</b> (an Apache Spark platform for engineering + data science + ML) and <b>Microsoft Fabric</b> (a unified SaaS suite — integration, engineering, warehousing, real-time, and Power BI over one <b>OneLake</b>).</p>
+
+<h2>Batch vs streaming</h2>
+<div class="table-wrap"><table>
+  <tr><th></th><th>Batch</th><th>Streaming</th></tr>
+  <tr><td>Input</td><td>Bounded, collected over time</td><td>Unbounded, continuous events</td></tr>
+  <tr><td>Latency</td><td>High (scheduled)</td><td>Low (near real time)</td></tr>
+  <tr><td>Azure service</td><td>Pipelines / Fabric, Databricks jobs</td><td>Azure Stream Analytics, Fabric Real-Time Intelligence</td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">Exam cue</span>
+  "Within seconds of the event" → <b>streaming</b>. "Overnight / on a schedule" → <b>batch</b>.
+</div>
+
+<h2>Power BI — visualize the insight</h2>
+<ul>
+  <li>Author in <b>Power BI Desktop</b>; publish to the <b>Power BI service</b> to share.</li>
+  <li>A <b>report</b> is multi-page and detailed; a <b>dashboard</b> is a single page of pinned tiles for at-a-glance monitoring.</li>
+  <li>A <b>data model</b> is tables + relationships + <b>measures</b> (calculated aggregations).</li>
+</ul>
+<div class="table-wrap"><table>
+  <tr><th>You want to show…</th><th>Use</th></tr>
+  <tr><td>A trend over time</td><td>Line chart</td></tr>
+  <tr><td>Composition (share of a whole)</td><td>Pie / stacked bar</td></tr>
+  <tr><td>A value vs a target</td><td>KPI visual</td></tr>
+  <tr><td>Values by geography</td><td>Map</td></tr>
+  <tr><td>Correlation between two measures</td><td>Scatter chart</td></tr>
+</table></div>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-analytics"></div>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-data-warehouse-analytics/">Learning path: Explore data analytics in Azure</a>
+  — the official module for Domain 4. Note the warehouse/lake contrast and the Power BI visualization choices.
+</div>
+
+
+<div class="lesson-nav no-print">
+  <a href="./0004-non-relational-data-on-azure.html">← Lesson 04</a>
+  <a href="../reference/glossary.html">Glossary</a>
+  <a href="./0006-mock-exam-1.html">Mock Exam 1 →</a>
+</div>
+
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0005.js"></script>
+<script>Quiz.render('q-analytics', window.TRAINING_DATA['0005']);</script>

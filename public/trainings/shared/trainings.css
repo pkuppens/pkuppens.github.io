@@ -107,6 +107,8 @@ tbody tr:hover { background: var(--paper-2); }
   padding: .12em .5em; border-radius: 20px; letter-spacing: .03em; vertical-align: middle; }
 .badge.d1 { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent); }
 .badge.d2 { background: color-mix(in srgb, var(--accent-2) 20%, transparent); color: var(--accent-2); }
+.badge.d3 { background: color-mix(in srgb, var(--good) 20%, transparent); color: var(--good); }
+.badge.d4 { background: color-mix(in srgb, var(--warn) 24%, transparent); color: var(--warn); }
 .badge.wt { background: var(--code-bg); color: var(--ink-faint); }
 
 /* ---- Cards / grid -------------------------------------------------------- */
