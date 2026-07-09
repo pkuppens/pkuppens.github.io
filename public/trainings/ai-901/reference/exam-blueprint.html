@@ -1,0 +1,108 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme-toggle.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>AI-901 Exam Blueprint — Reference</title>
+
+<p class="eyebrow">AI-901 · Reference</p>
+<h1>Exam Blueprint</h1>
+<p class="subtitle">The authoritative skills-measured outline, straight from Microsoft. Everything testable lives here.</p>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-901">Official Study Guide — Exam AI-901</a>
+  · Skills as of <b>2026-04-15</b> · Page updated 2026-06-24.
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Pass mark</h3>
+    <p><b style="font-size:1.6rem">700</b> / 1000. A scaled score — not a raw percentage. Aim for ~85%+ on practice to clear it comfortably.</p>
+  </div>
+  <div class="card">
+    <h3>Format</h3>
+    <p>~40–60 questions, ~45 min. Multiple-choice, multi-select, drag-and-drop, case-style. No live labs.</p>
+  </div>
+  <div class="card">
+    <h3>Assumed skills</h3>
+    <p>Python syntax literacy, familiarity with Azure resources, and awareness of REST APIs / SDKs / CLIs. Mostly GA features.</p>
+  </div>
+</div>
+
+<h2>Domain 1 · Identify AI concepts &amp; capabilities <span class="badge wt">40–45%</span></h2>
+<p>Conceptual recognition. No portal clicks — just knowing <em>what</em> and <em>which</em>.</p>
+
+<h3>Describe principles of responsible AI</h3>
+<p>The six Microsoft principles — expect a scenario, pick the principle it violates or upholds:</p>
+<div class="table-wrap"><table>
+  <tr><th>Principle</th><th>One-line test</th></tr>
+  <tr><td>Fairness</td><td>Does it treat all groups equitably? (no biased outcomes)</td></tr>
+  <tr><td>Reliability &amp; safety</td><td>Does it behave consistently and fail safely under stress?</td></tr>
+  <tr><td>Privacy &amp; security</td><td>Is personal data protected and consent respected?</td></tr>
+  <tr><td>Inclusiveness</td><td>Does it work for people of all abilities/backgrounds?</td></tr>
+  <tr><td>Transparency</td><td>Can users understand how/why it made a decision?</td></tr>
+  <tr><td>Accountability</td><td>Are humans responsible and is there governance/oversight?</td></tr>
+</table></div>
+
+<h3>Identify AI model components and configurations</h3>
+<ul>
+  <li>Describe how generative AI models work (tokens, prompts, completions, context).</li>
+  <li>Identify an appropriate AI model based on capabilities (chat vs. embeddings vs. multimodal vs. image-gen).</li>
+  <li>Identify deployment options and configuration parameters (temperature, max tokens, top-p, deployment types).</li>
+</ul>
+
+<h3>Identify AI workloads</h3>
+<ul>
+  <li>Match scenarios to workloads: <b>generative &amp; agentic</b>, text analysis, speech, computer vision, information extraction.</li>
+  <li>Text analysis techniques: keyword extraction, entity detection, sentiment analysis, summarization.</li>
+  <li>Speech: recognition (speech-to-text) and synthesis (text-to-speech).</li>
+  <li>Vision: computer vision and image-generation models.</li>
+  <li>Information extraction from text, images, audio, and video.</li>
+</ul>
+
+<h2>Domain 2 · Implement AI solutions using Microsoft Foundry <span class="badge wt">55–60%</span></h2>
+<p>The heavy half. Recognize how you'd <em>build</em> things in <b>Microsoft Foundry</b> (portal + SDK + agents). You won't write code from scratch, but you must recognize correct steps, service names, and tools.</p>
+
+<h3>Generative AI apps and agents by using Foundry</h3>
+<ul>
+  <li>Write effective <b>system</b> and <b>user</b> prompts.</li>
+  <li>Deploy a model and interact with it in the <b>Foundry portal</b>.</li>
+  <li>Build a lightweight chat client with the <b>Foundry SDK</b>.</li>
+  <li>Create and test a <b>single-agent</b> solution in the Foundry portal.</li>
+  <li>Build a lightweight client application for an agent.</li>
+</ul>
+
+<h3>Text and speech by using Foundry</h3>
+<ul>
+  <li>Lightweight app that includes <b>text analysis</b>.</li>
+  <li>Respond to spoken prompts using a deployed <b>multimodal</b> model.</li>
+  <li>Build an app using <b>Azure Speech</b> in Foundry Tools.</li>
+</ul>
+
+<h3>Computer vision &amp; image generation by using Foundry</h3>
+<ul>
+  <li>Interpret visual input in prompts via a deployed <b>multimodal</b> model.</li>
+  <li>Create new visual outputs using generative (image) models.</li>
+  <li>Build a lightweight app with vision capabilities.</li>
+</ul>
+
+<h3>Information extraction by using Foundry</h3>
+<ul>
+  <li>Extract from documents/forms using <b>Azure Content Understanding</b> in Foundry Tools.</li>
+  <li>Extract from images using Content Understanding.</li>
+  <li>Extract from audio and video using Content Understanding.</li>
+  <li>Build a lightweight app with information-extraction capabilities.</li>
+</ul>
+
+<div class="callout key">
+  <span class="label">Where the points are</span>
+  Domain 2 outweighs Domain 1, and its centre of gravity is <b>Microsoft Foundry</b> — the portal, the
+  Foundry SDK, single-agents, and <b>Content Understanding</b> for multimodal extraction. If you're short on
+  time, over-invest here. Domain 1 (responsible AI + workload-matching) is cheap, memorizable points — bank them all.
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./glossary.html">→ Glossary</a>
+  <a href="../lessons/0001-orientation-and-diagnostic.html">→ Lesson 01: Orientation &amp; Diagnostic</a>
+</div>

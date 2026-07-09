@@ -44,6 +44,9 @@ export default function Header() {
           <NavLink to="/projects" className={({ isActive }) => isActive ? styles.activeLink : styles.link}>
             Projects
           </NavLink>
+          <NavLink to="/trainings" className={({ isActive }) => isActive ? styles.activeLink : styles.link}>
+            Trainings
+          </NavLink>
           <NavLink to="/evaluator" className={({ isActive }) => isActive ? `${styles.activeLink} ${styles.cta}` : `${styles.link} ${styles.cta}`}>
             Opportunity<span className={styles.fullLabel}> Evaluator</span>
           </NavLink>

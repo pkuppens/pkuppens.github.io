@@ -1,0 +1,222 @@
+/* ===========================================================================
+   Trainings — shared stylesheet
+   Tufte-inspired, print-friendly reading layout for study courses.
+   Linked by every lesson and reference doc so a course reads as one whole.
+
+   Theming: portfolio-led. Colors track the site-wide theme via [data-theme]
+   on <html> (set by shared/theme-toggle.js from the pkuppens_theme key),
+   NOT the OS prefers-color-scheme. Accent + semantic colors are aligned to
+   the portfolio palette (src/index.css). The serif reading layout is kept.
+   =========================================================================== */
+
+:root {
+  --ink:        #1e293b;   /* portfolio --color-text (light) */
+  --ink-soft:   #475569;
+  --ink-faint:  #64748b;   /* portfolio --color-text-muted */
+  --paper:      #f8fafc;   /* portfolio --color-bg (light) */
+  --paper-2:    #f1f5f9;   /* portfolio --color-surface-2 (light) */
+  --rule:       #e2e8f0;   /* portfolio --color-border (light) */
+  --accent:     #2563eb;   /* portfolio --color-primary */
+  --accent-2:   #6b3fa0;   /* Foundry violet (course accent, kept) */
+  --good:       #197a4b;
+  --good-bg:    #e6f4ec;
+  --bad:        #b3261e;
+  --bad-bg:     #fbe9e7;
+  --warn:       #8a6d00;
+  --warn-bg:    #fbf3d5;
+  --code-bg:    #eef2f7;
+  --maxw:       46rem;
+  --serif: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --sans: "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif;
+  --mono: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", monospace;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --ink:#e2e8f0; --ink-soft:#94a3b8; --ink-faint:#94a3b8;   /* portfolio dark text tokens */
+  --paper:#060b15; --paper-2:#0f172a; --rule:#1f2a44;        /* portfolio dark bg/surface/border */
+  --accent:#0ea5e9; --accent-2:#b191dd;                      /* portfolio dark accent */
+  --good:#5fd39a; --good-bg:#14352a; --bad:#f2938c; --bad-bg:#3a1f1d;
+  --warn:#e8c65a; --warn-bg:#332c12; --code-bg:#0b1220;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: var(--serif);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.55;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 3rem 1.4rem 6rem;
+  font-size: 1.06rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ---- Typography ---------------------------------------------------------- */
+h1, h2, h3, h4 { font-family: var(--sans); line-height: 1.2; color: var(--ink); }
+h1 { font-size: 2.05rem; margin: 0 0 .3rem; letter-spacing: -.01em; }
+h2 { font-size: 1.4rem; margin: 2.4rem 0 .6rem; padding-bottom: .25rem; border-bottom: 1px solid var(--rule); }
+h3 { font-size: 1.12rem; margin: 1.6rem 0 .4rem; }
+p { margin: .7rem 0; }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+a:hover { border-bottom-color: var(--accent); }
+small, .small { font-size: .85rem; color: var(--ink-faint); }
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+.subtitle { font-family: var(--sans); color: var(--ink-faint); font-size: 1.05rem; margin: .1rem 0 1.4rem; }
+.eyebrow { font-family: var(--sans); text-transform: uppercase; letter-spacing: .14em;
+  font-size: .72rem; font-weight: 600; color: var(--accent); margin: 0; }
+
+/* ---- Rules & sections ---------------------------------------------------- */
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.2rem 0; }
+
+/* ---- Code ---------------------------------------------------------------- */
+code { font-family: var(--mono); font-size: .88em; background: var(--code-bg);
+  padding: .12em .38em; border-radius: 4px; }
+pre { font-family: var(--mono); font-size: .85rem; background: var(--code-bg);
+  padding: 1rem 1.1rem; border-radius: 8px; overflow-x: auto; line-height: 1.45;
+  border: 1px solid var(--rule); }
+pre code { background: none; padding: 0; }
+
+/* ---- Tables -------------------------------------------------------------- */
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { border-collapse: collapse; width: 100%; font-family: var(--sans); font-size: .92rem; }
+th, td { text-align: left; padding: .5rem .7rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 600; color: var(--ink-soft); border-bottom: 2px solid var(--rule); }
+tbody tr:hover { background: var(--paper-2); }
+
+/* ---- Callouts ------------------------------------------------------------ */
+.callout { border-left: 4px solid var(--accent); background: var(--paper-2);
+  padding: .8rem 1rem; margin: 1.2rem 0; border-radius: 0 8px 8px 0; font-family: var(--sans); font-size: .95rem; }
+.callout.tip   { border-color: var(--good); background: var(--good-bg); }
+.callout.warn  { border-color: var(--warn); background: var(--warn-bg); }
+.callout.key   { border-color: var(--accent-2); }
+.callout .label { font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  font-size: .7rem; display: block; margin-bottom: .3rem; }
+.callout.tip .label { color: var(--good); }
+.callout.warn .label { color: var(--warn); }
+.callout.key .label { color: var(--accent-2); }
+.callout .label:not(:empty) ~ * { }
+
+/* ---- Badges / chips ------------------------------------------------------ */
+.badge { display: inline-block; font-family: var(--sans); font-size: .7rem; font-weight: 600;
+  padding: .12em .5em; border-radius: 20px; letter-spacing: .03em; vertical-align: middle; }
+.badge.d1 { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent); }
+.badge.d2 { background: color-mix(in srgb, var(--accent-2) 20%, transparent); color: var(--accent-2); }
+.badge.wt { background: var(--code-bg); color: var(--ink-faint); }
+
+/* ---- Cards / grid -------------------------------------------------------- */
+.grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); margin: 1.2rem 0; }
+.card { border: 1px solid var(--rule); border-radius: 10px; padding: 1rem 1.1rem; background: var(--paper-2); }
+.card h3 { margin-top: 0; }
+
+/* ---- Definition list (glossary) ----------------------------------------- */
+dl.gloss dt { font-family: var(--sans); font-weight: 700; margin-top: 1rem; color: var(--ink); }
+dl.gloss dd { margin: .2rem 0 0; color: var(--ink-soft); }
+dl.gloss dd .aka { color: var(--ink-faint); font-style: italic; }
+
+/* ---- Progress meter ------------------------------------------------------ */
+.meter { height: 10px; background: var(--rule); border-radius: 6px; overflow: hidden; margin: .4rem 0; }
+.meter > span { display: block; height: 100%; background: var(--accent); width: 0; transition: width .4s ease; }
+
+/* ---- Footer nav ---------------------------------------------------------- */
+.lesson-nav { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--rule);
+  font-family: var(--sans); font-size: .9rem; display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; justify-content: space-between; }
+.ask { margin-top: 2.4rem; background: var(--paper-2); border: 1px dashed var(--rule);
+  border-radius: 10px; padding: 1rem 1.2rem; font-family: var(--sans); font-size: .95rem; }
+.ask strong { color: var(--accent-2); }
+
+.source { font-family: var(--sans); font-size: .9rem; background: var(--good-bg);
+  border: 1px solid color-mix(in srgb, var(--good) 30%, transparent); border-radius: 10px;
+  padding: .8rem 1rem; margin: 1.4rem 0; }
+.source .label { color: var(--good); font-weight: 700; text-transform: uppercase; letter-spacing:.08em; font-size:.7rem; }
+
+/* ---- Theme toggle (shared/theme-toggle.js) ------------------------------- */
+.theme-toggle { position: fixed; top: .8rem; right: .8rem; z-index: 50;
+  font-family: var(--sans); font-size: .8rem; font-weight: 600; cursor: pointer;
+  padding: .35rem .8rem; border-radius: 20px; border: 1px solid var(--rule);
+  background: var(--paper-2); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.theme-toggle:hover { border-color: var(--accent); }
+
+/* ---- Quiz component (shared/quiz.js) ------------------------------------- */
+.quiz { margin: 1.5rem 0; }
+.quiz-head { position: sticky; top: 0; background: var(--paper); padding: .6rem 0 .5rem;
+  border-bottom: 1px solid var(--rule); font-family: var(--sans); z-index: 5; }
+.quiz-score { font-size: .95rem; font-weight: 600; }
+.quiz-score b { color: var(--accent); }
+.quiz-q { margin: 1.3rem 0; padding-bottom: .3rem; }
+.qtext { font-family: var(--sans); font-size: 1rem; margin: 0 0 .6rem; }
+.qhint { color: var(--ink-faint); font-weight: 400; font-size: .85rem; }
+
+/* option rows (single = radio, multi = checkbox) */
+.opts { display: flex; flex-direction: column; gap: .45rem; }
+.opt-row { display: flex; align-items: flex-start; gap: .6rem; font-family: var(--sans);
+  font-size: .95rem; cursor: pointer; padding: .55rem .8rem; border: 1px solid var(--rule);
+  border-radius: 8px; background: var(--paper-2); transition: background .12s, border-color .12s; }
+.opt-row:hover { border-color: var(--accent); background: var(--paper); }
+.opt-row input { margin-top: .18rem; flex: none; accent-color: var(--accent); }
+.opt-row.correct { border-color: var(--good); background: var(--good-bg); }
+.opt-row.correct .opt-txt { color: var(--good); font-weight: 600; }
+.opt-row.wrong { border-color: var(--bad); background: var(--bad-bg); }
+.opt-row.wrong .opt-txt { color: var(--bad); }
+
+/* match / order grids */
+.match-grid { display: flex; flex-direction: column; gap: .5rem; }
+.match-row { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap;
+  padding: .5rem .7rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper-2); }
+.match-item { font-family: var(--sans); font-size: .93rem; flex: 1 1 55%; }
+.match-sel { font-family: var(--sans); font-size: .9rem; padding: .3rem .5rem; border-radius: 6px;
+  border: 1px solid var(--rule); background: var(--paper); color: var(--ink); }
+.order-sel { width: 4rem; }
+.match-row.correct { border-color: var(--good); background: var(--good-bg); }
+.match-row.wrong { border-color: var(--bad); background: var(--bad-bg); }
+.match-ans { font-family: var(--sans); font-size: .82rem; color: var(--good); font-weight: 600; }
+
+.why { font-family: var(--sans); font-size: .9rem; margin-top: .6rem; padding: .6rem .8rem;
+  border-radius: 8px; border-left: 3px solid var(--rule); background: var(--paper-2); }
+.why.ok { border-color: var(--good); background: var(--good-bg); }
+.why.no { border-color: var(--bad); background: var(--bad-bg); }
+.qs-verdict { margin: .4rem 0 0; }
+.qs-verdict.good, .verdict.good { color: var(--good); }
+.qs-verdict.warn, .verdict.warn { color: var(--warn); }
+.qs-verdict.bad, .verdict.bad { color: var(--bad); }
+
+/* exam mode: submit + results */
+.submit-btn { font-family: var(--sans); font-size: 1rem; font-weight: 600; cursor: pointer;
+  margin: 1.5rem 0; padding: .7rem 1.4rem; border: none; border-radius: 8px;
+  background: var(--accent); color: #fff; }
+.submit-btn:hover { filter: brightness(1.08); }
+.submit-btn:disabled { background: var(--rule); color: var(--ink-faint); cursor: default; }
+.retry-btn { font-family: var(--sans); font-size: .85rem; cursor: pointer; margin-top: .8rem;
+  padding: .4rem .9rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); }
+.exam-result { display: flex; align-items: center; gap: 1.2rem; margin: .6rem 0 1rem;
+  padding: 1rem 1.2rem; border-radius: 10px; background: var(--paper-2); border: 1px solid var(--rule); flex-wrap: wrap; }
+.exam-result.pass { border-color: var(--good); background: var(--good-bg); }
+.exam-result.fail { border-color: var(--bad); background: var(--bad-bg); }
+.exam-result .big { font-family: var(--sans); font-size: 2.6rem; font-weight: 700; line-height: 1; }
+.exam-result.pass .big { color: var(--good); }
+.exam-result.fail .big { color: var(--bad); }
+.res-meta { font-family: var(--sans); font-size: .92rem; display: flex; flex-direction: column; gap: .25rem; }
+.res-meta .verdict { font-weight: 700; margin-top: .2rem; }
+.dom-breakdown { font-family: var(--sans); margin: .6rem 0; }
+.dom-title, .dom-num, .dom-name { font-size: .85rem; }
+.dom-title { font-weight: 700; margin-bottom: .4rem; color: var(--ink-soft); }
+.dom-row { display: flex; align-items: center; gap: .7rem; margin: .3rem 0; }
+.dom-name { flex: none; width: 2rem; font-weight: 600; }
+.dom-num { flex: none; width: 6.5rem; text-align: right; color: var(--ink-soft); }
+.meter.sm { height: 8px; flex: 1; margin: 0; }
+
+/* ---- Print --------------------------------------------------------------- */
+@media print {
+  :root { --paper:#fff; --paper-2:#f6f6f6; }
+  body { max-width: none; padding: 0; font-size: 11pt; color: #000; }
+  a { color: #000; border: none; }
+  .theme-toggle { display: none !important; }
+  .quiz, .ask, .lesson-nav { break-inside: avoid; }
+  .no-print { display: none !important; }
+  h2 { break-after: avoid; }
+}

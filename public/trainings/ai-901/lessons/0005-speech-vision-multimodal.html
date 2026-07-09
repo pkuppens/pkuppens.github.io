@@ -1,0 +1,73 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme-toggle.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 05 — Speech, Vision & Multimodal in Foundry</title>
+
+<p class="eyebrow">AI-901 · Lesson 05 · <span class="badge d2">D2</span> 55–60%</p>
+<h1>Speech, Vision &amp; Multimodal</h1>
+<p class="subtitle">The rest of Domain 2's implementation surface: hearing, speaking, seeing, and generating images — and the modern shortcut of doing several at once with a multimodal model.</p>
+
+<h2>Azure Speech (in Foundry Tools)</h2>
+<p>One service, three jobs. Keep the direction of the arrow straight:</p>
+<div class="table-wrap"><table>
+  <tr><th>Capability</th><th>Direction</th><th>Use it for</th></tr>
+  <tr><td><b>Speech recognition</b> (speech-to-text)</td><td>audio → text</td><td>Transcribe a meeting, take a voice command.</td></tr>
+  <tr><td><b>Speech synthesis</b> (text-to-speech)</td><td>text → audio</td><td>Read an answer aloud, build a voice assistant reply.</td></tr>
+  <tr><td><b>Speech translation</b></td><td>audio → audio/text (other language)</td><td>Live cross-language conversation.</td></tr>
+</table></div>
+
+<h2>Vision — two opposite tasks</h2>
+<div class="grid">
+  <div class="card"><h3>Interpret an image</h3><p>Read/understand an existing image: caption it, read its text (OCR), answer questions about it. An <em>analysis</em> task.</p></div>
+  <div class="card"><h3>Generate an image</h3><p>Create a brand-new picture from a text prompt. A <em>generative</em> task, done by an image-generation model.</p></div>
+</div>
+<div class="callout warn">
+  <span class="label">Don't mix these up</span>
+  "Describe what's in this photo" = interpret (multimodal model). "Make a picture of a red bicycle" = generate
+  (image-generation model). The verb in the question — <em>describe/read</em> vs <em>create/make</em> — is the tell.
+</div>
+
+<h2>Multimodal models — the modern shortcut</h2>
+<p>A <b>multimodal model</b> accepts more than one input type in a single prompt. AI-901 deliberately favours these over stitching separate services together:</p>
+<div class="table-wrap"><table>
+  <tr><th>Scenario</th><th>AI-901's preferred answer</th></tr>
+  <tr><td>Send a photo + a text question, reason over both</td><td>A deployed <b>multimodal model</b> (interpret visual input in a prompt)</td></tr>
+  <tr><td>Respond to a <em>spoken</em> prompt</td><td>A deployed <b>multimodal model</b> that handles speech</td></tr>
+  <tr><td>Generate a new image from text</td><td>An <b>image-generation model</b></td></tr>
+  <tr><td>Just transcribe or synthesize speech, no reasoning</td><td><b>Azure Speech</b></td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">The mental split</span>
+  Need <em>reasoning across modalities</em> (image+text, speech+text)? → one <b>multimodal model</b>.
+  Need a <em>plain conversion</em> (audio↔text)? → <b>Azure Speech</b>. Need a <em>new picture</em>? → an <b>image-generation model</b>.
+</div>
+
+<h2>And text analysis</h2>
+<p>Building an app "that includes text analysis" means the classic techniques from <a href="../reference/glossary.html">the glossary</a> — sentiment, entity detection, key-phrase extraction, summarization — offered through Foundry's language capabilities. Recognize the technique names; that's the whole ask here.</p>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-svm"></div>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/azure/ai-services/speech-service/">Azure AI Speech documentation</a>
+  — skim speech-to-text vs text-to-speech; pair it with the AI-901 note that multimodal models now cover many of these tasks.
+</div>
+
+<div class="ask">
+  <strong>Ask your teacher.</strong> Unsure when it's a multimodal model vs Azure Speech vs an image generator? Message me.
+  You've now covered <b>all of Domain 2</b> — next I'll give you a full mixed practice exam to prove the pass.
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./0004-content-understanding.html">← Lesson 04</a>
+  <a href="../reference/exam-blueprint.html">Exam Blueprint</a>
+  <a href="./0001-orientation-and-diagnostic.html">Diagnostic</a>
+</div>
+
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0005.js"></script>
+<script>Quiz.render('q-svm', window.TRAINING_DATA['0005']);</script>

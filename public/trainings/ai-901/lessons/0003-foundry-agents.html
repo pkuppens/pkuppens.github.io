@@ -1,0 +1,105 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme-toggle.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 03 — Agents in Microsoft Foundry</title>
+
+<p class="eyebrow">AI-901 · Lesson 03 · <span class="badge d2">D2</span> 55–60%</p>
+<h1>Agents in Microsoft Foundry</h1>
+<p class="subtitle">A single-agent solution is an explicit exam objective. Learn what an agent <em>is</em>, how tools and knowledge extend it, and recognize how one is created and called.</p>
+
+<h2>What an agent is</h2>
+<p>A plain model answers one prompt at a time and forgets. An <b>agent</b> wraps a model with a fixed identity and the ability to <em>act</em>. Four ingredients:</p>
+<div class="grid">
+  <div class="card"><h3>Model</h3><p>The deployed foundation model that generates text and reasons.</p></div>
+  <div class="card"><h3>Instructions</h3><p>A persistent system prompt — role, rules, tone — applied on every turn without repeating it.</p></div>
+  <div class="card"><h3>Tools</h3><p>Actions beyond text: search the web, run code, query your APIs or data.</p></div>
+  <div class="card"><h3>Knowledge</h3><p>Grounding data the agent retrieves from — files, databases, web — so answers are factual.</p></div>
+</div>
+
+<div class="callout key">
+  <span class="label">The one-line definition</span>
+  <b>Agent = model + instructions + tools + knowledge.</b> If a scenario needs multi-step action, tool use, or
+  consistent behaviour across a conversation, the answer is "an agent" — not a bare model call.
+</div>
+
+<h2>Model vs. agent — when to reach for which</h2>
+<div class="table-wrap"><table>
+  <tr><th>Scenario</th><th>Answer</th></tr>
+  <tr><td>One-shot "summarize this text"</td><td>A model call</td></tr>
+  <tr><td>Assistant that keeps its persona across many turns</td><td>An agent (instructions)</td></tr>
+  <tr><td>"Look up today's prices, then calculate a quote"</td><td>An agent (tools)</td></tr>
+  <tr><td>"Answer only from our internal handbook"</td><td>An agent (knowledge / grounding)</td></tr>
+</table></div>
+
+<h2>Creating a single agent</h2>
+<p>Two doors again. In the <b>Foundry portal</b>: Build → Agents → <b>Create agent</b>, give it a name and instructions, then chat with it in place. In the <b>SDK</b>, the shape you should recognize:</p>
+
+<pre><code>from azure.identity import DefaultAzureCredential
+from azure.ai.projects import AIProjectClient
+from azure.ai.projects.models import PromptAgentDefinition
+
+project = AIProjectClient(
+    endpoint=PROJECT_ENDPOINT,
+    credential=DefaultAzureCredential(),
+)
+
+# Define the agent: a model + persistent instructions
+agent = project.agents.create_version(
+    agent_name="SupportBot",
+    definition=PromptAgentDefinition(
+        model="gpt-5-mini",
+        instructions="You are a helpful support assistant. Be concise and cite policy.",
+    ),
+)</code></pre>
+
+<h2>Talking to the agent (multi-turn memory)</h2>
+<p>An agent keeps history within a <b>conversation</b>. That's what makes turn two aware of turn one:</p>
+
+<pre><code>openai = project.get_openai_client(agent_name="SupportBot")
+conversation = openai.conversations.create()      # holds the history
+
+r1 = openai.responses.create(conversation=conversation.id,
+                             input="Can I return an item after 30 days?")
+r2 = openai.responses.create(conversation=conversation.id,
+                             input="And if it was a gift?")   # remembers r1
+</code></pre>
+
+<div class="callout tip">
+  <span class="label">Exam cues</span>
+  "Consistent persona without re-sending instructions" → agent <b>instructions</b>. &nbsp;
+  "Remembers earlier turns" → a <b>conversation</b>. &nbsp;
+  "Can take an action / call an API / search" → a <b>tool</b>. &nbsp;
+  "Answers grounded in our data" → <b>knowledge</b>.
+</div>
+
+<div class="callout warn">
+  <span class="label">Single-agent scope</span>
+  AI-901 tests a <b>single-agent</b> solution — one agent doing a job. Multi-agent orchestration exists in Foundry
+  but is AI-102 territory. Don't overthink it on this exam.
+</div>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-agents"></div>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/azure/foundry/agents/overview">What is Microsoft Foundry Agent Service?</a>
+  — read the "tools" and "knowledge" sections once; that's the exact framing the exam uses.
+</div>
+
+<div class="ask">
+  <strong>Ask your teacher.</strong> Fuzzy on tools vs knowledge, or agent vs plain model? Message me.
+  Next: <b>Lesson 04 — Content Understanding</b> (extract data from docs, images, audio, video).
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./0002-foundry-portal-and-sdk.html">← Lesson 02</a>
+  <a href="../reference/glossary.html">Glossary</a>
+  <a href="./0004-content-understanding.html">Lesson 04: Content Understanding →</a>
+</div>
+
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0003.js"></script>
+<script>Quiz.render('q-agents', window.TRAINING_DATA['0003']);</script>

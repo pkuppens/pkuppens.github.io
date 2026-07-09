@@ -1,0 +1,80 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme-toggle.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 04 — Content Understanding (Information Extraction)</title>
+
+<p class="eyebrow">AI-901 · Lesson 04 · <span class="badge d2">D2</span> 55–60%</p>
+<h1>Content Understanding</h1>
+<p class="subtitle">Foundry's one tool for turning messy documents, images, audio, and video into clean structured data. A whole exam sub-domain lives here.</p>
+
+<h2>The one-service story</h2>
+<p><b>Azure AI Content Understanding</b> is a <b>Foundry Tool</b> that uses generative AI to read <em>any</em> content type and emit a structure <em>you</em> define. It replaces the old patchwork — Document Intelligence (a.k.a. Form Recognizer) for docs, Video Indexer for video — with one multimodal service.</p>
+
+<div class="callout key">
+  <span class="label">Remember the four inputs</span>
+  Content Understanding handles <b>Documents · Images · Audio · Video</b>. If a question mentions extracting fields
+  or insights from <em>any</em> of those four, Content Understanding is almost always the answer.
+</div>
+
+<h2>How it works — inputs → analyzer → structured output</h2>
+<div class="table-wrap"><table>
+  <tr><th>Stage</th><th>What happens</th></tr>
+  <tr><td><b>Inputs</b></td><td>Your raw files — documents, images, audio, or video.</td></tr>
+  <tr><td><b>Analyzer</b></td><td>The reusable config that defines <em>how</em> content is processed and <em>what fields</em> to pull. Use a <b>prebuilt analyzer</b> (invoices, contracts, call-center, media…) or build a <b>custom</b> one.</td></tr>
+  <tr><td><b>Field extraction</b></td><td>Produces structured key-value pairs from your <b>schema</b> — no prompt engineering needed.</td></tr>
+  <tr><td><b>Structured output</b></td><td>Clean <b>JSON</b> (for automation/analytics) or <b>Markdown</b> (for search / RAG ingestion).</td></tr>
+</table></div>
+
+<h2>Three ways it fills a field</h2>
+<p>A frequently-tested distinction — how the analyzer produces each field value:</p>
+<div class="grid">
+  <div class="card"><h3>Extract</h3><p>Pull a value exactly as it appears (invoice date, total). Documents only.</p></div>
+  <div class="card"><h3>Classify</h3><p>Pick from predefined categories (call sentiment, document type) and route accordingly.</p></div>
+  <div class="card"><h3>Generate</h3><p>Create a new value freely (summarize a call, describe a video scene).</p></div>
+</div>
+
+<h2>Two quality features worth naming</h2>
+<div class="table-wrap"><table>
+  <tr><td><b>Confidence scores</b></td><td>A 0–1 reliability estimate per field. High scores enable <em>straight-through processing</em> (no human review).</td></tr>
+  <tr><td><b>Grounding</b></td><td>Points to <em>where</em> in the source a value came from, so a human can verify it fast.</td></tr>
+</table></div>
+
+<div class="callout tip">
+  <span class="label">Scenario → answer drills</span>
+  "Read thousands of invoices into fields" → Content Understanding (Extract). &nbsp;
+  "Summarize call recordings" → Content Understanding (Generate, audio). &nbsp;
+  "Describe scenes in a video" → Content Understanding (Generate, video). &nbsp;
+  "Route documents by type first" → Content Understanding (Classify).
+</div>
+
+<div class="callout warn">
+  <span class="label">Trap</span>
+  Old names still appear as distractors: <b>Form Recognizer</b> and <b>Document Intelligence</b> (documents only) and
+  <b>Video Indexer</b> (video only). On AI-901, the multimodal, current answer is <b>Content Understanding</b>.
+</div>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-cu"></div>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview">What is Azure AI Content Understanding?</a>
+  — read "Key components" once; the Extract/Classify/Generate table is exam gold.
+</div>
+
+<div class="ask">
+  <strong>Ask your teacher.</strong> Confused about analyzer vs schema, or when it's Extract vs Generate? Message me.
+  Next: <b>Lesson 05 — Speech, Vision &amp; Multimodal</b>.
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./0003-foundry-agents.html">← Lesson 03</a>
+  <a href="../reference/glossary.html">Glossary</a>
+  <a href="./0005-speech-vision-multimodal.html">Lesson 05: Speech, Vision &amp; Multimodal →</a>
+</div>
+
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0004.js"></script>
+<script>Quiz.render('q-cu', window.TRAINING_DATA['0004']);</script>
