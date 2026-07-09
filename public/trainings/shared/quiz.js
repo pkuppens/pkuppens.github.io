@@ -86,7 +86,7 @@
         row.appendChild(el("span", "match-item", r.t));
         const sel = document.createElement("select");
         sel.className = "match-sel";
-        sel.appendChild(el("option", null, "— choose —"));
+        const placeholder = el("option", null, "— choose —"); placeholder.value = ""; sel.appendChild(placeholder);
         item.categories.forEach((c, ci) => {
           const op = el("option", null, c); op.value = ci; sel.appendChild(op);
         });
@@ -95,10 +95,10 @@
         inputs.push({ sel, orig: r.i, row });
       });
       card.appendChild(table);
-      // selection = array where selection[originalItemIndex] = chosen category index
+      // selection = array where selection[originalItemIndex] = chosen category index (-1 = unassigned)
       getSelection = () => {
         const out = [];
-        inputs.forEach(x => { out[x.orig] = x.sel.value === "" ? -1 : parseInt(x.sel.value, 10); });
+        inputs.forEach(x => { const v = parseInt(x.sel.value, 10); out[x.orig] = (x.sel.value === "" || isNaN(v)) ? -1 : v; });
         return out;
       };
 
@@ -111,17 +111,17 @@
         row.appendChild(el("span", "match-item", r.t));
         const sel = document.createElement("select");
         sel.className = "match-sel order-sel";
-        sel.appendChild(el("option", null, "—"));
+        const placeholder = el("option", null, "—"); placeholder.value = ""; sel.appendChild(placeholder);
         for (let p = 1; p <= n; p++) { const op = el("option", null, String(p)); op.value = p - 1; sel.appendChild(op); }
         row.appendChild(sel);
         table.appendChild(row);
         inputs.push({ sel, orig: r.i, row });
       });
       card.appendChild(table);
-      // selection[originalItemIndex] = chosen position (0-based)
+      // selection[originalItemIndex] = chosen position (0-based, -1 = unset)
       getSelection = () => {
         const out = [];
-        inputs.forEach(x => { out[x.orig] = x.sel.value === "" ? -1 : parseInt(x.sel.value, 10); });
+        inputs.forEach(x => { const v = parseInt(x.sel.value, 10); out[x.orig] = (x.sel.value === "" || isNaN(v)) ? -1 : v; });
         return out;
       };
     }
@@ -129,7 +129,9 @@
     function isAnswered() {
       const s = getSelection();
       if (type === "single") return s.length === 1;
-      if (type === "multi") return s.length > 0;
+      // "select N": only answered once N options are chosen, so we don't grade
+      // (and mark wrong) a correct-so-far answer after the first checkbox.
+      if (type === "multi") return s.length === item.answers.length;
       return s.length === item.items.length && s.every(v => v != null && v !== -1);
     }
 
