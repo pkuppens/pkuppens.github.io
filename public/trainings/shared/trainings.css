@@ -4,7 +4,7 @@
    Linked by every lesson and reference doc so a course reads as one whole.
 
    Theming: portfolio-led. Colors track the site-wide theme via [data-theme]
-   on <html> (set by shared/theme-toggle.js from the pkuppens_theme key),
+   on <html> (set by shared/site-nav.js from the pkuppens_theme key),
    NOT the OS prefers-color-scheme. Accent + semantic colors are aligned to
    the portfolio palette (src/index.css). The serif reading layout is kept.
    =========================================================================== */
@@ -50,7 +50,7 @@ body {
   line-height: 1.55;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 3rem 1.4rem 6rem;
+  padding: 4.6rem 1.4rem 6rem; /* top clears the fixed .site-nav (~3rem) */
   font-size: 1.06rem;
   -webkit-text-size-adjust: 100%;
 }
@@ -137,16 +137,49 @@ dl.gloss dd .aka { color: var(--ink-faint); font-style: italic; }
   padding: .8rem 1rem; margin: 1.4rem 0; }
 .source .label { color: var(--good); font-weight: 700; text-transform: uppercase; letter-spacing:.08em; font-size:.7rem; }
 
-/* ---- Theme toggle (shared/theme-toggle.js) ------------------------------- */
-.theme-toggle { position: fixed; top: .8rem; right: .8rem; z-index: 50;
-  font-family: var(--sans); font-size: .8rem; font-weight: 600; cursor: pointer;
-  padding: .35rem .8rem; border-radius: 20px; border: 1px solid var(--rule);
-  background: var(--paper-2); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
-.theme-toggle:hover { border-color: var(--accent); }
+/* ---- Site navigation (shared/site-nav.js) -------------------------------- */
+/* Injected fixed header mirroring the portfolio nav, so standalone training
+   pages keep the site's navigation and theme toggle. */
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 3rem;
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule); }
+.site-nav-inner { max-width: 48rem; height: 100%; margin: 0 auto; padding: 0 1.4rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.site-nav-brand { font-family: var(--sans); font-size: 1.05rem; font-weight: 700;
+  color: var(--ink); border: none; display: inline-flex; align-items: center; gap: .12em; white-space: nowrap; }
+.site-nav-brand:hover { color: var(--accent); border: none; }
+.site-nav-mono { font-family: var(--mono); color: var(--accent); font-size: 1.05em; }
+.site-nav-links { display: flex; align-items: center; gap: .15rem; flex-wrap: wrap; justify-content: flex-end; }
+.site-nav-link { font-family: var(--sans); font-size: .88rem; font-weight: 500;
+  color: var(--ink-faint); text-decoration: none; border: none; padding: .35rem .6rem; border-radius: 6px;
+  white-space: nowrap; transition: color .15s, background .15s; }
+.site-nav-link::before { content: '<'; font-family: var(--mono);
+  color: color-mix(in srgb, var(--ink-faint) 70%, var(--accent) 30%); }
+.site-nav-link::after { content: '/>'; font-family: var(--mono);
+  color: color-mix(in srgb, var(--ink-faint) 70%, var(--accent) 30%); }
+.site-nav-link:hover { color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); border: none; }
+.site-nav-current { color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.site-nav-cta { color: #fff; background: var(--accent); font-weight: 600; }
+.site-nav-cta::before, .site-nav-cta::after { display: none; }
+.site-nav-cta:hover { color: #fff; background: color-mix(in srgb, var(--accent) 85%, #000 15%); }
+.site-nav-toggle { margin-left: .35rem; font-family: var(--sans); font-size: .8rem; font-weight: 600;
+  cursor: pointer; padding: .3rem .55rem; border-radius: 6px; border: 1px solid var(--rule);
+  background: transparent; color: var(--ink-faint); white-space: nowrap; }
+.site-nav-toggle:hover { color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+@media (max-width: 640px) {
+  /* Keep the 3rem height so the body/quiz offsets stay constant; let links scroll. */
+  .site-nav-inner { padding: 0 .8rem; gap: .5rem; }
+  .site-nav-brand { font-size: .95rem; }
+  .site-nav-links { gap: 0; flex-wrap: nowrap; overflow-x: auto; }
+  .site-nav-link, .site-nav-cta { font-size: .78rem; padding: .3rem .4rem; }
+  .site-nav-link::before, .site-nav-link::after { display: none; }
+  .site-nav-toggle { font-size: .74rem; padding: .25rem .4rem; margin-left: .2rem; }
+}
 
 /* ---- Quiz component (shared/quiz.js) ------------------------------------- */
 .quiz { margin: 1.5rem 0; }
-.quiz-head { position: sticky; top: 0; background: var(--paper); padding: .6rem 0 .5rem;
+.quiz-head { position: sticky; top: 3rem; background: var(--paper); padding: .6rem 0 .5rem;
   border-bottom: 1px solid var(--rule); font-family: var(--sans); z-index: 5; }
 .quiz-score { font-size: .95rem; font-weight: 600; }
 .quiz-score b { color: var(--accent); }
@@ -217,8 +250,8 @@ dl.gloss dd .aka { color: var(--ink-faint); font-style: italic; }
   :root { --paper:#fff; --paper-2:#f6f6f6; }
   body { max-width: none; padding: 0; font-size: 11pt; color: #000; }
   a { color: #000; border: none; }
-  .theme-toggle { display: none !important; }
-  .quiz, .ask, .lesson-nav { break-inside: avoid; }
+  .site-nav { display: none !important; }
+  .quiz, .lesson-nav { break-inside: avoid; }
   .no-print { display: none !important; }
   h2 { break-after: avoid; }
 }

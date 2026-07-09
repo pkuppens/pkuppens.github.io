@@ -93,7 +93,7 @@ exact head (adjust `../` depth by folder level):
 ```html
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="../../shared/theme-toggle.js"></script>   <!-- must be first: syncs data-theme before paint -->
+<script src="../../shared/site-nav.js"></script>   <!-- must be first: syncs data-theme before paint, injects the site header -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="stylesheet" href="../../shared/trainings.css">
 <title>…</title>
@@ -101,15 +101,16 @@ exact head (adjust `../` depth by folder level):
 
 A lesson body then follows the order: `.eyebrow` → `<h1>` → `.subtitle` → `<h2>` content sections
 (`.table-wrap > table`, `.callout`, `<pre><code>`) → a quiz mount `<div class="quiz" id="…">` →
-`.source` (primary Microsoft Learn link) → `.ask` → `.lesson-nav`. See any file under
+`.source` (primary Microsoft Learn link) → `.lesson-nav`. See any file under
 [`ai-901/lessons/`](./ai-901/lessons/) or [`dp-900/lessons/`](./dp-900/lessons/) as a template.
 
 ### Styling
 
 All styling comes from [`shared/trainings.css`](./shared/trainings.css) — a Tufte-inspired,
 print-friendly stylesheet themed to the portfolio palette via `[data-theme]` on `<html>` (set by
-[`shared/theme-toggle.js`](./shared/theme-toggle.js), which reads the site's `pkuppens_theme` key so the
-theme persists between the SPA and the course pages). Domain badges use `.badge.d1`…`.badge.d4`; add
+[`shared/site-nav.js`](./shared/site-nav.js), which also injects the site header and reads the site's
+`pkuppens_theme` key so the theme persists between the SPA and the course pages). Domain badges use
+`.badge.d1`…`.badge.d4`; add
 more `.badge.dN` rules there if a certification has more than four domains. Do not change the shared
 `:root` color tokens — that would recolor every course.
 
