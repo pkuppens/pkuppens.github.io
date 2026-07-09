@@ -1,0 +1,50 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme-toggle.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 01 — Orientation & Diagnostic</title>
+
+<p class="eyebrow">AI-901 · Lesson 01</p>
+<h1>Orientation &amp; Diagnostic</h1>
+<p class="subtitle">See the whole exam in five minutes, then take a 15-question diagnostic that spans both domains. Your misses become the next lessons.</p>
+
+<h2>The shape of the exam</h2>
+<p>AI-901 has two domains. The weighting tells you where to spend cram time:</p>
+<div class="table-wrap"><table>
+  <tr><th>Domain</th><th>Weight</th><th>What it is</th></tr>
+  <tr><td><span class="badge d1">D1</span> Identify AI concepts &amp; capabilities</td><td>40–45%</td><td>Recognition: responsible AI, how models work, matching scenarios to workloads.</td></tr>
+  <tr><td><span class="badge d2">D2</span> Implement with Microsoft Foundry</td><td>55–60%</td><td>How you'd build it: Foundry portal, SDK, agents, Content Understanding, Speech.</td></tr>
+</table></div>
+<p>Pass mark is <b>700/1000</b>. Full details in the <a href="../reference/exam-blueprint.html">Exam Blueprint</a>; vocabulary in the <a href="../reference/glossary.html">Glossary</a>.</p>
+
+<div class="callout key">
+  <span class="label">Your edge</span>
+  You already build RAG systems, so the <em>concepts</em> in D1 are mostly free — the work is learning Azure's
+  <em>names</em> for things you know. D2 is where the real study is: Microsoft Foundry's portal, SDK, and agents.
+</div>
+
+<h2>Diagnostic (15 questions)</h2>
+<p>Answer honestly — guessing wastes the signal. Each answer reveals the explanation immediately. When you finish, tell me your score and which tags (D1/D2) you missed, and I'll build targeted lessons.</p>
+
+<div class="quiz" id="q-diag"></div>
+
+<div class="source">
+  <span class="label">Primary source to read next</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-901">Official AI-901 Study Guide</a>
+  — skim the full skills list once; it is the exact contract the exam grades against.
+</div>
+
+<div class="ask">
+  <strong>Your teacher is one message away.</strong> After the diagnostic, tell me your score and weak tags —
+  or ask about anything unclear (a term, a service, "why is this the answer?"). I'll turn misses into the next lessons.
+</div>
+
+<div class="lesson-nav no-print">
+  <span class="small">Lesson 01 of the AI-901 course</span>
+  <a href="../reference/exam-blueprint.html">Exam Blueprint →</a>
+</div>
+
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0001.js"></script>
+<script>Quiz.render('q-diag', window.TRAINING_DATA['0001']);</script>

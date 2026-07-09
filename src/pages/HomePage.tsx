@@ -87,6 +87,20 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Trainings */}
+      <section className="section text-center">
+        <div className="container">
+          <h2 className={`mb-2 ${styles.sectionTitle}`}>Trainings</h2>
+          <p className={`text-muted mb-4 ${styles.ctaDesc}`}>
+            Self-checking certification study courses I build while preparing for exams — short lessons,
+            auto-graded quizzes, and exam-weighted mock exams. Starting with Azure AI Fundamentals (AI-901).
+          </p>
+          <Link to="/trainings" className="btn btn-primary">
+            Browse Trainings
+          </Link>
+        </div>
+      </section>
+
       {/* Skills */}
       <section className={`section ${styles.skillsSection}`}>
         <div className="container">

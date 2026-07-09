@@ -1,0 +1,101 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme-toggle.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 02 — Microsoft Foundry: Portal to SDK</title>
+
+<p class="eyebrow">AI-901 · Lesson 02 · <span class="badge d2">D2</span> 55–60%</p>
+<h1>Microsoft Foundry: Portal → SDK</h1>
+<p class="subtitle">The core build loop of Domain 2. Deploy a model in the portal, then call it from a lightweight app with the Foundry SDK. Learn the flow and recognize the code — that's what the exam grades.</p>
+
+<h2>The mental model</h2>
+<p><b>Microsoft Foundry</b> is the one place you go to build AI apps and agents on Azure. Four nested ideas, biggest to smallest:</p>
+<div class="table-wrap"><table>
+  <tr><th>Layer</th><th>What it is</th></tr>
+  <tr><td><b>Foundry resource</b></td><td>The Azure resource that hosts your AI work (an Azure AI services resource).</td></tr>
+  <tr><td><b>Project</b></td><td>A workspace inside the resource. Your endpoint points at a project. This is your unit of work.</td></tr>
+  <tr><td><b>Model deployment</b></td><td>A specific model (e.g. a GPT chat model) made callable under a name you choose.</td></tr>
+  <tr><td><b>Agent</b></td><td>A deployed model + instructions (+ optional tools & knowledge) that behaves consistently. (Lesson 03.)</td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">Two doors, same house</span>
+  Everything in Foundry is reachable two ways: the <b>Foundry portal</b> (web UI, no code — great for deploying and testing) and the
+  <b>Foundry SDK</b> (code — for building apps). The exam expects you to know <em>which door fits the task</em>.
+</div>
+
+<h2>Step 1 — Deploy a model in the portal</h2>
+<p>In the <b>Foundry portal</b> you pick a model from the catalog and deploy it. Once deployed, you land in the <b>Build</b> section with a <b>playground</b> where you can chat with the model — no code — to test prompts before writing an app. This is where you practice writing a good <b>system prompt</b> (role, rules, tone) and <b>user prompt</b> (the actual request).</p>
+
+<div class="callout tip">
+  <span class="label">Exam cue</span>
+  "Test a prompt quickly without writing code" → <b>Foundry portal playground</b>.
+  "Build an application that calls the model" → <b>Foundry SDK</b>.
+</div>
+
+<h2>Step 2 — Call it from a lightweight app (Foundry SDK)</h2>
+<p>A "lightweight chat client" is exactly the phrase in the exam objectives. Here's the current shape (Python, <code>azure-ai-projects</code> v2.x). You do <em>not</em> need to write this from memory — you need to recognize each piece:</p>
+
+<pre><code>from azure.identity import DefaultAzureCredential
+from azure.ai.projects import AIProjectClient
+
+# The project endpoint you copied from the Foundry portal
+PROJECT_ENDPOINT = "https://my-resource.ai.azure.com/api/projects/my-project"
+
+# 1. Connect to the project (auth via `az login`, no API key in code)
+project = AIProjectClient(
+    endpoint=PROJECT_ENDPOINT,
+    credential=DefaultAzureCredential(),
+)
+
+# 2. Get a client for the deployed model
+openai = project.get_openai_client()
+
+# 3. Send input, get a completion back
+response = openai.responses.create(
+    model="gpt-5-mini",            # your deployment name
+    input="Summarize this policy in one sentence.",
+)
+print(response.output_text)</code></pre>
+
+<p>Three things the exam loves to probe in this snippet:</p>
+<div class="table-wrap"><table>
+  <tr><th>Piece</th><th>Why it matters</th></tr>
+  <tr><td><code>azure-ai-projects</code></td><td>The Foundry SDK package. v2.x = the new Foundry API; v1.x = Foundry <em>classic</em>.</td></tr>
+  <tr><td><code>DefaultAzureCredential</code></td><td>Keyless auth using your signed-in identity (<code>az login</code>). Preferred over hard-coded API keys — ties to the <b>privacy &amp; security</b> principle.</td></tr>
+  <tr><td><code>model="..."</code></td><td>References your <b>deployment name</b>, not a raw model file. No deployment → nothing to call.</td></tr>
+</table></div>
+
+<h2>Portal vs SDK — pick the door</h2>
+<div class="table-wrap"><table>
+  <tr><th>You want to…</th><th>Use</th></tr>
+  <tr><td>Deploy a model from the catalog</td><td>Portal (or SDK/CLI for automation)</td></tr>
+  <tr><td>Try a prompt with zero code</td><td>Portal playground</td></tr>
+  <tr><td>Ship a chat feature inside an app</td><td>Foundry SDK</td></tr>
+  <tr><td>Automate deployment in CI/CD</td><td>SDK / CLI / REST</td></tr>
+</table></div>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-foundry"></div>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/azure/foundry/quickstarts/get-started-code">Quickstart: Get started with Microsoft Foundry SDK</a>
+  — the exact flow above, in Python/C#/TS/Java/REST. Read the Python tab once; recognizing it is worth several exam points.
+</div>
+
+<div class="ask">
+  <strong>Ask your teacher.</strong> Unsure when it's portal vs SDK, or what <code>DefaultAzureCredential</code> really does?
+  Message me. Next up: <b>Lesson 03 — Agents in Foundry</b> (model + instructions + tools + knowledge).
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./0001-orientation-and-diagnostic.html">← Lesson 01</a>
+  <a href="../reference/glossary.html">Glossary</a>
+  <a href="./0003-foundry-agents.html">Lesson 03: Agents →</a>
+</div>
+
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0002.js"></script>
+<script>Quiz.render('q-foundry', window.TRAINING_DATA['0002']);</script>

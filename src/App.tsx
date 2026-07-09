@@ -3,6 +3,7 @@ import Layout from './components/layout/Layout'
 import HomePage from './pages/HomePage'
 import ProfilePage from './pages/ProfilePage'
 import ProjectsPage from './pages/ProjectsPage'
+import TrainingsPage from './pages/trainings/TrainingsPage'
 import EvaluatorPage from './pages/evaluator/EvaluatorPage'
 import './App.css'
 
@@ -14,6 +15,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="projects" element={<ProjectsPage />} />
+          <Route path="trainings" element={<TrainingsPage />} />
           <Route path="evaluator" element={<EvaluatorPage />} />
         </Route>
       </Routes>

@@ -1,0 +1,118 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme-toggle.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>AI-901 Glossary — Reference</title>
+
+<p class="eyebrow">AI-901 · Reference</p>
+<h1>Glossary</h1>
+<p class="subtitle">The canonical AI-901 vocabulary. Every lesson uses these names. Where Azure renamed something, the current name wins and the old name is flagged — that swap is a classic exam trap.</p>
+
+<div class="callout warn">
+  <span class="label">Naming churn</span>
+  Azure renames things constantly. Distractor answers on the exam are often <em>old</em> product names.
+  Learn the current name; recognize the retired one. The most bitten items are marked below.
+</div>
+
+<h2>Platform &amp; services</h2>
+<dl class="gloss">
+  <dt>Microsoft Foundry</dt>
+  <dd>The unified platform for building, deploying, and managing AI apps and agents on Azure — portal, SDK, and a model catalog in one place. <span class="aka">Formerly "Azure AI Foundry", earlier "Azure AI Studio". This rename is the whole reason AI-901 exists.</span></dd>
+
+  <dt>Foundry portal</dt>
+  <dd>The web UI where you deploy models, test prompts in a playground, and build/test agents without writing code.</dd>
+
+  <dt>Foundry SDK</dt>
+  <dd>The client library (Python) for calling deployed models and agents from a "lightweight client application". The exam tests recognizing its shape, not writing it from memory.</dd>
+
+  <dt>Azure AI services</dt>
+  <dd>The umbrella family of prebuilt AI APIs (vision, speech, language, etc.). <span class="aka">Formerly "Cognitive Services" — a frequent distractor.</span></dd>
+
+  <dt>Azure AI Foundry Agent Service</dt>
+  <dd>The managed service for building agents — an LLM plus instructions, tools, and knowledge that can take actions to complete a goal. Domain 2 tests creating and testing a <b>single-agent</b> solution.</dd>
+
+  <dt>Content Understanding</dt>
+  <dd>Azure's multimodal information-extraction service in Foundry Tools — pulls structured data from documents, images, audio, and video. <span class="aka">Absorbs the jobs of the old "Form Recognizer" → "Document Intelligence" and "Video Indexer".</span></dd>
+
+  <dt>Azure Speech</dt>
+  <dd>The service for speech-to-text (recognition), text-to-speech (synthesis), and speech translation, available in Foundry Tools.</dd>
+
+  <dt>Azure OpenAI / model catalog</dt>
+  <dd>Where foundation models (GPT-family chat, embeddings, image-gen, multimodal) are deployed and served through Foundry.</dd>
+</dl>
+
+<h2>Model &amp; generative concepts</h2>
+<dl class="gloss">
+  <dt>Generative AI</dt>
+  <dd>Models that create new content (text, images, audio, code) from a prompt, rather than only classifying or scoring existing input.</dd>
+
+  <dt>Agentic AI</dt>
+  <dd>An AI system that plans and takes multi-step actions using tools and knowledge to reach a goal, not just answering a single prompt. The "agent" in Domain 2.</dd>
+
+  <dt>Multimodal model</dt>
+  <dd>A single model that accepts and/or produces more than one modality — e.g. reads an image <em>and</em> text in one prompt. AI-901 favours multimodal models over separate vision/speech services for many tasks.</dd>
+
+  <dt>Token</dt>
+  <dd>The unit a model reads and generates — roughly a word-piece. Prompt length and cost are measured in tokens.</dd>
+
+  <dt>Prompt (system vs. user)</dt>
+  <dd>The input to a model. The <b>system prompt</b> sets role, rules, and tone; the <b>user prompt</b> is the specific request. Writing both well is an explicit exam objective.</dd>
+
+  <dt>Completion</dt>
+  <dd>The model's generated output for a given prompt.</dd>
+
+  <dt>Grounding / RAG</dt>
+  <dd>Supplying a model with external, retrieved data at prompt time so answers cite real sources instead of hallucinating. (You build these already — Azure exposes it as "add your data" / agent knowledge.)</dd>
+
+  <dt>Temperature</dt>
+  <dd>A decoding parameter for randomness: low = deterministic/focused, high = creative/varied. A common "configuration parameters" question.</dd>
+
+  <dt>Top-p (nucleus sampling)</dt>
+  <dd>An alternative randomness control that samples from the smallest set of tokens whose probabilities sum to <em>p</em>.</dd>
+
+  <dt>Grounded / fine-tuning distinction</dt>
+  <dd>Grounding adds data <em>at inference time</em>; fine-tuning changes the <em>model's weights</em> by training on examples. The exam probes which to choose.</dd>
+</dl>
+
+<h2>Workload vocabulary (Domain 1 matching)</h2>
+<dl class="gloss">
+  <dt>Sentiment analysis</dt>
+  <dd>Text-analysis technique scoring text as positive / negative / neutral.</dd>
+
+  <dt>Entity detection (NER)</dt>
+  <dd>Identifying named things (people, places, dates, quantities) in text.</dd>
+
+  <dt>Key phrase / keyword extraction</dt>
+  <dd>Pulling the main talking points from text.</dd>
+
+  <dt>Summarization</dt>
+  <dd>Condensing text (extractive: pick sentences; abstractive: generate new).</dd>
+
+  <dt>Speech recognition vs. synthesis</dt>
+  <dd>Recognition = audio → text (speech-to-text). Synthesis = text → audio (text-to-speech).</dd>
+
+  <dt>Computer vision</dt>
+  <dd>Interpreting images/video: classification, object detection, OCR, captioning.</dd>
+
+  <dt>Image generation</dt>
+  <dd>Creating new images from a text prompt (a generative, not analytical, vision task).</dd>
+
+  <dt>Information extraction</dt>
+  <dd>Turning unstructured content (docs, images, audio, video) into structured fields — the Content Understanding domain.</dd>
+</dl>
+
+<h2>Responsible AI (the six)</h2>
+<dl class="gloss">
+  <dt>Fairness</dt><dd>Equitable treatment across groups; no systematic bias.</dd>
+  <dt>Reliability &amp; safety</dt><dd>Consistent, robust behaviour that fails safely.</dd>
+  <dt>Privacy &amp; security</dt><dd>Protecting personal data and honouring consent.</dd>
+  <dt>Inclusiveness</dt><dd>Working for people of all abilities and backgrounds.</dd>
+  <dt>Transparency</dt><dd>Making the system's behaviour and limits understandable.</dd>
+  <dt>Accountability</dt><dd>Human governance and responsibility for outcomes.</dd>
+</dl>
+
+<div class="lesson-nav no-print">
+  <a href="./exam-blueprint.html">→ Exam Blueprint</a>
+  <a href="../lessons/0001-orientation-and-diagnostic.html">→ Lesson 01: Orientation &amp; Diagnostic</a>
+</div>

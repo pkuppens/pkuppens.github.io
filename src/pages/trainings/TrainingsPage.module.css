@@ -1,0 +1,32 @@
+.trainingsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.trainingCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.trainingHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.trainingTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.trainingDesc {
+  flex: 1;
+}
+
+.disabledBtn {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
