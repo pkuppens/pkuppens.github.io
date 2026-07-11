@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom'
 import styles from './HomePage.module.css'
 
 const SKILLS = [
-  { name: 'Python', level: 90 },
-  { name: 'C / C++', level: 90 },
-  { name: 'C# / .NET', level: 85 },
-  { name: 'SQL & Data Engineering', level: 85 },
-  { name: 'Applied AI (LLM + non-LLM)', level: 90 },
-  { name: 'Azure / AWS / Cloud', level: 85 },
-  { name: 'CI / CD / GitHub', level: 90 },
-  { name: 'Docker / Containers', level: 85 },
+  { name: 'Python', evidence: 'RAG pipelines, deep learning, transaction monitoring' },
+  { name: 'C / C++', evidence: 'ASML, Philips Healthcare, CART-Tech systems software' },
+  { name: 'C# / .NET', evidence: 'ABN AMRO, Ratho, secure enterprise systems' },
+  { name: 'SQL & Data Engineering', evidence: 'MSSQL/SQLite pipelines across finance, retail, and healthcare' },
+  { name: 'Applied AI (LLM + non-LLM)', evidence: 'GenAI/RAG, deep-learning segmentation, fraud/transaction ML' },
+  { name: 'Azure / AWS / Cloud', evidence: 'Data triggers, cloud migrations, scaling support' },
+  { name: 'CI / CD / GitHub', evidence: 'Pipeline design and delivery automation across teams' },
+  { name: 'Docker / Containers', evidence: 'Containerized services for on-prem and cloud deployment' },
 ]
 
 const HIGHLIGHTS = [
@@ -52,8 +52,9 @@ export default function HomePage() {
               <span className="page-hero-subtitle">Software, Data, and AI Engineer</span>
             </h1>
             <p className="page-hero-lead">
-              30+ years building production systems in high-tech, healthcare, and finance. I deliver practical
-              solutions across Python, C#/.NET, C/C++, SQL, cloud, and AI.
+              30+ years building production systems in high-tech, healthcare, and finance. Based in the Netherlands
+              (Den Bosch–Eindhoven region), available hybrid or remote. I deliver practical solutions across Python,
+              C#/.NET, C/C++, SQL, cloud, and AI.
             </p>
             <div className="flex flex-wrap gap-1 mt-2">
               {PROOF_POINTS.map(point => (
@@ -64,9 +65,17 @@ export default function HomePage() {
               <Link to="/evaluator" className="btn btn-primary">
                 Evaluate Your Opportunity
               </Link>
-              <Link to="/profile" className={`btn btn-outline ${styles.heroOutlineBtn}`}>
-                View Profile
+              <Link to="/projects" className={`btn btn-outline ${styles.heroOutlineBtn}`}>
+                View Projects
               </Link>
+              <a
+                href="https://www.linkedin.com/in/pieterkuppens/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`btn btn-outline ${styles.heroOutlineBtn}`}
+              >
+                Connect on LinkedIn
+              </a>
             </div>
           </div>
         </div>
@@ -108,24 +117,14 @@ export default function HomePage() {
           <div className={styles.skillsGrid}>
             {SKILLS.map(skill => (
               <div key={skill.name} className={styles.skillItem}>
-                <div className={styles.skillHeader}>
-                  <span className={styles.skillName}>{skill.name}</span>
-                  <span className={styles.skillPct}>{skill.level}%</span>
-                </div>
-                <div className={styles.skillBar}>
-                  <div
-                    className={styles.skillFill}
-                    style={{ width: `${skill.level}%` }}
-                    role="progressbar"
-                    aria-valuenow={skill.level}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                    aria-label={`${skill.name} proficiency`}
-                  />
-                </div>
+                <span className={styles.skillName}>{skill.name}</span>
+                <span className={styles.skillEvidence}>{skill.evidence}</span>
               </div>
             ))}
           </div>
+          <p className={`text-center text-muted mt-4`}>
+            <Link to="/profile">See the full experience timeline on my Profile</Link>
+          </p>
         </div>
       </section>
 

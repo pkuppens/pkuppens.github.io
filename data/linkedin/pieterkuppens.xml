@@ -2,6 +2,266 @@
 <experiences xmlns="https://pkuppens.github.io/ns/linkedin-experience"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="https://pkuppens.github.io/ns/linkedin-experience ../../scripts/linkedin/schema.xsd">
-  <meta sourceUrl="https://www.linkedin.com/in/pieterkuppens/details/experience/" locale="nl"/>
-</experiences>
+  <meta sourceUrl="https://www.linkedin.com/in/pieterkuppens/details/experience/" locale="nl" scrapedAt="2026-07-11T08:53:40Z"/>
 
+  <experience id="bright-cubes-2026">
+    <tagline>Senior Consultant (Software, Data, and AI)</tagline>
+    <company>Bright Cubes</company>
+    <employmentType>Fulltime</employmentType>
+    <period>
+      <startDate yearMonth="2026-05"/>
+      <endDate current="true"/>
+      <raw>2026 – Present</raw>
+    </period>
+    <location>'s-Hertogenbosch, Noord-Brabant, Nederland</location>
+    <workMode>Hybrid</workMode>
+    <description>Consulting on software, data, and AI assignments with focus on practical delivery and business value.</description>
+    <skills>
+      <skill>Software Engineering</skill>
+      <skill>Data</skill>
+      <skill>AI</skill>
+      <skill>Consulting</skill>
+    </skills>
+  </experience>
+
+  <experience id="angiogenesis-analytics-2025">
+    <tagline>Software-Data-AI Professional</tagline>
+    <company>Angiogenesis Analytics</company>
+    <employmentType>Freelance</employmentType>
+    <period>
+      <startDate yearMonth="2025-07"/>
+      <endDate yearMonth="2025-12"/>
+      <raw>2025</raw>
+    </period>
+    <location>'s-Hertogenbosch, Noord-Brabant, Nederland</location>
+    <workMode>Hybrid</workMode>
+    <description>Software and data work in a medical equipment context, with focus on healthcare-oriented AI solutions.</description>
+    <skills>
+      <skill>Healthcare</skill>
+      <skill>AI</skill>
+      <skill>Python</skill>
+      <skill>Data</skill>
+    </skills>
+  </experience>
+
+  <experience id="rent-a-pin-2022">
+    <tagline>AI Transaction Monitoring &amp; Workflow Optimization</tagline>
+    <company>Rent a Pin</company>
+    <employmentType>Freelance</employmentType>
+    <period>
+      <startDate yearMonth="2022-12"/>
+      <endDate yearMonth="2025-02"/>
+      <raw>2022 – 2025</raw>
+    </period>
+    <location>Amsterdam</location>
+    <workMode>Remote</workMode>
+    <description>Built and improved AI-supported transaction monitoring workflows, including automated shipment document generation, in a financial services context.</description>
+    <skills>
+      <skill>AI</skill>
+      <skill>Finance</skill>
+      <skill>Workflow</skill>
+      <skill>Optimization</skill>
+    </skills>
+  </experience>
+
+  <experience id="cart-tech-2020">
+    <tagline>Software and Data Professional (Deep Learning)</tagline>
+    <company>CART-Tech</company>
+    <employmentType>Freelance</employmentType>
+    <period>
+      <startDate yearMonth="2020-09"/>
+      <endDate yearMonth="2021-11"/>
+      <raw>2020 – 2021</raw>
+    </period>
+    <location>Utrecht, Nederland</location>
+    <description>Built deep-learning segmentation for cardiac MRI (DICOM CINE/LGE), cutting manual segmentation time per case from 30-60 minutes to a ~5-minute review step, and supported migration to AWS cloud scalability.</description>
+    <skills>
+      <skill>Deep Learning</skill>
+      <skill>Medical Imaging</skill>
+      <skill>Python</skill>
+      <skill>AWS</skill>
+    </skills>
+  </experience>
+
+  <experience id="nemo-healthcare-2018">
+    <tagline>Software Architect and Coach</tagline>
+    <company>Nemo Healthcare</company>
+    <employmentType>Freelance</employmentType>
+    <period>
+      <startDate yearMonth="2018-11"/>
+      <endDate yearMonth="2020-08"/>
+      <raw>2018 – 2020</raw>
+    </period>
+    <location>Veldhoven</location>
+    <description>Led regulated software workflows under ISO 13485/IEC 62304, managed Jira/Confluence/Bitbucket governance, and built a Python app for Raspberry Pi-based data collection.</description>
+    <skills>
+      <skill>ISO 13485</skill>
+      <skill>IEC 62304</skill>
+      <skill>Python</skill>
+      <skill>Coaching</skill>
+    </skills>
+  </experience>
+
+  <experience id="isatis-health-2018">
+    <tagline>Software en Data Professional</tagline>
+    <company>Isatis Health</company>
+    <employmentType>Freelance</employmentType>
+    <period>
+      <startDate yearMonth="2018-02"/>
+      <endDate yearMonth="2018-10"/>
+      <raw>Feb 2018 – Oct 2018</raw>
+    </period>
+    <location>Arnhem-Nijmegen en omgeving</location>
+    <description>Built a rules engine for pharmacy-domain data, with a focus on practical software delivery and data-oriented work.</description>
+    <skills>
+      <skill>Healthcare</skill>
+      <skill>Software Engineering</skill>
+      <skill>Data</skill>
+    </skills>
+  </experience>
+
+  <experience id="ratho-bv-2013">
+    <tagline>Senior Software Engineer (part-time)</tagline>
+    <company>Ratho BV</company>
+    <period>
+      <startDate yearMonth="2013-05"/>
+      <endDate yearMonth="2018-07"/>
+      <raw>May 2013 – Jul 2018</raw>
+    </period>
+    <description>Part-time (5-10%) role building a C#/SQL Active Directory management product, mentoring the lead engineer and supporting delivery.</description>
+    <skills>
+      <skill>C#</skill>
+      <skill>SQL</skill>
+      <skill>Mentoring</skill>
+      <skill>Part-time (5-10%)</skill>
+    </skills>
+  </experience>
+
+  <experience id="pieterkuppens-net-2013">
+    <tagline>Software en Data Professional (self-employed)</tagline>
+    <company>pieterkuppens.net</company>
+    <employmentType>Freelance</employmentType>
+    <period>
+      <startDate yearMonth="2013-04"/>
+      <endDate current="true"/>
+      <raw>Apr 2013 – Present</raw>
+    </period>
+    <location>Rosmalen, Noord-Brabant, Nederland</location>
+    <description>Independent practice delivering software and data projects across healthcare, finance, and high-tech.</description>
+    <skills>
+      <skill>Freelance</skill>
+      <skill>Python</skill>
+      <skill>C#/.NET</skill>
+      <skill>C/C++</skill>
+      <skill>SQL</skill>
+    </skills>
+  </experience>
+
+  <experience id="blueriq-2012">
+    <tagline>Technical Engineer</tagline>
+    <company>Blueriq</company>
+    <period>
+      <startDate yearMonth="2012-12"/>
+      <endDate yearMonth="2013-04"/>
+      <raw>Dec 2012 – Apr 2013</raw>
+    </period>
+    <description>Implemented branding and styling changes to the Aquima/Blueriq product using C#, WPF, HTML, and CSS.</description>
+    <skills>
+      <skill>Frontend</skill>
+      <skill>WPF</skill>
+      <skill>HTML/CSS</skill>
+    </skills>
+  </experience>
+
+  <experience id="abn-amro-bank-2012">
+    <tagline>Technical Engineer</tagline>
+    <company>ABN AMRO Bank</company>
+    <period>
+      <startDate yearMonth="2012-07"/>
+      <endDate yearMonth="2012-11"/>
+      <raw>Jul 2012 – Nov 2012</raw>
+    </period>
+    <description>Built mortgage portal modules with secure data transport, using C#/WCF/MSSQL under TDD in a regulated banking environment.</description>
+    <skills>
+      <skill>Security</skill>
+      <skill>Enterprise</skill>
+      <skill>C#/.NET</skill>
+      <skill>MSSQL</skill>
+    </skills>
+  </experience>
+
+  <experience id="abn-amro-lease-2012">
+    <tagline>Security Specialist</tagline>
+    <company>ABN AMRO Lease</company>
+    <period>
+      <startDate yearMonth="2012-04"/>
+      <endDate yearMonth="2012-06"/>
+      <raw>Apr 2012 – Jun 2012</raw>
+    </period>
+    <description>Security-focused work including SMS 2FA and password policy improvements.</description>
+    <skills>
+      <skill>Security</skill>
+      <skill>2FA</skill>
+      <skill>Policies</skill>
+    </skills>
+  </experience>
+
+  <experience id="everest-bv-2012">
+    <tagline>Technical Engineer</tagline>
+    <company>Everest BV</company>
+    <period>
+      <startDate yearMonth="2012-04"/>
+      <endDate yearMonth="2013-04"/>
+      <raw>Apr 2012 – Apr 2013</raw>
+    </period>
+    <description>Technical engineering role across a one-year period (overlapping with short assignments).</description>
+    <skills>
+      <skill>Engineering</skill>
+      <skill>Consulting</skill>
+    </skills>
+  </experience>
+
+  <experience id="philips-healthcare-2011">
+    <tagline>Software Designer</tagline>
+    <company>Philips Healthcare</company>
+    <period>
+      <raw>2011 – 2012</raw>
+    </period>
+    <description>Contributed to medical software with 3D visualization support for ablation treatment use cases.</description>
+    <skills>
+      <skill>Healthcare</skill>
+      <skill>Scientific Software</skill>
+      <skill>C/C++</skill>
+      <skill>Visualization</skill>
+    </skills>
+  </experience>
+
+  <experience id="bosor-2010">
+    <tagline>Software Engineer</tagline>
+    <company>BOSOR</company>
+    <period>
+      <raw>2010</raw>
+    </period>
+    <description>Contributed to planning software front-end and led a database migration from MySQL to MSSQL.</description>
+    <skills>
+      <skill>Delphi</skill>
+      <skill>JavaScript</skill>
+    </skills>
+  </experience>
+
+  <experience id="asml-1997">
+    <tagline>Software Designer</tagline>
+    <company>ASML</company>
+    <period>
+      <raw>1997 – 2009</raw>
+    </period>
+    <description>12-year tenure on complex, large-scale semiconductor lithography systems, building deep C/C++ engineering depth in a high-reliability, high-precision domain.</description>
+    <skills>
+      <skill>High-Tech</skill>
+      <skill>C/C++</skill>
+      <skill>Engineering</skill>
+      <skill>Long-term</skill>
+    </skills>
+  </experience>
+
+</experiences>
