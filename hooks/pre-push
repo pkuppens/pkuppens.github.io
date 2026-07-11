@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Validates that package.json/package-lock.json still resolve cleanly before
+# they leave the machine. Catches ERESOLVE peer-dependency conflicts (e.g. a
+# dependency bump whose peers aren't satisfied) that would otherwise only be
+# found by CI's "Install dependencies" step.
+set -euo pipefail
+
+zero="0000000000000000000000000000000000000000"
+changed=false
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ "$local_sha" = "$zero" ] && continue # deleting a remote branch
+
+  base="$remote_sha"
+  if [ "$remote_sha" = "$zero" ] || ! git cat-file -e "$remote_sha" 2>/dev/null; then
+    base=$(git merge-base "$local_sha" origin/main 2>/dev/null || true)
+  fi
+
+  if [ -z "$base" ] || git diff --name-only "$base" "$local_sha" -- | grep -qE '^package(-lock)?\.json$'; then
+    changed=true
+  fi
+done
+
+if [ "$changed" = true ]; then
+  echo "pre-push: package.json/package-lock.json changed, validating with 'npm ci'..."
+  if ! npm ci --no-audit --no-fund; then
+    echo ""
+    echo "pre-push: 'npm ci' failed — this is usually an ERESOLVE peer-dependency"
+    echo "conflict that would also fail CI. Fix it locally before pushing."
+    exit 1
+  fi
+  echo "pre-push: npm ci succeeded."
+fi

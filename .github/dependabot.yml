@@ -25,3 +25,11 @@ updates:
         update-types:
           - patch
           - minor
+    ignore:
+      # typescript 7.x fails `npm ci` with ERESOLVE: @typescript-eslint/eslint-plugin's
+      # peer range is "typescript >=4.8.4 <6.1.0" and has no release supporting TS 7 yet.
+      # Remove this once @typescript-eslint/eslint-plugin declares support for TS 7.
+      # See PR #76 (CI run 29139014727) for the failure this prevents.
+      - dependency-name: "typescript"
+        update-types:
+          - "version-update:semver-major"
