@@ -4,6 +4,7 @@
   "version": "0.9.0",
   "type": "module",
   "scripts": {
+    "prepare": "git config core.hooksPath hooks || true",
     "dev": "vite",
     "build": "tsc && vite build && node scripts/copy-github-pages-spa-fallback.mjs",
     "validate:site-metadata": "node scripts/validate-site-metadata.mjs",
