@@ -43,46 +43,28 @@
 }
 
 .skillsGrid {
-  max-width: 640px;
+  max-width: 760px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.25rem;
 }
 
 .skillItem {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-}
-
-.skillHeader {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9rem;
-  font-weight: 500;
+  gap: 0.3rem;
 }
 
 .skillName {
   color: var(--color-text);
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
-.skillPct {
+.skillEvidence {
   color: var(--color-text-muted);
-}
-
-.skillBar {
-  height: 8px;
-  background: var(--color-border);
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.skillFill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-  border-radius: 999px;
-  transition: width 0.8s ease;
+  font-size: 0.85rem;
 }
 
 .ctaSection {
