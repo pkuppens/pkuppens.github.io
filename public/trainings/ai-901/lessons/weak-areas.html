@@ -1,0 +1,63 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/site-nav.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Practice Weak Areas — AI-901</title>
+
+<p class="eyebrow">AI-901 · Adaptive practice</p>
+<h1>Practice your weak areas</h1>
+<p class="subtitle">Pulled from every lesson and mock exam you've taken on this browser, weighted toward the domains where your recorded accuracy is lowest.</p>
+
+<div id="weak-summary"></div>
+
+<div class="quiz" id="weak-quiz"></div>
+
+<div class="lesson-nav no-print">
+  <a href="../index.html">← Course home</a>
+</div>
+
+<script src="../../shared/progress.js"></script>
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0001.js"></script>
+<script src="../data/0002.js"></script>
+<script src="../data/0003.js"></script>
+<script src="../data/0004.js"></script>
+<script src="../data/0005.js"></script>
+<script src="../data/0006.js"></script>
+<script src="../data/0007.js"></script>
+<script src="../data/0008.js"></script>
+<script>
+(function () {
+  var COURSE = 'ai-901';
+  var PRACTICE_SIZE = 15;
+
+  // Build one flat pool from every dataset, tagging each question with a stable
+  // qid (datasetId:tag:indexInFile) so repeat attempts here and on the source
+  // lesson page dedupe to the same weak-area stat.
+  var pool = [];
+  Object.keys(window.TRAINING_DATA).sort().forEach(function (datasetId) {
+    var qs = window.TRAINING_DATA[datasetId].questions || [];
+    qs.forEach(function (q, i) {
+      var copy = Object.assign({}, q, { _qid: datasetId + ':' + (q.tag || '-') + ':' + i });
+      pool.push(copy);
+    });
+  });
+
+  var weak = window.Progress.weakTags(COURSE);
+  var summary = document.getElementById('weak-summary');
+  if (!weak.length) {
+    summary.innerHTML = '<div class="callout warn"><span class="label">Not enough data yet</span>' +
+      'Take a lesson quiz or mock exam first — this page needs a few graded attempts per domain ' +
+      'before it can tell which ones are weak. Showing a random mix for now.</div>';
+  } else {
+    var focus = weak.filter(function (w) { return w.accuracy < 0.85; }).map(function (w) { return w.tag; });
+    summary.innerHTML = '<div class="callout key"><span class="label">Focus</span>' +
+      (focus.length ? 'Weighted toward: <b>' + focus.join(', ') + '</b>' : 'All domains are ≥85% — this is a light review mix.') +
+      '</div>';
+  }
+
+  var selected = window.Progress.filterWeighted(pool, COURSE, PRACTICE_SIZE);
+  window.Quiz.render('weak-quiz', { passMark: 0.7, questions: selected }, { courseId: COURSE, datasetId: 'weak-areas' });
+})();
+</script>

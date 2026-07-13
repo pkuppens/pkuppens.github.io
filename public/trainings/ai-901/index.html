@@ -15,6 +15,8 @@
   Shareable with colleagues — every page stands alone.
 </div>
 
+<div id="progress-panel"></div>
+
 <h2>Start here</h2>
 <div class="grid">
   <div class="card"><h3>Diagnostic</h3><p><a href="lessons/0001-orientation-and-diagnostic.html">Lesson 01 — Orientation &amp; Diagnostic</a><br><span class="small">See the exam shape, take a 15-question spread across both domains.</span></p></div>
@@ -45,4 +47,36 @@
   <div class="card"><h3>Mock 2</h3><p><a href="lessons/0007-mock-exam-2.html">30 fresh · interleaved</a></p></div>
   <div class="card"><h3>Mock 3</h3><p><a href="lessons/0008-mock-exam-3.html">30 fresh · readiness gate</a></p></div>
 </div>
+
+<script src="../shared/progress.js"></script>
+<script>
+(function () {
+  var tags = window.Progress.weakTags('ai-901');
+  if (!tags.length) return; // nothing recorded yet — keep the landing page uncluttered
+  var panel = document.getElementById('progress-panel');
+  var rows = tags.map(function (t) {
+    var pct = Math.round(t.accuracy * 100);
+    return '<div class="dom-row"><span class="dom-name">' + t.tag + '</span>' +
+      '<div class="meter sm"><span style="width:' + pct + '%;background:' +
+      (pct >= 70 ? 'var(--good)' : 'var(--bad)') + '"></span></div>' +
+      '<span class="dom-num">' + t.attempts + ' seen · ' + pct + '%</span></div>';
+  }).join('');
+  panel.innerHTML =
+    '<div class="callout key">' +
+      '<span class="label">Your progress</span>' +
+      '<div class="dom-breakdown">' + rows + '</div>' +
+      '<p class="small" style="margin-top:.6rem">' +
+        '<a href="lessons/weak-areas.html">Practice your weak areas →</a>' +
+        ' &nbsp;·&nbsp; <a href="#" id="reset-progress">Reset progress</a>' +
+      '</p>' +
+    '</div>';
+  document.getElementById('reset-progress').addEventListener('click', function (e) {
+    e.preventDefault();
+    if (confirm('Clear all recorded AI-901 progress on this browser?')) {
+      window.Progress.reset('ai-901');
+      location.reload();
+    }
+  });
+})();
+</script>
 
