@@ -173,16 +173,25 @@
     }
 
     return { card, isAnswered, isCorrect, lockAndReveal, getSelection, type,
-             tag: item.tag || "", locked: false };
+             tag: item.tag || "", locked: false, qid: item._qid };
   }
 
   /* ---- Renderer --------------------------------------------------------- */
-  function render(elId, cfg) {
+  // `meta` is optional: { courseId, datasetId }. When present and window.Progress
+  // is loaded, each graded question is recorded for weak-area tracking — see
+  // shared/progress.js. Omit meta (or don't load progress.js) and nothing changes.
+  function render(elId, cfg, meta) {
     const root = document.getElementById(elId);
     if (!root) return;
     const mode = cfg.mode || "practice";
     const passPct = Math.round((cfg.passMark ?? 0.7) * 100);
     const questions = cfg.questions.map((it, i) => buildQuestion(it, i, mode));
+
+    function recordResult(q, idx) {
+      if (!window.Progress || !meta || !meta.courseId) return;
+      const qid = q.qid || ((meta.datasetId || "?") + ":" + (q.tag || "-") + ":" + idx);
+      window.Progress.record(meta.courseId, qid, q.tag || "", q.isCorrect());
+    }
 
     // Header
     const head = el("div", "quiz-head");
@@ -231,7 +240,7 @@
     function submitExam() {
       if (submitted) return;
       submitted = true;
-      questions.forEach(q => { q.locked = true; q.lockAndReveal(); });
+      questions.forEach((q, idx) => { q.locked = true; q.lockAndReveal(); recordResult(q, idx); });
       correct = questions.filter(q => q.isCorrect()).length;
       const pct = Math.round(correct / questions.length * 100);
       const scaled = Math.round(pct * 10); // rough /1000 estimate
@@ -257,7 +266,7 @@
     }
 
     // Wire up per-question interaction
-    questions.forEach(q => {
+    questions.forEach((q, idx) => {
       root.appendChild(q.card);
       if (mode === "practice") {
         // lock+reveal on first complete answer
@@ -265,6 +274,7 @@
           if (q.locked || !q.isAnswered()) return;
           q.locked = true;
           q.lockAndReveal();
+          recordResult(q, idx);
           tallyPractice();
           if (answered === questions.length) {
             const pct = Math.round(correct / questions.length * 100);

@@ -141,6 +141,33 @@ Every question carries `q` (prompt), `why` (explanation shown after answering, H
 `mode: "practice"` (lessons) reveals feedback per question; `mode: "exam"` (mocks) grades all questions
 on submit and shows a scaled score (~/1000, pass 700) with a pass/fail verdict.
 
+### Weak-area tracking (optional, per-browser)
+
+[`shared/progress.js`](./shared/progress.js) is an optional companion to `quiz.js`: load it *before*
+`quiz.js` and pass a third argument to `Quiz.render` to record every graded attempt to localStorage
+(no accounts, no backend, per-browser only — see AI-901's `index.html`/`lessons/*.html` for the pattern):
+
+```html
+<script src="../../shared/progress.js"></script>
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0002.js"></script>
+<script>Quiz.render('q-core', window.TRAINING_DATA['0002'], { courseId: 'ai-901', datasetId: '0002' });</script>
+```
+
+`courseId`/`datasetId` are only used to build a stable per-question id (`datasetId:tag:index`); omit the
+third argument (or don't load `progress.js`) and a page behaves exactly as before. `Progress` exposes:
+
+- `Progress.weakTags(courseId)` — per-tag rolling accuracy, weakest first, once a tag has ≥3 attempts.
+- `Progress.filterWeighted(questions, courseId, count)` — given a flat pool of questions, returns a
+  subset biased toward weak tags (falls back to a plain shuffle with no history).
+- `Progress.reset(courseId)` — clears recorded attempts for that course.
+
+AI-901's `index.html` renders a "Your progress" panel from `weakTags()` once data exists, linking to
+`lessons/weak-areas.html` — an adaptive practice page that pools every dataset in the course and calls
+`filterWeighted()` to build a session weighted toward the reader's weakest domains. Copy that page's
+pattern (merge all `data/*.js` files, tag questions with `_qid`, call `filterWeighted`) for any other
+course that wants the same feature.
+
 ## Wiring a course into the site
 
 The `/trainings` card grid is not generated from this folder — it is a hand-maintained array in
