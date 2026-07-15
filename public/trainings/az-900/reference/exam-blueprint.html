@@ -1,0 +1,117 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/site-nav.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>AZ-900 Exam Blueprint — Reference</title>
+
+<p class="eyebrow">AZ-900 · Reference</p>
+<h1>Exam Blueprint</h1>
+<p class="subtitle">The authoritative skills-measured outline, straight from Microsoft. Everything testable lives here.</p>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900">Official Study Guide — Exam AZ-900</a>
+  · Skills as of <b>2026-07-20</b> (the English exam updates on this date; the change log shows only minor
+  wording changes vs. the prior version, no domain restructuring).
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Pass mark</h3>
+    <p><b style="font-size:1.6rem">700</b> / 1000. A scaled score — not a raw percentage. Aim for ~85%+ on practice to clear it comfortably.</p>
+  </div>
+  <div class="card">
+    <h3>Format</h3>
+    <p>45 minutes. Multiple-choice, multi-select, drag-and-drop, case-style. No live labs.</p>
+  </div>
+  <div class="card">
+    <h3>Assumed skills</h3>
+    <p>This course assumes you already know cloud computing and at least one other provider (AWS/GCP) — it drills Microsoft's terminology and exam patterns, not cloud fundamentals from zero.</p>
+  </div>
+</div>
+
+<h2>Domain 1 · Describe cloud concepts <span class="badge wt">25–30%</span></h2>
+<h3>Describe cloud computing</h3>
+<ul>
+  <li>Define cloud computing; describe the shared responsibility model.</li>
+  <li>Define cloud models — public, private, hybrid — and identify appropriate use cases for each.</li>
+  <li>Describe the consumption-based model; compare cloud pricing models (CapEx vs. OpEx).</li>
+  <li>Describe serverless.</li>
+</ul>
+<h3>Describe the benefits of using cloud services</h3>
+<ul>
+  <li>High availability and scalability.</li>
+  <li>Reliability and predictability.</li>
+  <li>Security and governance.</li>
+  <li>Manageability.</li>
+</ul>
+<h3>Describe cloud service types</h3>
+<ul>
+  <li>IaaS, PaaS, SaaS — and appropriate use cases for each.</li>
+</ul>
+
+<h2>Domain 2 · Describe Azure architecture and services <span class="badge wt">35–40%</span></h2>
+<h3>Describe the core architectural components of Azure</h3>
+<ul>
+  <li>Regions, region pairs, and sovereign regions; availability zones; datacenters.</li>
+  <li>Resources and resource groups; subscriptions; management groups.</li>
+  <li>The hierarchy of resource groups, subscriptions, and management groups.</li>
+</ul>
+<h3>Describe Azure compute and networking services</h3>
+<ul>
+  <li>Compare compute types: containers, virtual machines, functions.</li>
+  <li>VM options: Azure VMs, Virtual Machine Scale Sets, availability sets, Azure Virtual Desktop.</li>
+  <li>Resources required for VMs; app hosting options (web apps, containers, VMs).</li>
+  <li>Virtual networking: VNets, subnets, peering, Azure DNS, VPN Gateway, ExpressRoute.</li>
+  <li>Public and private endpoints.</li>
+</ul>
+<h3>Describe Azure storage services</h3>
+<ul>
+  <li>Compare Azure Storage services; storage tiers; redundancy options.</li>
+  <li>Storage account options and storage types.</li>
+  <li>Moving files: AzCopy, Azure Storage Explorer, Azure File Sync.</li>
+  <li>Migration options: Azure Migrate, Azure Data Box.</li>
+</ul>
+<h3>Describe Azure identity, access, and security</h3>
+<ul>
+  <li>Microsoft Entra ID and Microsoft Entra Domain Services.</li>
+  <li>Authentication methods: SSO, MFA, passwordless; external identities.</li>
+  <li>Microsoft Entra Conditional Access; Azure role-based access control (RBAC).</li>
+  <li>Zero Trust; defense-in-depth; Microsoft Defender for Cloud.</li>
+</ul>
+
+<h2>Domain 3 · Describe Azure management and governance <span class="badge wt">30–35%</span></h2>
+<h3>Describe cost management in Azure</h3>
+<ul>
+  <li>Factors affecting cost; the pricing calculator.</li>
+  <li>Cost management capabilities; the purpose of tags.</li>
+</ul>
+<h3>Describe features and tools for governance and compliance</h3>
+<ul>
+  <li>Microsoft Purview; Azure Policy; resource locks.</li>
+</ul>
+<h3>Describe features and tools for managing and deploying Azure resources</h3>
+<ul>
+  <li>The Azure portal; Azure Cloud Shell, CLI, and PowerShell.</li>
+  <li>Azure Arc; infrastructure as code (IaC); ARM templates.</li>
+</ul>
+<h3>Describe monitoring tools in Azure</h3>
+<ul>
+  <li>Azure Advisor; Azure Service Health.</li>
+  <li>Azure Monitor, including Log Analytics, alerts, and Application Insights.</li>
+</ul>
+
+<div class="callout key">
+  <span class="label">Where the points are</span>
+  Domain 2 is the largest single share, and its center of gravity is <b>vocabulary mapping</b> — compute
+  options, networking primitives, storage tiers/redundancy, and the Entra ID/RBAC split. If you already
+  know AWS or GCP, this is mostly relabeling what you know, not new material. Domain 3's tool-boundary
+  questions (Policy vs. RBAC vs. locks; Advisor vs. Service Health vs. Monitor) are cheap, memorizable
+  points — bank them all.
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./glossary.html">→ Glossary</a>
+  <a href="../lessons/0001-orientation-and-diagnostic.html">→ Lesson 01: Orientation &amp; Diagnostic</a>
+</div>

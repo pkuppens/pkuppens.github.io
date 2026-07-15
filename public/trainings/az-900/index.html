@@ -1,0 +1,83 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../shared/site-nav.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../shared/trainings.css">
+<title>AZ-900 Study Course</title>
+
+<p class="eyebrow">Microsoft Certified: Azure Fundamentals</p>
+<h1>AZ-900 Study Course</h1>
+<p class="subtitle">Built for people who already know cloud computing and another provider (AWS/GCP) — this isn't a cloud-fundamentals course, it's a Microsoft-terminology recap plus exam-pattern drilling. Take the lessons in order, drill the quizzes until green, then clear all five mock exams. Pass mark: 700/1000.</p>
+
+<div class="callout key">
+  <span class="label">How to use this</span>
+  Each lesson is short and ends with an auto-graded quiz. Aim for ≥85% on every quiz before the exam.
+  Shareable with colleagues — every page stands alone.
+</div>
+
+<div id="progress-panel"></div>
+
+<h2>Start here</h2>
+<div class="grid">
+  <div class="card"><h3>Diagnostic</h3><p><a href="lessons/0001-orientation-and-diagnostic.html">Lesson 01 — Orientation &amp; Diagnostic</a><br><span class="small">See the exam shape, take a 16-question spread across all three domains.</span></p></div>
+</div>
+
+<h2>Reference (revisit often · printable)</h2>
+<div class="grid">
+  <div class="card"><h3>Exam Blueprint</h3><p><a href="reference/exam-blueprint.html">Authoritative objectives + weightings</a></p></div>
+  <div class="card"><h3>Glossary</h3><p><a href="reference/glossary.html">Cross-cloud terminology map + naming traps</a></p></div>
+</div>
+
+<h2>Lessons</h2>
+<div class="table-wrap"><table>
+  <tr><th>#</th><th>Lesson</th><th>Domain</th><th>Covers</th></tr>
+  <tr><td>02</td><td><a href="lessons/0002-cloud-concepts.html">Cloud Concepts</a></td><td><span class="badge d1">D1</span> 25–30%</td><td>Shared responsibility, cloud models, pricing, benefits, service types</td></tr>
+  <tr><td>03</td><td><a href="lessons/0003-core-architecture-and-compute.html">Core Architecture &amp; Compute</a></td><td><span class="badge d2">D2</span> 35–40%</td><td>Regions/zones, resource hierarchy, compute options, networking</td></tr>
+  <tr><td>04</td><td><a href="lessons/0004-storage-and-identity.html">Storage &amp; Identity</a></td><td><span class="badge d2">D2</span> 35–40%</td><td>Storage services/tiers/redundancy, Entra ID, RBAC, Zero Trust</td></tr>
+  <tr><td>05</td><td><a href="lessons/0005-management-and-governance.html">Management &amp; Governance</a></td><td><span class="badge d3">D3</span> 30–35%</td><td>Cost tools, Policy/locks/Purview, deployment tooling, monitoring</td></tr>
+</table></div>
+
+<h2>Mock exams <span class="badge wt">exam-grade</span></h2>
+<p>30 questions each, exam-weighted, mixed formats (single, multi-select, matching, ordering). Answer all → submit → scaled score (~/1000, pass 700), pass/fail verdict, and a per-domain readiness read. Two at ≥85% back-to-back = book it.</p>
+<div class="grid">
+  <div class="card"><h3>Mock 1</h3><p><a href="lessons/0006-mock-exam-1.html">30 questions · all domains</a></p></div>
+  <div class="card"><h3>Mock 2</h3><p><a href="lessons/0007-mock-exam-2.html">30 fresh · interleaved</a></p></div>
+  <div class="card"><h3>Mock 3</h3><p><a href="lessons/0008-mock-exam-3.html">30 fresh · checkpoint</a></p></div>
+  <div class="card"><h3>Mock 4</h3><p><a href="lessons/0009-mock-exam-4.html">30 fresh · pre-exam drill</a></p></div>
+  <div class="card"><h3>Mock 5</h3><p><a href="lessons/0010-mock-exam-5.html">30 fresh · readiness gate</a></p></div>
+</div>
+
+<h2>Adaptive practice</h2>
+<p><a href="lessons/weak-areas.html">Practice your weak areas →</a> — a 15-question mix pulled from every lesson and mock, biased toward the domains where your recorded accuracy is lowest. Retake it as often as you like.</p>
+
+<script src="../shared/progress.js"></script>
+<script>
+(function () {
+  var tags = window.Progress.weakTags('az-900');
+  if (!tags.length) return; // nothing recorded yet — keep the landing page uncluttered
+  var panel = document.getElementById('progress-panel');
+  var rows = tags.map(function (t) {
+    var pct = Math.round(t.accuracy * 100);
+    return '<div class="dom-row"><span class="dom-name">' + t.tag + '</span>' +
+      '<div class="meter sm"><span style="width:' + pct + '%;background:' +
+      (pct >= 70 ? 'var(--good)' : 'var(--bad)') + '"></span></div>' +
+      '<span class="dom-num">' + t.attempts + ' seen · ' + pct + '%</span></div>';
+  }).join('');
+  panel.innerHTML =
+    '<div class="callout key">' +
+      '<span class="label">Your progress</span>' +
+      '<div class="dom-breakdown">' + rows + '</div>' +
+      '<p class="small" style="margin-top:.6rem">' +
+        '<a href="lessons/weak-areas.html">Practice your weak areas →</a>' +
+        ' &nbsp;·&nbsp; <a href="#" id="reset-progress">Reset progress</a>' +
+      '</p>' +
+    '</div>';
+  document.getElementById('reset-progress').addEventListener('click', function (e) {
+    e.preventDefault();
+    if (confirm('Clear all recorded AZ-900 progress on this browser?')) {
+      window.Progress.reset('az-900');
+      location.reload();
+    }
+  });
+})();
+</script>

@@ -1,0 +1,86 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/site-nav.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 05 — Management &amp; Governance</title>
+
+<p class="eyebrow">AZ-900 · Lesson 05 · <span class="badge d3">D3</span> 30–35%</p>
+<h1>Management &amp; Governance</h1>
+<p class="subtitle">Domain 3 covers four practical clusters: cost, governance/compliance, deployment tooling, and monitoring. Most questions are "which tool does X" — precision on tool boundaries is what scores points here.</p>
+
+<h2>Cost management</h2>
+<div class="table-wrap"><table>
+  <tr><th>Tool</th><th>When you use it</th></tr>
+  <tr><td>Pricing calculator</td><td>Before deployment — estimate a hypothetical configuration</td></tr>
+  <tr><td>Azure Cost Management</td><td>After deployment — analyze actual spend, set budgets/alerts</td></tr>
+  <tr><td>Tags</td><td>Metadata for cost allocation, filtering, automation (same concept/name as AWS)</td></tr>
+</table></div>
+
+<div class="callout tip">
+  <span class="label">Exam cue</span>
+  "Before deploying" → Pricing calculator. "Resources are already running, show me the trend" → Cost Management.
+  Confusing these two is a top-5 miss on practice exams.
+</div>
+
+<h2>Governance &amp; compliance</h2>
+<div class="table-wrap"><table>
+  <tr><th>Tool</th><th>AWS/GCP analog</th><th>Purpose</th></tr>
+  <tr><td>Azure Policy</td><td>AWS Config / Org Policy</td><td>Enforce/audit resource <em>configuration</em> rules</td></tr>
+  <tr><td>Resource lock</td><td>(no direct equivalent)</td><td>Block delete (CanNotDelete) or delete+edit (ReadOnly), independent of RBAC</td></tr>
+  <tr><td>Microsoft Purview</td><td>Data catalog/lineage tooling</td><td>Discover, classify, and govern data across the estate</td></tr>
+</table></div>
+
+<div class="callout warn">
+  <span class="label">Classic pairing question</span>
+  RBAC controls <b>who can act</b>. Azure Policy controls <b>what configuration is allowed</b>, regardless
+  of who deployed it. A resource lock blocks specific actions (delete/edit) <b>regardless of role</b> — even
+  an Owner is blocked until the lock is removed.
+</div>
+
+<h2>Deployment &amp; management tooling</h2>
+<div class="table-wrap"><table>
+  <tr><th>Tool</th><th>Shape</th></tr>
+  <tr><td>Azure portal</td><td>Web GUI</td></tr>
+  <tr><td>Azure Cloud Shell</td><td>Browser-based, pre-authenticated shell, zero install</td></tr>
+  <tr><td>Azure CLI / PowerShell</td><td>Same tools, installed locally instead</td></tr>
+  <tr><td>Azure Arc</td><td>Extends Policy/RBAC/tags to non-Azure servers and Kubernetes</td></tr>
+  <tr><td>ARM templates</td><td>Native declarative IaC (JSON) — analog to CloudFormation</td></tr>
+  <tr><td>Bicep</td><td>Friendlier syntax that compiles to the same ARM templates</td></tr>
+</table></div>
+
+<h2>Monitoring</h2>
+<div class="table-wrap"><table>
+  <tr><th>Tool</th><th>AWS/GCP analog</th><th>Purpose</th></tr>
+  <tr><td>Azure Advisor</td><td>(broad best-practice recommendations)</td><td>Proactive tips across cost/security/reliability/performance</td></tr>
+  <tr><td>Azure Service Health</td><td>Personal Health Dashboard</td><td>Is <em>Azure itself</em> having an issue affecting your resources?</td></tr>
+  <tr><td>Azure Monitor</td><td>CloudWatch / Cloud Monitoring</td><td>Collects your resources' own metrics/logs, drives alerts</td></tr>
+  <tr><td>↳ Log Analytics</td><td>CloudWatch Logs Insights</td><td>KQL queries over collected logs</td></tr>
+  <tr><td>↳ Application Insights</td><td>X-Ray / Cloud Trace</td><td>App-level performance telemetry</td></tr>
+  <tr><td>↳ Alerts</td><td>CloudWatch Alarms</td><td>Threshold-based automated notification</td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">Exam cue</span>
+  "Is the platform broken?" → Service Health. "Is <em>my</em> resource broken?" → Monitor. "What should I
+  change to do better?" → Advisor. Three different questions, three different tools.
+</div>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-d3"></div>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/training/modules/describe-monitoring-tools-azure/">Microsoft Learn: Describe monitoring tools in Azure</a>
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./0004-storage-and-identity.html">← Lesson 04</a>
+  <a href="../reference/exam-blueprint.html">Exam Blueprint</a>
+  <a href="./0006-mock-exam-1.html">Mock Exam 1 →</a>
+</div>
+
+<script src="../../shared/progress.js"></script>
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0005.js"></script>
+<script>Quiz.render('q-d3', window.TRAINING_DATA['0005'], { courseId: 'az-900', datasetId: '0005' });</script>

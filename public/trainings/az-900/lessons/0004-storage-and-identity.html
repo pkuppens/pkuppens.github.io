@@ -1,0 +1,87 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/site-nav.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 04 — Storage, Identity, Access &amp; Security</title>
+
+<p class="eyebrow">AZ-900 · Lesson 04 · <span class="badge d2">D2</span> 35–40%</p>
+<h1>Storage, Identity, Access &amp; Security</h1>
+<p class="subtitle">The second half of Domain 2. Storage tiers/redundancy and identity/RBAC are two of the exam's densest vocabulary blocks — worth over-studying since the concepts are simple but the option-count is high.</p>
+
+<h2>Storage services</h2>
+<div class="table-wrap"><table>
+  <tr><th>Service</th><th>AWS/GCP analog</th><th>Shape</th></tr>
+  <tr><td>Blob Storage</td><td>S3 / Cloud Storage</td><td>Unstructured objects over HTTP/HTTPS</td></tr>
+  <tr><td>Azure Files</td><td>EFS / Filestore</td><td>Mountable SMB/NFS shares</td></tr>
+  <tr><td>Table Storage</td><td>DynamoDB (loosely)</td><td>NoSQL key-value</td></tr>
+  <tr><td>Queue Storage</td><td>SQS</td><td>App-to-app messaging</td></tr>
+</table></div>
+
+<h2>Access tiers vs. redundancy — two different axes</h2>
+<p>Tiers control <b>how often you access data</b>; redundancy controls <b>how many copies exist and where</b>. They're independent settings, and the exam loves mixing them up.</p>
+<div class="table-wrap"><table>
+  <tr><th>Access tier</th><th>Access frequency</th><th>Storage cost</th></tr>
+  <tr><td>Hot</td><td>Frequent</td><td>Highest</td></tr>
+  <tr><td>Cool</td><td>Infrequent (~monthly)</td><td>Medium</td></tr>
+  <tr><td>Cold</td><td>Rare</td><td>Lower</td></tr>
+  <tr><td>Archive</td><td>Rare, hours of retrieval latency accepted</td><td>Lowest</td></tr>
+</table></div>
+<div class="table-wrap"><table>
+  <tr><th>Redundancy</th><th>Copies &amp; location</th></tr>
+  <tr><td>LRS</td><td>3 sync copies, one datacenter</td></tr>
+  <tr><td>ZRS</td><td>3 sync copies, spread across zones in one region</td></tr>
+  <tr><td>GRS</td><td>LRS + async copy in a paired region</td></tr>
+  <tr><td>GZRS</td><td>ZRS + async copy in a paired region — widest protection</td></tr>
+</table></div>
+
+<h2>Moving data</h2>
+<div class="table-wrap"><table>
+  <tr><th>Tool</th><th>Shape</th></tr>
+  <tr><td>AzCopy</td><td>Command-line, scriptable, CI/CD-friendly</td></tr>
+  <tr><td>Azure Storage Explorer</td><td>Desktop GUI</td></tr>
+  <tr><td>Azure File Sync</td><td>Hybrid: caches on-prem, full data lives in Azure Files</td></tr>
+  <tr><td>Azure Migrate</td><td>Assesses + migrates whole on-prem servers</td></tr>
+  <tr><td>Azure Data Box</td><td>Offline, shippable appliance for bulk transfer</td></tr>
+</table></div>
+
+<h2>Identity, access &amp; security</h2>
+<p>Azure splits what many clouds bundle into "IAM" into two layers: <b>Microsoft Entra ID</b> (identities live here) and <b>RBAC</b> (permissions get assigned here, at a scope).</p>
+<div class="table-wrap"><table>
+  <tr><th>Concept</th><th>AWS/GCP analog</th><th>What it is</th></tr>
+  <tr><td>Microsoft Entra ID</td><td>IAM identity store</td><td>Users, groups, app registrations</td></tr>
+  <tr><td>Entra Domain Services</td><td>(classic AD-compatible directory)</td><td>Managed legacy AD/LDAP for older apps</td></tr>
+  <tr><td>Azure RBAC</td><td>IAM roles/policies</td><td>Role assignment = principal + role + scope</td></tr>
+  <tr><td>Conditional Access</td><td>context-aware access policy</td><td>Rules based on risk, device, location</td></tr>
+  <tr><td>External identities</td><td>federated/guest identity</td><td>Partners sign in with their own IdP</td></tr>
+  <tr><td>SSO</td><td>SSO</td><td>Sign in once, access many apps</td></tr>
+  <tr><td>MFA / passwordless</td><td>MFA / passwordless</td><td>Second factor / no password at all</td></tr>
+</table></div>
+
+<div class="callout warn">
+  <span class="label">Naming trap</span>
+  "Microsoft Entra ID" is the current name (formerly <span class="aka">Azure Active Directory / Azure AD</span>).
+  Distractors on the exam still use the retired name — recognize it, don't pick it.
+</div>
+
+<h2>Security principles</h2>
+<p><b>Zero Trust</b> — "never trust, always verify," no implicit trust from network location — is the philosophy. <b>Defense-in-depth</b> — layered controls across network, identity, app, and data — is how you implement it. <b>Microsoft Defender for Cloud</b> is the tool that scores and hardens your posture against both.</p>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-d2b"></div>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/training/modules/describe-azure-identity-access-security/">Microsoft Learn: Describe Azure identity, access, and security</a>
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./0003-core-architecture-and-compute.html">← Lesson 03</a>
+  <a href="../reference/glossary.html">Glossary</a>
+  <a href="./0005-management-and-governance.html">Lesson 05: Management &amp; governance →</a>
+</div>
+
+<script src="../../shared/progress.js"></script>
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0004.js"></script>
+<script>Quiz.render('q-d2b', window.TRAINING_DATA['0004'], { courseId: 'az-900', datasetId: '0004' });</script>

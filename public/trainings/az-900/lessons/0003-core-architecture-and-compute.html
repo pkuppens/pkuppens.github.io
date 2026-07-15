@@ -1,0 +1,79 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/site-nav.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 03 — Core Architecture, Compute &amp; Networking</title>
+
+<p class="eyebrow">AZ-900 · Lesson 03 · <span class="badge d2">D2</span> 35–40%</p>
+<h1>Core Architecture, Compute &amp; Networking</h1>
+<p class="subtitle">Domain 2 is the heaviest, and this is its foundation: how Azure organizes resources, and how you run compute and connect it. Every term here has a direct AWS/GCP analog — the work is remapping vocabulary, not learning new concepts.</p>
+
+<h2>The organizational hierarchy</h2>
+<div class="table-wrap"><table>
+  <tr><th>Azure scope</th><th>Closest AWS/GCP equivalent</th><th>Purpose</th></tr>
+  <tr><td>Management group</td><td>AWS Organizations OU</td><td>Governs multiple subscriptions at once</td></tr>
+  <tr><td>Subscription</td><td>AWS account / GCP project (billing)</td><td>Billing and scale boundary</td></tr>
+  <tr><td>Resource group</td><td>(no direct 1:1 equivalent)</td><td>Lifecycle/RBAC container for related resources</td></tr>
+  <tr><td>Resource</td><td>Individual service instance</td><td>A specific VM, storage account, etc.</td></tr>
+</table></div>
+
+<div class="callout tip">
+  <span class="label">Exam cue</span>
+  A <b>tenant</b> (your Entra ID directory) sits above subscriptions and isn't part of the resource
+  hierarchy itself — one tenant can contain many subscriptions. RBAC and Policy assigned at a higher scope
+  are <b>inherited downward</b>.
+</div>
+
+<h2>Regions, zones, and pairs</h2>
+<div class="table-wrap"><table>
+  <tr><th>Construct</th><th>Protects against</th></tr>
+  <tr><td>Availability zone (same term as AWS AZ)</td><td>Loss of one datacenter within a region — synchronous replication</td></tr>
+  <tr><td>Region pair</td><td>Loss of an entire region — async DR, coordinated platform updates</td></tr>
+  <tr><td>Sovereign region (e.g. Azure Government)</td><td>Not physical failure — legal/compliance isolation from global Azure</td></tr>
+</table></div>
+
+<h2>Compute options</h2>
+<div class="table-wrap"><table>
+  <tr><th>Option</th><th>AWS/GCP analog</th><th>You manage</th></tr>
+  <tr><td>Virtual Machines</td><td>EC2 / Compute Engine</td><td>OS and above</td></tr>
+  <tr><td>Virtual Machine Scale Sets</td><td>Auto Scaling Group</td><td>OS and above, auto-scaled</td></tr>
+  <tr><td>Availability set</td><td>(fault-domain grouping, no auto-scale)</td><td>OS and above, manually placed</td></tr>
+  <tr><td>Azure Container Instances</td><td>Fargate</td><td>Just the container</td></tr>
+  <tr><td>Azure Kubernetes Service</td><td>EKS / GKE</td><td>Container orchestration config</td></tr>
+  <tr><td>Azure Functions</td><td>Lambda / Cloud Functions</td><td>Just your code, per-execution billing</td></tr>
+  <tr><td>Azure App Service</td><td>Elastic Beanstalk / App Engine</td><td>Just your app code, PaaS</td></tr>
+  <tr><td>Azure Virtual Desktop</td><td>WorkSpaces</td><td>Streamed full desktop for end users</td></tr>
+</table></div>
+
+<h2>Networking</h2>
+<div class="table-wrap"><table>
+  <tr><th>Concept</th><th>AWS/GCP analog</th><th>Purpose</th></tr>
+  <tr><td>Virtual Network (VNet)</td><td>VPC</td><td>Private address space and isolation boundary</td></tr>
+  <tr><td>Subnet</td><td>Subnet</td><td>Segment of a VNet's address space</td></tr>
+  <tr><td>VNet peering</td><td>VPC peering</td><td>Private VNet-to-VNet connectivity</td></tr>
+  <tr><td>VPN Gateway</td><td>Site-to-Site VPN</td><td>Encrypted tunnel over the public internet</td></tr>
+  <tr><td>ExpressRoute</td><td>Direct Connect</td><td>Dedicated private circuit, off the public internet</td></tr>
+  <tr><td>Azure DNS</td><td>Route 53</td><td>Domain name resolution</td></tr>
+  <tr><td>Public endpoint</td><td>Public-facing service address</td><td>Internet-reachable</td></tr>
+  <tr><td>Private endpoint</td><td>PrivateLink / Private Service Connect</td><td>Brings a PaaS service inside your VNet, off the public internet</td></tr>
+</table></div>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-d2a"></div>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/training/modules/intro-to-azure-fundamentals-core-architectural-components/">Microsoft Learn: Describe core Azure architectural components</a>
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./0002-cloud-concepts.html">← Lesson 02</a>
+  <a href="../reference/glossary.html">Glossary</a>
+  <a href="./0004-storage-and-identity.html">Lesson 04: Storage &amp; identity →</a>
+</div>
+
+<script src="../../shared/progress.js"></script>
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0003.js"></script>
+<script>Quiz.render('q-d2a', window.TRAINING_DATA['0003'], { courseId: 'az-900', datasetId: '0003' });</script>
