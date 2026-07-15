@@ -30,6 +30,7 @@ describe('Trainings static course pages (dev server)', () => {
   it.each([
     ['dp-900', 'DP-900 Study Course'],
     ['ai-901', 'AI-901 Study Course'],
+    ['az-900', 'AZ-900 Study Course'],
   ])('serves the static %s page at its directory URL', async (id, title) => {
     const res = await fetch(new URL(`trainings/${id}/`, baseUrl))
     expect(res.ok, `Expected 2xx for /trainings/${id}/`).toBe(true)

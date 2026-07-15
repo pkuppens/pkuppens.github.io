@@ -15,10 +15,14 @@ card grid on `/trainings` is a React page in the site's `src/` (see [Wiring a co
 | --- | --- | --- | --- |
 | **AI-901** | Azure AI Fundamentals | Live | [`ai-901/`](./ai-901/index.html) |
 | **DP-900** | Azure Data Fundamentals | Live | [`dp-900/`](./dp-900/index.html) |
+| **AZ-900** | Azure Fundamentals | Live | [`az-900/`](./az-900/index.html) |
 | CKAD | Certified Kubernetes Application Developer | Planned | — |
 
-Each live course provides: a diagnostic, one lesson per exam domain, three exam-weighted mock exams,
-and two printable reference docs (an exam blueprint and a glossary).
+Each live course provides: a diagnostic, one or more lessons per exam domain, exam-weighted mock exams
+(three for AI-901/DP-900, five for AZ-900, which also adds a cross-cloud terminology map for readers
+coming from AWS/GCP), and two printable reference docs (an exam blueprint and a glossary). AI-901 and
+AZ-900 additionally track per-browser weak areas (see [below](#weak-area-tracking-optional-per-browser))
+with an adaptive retake page.
 
 ## How it is built
 

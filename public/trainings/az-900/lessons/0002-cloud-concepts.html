@@ -1,0 +1,79 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/site-nav.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 02 — Cloud Concepts</title>
+
+<p class="eyebrow">AZ-900 · Lesson 02 · <span class="badge d1">D1</span> 25–30%</p>
+<h1>Cloud Concepts</h1>
+<p class="subtitle">The cheapest points on the exam — pure vocabulary and definitions, no Azure specifics required. You already know these ideas from AWS/GCP; this lesson is about the exact phrasing Microsoft expects.</p>
+
+<h2>Shared responsibility model</h2>
+<p>One model, three service types, one rule that never changes: <b>the customer always owns data, identities, and endpoints</b>. Everything else shifts as you move right:</p>
+<div class="table-wrap"><table>
+  <tr><th>Layer</th><th>On-prem</th><th>IaaS</th><th>PaaS</th><th>SaaS</th></tr>
+  <tr><td>Data, devices, access</td><td colspan="4">Always customer</td></tr>
+  <tr><td>OS patching</td><td>Customer</td><td>Customer</td><td>Microsoft</td><td>Microsoft</td></tr>
+  <tr><td>Runtime / middleware</td><td>Customer</td><td>Customer</td><td>Microsoft</td><td>Microsoft</td></tr>
+  <tr><td>Application code</td><td>Customer</td><td>Customer</td><td>Customer</td><td>Microsoft</td></tr>
+  <tr><td>Physical datacenter</td><td>Customer</td><td colspan="3">Always Microsoft (in Azure)</td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">Exam cue</span>
+  If a question asks "who is responsible for X, in every model" — the answer is either
+  <b>always the customer</b> (data/identity/access/endpoints) or <b>always Microsoft</b> (physical security),
+  never "it depends."
+</div>
+
+<h2>Cloud models</h2>
+<div class="table-wrap"><table>
+  <tr><th>Model</th><th>Tenancy</th><th>Typical driver</th></tr>
+  <tr><td>Public</td><td>Multi-tenant, shared</td><td>Cost, elasticity, speed to deploy</td></tr>
+  <tr><td>Private</td><td>Single-tenant, dedicated (can still be provider-hosted)</td><td>Compliance, control, predictable performance</td></tr>
+  <tr><td>Hybrid</td><td>Mixed, connected</td><td>Regulated data on-prem + elastic burst to cloud</td></tr>
+</table></div>
+
+<h2>Pricing: CapEx vs. OpEx</h2>
+<p><b>CapEx</b> — buy hardware upfront, depreciate it over years. <b>OpEx / consumption-based</b> — pay only for what you use, expensed as you go. The cloud's core economic pitch is shifting CapEx to OpEx.</p>
+
+<h2>Benefits, precisely defined</h2>
+<div class="table-wrap"><table>
+  <tr><th>Benefit</th><th>One-line test</th></tr>
+  <tr><td>High availability</td><td>Does it keep running and meet its SLA despite a failure?</td></tr>
+  <tr><td>Scalability</td><td>Does capacity grow/shrink automatically with demand?</td></tr>
+  <tr><td>Reliability</td><td>Does it recover and keep functioning consistently over time?</td></tr>
+  <tr><td>Predictability</td><td>Can you forecast cost and performance in advance?</td></tr>
+  <tr><td>Security &amp; governance</td><td>Are policy, compliance, and access centrally controlled?</td></tr>
+  <tr><td>Manageability</td><td>Is deploying/monitoring/maintaining resources easy at scale?</td></tr>
+</table></div>
+
+<h2>Service types</h2>
+<div class="table-wrap"><table>
+  <tr><th>Type</th><th>You manage</th><th>Use case</th></tr>
+  <tr><td>IaaS</td><td>OS and above</td><td>Legacy apps, full control needed</td></tr>
+  <tr><td>PaaS</td><td>App code only</td><td>Custom apps, no infra overhead</td></tr>
+  <tr><td>SaaS</td><td>Nothing (just data/config)</td><td>Ready-to-use software (email, CRM)</td></tr>
+</table></div>
+
+<p><b>Serverless</b> is a step beyond PaaS: zero capacity to provision at all, billed strictly per execution (e.g. Azure Functions), rather than a running app-service plan.</p>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-d1"></div>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/training/modules/describe-cloud-compute/">Microsoft Learn: Describe cloud computing</a>
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./0001-orientation-and-diagnostic.html">← Lesson 01</a>
+  <a href="../reference/glossary.html">Glossary</a>
+  <a href="./0003-core-architecture-and-compute.html">Lesson 03: Core architecture &amp; compute →</a>
+</div>
+
+<script src="../../shared/progress.js"></script>
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0002.js"></script>
+<script>Quiz.render('q-d1', window.TRAINING_DATA['0002'], { courseId: 'az-900', datasetId: '0002' });</script>

@@ -28,6 +28,14 @@ const TRAININGS: Training[] = [
     href: '/trainings/dp-900/',
   },
   {
+    id: 'az-900',
+    title: 'AZ-900 — Azure Fundamentals',
+    status: 'Live',
+    desc: 'For people who already know cloud computing and another provider (AWS/GCP) — a Microsoft-terminology recap plus exam-pattern drilling, not cloud fundamentals from zero. Short lessons, auto-graded quizzes, five exam-weighted mock exams, and adaptive weak-area practice. Pass mark: 700/1000.',
+    tags: ['Azure', 'Cloud Fundamentals', 'Quizzes', 'Mock Exams'],
+    href: '/trainings/az-900/',
+  },
+  {
     id: 'ckad',
     title: 'CKAD — Certified Kubernetes Application Developer',
     status: 'Planned',
