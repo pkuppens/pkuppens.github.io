@@ -4,10 +4,10 @@ window.TRAINING_DATA['0004'] = {
   passMark: 0.7,
   questions: [
     { tag:"D2",
-      q:"You know S3. Which Azure Storage service is the direct object-storage analog — unstructured blobs (files, images, backups) accessed over HTTP/HTTPS?",
+      q:"Which Azure Storage service stores unstructured blobs (files, images, backups) accessed over HTTP/HTTPS?",
       options:["Azure Blob Storage","Azure Files","Azure Table Storage","Azure Queue Storage"],
       answer:0,
-      why:"<b>Blob Storage</b> is Azure's object store, the closest match to S3. Azure Files is SMB/NFS file shares; Table Storage is NoSQL key-value; Queue Storage is messaging." },
+      why:"<b>Blob Storage</b> is Azure's object store. Azure Files is SMB/NFS file shares; Table Storage is NoSQL key-value; Queue Storage is messaging." },
 
     { tag:"D2", type:"match",
       q:"Match each Azure Storage service to its purpose.",
@@ -48,7 +48,7 @@ window.TRAINING_DATA['0004'] = {
       why:"Physical, offline bulk transfer for large datasets is <b>Azure Data Box</b> — a shippable appliance. The other three all move data over the network." },
 
     { tag:"D2",
-      q:"You know IAM users/groups. Where do user and group identities live in Azure so they can sign in and be assigned permissions?",
+      q:"Where do user and group identities live in Azure so they can sign in and be assigned permissions?",
       options:["Microsoft Entra ID","Azure Resource Manager","A resource group","Azure Policy"],
       answer:0,
       why:"<b>Microsoft Entra ID</b> is the identity store — users, groups, and app registrations. Resource Manager deploys resources; a resource group organizes them; Azure Policy enforces configuration rules, none of which store identities." },
@@ -72,10 +72,10 @@ window.TRAINING_DATA['0004'] = {
       why:"Removing the password from the flow entirely is <b>passwordless</b>. SSO reduces repeated sign-ins (but may still use a password once); MFA adds a second factor to a password rather than removing it; Conditional Access decides when to require these." },
 
     { tag:"D2",
-      q:"You know IAM roles/policies (JSON documents attached to users). Azure's equivalent concept — a set of permissions assigned to a security principal at a scope — is called a:",
+      q:"A set of permissions assigned to a security principal at a scope is called a:",
       options:["Role assignment (RBAC)","Resource lock","Azure Policy definition","Management group"],
       answer:0,
-      why:"A <b>role assignment</b> = security principal + role definition + scope, Azure's version of attaching an IAM policy to an identity. A resource lock only blocks delete/edit; an Azure Policy definition enforces configuration rules, not identity permissions." },
+      why:"A <b>role assignment</b> = security principal + role definition + scope. A resource lock only blocks delete/edit; an Azure Policy definition enforces configuration rules, not identity permissions." },
 
     { tag:"D2",
       q:"What is the core principle of Zero Trust?",
