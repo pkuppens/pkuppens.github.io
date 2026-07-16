@@ -28,10 +28,10 @@ window.TRAINING_DATA['0003'] = {
       why:"The individual, deployable item (a VM, a storage account) is a <b>resource</b>. A resource group is a container for related resources; a subscription is the billing/access boundary; a tenant is your Entra ID identity directory." },
 
     { tag:"D2",
-      q:"You know AWS Accounts. What is the closest Azure equivalent — the billing and access-management boundary that a set of resource groups lives inside?",
+      q:"What is the billing and access-management boundary that a set of resource groups lives inside?",
       options:["A subscription","A resource group","A management group","A tenant"],
       answer:0,
-      why:"A <b>subscription</b> is Azure's billing and scale boundary, roughly analogous to an AWS account. A tenant is one level up — your Entra ID directory, which can contain multiple subscriptions; management groups group multiple subscriptions together for governance." },
+      why:"A <b>subscription</b> is Azure's billing and scale boundary. A tenant is one level up — your Entra ID directory, which can contain multiple subscriptions; management groups group multiple subscriptions together for governance." },
 
     { tag:"D2",
       q:"Which compute option requires you to manage the least — no server, OS, or scaling config — and bills per execution?",
@@ -47,10 +47,10 @@ window.TRAINING_DATA['0003'] = {
       why:"Lightweight, OS-kernel-sharing package = <b>container</b>; auto-scaling identical VM group = <b>VM Scale Set</b>; fault/update-domain grouping for redundancy = <b>availability set</b>." },
 
     { tag:"D2",
-      q:"You know AWS VPC. Azure's software-defined network boundary that lets resources communicate privately, and can be segmented into subnets, is called a(n):",
+      q:"Azure's software-defined network boundary that lets resources communicate privately, and can be segmented into subnets, is called a(n):",
       options:["Azure Virtual Network (VNet)","Resource group","Availability set","Azure DNS zone"],
       answer:0,
-      why:"<b>Virtual Network (VNet)</b> is the direct analog to a VPC — private IP space, subnets, and controlled connectivity, all inside one region." },
+      why:"A <b>Virtual Network (VNet)</b> provides private IP space, subnets, and controlled connectivity, all inside one region." },
 
     { tag:"D2",
       q:"Two VNets in different regions need to communicate as if they were one network, without traffic going over the public internet. Which feature connects them?",

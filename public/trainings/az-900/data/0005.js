@@ -22,10 +22,10 @@ window.TRAINING_DATA['0005'] = {
       why:"Ongoing spend analysis, budgets, and alerts is <b>Azure Cost Management</b>. The Pricing calculator is a pre-deployment estimator, not a live-tracking tool." },
 
     { tag:"D3",
-      q:"You know AWS tags (identical concept, same name). What is the primary purpose of Azure resource tags?",
+      q:"What is the primary purpose of Azure resource tags?",
       options:["Attaching metadata (e.g. cost-center, environment) for organization, cost allocation, and automation","Encrypting resource data at rest","Granting RBAC permissions","Locking a resource against deletion"],
       answer:0,
-      why:"Tags are <b>key-value metadata</b> — used for cost allocation, filtering, and automation. This is a rare case where the AWS concept and name transfer directly; don't overthink it looking for a trick that isn't there. Tags grant no permissions and provide no encryption or delete protection." },
+      why:"Tags are <b>key-value metadata</b> — used for cost allocation, filtering, and automation. Tags grant no permissions and provide no encryption or delete protection." },
 
     { tag:"D3",
       q:"Which Azure service provides a unified data map, catalog, and lineage view across your data estate for governance and compliance?",
@@ -46,7 +46,7 @@ window.TRAINING_DATA['0005'] = {
       why:"A <b>CanNotDelete resource lock</b> blocks deletion regardless of a user's RBAC permissions, until the lock itself is removed. Azure Policy governs configuration compliance, not accidental deletion; the other two are unrelated to this scenario." },
 
     { tag:"D3",
-      q:"You know the AWS/GCP web console. Which is the Azure equivalent — a web-based, graphical UI for managing all Azure resources?",
+      q:"Which is the web-based, graphical UI for managing all Azure resources?",
       options:["The Azure portal","Azure Cloud Shell","Azure Resource Manager","Azure CLI"],
       answer:0,
       why:"The graphical web UI is the <b>Azure portal</b>. Cloud Shell is a browser-based command-line shell; Resource Manager is the underlying deployment/management API/engine; the CLI is a local command-line tool." },
@@ -64,10 +64,10 @@ window.TRAINING_DATA['0005'] = {
       why:"Bringing non-Azure and multi-cloud/on-prem resources under Azure's management plane is <b>Azure Arc</b>. Resource Manager is the deployment engine used underneath; Advisor and Service Health don't extend management scope, they report on it." },
 
     { tag:"D3",
-      q:"You know CloudFormation/Terraform (declarative deployment). Azure's native declarative deployment templates, written in JSON (or authored more easily in Bicep), are called:",
+      q:"Azure's native declarative deployment templates, written in JSON (or authored more easily in Bicep), are called:",
       options:["ARM templates","Azure Blueprints","Azure Policy definitions","Resource Manager scripts"],
       answer:0,
-      why:"Declarative, JSON-based infrastructure-as-code is an <b>ARM template</b> — the direct analog to a CloudFormation template. Bicep is a friendlier authoring language that compiles down to ARM JSON." },
+      why:"Declarative, JSON-based infrastructure-as-code is an <b>ARM template</b>. Bicep is a friendlier authoring language that compiles down to ARM JSON." },
 
     { tag:"D3",
       q:"What is the core benefit of infrastructure as code (IaC), as tested on this exam?",
@@ -88,9 +88,9 @@ window.TRAINING_DATA['0005'] = {
       why:"Personalized notification of Azure-platform issues affecting your resources is <b>Azure Service Health</b>. Monitor tracks your resources' own telemetry (not platform-wide incidents); Advisor gives optimization tips, not incident status." },
 
     { tag:"D3",
-      q:"You know CloudWatch. Which Azure service collects metrics and logs from your resources, and can trigger alerts and dashboards from that telemetry?",
+      q:"Which Azure service collects metrics and logs from your resources, and can trigger alerts and dashboards from that telemetry?",
       options:["Azure Monitor","Azure Service Health","Azure Advisor","Microsoft Purview"],
       answer:0,
-      why:"Metrics/logs collection plus alerting is <b>Azure Monitor</b> — the closest analog to CloudWatch. Within it, <b>Log Analytics</b> queries log data, <b>Application Insights</b> monitors app performance, and <b>alerts</b> notify on thresholds." }
+      why:"Metrics/logs collection plus alerting is <b>Azure Monitor</b>. Within it, <b>Log Analytics</b> queries log data, <b>Application Insights</b> monitors app performance, and <b>alerts</b> notify on thresholds." }
   ]
 };
