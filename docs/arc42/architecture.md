@@ -36,15 +36,24 @@ src/
 ├── components/layout/   – Header, Footer, Layout (shell)
 ├── pages/               – Route-level page components
 │   └── evaluator/       – Opportunity Evaluator UI + useEvaluatorSession
+│       └── CommuteCalculator.tsx – address inputs, HERE-backed car/PT results, "Apply" fills commuteMinutes
 ├── domain/profile/      – Canonical Profile data (CV + evaluator defaults)
 ├── domain/evaluator/    – Pure scoring logic (no React)
 │   ├── types.ts         – Domain types
-│   ├── criteria.ts      – Criterion definitions + evaluation functions
+│   ├── criteria.ts      – Criterion definitions + evaluation functions (commute weighting in commuteScore.ts)
 │   ├── scoring.ts       – Score aggregation engine
 │   ├── scoreBands.ts    – Shared score thresholds and presentation
 │   ├── evaluatorSession.ts – Load/save/evaluate session (no React)
 │   └── defaultPreferences.ts – Re-exports profile scoring preferences
-└── infrastructure/      – Storage, theme, storage key registry
+└── infrastructure/
+    ├── storage.ts       – localStorage abstraction, `pkuppens_` key prefix
+    ├── storageKeys.ts   – registry of all localStorage keys (evaluator input/preferences, theme, home address, HERE API key)
+    ├── homeAddressStorage.ts – optional origin-address persistence ("Remember origin")
+    └── hereApi.ts        – geocodeAddress / fetchRoute / fetchCommute via HERE Geocoding v7 + Routing v8; see ADR 005
+
+data/linkedin/<vanitySlug>.xml – canonical local LinkedIn-experience mirror, validated against scripts/linkedin/schema.xsd
+scripts/linkedin/          – validate.mjs, export-json.mjs, export-csv.mjs
+src/pages/ (planned, #90)  – dev-only editor route: forms + live preview for data/linkedin/<slug>.xml, reusing the scripts/linkedin parsing/serialization logic
 ```
 
 ## 6. Runtime View
@@ -66,6 +75,12 @@ src/
 ### Dependencies and supply chain
 - `package-lock.json` is committed so CI (`npm ci`) and local installs stay aligned; see [ADR 004: Commit package-lock](../adr/004-commit-package-lock.md).
 - Weekly **Dependabot** version updates and a scheduled **`npm audit`** workflow support dependency hygiene (see `.github/dependabot.yml` and `.github/workflows/security-audit.yml`).
+
+### HERE API key resolution
+Two-tier lookup: a user-entered key in the Preferences panel (stored in `localStorage`) takes priority over the build-time `VITE_HERE_API_KEY` fallback. With no key present, the Commute Calculator shows a configuration prompt instead of failing. See [ADR 005](../adr/005-here-api-integration.md).
+
+### Post-deploy verification
+After a GitHub Pages deploy, an automated check confirms the live site matches expectations, retrying with backoff if the CDN hasn't caught up yet.
 
 ### Testing Strategy
 - Unit tests: criteria, scoring, profile consistency, evaluator session, storage (Vitest)
