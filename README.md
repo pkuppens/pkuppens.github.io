@@ -64,6 +64,7 @@ Page-template/authoring conventions for course pages (head block, shared nav, qu
 - [ADR 002: Pure Functions for Scoring](docs/adr/002-pure-functions-scoring.md)
 - [ADR 003: localStorage Persistence](docs/adr/003-localstorage-persistence.md)
 - [ADR 004: Commit package-lock.json](docs/adr/004-commit-package-lock.md)
+- [ADR 005: HERE Routing API Integration](docs/adr/005-here-api-integration.md)
 
 ## Security and dependencies
 - **`package-lock.json` is committed** so `npm ci` in CI matches installs; see ADR 004.
