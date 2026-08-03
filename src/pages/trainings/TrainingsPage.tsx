@@ -36,6 +36,14 @@ const TRAININGS: Training[] = [
     href: '/trainings/az-900/',
   },
   {
+    id: 'claude-dev-foundations',
+    title: 'Claude Dev Foundations — prep toward Claude Certified Developer',
+    status: 'Live',
+    desc: 'Built from Anthropic’s free public Academy — the 9 courses the Claude Certified Developer – Foundations certification recommends completing first. Short lessons, auto-graded quizzes, and two mock exams. Does not cover the certification’s own partner-gated exam guide.',
+    tags: ['Claude', 'AI Fluency', 'Quizzes', 'Mock Exams'],
+    href: '/trainings/claude-dev-foundations/',
+  },
+  {
     id: 'ckad',
     title: 'CKAD — Certified Kubernetes Application Developer',
     status: 'Planned',

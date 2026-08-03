@@ -1,0 +1,84 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/site-nav.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 02 — Claude &amp; AI Fluency Foundations</title>
+
+<p class="eyebrow">Claude Dev Foundations · Lesson 02 · <span class="badge d1">D1</span></p>
+<h1>Claude &amp; AI Fluency Foundations</h1>
+<p class="subtitle">Three public Anthropic Academy courses, one domain: what Claude actually is, a
+working framework for collaborating with it well, and a mental model of why it sometimes gets
+things wrong. This is the vocabulary and judgment everything else in this course builds on.</p>
+
+<h2>Meet Claude (Claude 101)</h2>
+<p>Claude is Anthropic's family of models, used either conversationally (claude.ai, desktop/mobile
+apps) or built into products via the API. The public <b>Claude 101</b> course structures learning
+Claude around four stages:</p>
+<div class="table-wrap"><table>
+  <tr><th>Stage</th><th>Covers</th></tr>
+  <tr><td>Meet Claude</td><td>What Claude is, your first conversation, getting better results</td></tr>
+  <tr><td>Organizing work &amp; knowledge</td><td><b>Projects</b> (persistent context for a body of work), <b>artifacts</b> (standalone generated documents/code/UI you can iterate on), <b>skills</b> (packaged, reusable instructions)</td></tr>
+  <tr><td>Expanding Claude's reach</td><td>Connecting your own tools, enterprise search, deep-dive research</td></tr>
+  <tr><td>Putting it together</td><td>Use-cases by role</td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">Vocabulary that matters later</span>
+  <b>Projects</b> and <b>artifacts</b> are Claude.ai concepts. <b>Skills</b> reappear, in a different
+  but related form, inside Claude Code (Lesson 04) and as a platform feature (Lesson 03) — don't
+  conflate the three; each is skills-the-same-idea applied to a different surface.
+</div>
+
+<h2>The 4D Framework (AI Fluency: Framework &amp; Foundations)</h2>
+<p>Anthropic's <b>AI Fluency</b> course (built with academic partners) frames effective, ethical AI
+collaboration as four competencies, not a fixed prompt template:</p>
+<div class="table-wrap"><table>
+  <tr><th>Competency</th><th>Question it answers</th></tr>
+  <tr><td><b>Delegation</b></td><td>Which parts of this task should go to the AI at all?</td></tr>
+  <tr><td><b>Description</b></td><td>How do I state the task so the AI can actually do it?</td></tr>
+  <tr><td><b>Discernment</b></td><td>Is this output actually good — and by what standard?</td></tr>
+  <tr><td><b>Diligence</b></td><td>Whose responsibility is the outcome, and did I verify it?</td></tr>
+</table></div>
+<p>Description and Discernment aren't a one-shot pair — the course frames a
+<b>Description–Discernment loop</b>: you describe, evaluate the output, then re-describe to close
+the gap, repeating until the result clears your bar.</p>
+
+<h2>Why outputs surprise you (AI Capabilities and Limitations)</h2>
+<p>This course is the companion to the 4D framework: it teaches the <em>machine</em> side of
+Discernment — a mental model for <em>why</em> a model behaves as it does, built from four
+properties:</p>
+<div class="table-wrap"><table>
+  <tr><th>Property</th><th>What it explains</th></tr>
+  <tr><td>Next-token prediction</td><td>The base mechanism — Claude generates one likely-next-token at a time, not by "looking up" a stored answer</td></tr>
+  <tr><td>Knowledge</td><td>What the model does and doesn't reliably know, and where that knowledge gets thin or stale</td></tr>
+  <tr><td>Working memory</td><td>What fits in the context window and how that bounds a single turn's reasoning</td></tr>
+  <tr><td>Steerability</td><td>How much your instructions can actually redirect behavior — and where that leverage runs out</td></tr>
+</table></div>
+<div class="callout tip">
+  <span class="label">The payoff</span>
+  Given an unexpected output, this framework lets you localize <em>which</em> property is the cause
+  (a knowledge gap vs. a working-memory overflow vs. under-steering) and pick a targeted fix instead
+  of just re-rolling the prompt.
+</div>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-d1"></div>
+
+<div class="source">
+  <span class="label">Primary sources</span> &nbsp;
+  <a href="https://anthropic.skilljar.com/claude-101">Claude 101</a> ·
+  <a href="https://anthropic.skilljar.com/ai-fluency-framework-foundations">AI Fluency: Framework &amp; Foundations</a> ·
+  <a href="https://anthropic.skilljar.com/ai-capabilities-and-limitations">AI Capabilities and Limitations</a>
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./0001-orientation-and-diagnostic.html">← Lesson 01</a>
+  <a href="../reference/glossary.html">Glossary</a>
+  <a href="./0003-claude-platform-and-api.html">Lesson 03: Claude Platform &amp; API →</a>
+</div>
+
+<script src="../../shared/progress.js"></script>
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0002.js"></script>
+<script>Quiz.render('q-d1', window.TRAINING_DATA['0002'], { courseId: 'claude-dev-foundations', datasetId: '0002' });</script>
