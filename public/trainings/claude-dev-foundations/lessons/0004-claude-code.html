@@ -1,0 +1,63 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/site-nav.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 04 — Claude Code</title>
+
+<p class="eyebrow">Claude Dev Foundations · Lesson 04 · <span class="badge d3">D3</span></p>
+<h1>Claude Code</h1>
+<p class="subtitle">From first prompt to trusting Claude with hours of unsupervised work: daily
+workflow, configuration that actually sticks, and the guardrails (hooks, permission modes,
+verification) that make autonomous runs safe to walk away from.</p>
+
+<h2>Getting productive (Claude Code 101)</h2>
+<div class="table-wrap"><table>
+  <tr><th>Module</th><th>Covers</th></tr>
+  <tr><td>Introduction</td><td>What an AI coding agent is (vs. chat-based AI); the agentic loop, context window, tools, and permissions applied to code</td></tr>
+  <tr><td>Getting started</td><td>Install across terminal, VS Code, JetBrains, Claude Desktop, web; your first prompt; approval mode, auto-accept, Plan Mode</td></tr>
+  <tr><td>Daily workflows</td><td>The <b>explore → plan → code → commit</b> workflow; context management via <code>/compact</code>, <code>/clear</code>, <code>/context</code>; reviewing generated code</td></tr>
+  <tr><td>Customization</td><td><b>CLAUDE.md</b> (persistent project memory), <b>subagents</b> (delegate to keep context clean), <b>Skills</b>, <b>MCP</b> connections, <b>hooks</b> for deterministic control</td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">Explore → plan → code → commit</span>
+  Claude Code 101's structured approach to a feature or fix: understand the code first, agree a
+  plan, implement, then commit — rather than jumping straight to edits.
+</div>
+
+<h2>Running longer, trusting more (Claude Code in Action)</h2>
+<div class="table-wrap"><table>
+  <tr><th>Theme</th><th>Covers</th></tr>
+  <tr><td>Steer the work</td><td>Scoping with <b>Plan Mode</b>, directing compaction so summaries keep what matters, the <b>rewind menu</b> to course-correct, hands-on vs. autonomous approaches</td></tr>
+  <tr><td>Configure Claude</td><td>A CLAUDE.md Claude actually follows, verification skills, <b>permission modes</b>, <b>hooks</b> to enforce non-negotiable rules</td></tr>
+  <tr><td>Automate repeat work</td><td><b>Routines</b> and headless runs on Anthropic infrastructure, custom pipeline integration, <b>GitHub Actions</b> wired into PRs for managed code review</td></tr>
+  <tr><td>Verify and share</td><td>Verifying unsupervised runs before trusting the result; packaging setups as <b>plugins</b> for team-wide install</td></tr>
+</table></div>
+
+<div class="callout tip">
+  <span class="label">Hooks vs. CLAUDE.md</span>
+  <b>CLAUDE.md</b> is guidance Claude reads and usually follows. <b>Hooks</b> are deterministic —
+  they fire on specific events regardless of what Claude decides, which is why they're the tool for
+  rules that truly cannot be skipped (e.g. blocking a dangerous command).
+</div>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-d3"></div>
+
+<div class="source">
+  <span class="label">Primary sources</span> &nbsp;
+  <a href="https://anthropic.skilljar.com/claude-code-101">Claude Code 101</a> ·
+  <a href="https://anthropic.skilljar.com/claude-code-in-action">Claude Code in Action</a>
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./0003-claude-platform-and-api.html">← Lesson 03</a>
+  <a href="../reference/glossary.html">Glossary</a>
+  <a href="./0005-model-context-protocol.html">Lesson 05: Model Context Protocol →</a>
+</div>
+
+<script src="../../shared/progress.js"></script>
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0004.js"></script>
+<script>Quiz.render('q-d3', window.TRAINING_DATA['0004'], { courseId: 'claude-dev-foundations', datasetId: '0004' });</script>
