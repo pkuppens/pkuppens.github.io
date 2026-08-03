@@ -1,0 +1,72 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/site-nav.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 03 — Claude Platform &amp; API</title>
+
+<p class="eyebrow">Claude Dev Foundations · Lesson 03 · <span class="badge d2">D2</span></p>
+<h1>Claude Platform &amp; API</h1>
+<p class="subtitle">Moving from chatting with Claude to building on it: what's in a request, how an
+agent decides what to do, and the features (RAG, extended thinking, caching, MCP) that turn a raw
+API call into a production application.</p>
+
+<h2>First principles (Claude Platform 101)</h2>
+<div class="table-wrap"><table>
+  <tr><th>Module</th><th>What it teaches</th></tr>
+  <tr><td>What is the Claude Platform?</td><td>What's in a request, how an agent decides what to do, where cost and limits live</td></tr>
+  <tr><td>Your first API call</td><td>Sending a request, reading the response</td></tr>
+  <tr><td>Choosing the right model</td><td>Opus / Sonnet / Haiku as a cost-and-latency trade-off, not just a capability ranking</td></tr>
+  <tr><td>Teaching your agent</td><td>The <b>agent loop</b> (act → observe → decide) built by hand; <b>tool use</b>; <b>extended thinking</b></td></tr>
+  <tr><td>Extending your agent</td><td>Built-in tools (web search, code execution, web fetch), <b>Skills</b>, MCP servers, context management for long conversations</td></tr>
+  <tr><td>Managed agents</td><td>Sandboxed, hosted agent execution consuming event streams</td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">The agent loop</span>
+  The recurring shape across this whole course: Claude <b>acts</b> (calls a tool or responds),
+  <b>observes</b> the result, and <b>decides</b> what to do next — repeating until the task is done.
+  Everything else (tool use, extended thinking, MCP) plugs into one of those three steps.
+</div>
+
+<h2>Building production features (Building with the Claude API)</h2>
+<div class="table-wrap"><table>
+  <tr><th>Area</th><th>Covers</th></tr>
+  <tr><td>RAG &amp; agentic search</td><td>Retrieval-augmented generation: chunking strategy, embeddings, the full RAG workflow, BM25 lexical search, multi-index pipelines</td></tr>
+  <tr><td>Features of Claude</td><td>Extended thinking, image analysis, PDF support, citations, <b>prompt caching</b> (rules and practical use), code execution, the Files API</td></tr>
+  <tr><td>Model Context Protocol</td><td>Introducing MCP, implementing a client, defining tools/resources/prompts via MCP</td></tr>
+  <tr><td>Agents and workflows</td><td><b>Parallelization</b>, sequential <b>chaining</b>, intelligent <b>routing</b> — and when to reach for a plain workflow instead of a full agent</td></tr>
+</table></div>
+
+<div class="callout tip">
+  <span class="label">RAG vs. long context</span>
+  RAG (chunk, embed, retrieve) exists because working memory (Lesson 02) is finite and costly to
+  fill — retrieval brings in only the relevant slice instead of stuffing everything into context.
+</div>
+
+<div class="callout tip">
+  <span class="label">Agent vs. workflow</span>
+  A <b>workflow</b> (chaining, routing, parallelization) is a fixed, predefined sequence of steps. An
+  <b>agent</b> decides its own next step via the agent loop. Pick a workflow when the steps are known
+  in advance; reach for an agent when the path itself needs to be figured out.
+</div>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-d2"></div>
+
+<div class="source">
+  <span class="label">Primary sources</span> &nbsp;
+  <a href="https://anthropic.skilljar.com/claude-platform-101">Claude Platform 101</a> ·
+  <a href="https://anthropic.skilljar.com/claude-with-the-anthropic-api">Building with the Claude API</a>
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./0002-claude-and-ai-fluency.html">← Lesson 02</a>
+  <a href="../reference/glossary.html">Glossary</a>
+  <a href="./0004-claude-code.html">Lesson 04: Claude Code →</a>
+</div>
+
+<script src="../../shared/progress.js"></script>
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0003.js"></script>
+<script>Quiz.render('q-d2', window.TRAINING_DATA['0003'], { courseId: 'claude-dev-foundations', datasetId: '0003' });</script>

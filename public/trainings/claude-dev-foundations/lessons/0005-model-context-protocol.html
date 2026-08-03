@@ -1,0 +1,67 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/site-nav.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Lesson 05 — Model Context Protocol</title>
+
+<p class="eyebrow">Claude Dev Foundations · Lesson 05 · <span class="badge d4">D4</span></p>
+<h1>Model Context Protocol (MCP)</h1>
+<p class="subtitle">The standard way to connect Claude to external tools and data — already
+referenced in Lessons 03 and 04. Here it's the whole subject: the three primitives, how
+servers and clients talk, and the production-grade transport details.</p>
+
+<h2>The three primitives (Introduction to Model Context Protocol)</h2>
+<div class="table-wrap"><table>
+  <tr><th>Primitive</th><th>Controlled by</th><th>What it is</th></tr>
+  <tr><td><b>Tools</b></td><td>The model</td><td>Operations the model decides to invoke — executable functions</td></tr>
+  <tr><td><b>Resources</b></td><td>The app</td><td>Read-only data, exposed via static or templated URIs</td></tr>
+  <tr><td><b>Prompts</b></td><td>The user</td><td>Pre-crafted instructions/workflows a user selects</td></tr>
+</table></div>
+<div class="callout key">
+  <span class="label">Who's in the driver's seat</span>
+  The three primitives are distinguished by <b>who decides to use them</b> — the model (tools), the
+  application (resources), or the person at the keyboard (prompts). Same protocol, three different
+  control points.
+</div>
+<p>The intro course builds this hands-on: set up a project, define tools with the MCP <b>Python
+SDK</b> (via decorators), inspect a server with the browser-based <b>server inspector</b>, then
+implement a client that accesses resources (with MIME-type handling) and surfaces prompts.</p>
+
+<h2>Going deeper (Model Context Protocol: Advanced Topics)</h2>
+<div class="table-wrap"><table>
+  <tr><th>Topic</th><th>Covers</th></tr>
+  <tr><td>Sampling</td><td>How an MCP <b>server</b> can request a language-model call <em>through</em> the connected client — inverting the usual direction</td></tr>
+  <tr><td>Notifications</td><td>Progress and logging notifications for real-time feedback on long-running operations</td></tr>
+  <tr><td>Roots</td><td>A permission system granting a server access to specific directories, with defined security boundaries</td></tr>
+  <tr><td>JSON message types</td><td>The full MCP message spec: request/result pairs and notifications</td></tr>
+  <tr><td>Transports</td><td><b>STDIO</b> (local, handshake over standard input/output) vs. <b>StreamableHTTP</b> (Server-Sent Events for server→client streaming, with session management)</td></tr>
+  <tr><td>Production considerations</td><td>Stateless HTTP for horizontal scaling vs. stateful sessions — choosing a transport for deployment</td></tr>
+</table></div>
+
+<div class="callout tip">
+  <span class="label">Sampling is the odd one out</span>
+  Every other MCP flow has the <em>client</em> asking the <em>server</em> for something. Sampling
+  flips it: the <b>server</b> asks the <b>client</b> to run a model call on its behalf — worth
+  remembering precisely because it's the exception to the pattern.
+</div>
+
+<h2>Check yourself</h2>
+<div class="quiz" id="q-d4"></div>
+
+<div class="source">
+  <span class="label">Primary sources</span> &nbsp;
+  <a href="https://anthropic.skilljar.com/introduction-to-model-context-protocol">Introduction to Model Context Protocol</a> ·
+  <a href="https://anthropic.skilljar.com/model-context-protocol-advanced-topics">Model Context Protocol: Advanced Topics</a>
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./0004-claude-code.html">← Lesson 04</a>
+  <a href="../reference/glossary.html">Glossary</a>
+  <a href="./0006-mock-exam-1.html">Mock Exam 1 →</a>
+</div>
+
+<script src="../../shared/progress.js"></script>
+<script src="../../shared/quiz.js"></script>
+<script src="../data/0005.js"></script>
+<script>Quiz.render('q-d4', window.TRAINING_DATA['0005'], { courseId: 'claude-dev-foundations', datasetId: '0005' });</script>

@@ -1,0 +1,125 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/site-nav.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>Glossary — Reference</title>
+
+<p class="eyebrow">Claude Dev Foundations · Reference</p>
+<h1>Glossary</h1>
+<p class="subtitle">Terms as used across the 9 public prerequisite courses this training draws from —
+grouped by domain, matching the lesson order.</p>
+
+<h2><span class="badge d1">D1</span> Claude &amp; AI Fluency Foundations</h2>
+<dl class="gloss">
+  <dt>Project</dt>
+  <dd>Persistent, reusable context for an ongoing body of work in Claude 101's vocabulary — distinct from a single artifact.</dd>
+
+  <dt>Artifact</dt>
+  <dd>A standalone generated document, piece of code, or UI that you keep iterating on.</dd>
+
+  <dt>Skill</dt>
+  <dd>A packaged, reusable instruction set. The word reappears with a related but platform-specific meaning in Claude Code (D3) — don't conflate the two.</dd>
+
+  <dt>4D Framework</dt>
+  <dd>AI Fluency's four competencies for effective, ethical AI collaboration: Delegation, Description, Discernment, Diligence.</dd>
+
+  <dt>Description–Discernment loop</dt>
+  <dd>Iterative refinement: describe the task, evaluate the output (discernment), re-describe to close the gap — repeat until it clears your bar.</dd>
+
+  <dt>Next-token prediction</dt>
+  <dd>The base generation mechanism: Claude produces one likely-next-token at a time, not a retrieved, pre-written answer.</dd>
+
+  <dt>Working memory</dt>
+  <dd>What fits in the context window for a given turn — bounds how much a single turn can reason over.</dd>
+
+  <dt>Steerability</dt>
+  <dd>How far your instructions can actually redirect Claude's behavior, and where that influence runs out.</dd>
+</dl>
+
+<h2><span class="badge d2">D2</span> Claude Platform &amp; API</h2>
+<dl class="gloss">
+  <dt>Agent loop</dt>
+  <dd>The recurring cycle: act (call a tool or respond) → observe the result → decide what to do next.</dd>
+
+  <dt>Tool use</dt>
+  <dd>Letting Claude interact with external systems and real-world data beyond plain text generation.</dd>
+
+  <dt>Extended thinking</dt>
+  <dd>A mode for deeper reasoning on complex tasks before producing a final answer.</dd>
+
+  <dt>RAG (retrieval-augmented generation)</dt>
+  <dd>Chunk source content, embed it, retrieve only the relevant pieces for a given query — brings in a relevant slice instead of filling the whole context window.</dd>
+
+  <dt>Prompt caching</dt>
+  <dd>Reusing previously-processed prompt content to reduce cost and latency on repeated large-context calls.</dd>
+
+  <dt>Workflow vs. agent</dt>
+  <dd>A <b>workflow</b> (chaining, routing, parallelization) follows predefined steps. An <b>agent</b> decides its own next step dynamically via the agent loop — pick a workflow when the path is already known, an agent when it isn't.</dd>
+</dl>
+
+<h2><span class="badge d3">D3</span> Claude Code</h2>
+<dl class="gloss">
+  <dt>Explore → plan → code → commit</dt>
+  <dd>Claude Code's structured workflow for a feature or fix: understand the code, agree an approach, implement, then commit.</dd>
+
+  <dt>CLAUDE.md</dt>
+  <dd>Persistent, project-level memory Claude reads across sessions. <span class="aka">Guidance the model tends to follow — not a hard enforcement mechanism (see Hooks).</span></dd>
+
+  <dt>Subagent</dt>
+  <dd>A delegated sub-task run in its own context, keeping the main session's context window clean.</dd>
+
+  <dt>Hooks</dt>
+  <dd>Deterministic triggers on specific events, giving enforcement that CLAUDE.md guidance alone can't guarantee — the tool for rules that must never be skipped.</dd>
+
+  <dt>Plan Mode</dt>
+  <dd>Scoping and agreeing an approach before Claude starts making changes.</dd>
+
+  <dt>Rewind menu</dt>
+  <dd>Stepping back within a session to course-correct, rather than starting over.</dd>
+
+  <dt>Routine</dt>
+  <dd>A prompt scheduled to run headlessly on Anthropic infrastructure — automation without a human driving each session.</dd>
+
+  <dt>Plugin</dt>
+  <dd>A packaged Claude Code setup (hooks, CLAUDE.md, MCP connections) for team-wide install.</dd>
+</dl>
+
+<h2><span class="badge d4">D4</span> Model Context Protocol</h2>
+<dl class="gloss">
+  <dt>Tools (MCP primitive)</dt>
+  <dd>Model-controlled operations — executable functions the model decides to invoke.</dd>
+
+  <dt>Resources (MCP primitive)</dt>
+  <dd>App-controlled, read-only data exposed via static or templated URIs.</dd>
+
+  <dt>Prompts (MCP primitive)</dt>
+  <dd>User-controlled, pre-crafted instructions or workflows a person selects.</dd>
+
+  <dt>Server inspector</dt>
+  <dd>A browser-based tool for testing and debugging an MCP server during development.</dd>
+
+  <dt>Sampling</dt>
+  <dd>The one MCP flow that runs in reverse: the <b>server</b> requests a language-model call through the connected <b>client</b>.</dd>
+
+  <dt>Roots</dt>
+  <dd>A permission system granting an MCP server access to specific directories, with defined security boundaries.</dd>
+
+  <dt>STDIO transport</dt>
+  <dd>Local client-server communication over standard input/output, with an initialization handshake.</dd>
+
+  <dt>StreamableHTTP transport</dt>
+  <dd>Server-to-client streaming over HTTP via Server-Sent Events, with its own session management — the alternative to STDIO for networked deployments.</dd>
+</dl>
+
+<div class="callout key">
+  <span class="label">On scope</span>
+  This glossary covers only the 9 public prerequisite courses. It does not define terms specific to
+  the certification's gated 5 prep modules — those aren't accessible to source accurately. See the
+  <a href="./public-academy-map.html">Public Academy Map</a> for what's out of scope and why.
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./public-academy-map.html">→ Public Academy Map</a>
+  <a href="../lessons/0001-orientation-and-diagnostic.html">→ Lesson 01: Orientation &amp; Diagnostic</a>
+</div>
