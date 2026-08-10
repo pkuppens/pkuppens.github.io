@@ -20,27 +20,33 @@ export default function GroupedExperienceEditorRow({ experience, onChange, onRem
       </div>
 
       <div className={styles.field}>
-        <label className={styles.fieldLabel}>Id</label>
-        <input type="text" value={experience.id} onChange={(e) => onChange({ ...experience, id: e.target.value })} />
+        <label className={styles.fieldLabel}>
+          Id
+          <input type="text" value={experience.id} onChange={(e) => onChange({ ...experience, id: e.target.value })} />
+        </label>
       </div>
 
       <div className={styles.field}>
-        <label className={styles.fieldLabel}>Tagline / role title</label>
-        <input
-          type="text"
-          value={experience.tagline}
-          onChange={(e) => onChange({ ...experience, tagline: e.target.value })}
-        />
+        <label className={styles.fieldLabel}>
+          Tagline / role title
+          <input
+            type="text"
+            value={experience.tagline}
+            onChange={(e) => onChange({ ...experience, tagline: e.target.value })}
+          />
+        </label>
       </div>
 
       <PeriodEditor period={experience.period} onChange={(period) => onChange({ ...experience, period })} />
 
       <div className={styles.field}>
-        <label className={styles.fieldLabel}>Description</label>
-        <textarea
-          value={experience.description ?? ''}
-          onChange={(e) => onChange({ ...experience, description: e.target.value || null })}
-        />
+        <label className={styles.fieldLabel}>
+          Description
+          <textarea
+            value={experience.description ?? ''}
+            onChange={(e) => onChange({ ...experience, description: e.target.value || null })}
+          />
+        </label>
       </div>
 
       <StringListEditor label="Tasks" items={experience.tasks} onChange={(tasks) => onChange({ ...experience, tasks })} />

@@ -9,11 +9,12 @@ interface StringListEditorProps {
 export default function StringListEditor({ label, items, onChange }: StringListEditorProps) {
   return (
     <div className={styles.field}>
-      <label className={styles.fieldLabel}>{label}</label>
+      <span className={styles.fieldLabel}>{label}</span>
       {items.map((item, i) => (
         <div key={i} className={styles.listRow}>
           <input
             type="text"
+            aria-label={`${label} item ${i + 1}`}
             value={item}
             onChange={(e) => onChange(items.map((v, j) => (j === i ? e.target.value : v)))}
           />
