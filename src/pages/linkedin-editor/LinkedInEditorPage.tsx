@@ -69,8 +69,10 @@ export default function LinkedInEditorPage() {
         <div className="container">
           <div className={styles.toolbar}>
             <div className={styles.field}>
-              <label className={styles.fieldLabel}>Slug</label>
-              <input type="text" value={slug} onChange={(e) => setSlug(e.target.value)} />
+              <label className={styles.fieldLabel}>
+                Slug
+                <input type="text" value={slug} onChange={(e) => setSlug(e.target.value)} />
+              </label>
             </div>
             <button type="button" onClick={loadFromDevServer}>
               Load data/linkedin/{slug}.xml

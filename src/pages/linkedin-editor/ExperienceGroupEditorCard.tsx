@@ -20,52 +20,60 @@ export default function ExperienceGroupEditorCard({ group, onChange, onRemove }:
       </div>
 
       <div className={styles.field}>
-        <label className={styles.fieldLabel}>Company</label>
-        <input type="text" value={group.company} onChange={(e) => onChange({ ...group, company: e.target.value })} />
+        <label className={styles.fieldLabel}>
+          Company
+          <input type="text" value={group.company} onChange={(e) => onChange({ ...group, company: e.target.value })} />
+        </label>
       </div>
 
       <div className={styles.field}>
-        <label className={styles.fieldLabel}>Location</label>
-        <input
-          type="text"
-          value={group.location ?? ''}
-          onChange={(e) => onChange({ ...group, location: e.target.value || null })}
-        />
+        <label className={styles.fieldLabel}>
+          Location
+          <input
+            type="text"
+            value={group.location ?? ''}
+            onChange={(e) => onChange({ ...group, location: e.target.value || null })}
+          />
+        </label>
       </div>
 
       <div className={styles.periodGrid}>
         <div className={styles.field}>
-          <label className={styles.fieldLabel}>Group employment type</label>
-          <input
-            type="text"
-            value={group.groupSummary?.employmentType ?? ''}
-            onChange={(e) =>
-              onChange({
-                ...group,
-                groupSummary: {
-                  employmentType: e.target.value || null,
-                  totalDurationText: group.groupSummary?.totalDurationText ?? null,
-                },
-              })
-            }
-          />
+          <label className={styles.fieldLabel}>
+            Group employment type
+            <input
+              type="text"
+              value={group.groupSummary?.employmentType ?? ''}
+              onChange={(e) =>
+                onChange({
+                  ...group,
+                  groupSummary: {
+                    employmentType: e.target.value || null,
+                    totalDurationText: group.groupSummary?.totalDurationText ?? null,
+                  },
+                })
+              }
+            />
+          </label>
         </div>
         <div className={styles.field}>
-          <label className={styles.fieldLabel}>Total duration text</label>
-          <input
-            type="text"
-            placeholder="3 yrs 2 mos"
-            value={group.groupSummary?.totalDurationText ?? ''}
-            onChange={(e) =>
-              onChange({
-                ...group,
-                groupSummary: {
-                  employmentType: group.groupSummary?.employmentType ?? null,
-                  totalDurationText: e.target.value || null,
-                },
-              })
-            }
-          />
+          <label className={styles.fieldLabel}>
+            Total duration text
+            <input
+              type="text"
+              placeholder="3 yrs 2 mos"
+              value={group.groupSummary?.totalDurationText ?? ''}
+              onChange={(e) =>
+                onChange({
+                  ...group,
+                  groupSummary: {
+                    employmentType: group.groupSummary?.employmentType ?? null,
+                    totalDurationText: e.target.value || null,
+                  },
+                })
+              }
+            />
+          </label>
         </div>
       </div>
 

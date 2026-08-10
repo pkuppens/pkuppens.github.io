@@ -20,61 +20,75 @@ export default function ExperienceEditorCard({ experience, onChange, onRemove }:
       </div>
 
       <div className={styles.field}>
-        <label className={styles.fieldLabel}>Id</label>
-        <input type="text" value={experience.id} onChange={(e) => onChange({ ...experience, id: e.target.value })} />
+        <label className={styles.fieldLabel}>
+          Id
+          <input type="text" value={experience.id} onChange={(e) => onChange({ ...experience, id: e.target.value })} />
+        </label>
       </div>
 
       <div className={styles.field}>
-        <label className={styles.fieldLabel}>Tagline / role title</label>
-        <input
-          type="text"
-          value={experience.tagline}
-          onChange={(e) => onChange({ ...experience, tagline: e.target.value })}
-        />
+        <label className={styles.fieldLabel}>
+          Tagline / role title
+          <input
+            type="text"
+            value={experience.tagline}
+            onChange={(e) => onChange({ ...experience, tagline: e.target.value })}
+          />
+        </label>
       </div>
 
       <div className={styles.field}>
-        <label className={styles.fieldLabel}>Company</label>
-        <input type="text" value={experience.company} onChange={(e) => onChange({ ...experience, company: e.target.value })} />
+        <label className={styles.fieldLabel}>
+          Company
+          <input type="text" value={experience.company} onChange={(e) => onChange({ ...experience, company: e.target.value })} />
+        </label>
       </div>
 
       <div className={styles.field}>
-        <label className={styles.fieldLabel}>Employment type</label>
-        <input
-          type="text"
-          placeholder="Fulltime, Freelance, …"
-          value={experience.employmentType ?? ''}
-          onChange={(e) => onChange({ ...experience, employmentType: e.target.value || null })}
-        />
+        <label className={styles.fieldLabel}>
+          Employment type
+          <input
+            type="text"
+            placeholder="Fulltime, Freelance, …"
+            value={experience.employmentType ?? ''}
+            onChange={(e) => onChange({ ...experience, employmentType: e.target.value || null })}
+          />
+        </label>
       </div>
 
       <PeriodEditor period={experience.period} onChange={(period) => onChange({ ...experience, period })} />
 
       <div className={styles.field}>
-        <label className={styles.fieldLabel}>Location</label>
-        <input
-          type="text"
-          value={experience.location ?? ''}
-          onChange={(e) => onChange({ ...experience, location: e.target.value || null })}
-        />
+        <label className={styles.fieldLabel}>
+          Location
+          <input
+            type="text"
+            value={experience.location ?? ''}
+            onChange={(e) => onChange({ ...experience, location: e.target.value || null })}
+          />
+        </label>
       </div>
 
       <div className={styles.field}>
-        <label className={styles.fieldLabel}>Work mode</label>
-        <input
-          type="text"
-          placeholder="Hybrid, Remote, On-site"
-          value={experience.workMode ?? ''}
-          onChange={(e) => onChange({ ...experience, workMode: e.target.value || null })}
-        />
+        <label className={styles.fieldLabel}>
+          Work mode
+          <input
+            type="text"
+            placeholder="Hybrid, Remote, On-site"
+            value={experience.workMode ?? ''}
+            onChange={(e) => onChange({ ...experience, workMode: e.target.value || null })}
+          />
+        </label>
       </div>
 
       <div className={styles.field}>
-        <label className={styles.fieldLabel}>Description</label>
-        <textarea
-          value={experience.description ?? ''}
-          onChange={(e) => onChange({ ...experience, description: e.target.value || null })}
-        />
+        <label className={styles.fieldLabel}>
+          Description
+          <textarea
+            value={experience.description ?? ''}
+            onChange={(e) => onChange({ ...experience, description: e.target.value || null })}
+          />
+        </label>
       </div>
 
       <StringListEditor label="Tasks" items={experience.tasks} onChange={(tasks) => onChange({ ...experience, tasks })} />
