@@ -5,6 +5,7 @@ import ProfilePage from './pages/ProfilePage'
 import ProjectsPage from './pages/ProjectsPage'
 import TrainingsPage from './pages/trainings/TrainingsPage'
 import EvaluatorPage from './pages/evaluator/EvaluatorPage'
+import LinkedInEditorPage from './pages/linkedin-editor/LinkedInEditorPage'
 import './App.css'
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
           <Route path="projects" element={<ProjectsPage />} />
           <Route path="trainings" element={<TrainingsPage />} />
           <Route path="evaluator" element={<EvaluatorPage />} />
+          {/* Dev-only, not linked from nav — see #90 / scripts/linkedin/README.md */}
+          {import.meta.env.DEV && <Route path="linkedin-editor" element={<LinkedInEditorPage />} />}
         </Route>
       </Routes>
     </BrowserRouter>

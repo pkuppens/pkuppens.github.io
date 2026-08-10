@@ -1,0 +1,210 @@
+.hero {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+  color: #fff;
+  padding: 3rem 0 2.5rem;
+}
+
+.title {
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  max-width: 640px;
+}
+
+.subtitle code {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.toolbarSpacer {
+  flex: 1 1 auto;
+}
+
+.status {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.errorBanner {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.errorBanner ul {
+  margin: 0.25rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 1000px) {
+  .layout {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.formList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card {
+  padding: 1.25rem;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.cardHeaderTitle {
+  font-weight: 700;
+}
+
+.field {
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.field input[type='text'],
+.field textarea {
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.field textarea {
+  min-height: 4rem;
+  resize: vertical;
+}
+
+.fieldLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.periodGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.listRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.listRow input {
+  flex: 1;
+}
+
+.nestedCard {
+  border: 1px dashed var(--color-border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.75rem;
+}
+
+.nestedList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.addRow {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.previewCard {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  background: var(--color-surface, #fff);
+}
+
+.previewTagline {
+  font-weight: 700;
+}
+
+.previewCompany {
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.previewMeta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.previewDescription {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.previewTasks {
+  margin: 0.5rem 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.previewSkills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.previewNestedList {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.previewNestedItem {
+  border-left: 2px solid var(--color-border);
+  padding-left: 0.75rem;
+}
