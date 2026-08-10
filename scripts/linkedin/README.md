@@ -25,6 +25,27 @@ Target committed data: **`data/linkedin/pieterkuppens.xml`** for [linkedin.com/i
 - `npm run linkedin:export:json -- --in data/linkedin/pieterkuppens.xml` — export derived JSON
 - `npm run linkedin:export:csv -- --in data/linkedin/pieterkuppens.xml` — export derived CSV
 
+## Local editor (dev-only)
+
+`npm run dev`, then open **`/linkedin-editor`** (not linked from the site nav — it's a
+maintenance tool, not a public page). It renders a form for the Experience section defined by
+`schema.xsd` (top-level `experience` items and grouped `experienceGroup`/roles), with a
+LinkedIn-style read-only preview panel that updates as you type.
+
+- **Load data/linkedin/&lt;slug&gt;.xml** — fetches the file from disk via a dev-server-only API
+  (`vite.config.ts`'s `linkedinEditorApi` plugin; it does not exist in the production build).
+- **Load from file…** — parses a locally chosen `.xml` file instead, for editing outside this repo's checkout.
+- **Download .xml** / **Copy .xml to clipboard** — exports the current form state as XML text; the
+  usual path is to overwrite `data/linkedin/<slug>.xml` and review the diff yourself.
+- **Save to data/linkedin/&lt;slug&gt;.xml** — has the same dev-only API write the file directly.
+  This is a filesystem write on your own machine, not a deploy: you still review, `npm run
+  linkedin:validate`, and commit the result via git like any other local change.
+
+This remains a **manual/assisted workflow** — it does not scrape linkedin.com, and the "save"
+action never leaves your machine. After editing, re-run `npm run linkedin:validate -- --in
+data/linkedin/<slug>.xml` before committing.
+
 ## Related GitHub tracking
 
-- **[#42](https://github.com/pkuppens/pkuppens.github.io/issues/42)** — web/AI-assisted editor and `data/linkedin/<slug>` mirror workflow
+- **[#42](https://github.com/pkuppens/pkuppens.github.io/issues/42)** — web/AI-assisted editor and `data/linkedin/<slug>` mirror workflow (data model, seed file, and CLI tooling scope)
+- **[#90](https://github.com/pkuppens/pkuppens.github.io/issues/90)** — the local editor UI itself (split from #42)
