@@ -16,6 +16,9 @@
     <location>'s-Hertogenbosch, Noord-Brabant, Nederland</location>
     <workMode>Hybrid</workMode>
     <description>Consulting on software, data, and AI assignments with focus on practical delivery and business value.</description>
+    <tasks>
+      <task>Matching Tool: scraping assignment websites - with error handling and configuration -  and matching to consultants' profiles.</task>
+    </tasks>
     <skills>
       <skill>Software Engineering</skill>
       <skill>Data</skill>
@@ -74,12 +77,14 @@
       <raw>2020 – 2021</raw>
     </period>
     <location>Utrecht, Nederland</location>
+    <workMode>Hybrid</workMode>
     <description>Built deep-learning segmentation for cardiac MRI (DICOM CINE/LGE), cutting manual segmentation time per case from 30-60 minutes to a ~5-minute review step, and supported migration to AWS cloud scalability.</description>
     <skills>
       <skill>Deep Learning</skill>
       <skill>Medical Imaging</skill>
       <skill>Python</skill>
       <skill>AWS</skill>
+      <skill>C++</skill>
     </skills>
   </experience>
 
@@ -123,17 +128,19 @@
   <experience id="ratho-bv-2013">
     <tagline>Senior Software Engineer (part-time)</tagline>
     <company>Ratho BV</company>
+    <employmentType>Freelance, Part-Time</employmentType>
     <period>
       <startDate yearMonth="2013-05"/>
       <endDate yearMonth="2018-07"/>
       <raw>May 2013 – Jul 2018</raw>
     </period>
+    <location>Eindhoven</location>
+    <workMode>On-site</workMode>
     <description>Part-time (5-10%) role building a C#/SQL Active Directory management product, mentoring the lead engineer and supporting delivery.</description>
     <skills>
       <skill>C#</skill>
       <skill>SQL</skill>
       <skill>Mentoring</skill>
-      <skill>Part-time (5-10%)</skill>
     </skills>
   </experience>
 
@@ -263,5 +270,4 @@
       <skill>Long-term</skill>
     </skills>
   </experience>
-
 </experiences>
