@@ -14,6 +14,8 @@ export default function LinkedInEditorPage() {
     loadFromXmlText,
     loadFromDevServer,
     saveToDevServer,
+    loadFromSession,
+    saveToSession,
     addExperience,
     addExperienceGroup,
     updateItem,
@@ -77,12 +79,17 @@ export default function LinkedInEditorPage() {
 
               <fieldset className={styles.toolbarGroup}>
                 <legend className={styles.toolbarGroupLabel}>Import</legend>
-                <button
-                  type="button"
-                  className={`btn btn-outline ${styles.toolbarSlugButton}`}
-                  onClick={loadFromDevServer}
-                >
-                  Load data/linkedin/{slug}.xml
+                {import.meta.env.DEV && (
+                  <button
+                    type="button"
+                    className={`btn btn-outline ${styles.toolbarSlugButton}`}
+                    onClick={loadFromDevServer}
+                  >
+                    Load data/linkedin/{slug}.xml
+                  </button>
+                )}
+                <button type="button" className="btn btn-outline" onClick={loadFromSession}>
+                  Load from browser session
                 </button>
                 <button type="button" className="btn btn-outline" onClick={() => fileInputRef.current?.click()}>
                   Load from file…
@@ -93,12 +100,17 @@ export default function LinkedInEditorPage() {
 
             <fieldset className={styles.toolbarGroup} disabled={model.items.length === 0}>
               <legend className={styles.toolbarGroupLabel}>Export</legend>
-              <button
-                type="button"
-                className={`btn btn-outline ${styles.toolbarSlugButton}`}
-                onClick={saveToDevServer}
-              >
-                Save to data/linkedin/{slug}.xml
+              {import.meta.env.DEV && (
+                <button
+                  type="button"
+                  className={`btn btn-outline ${styles.toolbarSlugButton}`}
+                  onClick={saveToDevServer}
+                >
+                  Save to data/linkedin/{slug}.xml
+                </button>
+              )}
+              <button type="button" className="btn btn-outline" onClick={saveToSession}>
+                Save to browser session
               </button>
               <button type="button" className="btn btn-outline" onClick={handleDownload}>
                 Download .xml

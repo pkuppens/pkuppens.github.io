@@ -18,8 +18,8 @@ function App() {
           <Route path="projects" element={<ProjectsPage />} />
           <Route path="trainings" element={<TrainingsPage />} />
           <Route path="evaluator" element={<EvaluatorPage />} />
-          {/* Dev-only, not linked from nav — see #90 / scripts/linkedin/README.md */}
-          {import.meta.env.DEV && <Route path="linkedin-editor" element={<LinkedInEditorPage />} />}
+          {/* Unlinked from nav — maintenance tool, see #90, #97 / scripts/linkedin/README.md */}
+          <Route path="linkedin-editor" element={<LinkedInEditorPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
