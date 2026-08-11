@@ -11,7 +11,7 @@ describe('LinkedInEditorPage', () => {
   it('renders with no items and no public-nav footprint of its own', () => {
     render(<LinkedInEditorPage />)
     expect(screen.getByRole('heading', { name: 'LinkedIn Experience Editor' })).toBeInTheDocument()
-    expect(screen.getByText(/Nothing to preview yet/i)).toBeInTheDocument()
+    expect(screen.getByText(/Nothing to edit yet/i)).toBeInTheDocument()
   })
 
   it('adds an experience, editing it updates the live preview', async () => {
@@ -50,7 +50,7 @@ describe('LinkedInEditorPage', () => {
 
     await user.click(screen.getByRole('button', { name: 'Remove' }))
     expect(screen.queryByText('Temp Co')).not.toBeInTheDocument()
-    expect(screen.getByText(/Nothing to preview yet/i)).toBeInTheDocument()
+    expect(screen.getByText(/Nothing to edit yet/i)).toBeInTheDocument()
   })
 
   it('shows validation issues for an incomplete experience', async () => {
