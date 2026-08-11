@@ -57,6 +57,18 @@
   padding: 0 0.35rem;
 }
 
+.toolbarGroup:disabled {
+  opacity: 0.5;
+}
+
+.toolbarGroup:disabled button {
+  cursor: not-allowed;
+}
+
+.toolbarSlugButton {
+  min-width: 56ch;
+}
+
 .status {
   color: var(--color-text-muted);
   font-size: 0.9rem;
