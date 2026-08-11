@@ -93,18 +93,18 @@ export default function LinkedInEditorPage() {
 
             <fieldset className={styles.toolbarGroup} disabled={model.items.length === 0}>
               <legend className={styles.toolbarGroupLabel}>Export</legend>
-              <button type="button" className="btn btn-outline" onClick={handleDownload}>
-                Download .xml
-              </button>
-              <button type="button" className="btn btn-outline" onClick={handleCopy}>
-                Copy .xml to clipboard
-              </button>
               <button
                 type="button"
                 className={`btn btn-outline ${styles.toolbarSlugButton}`}
                 onClick={saveToDevServer}
               >
                 Save to data/linkedin/{slug}.xml
+              </button>
+              <button type="button" className="btn btn-outline" onClick={handleDownload}>
+                Download .xml
+              </button>
+              <button type="button" className="btn btn-outline" onClick={handleCopy}>
+                Copy .xml to clipboard
               </button>
             </fieldset>
           </div>
