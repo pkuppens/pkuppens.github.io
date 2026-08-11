@@ -25,13 +25,29 @@
 .toolbar {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 0.75rem;
+  align-items: center;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.toolbarSpacer {
-  flex: 1 1 auto;
+.toolbarGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius, 8px);
+  padding: 0.5rem 0.75rem;
+  margin: 0;
+}
+
+.toolbarGroupLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  padding: 0 0.35rem;
 }
 
 .status {
@@ -58,7 +74,13 @@
 .layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.layoutHeader {
+  display: none;
+  font-weight: 700;
 }
 
 @media (min-width: 1000px) {
@@ -66,12 +88,10 @@
     grid-template-columns: 1fr 1fr;
     align-items: start;
   }
-}
 
-.formList {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  .layoutHeader {
+    display: block;
+  }
 }
 
 .card {
@@ -159,12 +179,6 @@
 .addRow {
   display: flex;
   gap: 0.75rem;
-}
-
-.preview {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
 }
 
 .previewCard {

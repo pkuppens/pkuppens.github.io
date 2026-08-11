@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react'
 import { useLinkedInEditor } from './useLinkedInEditor'
-import LinkedInEditorForm from './LinkedInEditorForm'
-import LinkedInEditorPreview from './LinkedInEditorPreview'
+import LinkedInEditorItemRow from './LinkedInEditorItemRow'
 import styles from './LinkedInEditorPage.module.css'
 
 export default function LinkedInEditorPage() {
@@ -74,23 +73,30 @@ export default function LinkedInEditorPage() {
                 <input type="text" value={slug} onChange={(e) => setSlug(e.target.value)} />
               </label>
             </div>
-            <button type="button" onClick={loadFromDevServer}>
-              Load data/linkedin/{slug}.xml
-            </button>
-            <button type="button" onClick={() => fileInputRef.current?.click()}>
-              Load from file…
-            </button>
-            <input ref={fileInputRef} type="file" accept=".xml" hidden onChange={handleFileUpload} />
-            <span className={styles.toolbarSpacer} />
-            <button type="button" onClick={handleDownload}>
-              Download .xml
-            </button>
-            <button type="button" onClick={handleCopy}>
-              Copy .xml to clipboard
-            </button>
-            <button type="button" onClick={saveToDevServer}>
-              Save to data/linkedin/{slug}.xml
-            </button>
+
+            <fieldset className={styles.toolbarGroup}>
+              <legend className={styles.toolbarGroupLabel}>Import</legend>
+              <button type="button" className="btn btn-outline" onClick={loadFromDevServer}>
+                Load data/linkedin/{slug}.xml
+              </button>
+              <button type="button" className="btn btn-outline" onClick={() => fileInputRef.current?.click()}>
+                Load from file…
+              </button>
+              <input ref={fileInputRef} type="file" accept=".xml" hidden onChange={handleFileUpload} />
+            </fieldset>
+
+            <fieldset className={styles.toolbarGroup}>
+              <legend className={styles.toolbarGroupLabel}>Export</legend>
+              <button type="button" className="btn btn-outline" onClick={handleDownload}>
+                Download .xml
+              </button>
+              <button type="button" className="btn btn-outline" onClick={handleCopy}>
+                Copy .xml to clipboard
+              </button>
+              <button type="button" className="btn btn-primary" onClick={saveToDevServer}>
+                Save to data/linkedin/{slug}.xml
+              </button>
+            </fieldset>
           </div>
 
           {(status || copyStatus) && <p className={styles.status}>{[status, copyStatus].filter(Boolean).join(' ')}</p>}
@@ -106,21 +112,30 @@ export default function LinkedInEditorPage() {
             </div>
           )}
 
-          <div className={styles.layout}>
-            <div className={styles.formCol}>
-              <h2 className="mb-4">Edit</h2>
-              <LinkedInEditorForm
-                items={model.items}
-                onUpdateItem={updateItem}
-                onRemoveItem={removeItem}
-                onAddExperience={addExperience}
-                onAddExperienceGroup={addExperienceGroup}
-              />
+          {model.items.length === 0 ? (
+            <p className="text-muted">Nothing to edit yet — load or add an experience.</p>
+          ) : (
+            <div className={styles.layout}>
+              <div className={`${styles.layoutHeader} mb-4`}>Edit</div>
+              <div className={`${styles.layoutHeader} mb-4`}>Preview</div>
+              {model.items.map((item, i) => (
+                <LinkedInEditorItemRow
+                  key={i}
+                  item={item}
+                  onChange={(updated) => updateItem(i, updated)}
+                  onRemove={() => removeItem(i)}
+                />
+              ))}
             </div>
-            <div className={styles.previewCol}>
-              <h2 className="mb-4">Preview</h2>
-              <LinkedInEditorPreview model={model} />
-            </div>
+          )}
+
+          <div className={styles.addRow}>
+            <button type="button" onClick={addExperience}>
+              + Add experience
+            </button>
+            <button type="button" onClick={addExperienceGroup}>
+              + Add experience group
+            </button>
           </div>
         </div>
       </section>
