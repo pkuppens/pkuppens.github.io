@@ -14,6 +14,10 @@ import {
 
 const DEFAULT_SLUG = 'pieterkuppens'
 
+function sessionKey(slug: string): string {
+  return `linkedin-editor:${slug}`
+}
+
 function emptyModel(): ExperiencesDocumentModel {
   return { meta: null, items: [] }
 }
@@ -78,6 +82,24 @@ export function useLinkedInEditor() {
     }
   }, [model, slug])
 
+  const saveToSession = useCallback(() => {
+    try {
+      sessionStorage.setItem(sessionKey(slug), serializeExperiencesXml(model))
+      setStatus(`Saved to browser session storage (${slug}).`)
+    } catch (e) {
+      setStatus(`Save failed: ${String(e)}`)
+    }
+  }, [model, slug])
+
+  const loadFromSession = useCallback(() => {
+    const xml = sessionStorage.getItem(sessionKey(slug))
+    if (xml === null) {
+      setStatus(`No session data saved for "${slug}".`)
+      return
+    }
+    loadFromXmlText(xml)
+  }, [slug, loadFromXmlText])
+
   const addExperience = useCallback(() => {
     setModel((m) => ({ ...m, items: [...m.items, newExperience(nextId('experience', m))] }))
   }, [])
@@ -108,6 +130,8 @@ export function useLinkedInEditor() {
     loadFromXmlText,
     loadFromDevServer,
     saveToDevServer,
+    loadFromSession,
+    saveToSession,
     addExperience,
     addExperienceGroup,
     updateItem,
