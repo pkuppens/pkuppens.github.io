@@ -67,23 +67,25 @@ export default function LinkedInEditorPage() {
       <section className="section">
         <div className="container">
           <div className={styles.toolbar}>
-            <div className={styles.field}>
-              <label className={styles.fieldLabel}>
-                Slug
-                <input type="text" value={slug} onChange={(e) => setSlug(e.target.value)} />
-              </label>
-            </div>
+            <div className={styles.toolbarColumn}>
+              <div className={styles.field}>
+                <label className={styles.fieldLabel}>
+                  Slug
+                  <input type="text" value={slug} onChange={(e) => setSlug(e.target.value)} />
+                </label>
+              </div>
 
-            <fieldset className={styles.toolbarGroup}>
-              <legend className={styles.toolbarGroupLabel}>Import</legend>
-              <button type="button" className="btn btn-outline" onClick={loadFromDevServer}>
-                Load data/linkedin/{slug}.xml
-              </button>
-              <button type="button" className="btn btn-outline" onClick={() => fileInputRef.current?.click()}>
-                Load from file…
-              </button>
-              <input ref={fileInputRef} type="file" accept=".xml" hidden onChange={handleFileUpload} />
-            </fieldset>
+              <fieldset className={styles.toolbarGroup}>
+                <legend className={styles.toolbarGroupLabel}>Import</legend>
+                <button type="button" className="btn btn-outline" onClick={loadFromDevServer}>
+                  Load data/linkedin/{slug}.xml
+                </button>
+                <button type="button" className="btn btn-outline" onClick={() => fileInputRef.current?.click()}>
+                  Load from file…
+                </button>
+                <input ref={fileInputRef} type="file" accept=".xml" hidden onChange={handleFileUpload} />
+              </fieldset>
+            </div>
 
             <fieldset className={styles.toolbarGroup}>
               <legend className={styles.toolbarGroupLabel}>Export</legend>
