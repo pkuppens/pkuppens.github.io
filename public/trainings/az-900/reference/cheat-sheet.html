@@ -66,7 +66,8 @@
   <dd>A step beyond PaaS — zero capacity to provision, billed strictly per execution (e.g. Azure Functions), not a running app-service plan.</dd>
 </dl>
 
-<h2>Domain 2 · Architecture &amp; hierarchy <span class="badge d2">35–40%</span></h2>
+<h2>Domain 2 · Azure architecture and services <span class="badge d2">35–40%</span></h2>
+<h3>Architecture &amp; hierarchy</h3>
 <dl class="gloss">
   <dt>Management group</dt>
   <dd>Governs multiple <b>subscriptions</b> at once — the top of the resource hierarchy.</dd>
@@ -102,7 +103,7 @@
   <dd>A physically and logically isolated Azure instance for legal/compliance reasons (e.g. Azure Government) — not about physical failure, about isolation from global Azure.</dd>
 </dl>
 
-<h2>Domain 2 · Compute <span class="badge d2">35–40%</span></h2>
+<h3>Compute</h3>
 <dl class="gloss">
   <dt>Virtual Machines (VMs)</dt>
   <dd>IaaS compute — you manage the OS and above.</dd>
@@ -132,7 +133,7 @@
   <dd>Runs large-scale parallel/batch compute jobs across a managed pool of VMs.</dd>
 </dl>
 
-<h2>Domain 2 · Networking <span class="badge d2">35–40%</span></h2>
+<h3>Networking</h3>
 <dl class="gloss">
   <dt>Virtual Network (VNet)</dt>
   <dd>Your private, isolated address space in Azure.</dd>
@@ -171,7 +172,7 @@
   <dd>Global, application-layer (L7) entry point — load balancing, routing, and acceleration across regions.</dd>
 </dl>
 
-<h2>Domain 2 · Storage <span class="badge d2">35–40%</span></h2>
+<h3>Storage</h3>
 <dl class="gloss">
   <dt>Storage account</dt>
   <dd>The top-level container you create in Azure Storage — a namespace for your blobs, files, tables, and queues, with its own redundancy/tier/security settings.</dd>
@@ -222,7 +223,7 @@
   <dd>Offline, shippable appliance for bulk data transfer.</dd>
 </dl>
 
-<h2>Domain 2 · Identity, access &amp; security <span class="badge d2">35–40%</span></h2>
+<h3>Identity, access &amp; security</h3>
 <dl class="gloss">
   <dt>Microsoft Entra ID</dt>
   <dd>Identity directory — users, groups, app registrations. <span class="aka">Formerly "Azure Active Directory" / "Azure AD" — the old name is a frequent distractor.</span></dd>
@@ -261,7 +262,8 @@
   <dd>Centralized, managed store for secrets, keys, and certificates — apps fetch them at runtime instead of hard-coding credentials.</dd>
 </dl>
 
-<h2>Domain 3 · Cost management <span class="badge d3">30–35%</span></h2>
+<h2>Domain 3 · Azure management and governance <span class="badge d3">30–35%</span></h2>
+<h3>Cost management</h3>
 <dl class="gloss">
   <dt>Pricing calculator</dt>
   <dd>Estimate cost for a hypothetical configuration <em>before</em> you deploy it.</dd>
@@ -273,7 +275,7 @@
   <dd>Metadata for cost allocation, filtering, and automation.</dd>
 </dl>
 
-<h2>Domain 3 · Governance &amp; compliance <span class="badge d3">30–35%</span></h2>
+<h3>Governance &amp; compliance</h3>
 <dl class="gloss">
   <dt>Azure Policy</dt>
   <dd>Enforces/audits resource <em>configuration</em> rules, regardless of who deployed the resource. Distinct from RBAC (who can act).</dd>
@@ -288,7 +290,7 @@
   <dd>Unified data map, catalog, classification, and lineage across your data estate — governance/compliance, not resource configuration.</dd>
 </dl>
 
-<h2>Domain 3 · Deployment &amp; management tooling <span class="badge d3">30–35%</span></h2>
+<h3>Deployment &amp; management tooling</h3>
 <dl class="gloss">
   <dt>Azure portal</dt>
   <dd>Web-based graphical UI for managing all Azure resources.</dd>
@@ -312,7 +314,7 @@
   <dd>Extends Azure's management plane (Policy, RBAC, tags) to servers and Kubernetes clusters running on-premises or in other clouds.</dd>
 </dl>
 
-<h2>Domain 3 · Monitoring <span class="badge d3">30–35%</span></h2>
+<h3>Monitoring</h3>
 <dl class="gloss">
   <dt>Azure Advisor</dt>
   <dd>Proactive best-practice recommendations across cost, security, reliability, performance. Answers "what should I change?"</dd>
