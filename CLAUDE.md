@@ -11,3 +11,7 @@ Default five canonical labels (`needs-triage`, `needs-info`, `ready-for-agent`, 
 ### Domain docs
 
 Single-context: `CONTEXT.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.
+
+### Training course cheat sheets
+
+When asked for an exam-day recap/cheat-sheet for a course under `public/trainings/` (az-900, dp-900, ai-901, ...), follow the workflow in `docs/agents/training-cheat-sheet.md` rather than improvising a format.
