@@ -1,0 +1,353 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/site-nav.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../../shared/trainings.css">
+<title>AZ-900 Cheat Sheet — Reference</title>
+
+<p class="eyebrow">AZ-900 · Reference</p>
+<h1>Cheat Sheet</h1>
+<p class="subtitle">Every term and service from this course, restated as one short, memorable definition each. Built for a last-pass skim right before the exam — read top to bottom once, then jump to whatever domain feels shakiest.</p>
+
+<div class="callout key">
+  <span class="label">How to use this on exam day</span>
+  Skim once fully (~10 min), then re-skim just the bolded term names, covering the definitions — if you can
+  say the definition from the name alone, you're done with that line.
+</div>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900">Official Study Guide — Exam AZ-900</a>
+  · every bullet in the "Skills measured" outline (as of <b>2026-07-20</b>) has a corresponding entry below.
+</div>
+
+<h2>Domain 1 · Cloud concepts <span class="badge d1">25–30%</span></h2>
+<dl class="gloss">
+  <dt>Shared responsibility model</dt>
+  <dd>One rule, always true: <b>you always own data, identities, devices, and access</b>; <b>Microsoft always owns the physical datacenter</b>. Everything in between (OS, runtime, app code) shifts toward Microsoft as you move IaaS → PaaS → SaaS.</dd>
+
+  <dt>Public cloud</dt>
+  <dd>Multi-tenant, shared infrastructure — cheapest, fastest to deploy, no hardware ownership.</dd>
+
+  <dt>Private cloud</dt>
+  <dd>Single-tenant, dedicated infrastructure (can still be provider-hosted) — for compliance, control, or predictable performance.</dd>
+
+  <dt>Hybrid cloud</dt>
+  <dd>Public + private/on-prem, connected — regulated data stays on-prem, workloads burst to cloud.</dd>
+
+  <dt>CapEx vs. OpEx</dt>
+  <dd><b>CapEx</b>: buy hardware upfront, depreciate over years. <b>OpEx</b> (consumption-based): pay only for what you use. The cloud's pitch is shifting CapEx to OpEx.</dd>
+
+  <dt>High availability</dt>
+  <dd>Keeps running and meets its SLA despite a failure.</dd>
+
+  <dt>Scalability</dt>
+  <dd>Capacity grows/shrinks automatically with demand.</dd>
+
+  <dt>Reliability</dt>
+  <dd>Recovers and keeps functioning consistently over time.</dd>
+
+  <dt>Predictability</dt>
+  <dd>You can forecast cost and performance in advance.</dd>
+
+  <dt>Manageability</dt>
+  <dd>Deploying/monitoring/maintaining resources is easy at scale.</dd>
+
+  <dt>IaaS (Infrastructure as a Service)</dt>
+  <dd>You manage the OS and everything above it (e.g. Azure VMs). Full control, most overhead.</dd>
+
+  <dt>PaaS (Platform as a Service)</dt>
+  <dd>Gives you the building blocks (like Azure App Service or Azure SQL Database) to code, host, and manage your own custom applications without worrying about underlying operating systems or hardware.</dd>
+
+  <dt>SaaS (Software as a Service)</dt>
+  <dd>Gives you a complete, ready-to-run application (like Microsoft 365 or Dynamics 365) accessed via a browser where you only manage your data and user settings.</dd>
+
+  <dt>Serverless</dt>
+  <dd>A step beyond PaaS — zero capacity to provision, billed strictly per execution (e.g. Azure Functions), not a running app-service plan.</dd>
+</dl>
+
+<h2>Domain 2 · Architecture &amp; hierarchy <span class="badge d2">35–40%</span></h2>
+<dl class="gloss">
+  <dt>Management group</dt>
+  <dd>Governs multiple <b>subscriptions</b> at once — the top of the resource hierarchy.</dd>
+
+  <dt>Subscription</dt>
+  <dd>Billing and scale boundary. Sits below a management group, above resource groups.</dd>
+
+  <dt>Resource group</dt>
+  <dd>Lifecycle and RBAC/Policy container for related resources, inside a subscription. Purely organizational — no direct AWS/GCP equivalent.</dd>
+
+  <dt>Resource</dt>
+  <dd>A specific deployed instance — one VM, one storage account, etc.</dd>
+
+  <dt>Tenant</dt>
+  <dd>Your organization's Microsoft Entra ID directory — sits <em>above</em> subscriptions, not inside the resource hierarchy itself. One tenant can contain many subscriptions.</dd>
+
+  <dt>RBAC/Policy inheritance</dt>
+  <dd>Assignments at a higher scope (management group → subscription → resource group → resource) are inherited downward.</dd>
+
+  <dt>Region</dt>
+  <dd>A geographic area with one or more datacenters.</dd>
+
+  <dt>Datacenter</dt>
+  <dd>The physical facility — power, cooling, physical security — underlying a region. Microsoft always owns this layer, regardless of service type.</dd>
+
+  <dt>Availability zone</dt>
+  <dd>A physically separate datacenter within a region, synchronously replicated — protects against losing <em>one datacenter</em>.</dd>
+
+  <dt>Region pair</dt>
+  <dd>Two regions in the same geography, asynchronously linked for disaster recovery and sequenced platform updates — protects against losing an <em>entire region</em>.</dd>
+
+  <dt>Sovereign region</dt>
+  <dd>A physically and logically isolated Azure instance for legal/compliance reasons (e.g. Azure Government) — not about physical failure, about isolation from global Azure.</dd>
+</dl>
+
+<h2>Domain 2 · Compute <span class="badge d2">35–40%</span></h2>
+<dl class="gloss">
+  <dt>Virtual Machines (VMs)</dt>
+  <dd>IaaS compute — you manage the OS and above.</dd>
+
+  <dt>Virtual Machine Scale Sets</dt>
+  <dd>A group of identical VMs that auto-scales with demand.</dd>
+
+  <dt>Availability set</dt>
+  <dd>Groups VMs across fault/update domains for resilience — manually placed, no auto-scaling (unlike scale sets).</dd>
+
+  <dt>Azure Container Instances (ACI)</dt>
+  <dd>Run a single container with no VM to manage.</dd>
+
+  <dt>Azure Kubernetes Service (AKS)</dt>
+  <dd>Managed Kubernetes — you manage orchestration config, not the control plane.</dd>
+
+  <dt>Azure Functions</dt>
+  <dd>Serverless — just your code, billed per execution.</dd>
+
+  <dt>Azure App Service</dt>
+  <dd>PaaS web app hosting — just your app code.</dd>
+
+  <dt>Azure Virtual Desktop</dt>
+  <dd>Streams a full virtual desktop to end users.</dd>
+
+  <dt>Azure Batch</dt>
+  <dd>Runs large-scale parallel/batch compute jobs across a managed pool of VMs.</dd>
+</dl>
+
+<h2>Domain 2 · Networking <span class="badge d2">35–40%</span></h2>
+<dl class="gloss">
+  <dt>Virtual Network (VNet)</dt>
+  <dd>Your private, isolated address space in Azure.</dd>
+
+  <dt>Subnet</dt>
+  <dd>A segment of a VNet's address space, for organization and security boundaries.</dd>
+
+  <dt>VNet peering</dt>
+  <dd>Private VNet-to-VNet connectivity, off the public internet.</dd>
+
+  <dt>VPN Gateway</dt>
+  <dd>Encrypted tunnel connecting on-premises to Azure <em>over the public internet</em>.</dd>
+
+  <dt>ExpressRoute</dt>
+  <dd>Dedicated private circuit connecting on-premises to Azure, <em>off</em> the public internet.</dd>
+
+  <dt>Azure DNS</dt>
+  <dd>Resolves domain names to IP addresses.</dd>
+
+  <dt>Public endpoint</dt>
+  <dd>Internet-reachable address for a service.</dd>
+
+  <dt>Private endpoint</dt>
+  <dd>Brings a PaaS service's traffic inside your VNet via a private IP — no public internet exposure. Applies broadly (storage, SQL, Key Vault, etc.), not just one service.</dd>
+
+  <dt>Public IP address</dt>
+  <dd>A static, internet-reachable address you assign to a resource (e.g. a load balancer or VM).</dd>
+
+  <dt>Network security group (NSG)</dt>
+  <dd>Allow/deny traffic rules filtering inbound/outbound traffic at the subnet or NIC level.</dd>
+
+  <dt>Azure Load Balancer</dt>
+  <dd>Distributes traffic across VMs at the network layer (L4), within a region.</dd>
+
+  <dt>Azure Front Door</dt>
+  <dd>Global, application-layer (L7) entry point — load balancing, routing, and acceleration across regions.</dd>
+</dl>
+
+<h2>Domain 2 · Storage <span class="badge d2">35–40%</span></h2>
+<dl class="gloss">
+  <dt>Storage account</dt>
+  <dd>The top-level container you create in Azure Storage — a namespace for your blobs, files, tables, and queues, with its own redundancy/tier/security settings.</dd>
+
+  <dt>Blob Storage</dt>
+  <dd>Unstructured objects over HTTP/HTTPS.</dd>
+
+  <dt>Azure Files</dt>
+  <dd>Mountable SMB/NFS file shares.</dd>
+
+  <dt>Table Storage</dt>
+  <dd>NoSQL key-value store.</dd>
+
+  <dt>Queue Storage</dt>
+  <dd>App-to-app messaging queue.</dd>
+
+  <dt>Access tiers (Hot / Cool / Cold / Archive)</dt>
+  <dd>Control <em>how often you access data</em> — hottest is most expensive to store, cheapest to read; Archive is cheapest to store, hours of retrieval latency. Independent from redundancy — don't confuse the two axes.</dd>
+
+  <dt>LRS (locally redundant storage)</dt>
+  <dd>3 synchronous copies, one datacenter. Least resilient.</dd>
+
+  <dt>ZRS (zone-redundant storage)</dt>
+  <dd>3 synchronous copies, spread across availability zones in one region.</dd>
+
+  <dt>GRS (geo-redundant storage)</dt>
+  <dd>LRS + one async copy in the paired region.</dd>
+
+  <dt>GZRS (geo-zone-redundant storage)</dt>
+  <dd>ZRS + one async copy in the paired region — widest protection.</dd>
+
+  <dt>Secure transfer required (HTTPS-only)</dt>
+  <dd>Storage account setting that rejects plain HTTP requests.</dd>
+
+  <dt>AzCopy</dt>
+  <dd>Command-line, scriptable bulk copy of blobs/files.</dd>
+
+  <dt>Azure Storage Explorer</dt>
+  <dd>Desktop GUI equivalent of AzCopy.</dd>
+
+  <dt>Azure File Sync</dt>
+  <dd>Hybrid caching — on-prem server caches hot files, full data lives in Azure Files.</dd>
+
+  <dt>Azure Migrate</dt>
+  <dd>Assesses and migrates whole on-prem servers.</dd>
+
+  <dt>Azure Data Box</dt>
+  <dd>Offline, shippable appliance for bulk data transfer.</dd>
+</dl>
+
+<h2>Domain 2 · Identity, access &amp; security <span class="badge d2">35–40%</span></h2>
+<dl class="gloss">
+  <dt>Microsoft Entra ID</dt>
+  <dd>Identity directory — users, groups, app registrations. <span class="aka">Formerly "Azure Active Directory" / "Azure AD" — the old name is a frequent distractor.</span></dd>
+
+  <dt>Microsoft Entra Domain Services</dt>
+  <dd>Managed, classic AD-compatible directory (domain join, LDAP, Group Policy) for legacy apps — not a replacement for Entra ID.</dd>
+
+  <dt>Azure RBAC</dt>
+  <dd>Role assignment = security principal + role definition + scope. Controls <em>who can do what</em>.</dd>
+
+  <dt>Microsoft Entra Conditional Access</dt>
+  <dd>Rule-based access policy that requires extra checks (e.g. MFA) or blocks sign-in based on context — risk level, device state, location — rather than applying the same rule to everyone always.</dd>
+
+  <dt>External identities</dt>
+  <dd>Partners/guests sign in with their own identity provider instead of a new account in your tenant.</dd>
+
+  <dt>Single sign-on (SSO)</dt>
+  <dd>Sign in once, access many apps.</dd>
+
+  <dt>Multifactor authentication (MFA)</dt>
+  <dd>A second verification factor beyond the password.</dd>
+
+  <dt>Passwordless authentication</dt>
+  <dd>Sign in with no password at all (e.g. Windows Hello, authenticator app).</dd>
+
+  <dt>Zero Trust</dt>
+  <dd>"Never trust, always verify" — no implicit trust from network location, verify explicitly for every request.</dd>
+
+  <dt>Defense-in-depth</dt>
+  <dd>Layered controls across network, identity, app, and data — how Zero Trust gets implemented in practice.</dd>
+
+  <dt>Microsoft Defender for Cloud</dt>
+  <dd>Scores and hardens your security posture across your resources.</dd>
+
+  <dt>Azure Key Vault</dt>
+  <dd>Centralized, managed store for secrets, keys, and certificates — apps fetch them at runtime instead of hard-coding credentials.</dd>
+</dl>
+
+<h2>Domain 3 · Cost management <span class="badge d3">30–35%</span></h2>
+<dl class="gloss">
+  <dt>Pricing calculator</dt>
+  <dd>Estimate cost for a hypothetical configuration <em>before</em> you deploy it.</dd>
+
+  <dt>Azure Cost Management</dt>
+  <dd>Analyze actual spend, set budgets and alerts, <em>after</em> resources are already running.</dd>
+
+  <dt>Tags</dt>
+  <dd>Metadata for cost allocation, filtering, and automation.</dd>
+</dl>
+
+<h2>Domain 3 · Governance &amp; compliance <span class="badge d3">30–35%</span></h2>
+<dl class="gloss">
+  <dt>Azure Policy</dt>
+  <dd>Enforces/audits resource <em>configuration</em> rules, regardless of who deployed the resource. Distinct from RBAC (who can act).</dd>
+
+  <dt>Resource lock</dt>
+  <dd>Blocks delete (<code>CanNotDelete</code>) or delete+edit (<code>ReadOnly</code>) on a resource — independent of RBAC role. Even an Owner is blocked until the lock is removed.</dd>
+
+  <dt>Azure Blueprints</dt>
+  <dd>Packages a repeatable set of resources, policies, and role assignments together to stamp out compliant environments — broader than a single Policy definition.</dd>
+
+  <dt>Microsoft Purview</dt>
+  <dd>Unified data map, catalog, classification, and lineage across your data estate — governance/compliance, not resource configuration.</dd>
+</dl>
+
+<h2>Domain 3 · Deployment &amp; management tooling <span class="badge d3">30–35%</span></h2>
+<dl class="gloss">
+  <dt>Azure portal</dt>
+  <dd>Web-based graphical UI for managing all Azure resources.</dd>
+
+  <dt>Azure Cloud Shell</dt>
+  <dd>Browser-based, pre-authenticated shell — zero install.</dd>
+
+  <dt>Azure CLI / Azure PowerShell</dt>
+  <dd>Same capabilities as Cloud Shell, installed and run locally instead.</dd>
+
+  <dt>Azure Resource Manager (ARM)</dt>
+  <dd>The underlying deployment/management engine and API that every tool (portal, CLI, templates) ultimately calls — not a UI itself.</dd>
+
+  <dt>ARM templates</dt>
+  <dd>Native declarative infrastructure-as-code format, written in JSON.</dd>
+
+  <dt>Bicep</dt>
+  <dd>Friendlier authoring language that compiles down to the same ARM JSON templates — same engine, easier syntax.</dd>
+
+  <dt>Azure Arc</dt>
+  <dd>Extends Azure's management plane (Policy, RBAC, tags) to servers and Kubernetes clusters running on-premises or in other clouds.</dd>
+</dl>
+
+<h2>Domain 3 · Monitoring <span class="badge d3">30–35%</span></h2>
+<dl class="gloss">
+  <dt>Azure Advisor</dt>
+  <dd>Proactive best-practice recommendations across cost, security, reliability, performance. Answers "what should I change?"</dd>
+
+  <dt>Azure Service Health</dt>
+  <dd>Is <em>Azure itself</em> (the platform) having an issue affecting your specific resources? Personalized, unlike the generic public Azure Status page.</dd>
+
+  <dt>Azure Monitor</dt>
+  <dd>Collects <em>your</em> resources' own metrics/logs and drives alerts. Answers "is my resource broken?"</dd>
+
+  <dt>↳ Log Analytics</dt>
+  <dd>KQL queries over logs collected by Azure Monitor.</dd>
+
+  <dt>↳ Application Insights</dt>
+  <dd>App-level performance telemetry, part of Azure Monitor.</dd>
+
+  <dt>↳ Alerts</dt>
+  <dd>Threshold-based automated notifications, part of Azure Monitor.</dd>
+</dl>
+
+<h2>The recurring exam traps</h2>
+<div class="callout warn">
+  <span class="label">Tool-boundary pairs the exam loves to test</span>
+  <ul style="margin:.4rem 0 0; padding-left:1.2rem">
+    <li><b>Pricing calculator</b> (before deploying) vs. <b>Cost Management</b> (after, actual spend).</li>
+    <li><b>Azure Policy</b> (what configuration is allowed) vs. <b>RBAC</b> (who can act) vs. <b>resource lock</b> (blocks delete/edit regardless of role).</li>
+    <li><b>Azure Advisor</b> (what should I improve?) vs. <b>Service Health</b> (is the platform broken?) vs. <b>Monitor</b> (is my resource broken?).</li>
+    <li><b>Access tiers</b> (how often you access data) vs. <b>redundancy</b> (how many copies, where).</li>
+    <li><b>VPN Gateway</b> (over the public internet) vs. <b>ExpressRoute</b> (dedicated private circuit).</li>
+    <li><b>Microsoft Entra ID</b> (identities live here) vs. <b>Azure RBAC</b> (permissions get assigned here).</li>
+  </ul>
+</div>
+
+<div class="lesson-nav no-print">
+  <a href="./glossary.html">← Glossary</a>
+  <a href="./exam-blueprint.html">Exam Blueprint</a>
+  <a href="../lessons/weak-areas.html">Practice weak areas →</a>
+</div>
