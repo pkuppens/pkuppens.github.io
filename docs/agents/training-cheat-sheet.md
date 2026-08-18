@@ -59,3 +59,7 @@ sheet** for one of these courses — especially framed as "exam is today" — bu
 `public/trainings/az-900/reference/cheat-sheet.html` (added 2026-08-18, issue-driven request,
 verified against the AZ-900 study guide dated 2026-07-20) is the worked example — copy its
 structure when building the next course's cheat sheet rather than designing from scratch.
+
+`public/trainings/dp-900/reference/cheat-sheet.html` (added 2026-08-18, verified against the
+DP-900 study guide dated 2026-07-21) is the second worked example — a smaller, four-domain course
+where a single `dl.gloss` per domain was enough (no need for AZ-900's domain sub-splits).
