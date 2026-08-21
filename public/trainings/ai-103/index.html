@@ -1,0 +1,106 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../shared/site-nav.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="../shared/trainings.css">
+<title>AI-103 Study Course</title>
+
+<p class="eyebrow">Microsoft Certified: Azure AI Apps and Agents Developer Associate</p>
+<h1>AI-103 Study Course</h1>
+<p class="subtitle">A focused, self-checking course for Exam AI-103: Developing AI Apps and Agents on Azure. Take the lessons in order, drill the quizzes until green, and read each lesson's primary source. Pass mark: 700/1000.</p>
+
+<div class="callout tip">
+  <span class="label">Exam today?</span>
+  Skip straight to the <a href="reference/cheat-sheet.html">Cheat Sheet</a> — every term from every domain, one line each, built for a last-pass skim.
+</div>
+
+<div class="callout key">
+  <span class="label">How to use this</span>
+  Each lesson is short and ends with an auto-graded quiz. Aim for ≥85% on every quiz before the exam.
+  Shareable with colleagues — every page stands alone.
+</div>
+
+<div id="progress-panel"></div>
+
+<h2>Start here</h2>
+<div class="grid">
+  <div class="card"><h3>Cheat Sheet</h3><p><a href="reference/cheat-sheet.html">Exam-day recap, one line per term</a></p></div>
+  <div class="card"><h3>Diagnostic</h3><p><a href="lessons/0001-orientation-and-diagnostic.html">Lesson 01 — Orientation &amp; Diagnostic</a><br><span class="small">See the exam shape, take a spread across all five domains.</span></p></div>
+</div>
+
+<h2>Reference (revisit often · printable)</h2>
+<div class="grid">
+  <div class="card"><h3>Cheat Sheet</h3><p><a href="reference/cheat-sheet.html">Exam-day recap, one line per term</a></p></div>
+  <div class="card"><h3>Exam Blueprint</h3><p><a href="reference/exam-blueprint.html">Authoritative objectives + weightings</a></p></div>
+  <div class="card"><h3>Glossary</h3><p><a href="reference/glossary.html">Canonical vocabulary + naming traps</a></p></div>
+</div>
+
+<h2>Domain 2 — Implement generative AI and agentic solutions <span class="badge wt">30–35%</span></h2>
+<div class="table-wrap"><table>
+  <tr><th>#</th><th>Lesson</th><th>Covers</th></tr>
+  <tr><td>03</td><td><a href="lessons/0003-generative-ai-and-agents.html">Generative AI &amp; Agents with Foundry</a></td><td>Foundry SDK, RAG, tool-augmented flows, Foundry Agent Service, multi-agent orchestration, evaluation</td></tr>
+</table></div>
+
+<h2>Domain 1 — Plan and manage an Azure AI solution <span class="badge wt">25–30%</span></h2>
+<div class="table-wrap"><table>
+  <tr><th>#</th><th>Lesson</th><th>Covers</th></tr>
+  <tr><td>02</td><td><a href="lessons/0002-plan-and-manage-ai-solutions.html">Plan &amp; Manage AI Solutions</a></td><td>Choosing Foundry services, infra/deployment setup, monitoring &amp; security, responsible AI governance</td></tr>
+</table></div>
+
+<h2>Domain 3 — Implement computer vision solutions <span class="badge wt">10–15%</span></h2>
+<div class="table-wrap"><table>
+  <tr><th>#</th><th>Lesson</th><th>Covers</th></tr>
+  <tr><td>04</td><td><a href="lessons/0004-computer-vision-solutions.html">Computer Vision Solutions</a></td><td>Image/video generation &amp; editing, multimodal understanding, responsible AI for visual content</td></tr>
+</table></div>
+
+<h2>Domain 4 — Implement text analysis solutions <span class="badge wt">10–15%</span></h2>
+<div class="table-wrap"><table>
+  <tr><th>#</th><th>Lesson</th><th>Covers</th></tr>
+  <tr><td>05</td><td><a href="lessons/0005-text-analysis-and-speech.html">Text Analysis &amp; Speech</a></td><td>Language model text analysis, sentiment/entities/translation, speech-to-text and text-to-speech</td></tr>
+</table></div>
+
+<h2>Domain 5 — Implement information extraction solutions <span class="badge wt">10–15%</span></h2>
+<div class="table-wrap"><table>
+  <tr><th>#</th><th>Lesson</th><th>Covers</th></tr>
+  <tr><td>06</td><td><a href="lessons/0006-information-extraction-solutions.html">Information Extraction Solutions</a></td><td>Retrieval &amp; grounding pipelines, Content Understanding, Document Intelligence, Azure AI Search</td></tr>
+</table></div>
+
+<h2>Mock exams <span class="badge wt">exam-grade</span></h2>
+<p>30 questions each, exam-weighted across all five domains, mixed formats (single, multi-select, matching, ordering). Answer all → submit → scaled score (~/1000, pass 700), pass/fail verdict, and a per-domain readiness read. Two at ≥85% back-to-back = book it.</p>
+<div class="grid">
+  <div class="card"><h3>Mock 1</h3><p><a href="lessons/0007-mock-exam-1.html">30 questions · all domains</a></p></div>
+  <div class="card"><h3>Mock 2</h3><p><a href="lessons/0008-mock-exam-2.html">30 fresh · interleaved</a></p></div>
+  <div class="card"><h3>Mock 3</h3><p><a href="lessons/0009-mock-exam-3.html">30 fresh · readiness gate</a></p></div>
+</div>
+
+<script src="../shared/progress.js"></script>
+<script>
+(function () {
+  var tags = window.Progress.weakTags('ai-103');
+  if (!tags.length) return; // nothing recorded yet — keep the landing page uncluttered
+  var panel = document.getElementById('progress-panel');
+  var rows = tags.map(function (t) {
+    var pct = Math.round(t.accuracy * 100);
+    return '<div class="dom-row"><span class="dom-name">' + t.tag + '</span>' +
+      '<div class="meter sm"><span style="width:' + pct + '%;background:' +
+      (pct >= 70 ? 'var(--good)' : 'var(--bad)') + '"></span></div>' +
+      '<span class="dom-num">' + t.attempts + ' seen · ' + pct + '%</span></div>';
+  }).join('');
+  panel.innerHTML =
+    '<div class="callout key">' +
+      '<span class="label">Your progress</span>' +
+      '<div class="dom-breakdown">' + rows + '</div>' +
+      '<p class="small" style="margin-top:.6rem">' +
+        '<a href="lessons/weak-areas.html">Practice your weak areas →</a>' +
+        ' &nbsp;·&nbsp; <a href="#" id="reset-progress">Reset progress</a>' +
+      '</p>' +
+    '</div>';
+  document.getElementById('reset-progress').addEventListener('click', function (e) {
+    e.preventDefault();
+    if (confirm('Clear all recorded AI-103 progress on this browser?')) {
+      window.Progress.reset('ai-103');
+      location.reload();
+    }
+  });
+})();
+</script>
