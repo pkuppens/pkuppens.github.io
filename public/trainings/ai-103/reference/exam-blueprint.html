@@ -9,7 +9,165 @@
 <h1>Exam Blueprint</h1>
 <p class="subtitle">The authoritative skills-measured outline, straight from Microsoft. Everything testable lives here.</p>
 
-<p>Content authored in task T5.</p>
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103">Official Study Guide — Exam AI-103</a>
+  · Skills as of <b>2026-04-16</b>.
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Pass mark</h3>
+    <p><b style="font-size:1.6rem">700</b> / 1000. A scaled score — not a raw percentage. Aim for ~85%+ on practice to clear it comfortably.</p>
+  </div>
+  <div class="card">
+    <h3>Format</h3>
+    <p>120 minutes, proctored. Multiple-choice, multi-select, matching, and case-style questions.</p>
+  </div>
+  <div class="card">
+    <h3>Assumed skills</h3>
+    <p>Experience developing apps with Python; familiarity with general AI, generative AI, and Azure services. Mostly GA (generally available) features.</p>
+  </div>
+</div>
+
+<h2>Domain 1 · Plan and manage an Azure AI solution <span class="badge d1">25–30%</span></h2>
+
+<h3>Choose the appropriate Foundry services for generative AI and agents</h3>
+<ul>
+  <li>Choose an appropriate model for each task — LLMs, small language models, multimodal models, and Foundry Tools.</li>
+  <li>Choose the appropriate Foundry services for generative tasks, grounding, vector search, agent workflows, or multimodal processing.</li>
+  <li>Choose an appropriate method for retrieval and indexing.</li>
+  <li>Choose appropriate memory, tool, and knowledge integration services for agent solutions.</li>
+</ul>
+
+<h3>Set up AI solutions in Foundry</h3>
+<ul>
+  <li>Design Azure infrastructure for AI apps and agent-based solutions.</li>
+  <li>Choose appropriate deployment options.</li>
+  <li>Configure model and agent deployments.</li>
+  <li>Integrate Foundry projects with CI/CD pipelines.</li>
+</ul>
+
+<h3>Manage, monitor, and secure AI systems</h3>
+<ul>
+  <li>Manage quotas, scaling, rate limits, and cost footprints for model and agent workloads.</li>
+  <li>Monitor model performance, drift, safety events, and grounding quality.</li>
+  <li>Monitor data ingestion quality, search index health, and relevance performance.</li>
+  <li>Configure security, including managed identity, private networking, keyless credentials, and role policies.</li>
+</ul>
+
+<h3>Implement responsible AI across generative AI and agentic systems</h3>
+<ul>
+  <li>Configure safety filters, guardrails, risk detection, and content moderation.</li>
+  <li>Apply responsible AI instrumentation, including evaluators, safety evaluations, and explanation tooling.</li>
+  <li>Implement auditing through trace logging, provenance metadata, and approval workflows.</li>
+  <li>Govern agent behavior with oversight modes, constraints, and tool-access controls.</li>
+</ul>
+
+<h2>Domain 2 · Implement generative AI and agentic solutions <span class="badge d2">30–35%</span></h2>
+<p>The heaviest domain. Build generative apps <em>and</em> agents on Microsoft Foundry — deploy, ground, orchestrate, evaluate, optimize.</p>
+
+<h3>Build generative applications by using Foundry</h3>
+<ul>
+  <li>Deploy and consume LLMs, small models, code models, and multimodal models.</li>
+  <li>Implement retrieval-augmented generation (RAG) in an application.</li>
+  <li>Design workflows, tool-augmented flows, and multistep reasoning pipelines.</li>
+  <li>Evaluate models and apps, including detecting fabrications, relevance, quality, and safety.</li>
+  <li>Integrate generative workflows into applications by using Foundry SDKs and connectors.</li>
+  <li>Configure an application to connect to a Foundry project.</li>
+</ul>
+
+<h3>Build agents by using Foundry</h3>
+<ul>
+  <li>Define agent roles, goals, conversation-tracking approach, and tool schemas.</li>
+  <li>Build agents that integrate retrieval, function-calling, and conversation memory.</li>
+  <li>Integrate agent tools, including APIs, knowledge stores, search, content understanding, and custom functions.</li>
+  <li>Implement orchestrated multi-agent solutions.</li>
+  <li>Build autonomous or semiautonomous workflows with safeguards and approval flow controls.</li>
+  <li>Integrate monitoring into deployed agents, evaluate agent behavior, and perform error analysis.</li>
+</ul>
+
+<h3>Optimize and operationalize generative AI systems</h3>
+<ul>
+  <li>Tune generation behavior, such as prompt engineering and adjusting model parameters.</li>
+  <li>Implement model reflection, chain-of-thought evaluations, and self-critique loops.</li>
+  <li>Set up observability by implementing tracing, token analytics, safety signals, and latency breakdowns.</li>
+  <li>Orchestrate multiple models, flows, or hybrid LLM and rules engines.</li>
+</ul>
+
+<h2>Domain 3 · Implement computer vision solutions <span class="badge d3">10–15%</span></h2>
+
+<h3>Design and implement image- and video-generation solutions</h3>
+<ul>
+  <li>Implement a solution that generates images from text prompts and reference media.</li>
+  <li>Implement a solution that generates videos from text prompts and reference media.</li>
+  <li>Configure image-editing workflows, including inpainting, mask-based edits, and prompt-driven modifications.</li>
+  <li>Implement workflows to edit generated videos.</li>
+  <li>Select and apply appropriate generation and editing controls provided by the platform.</li>
+</ul>
+
+<h3>Design and implement multimodal understanding workflows</h3>
+<ul>
+  <li>Build a solution that analyzes visual context by using multimodal models.</li>
+  <li>Configure apps to produce concise or detailed captions for single or multiple images.</li>
+  <li>Implement a solution that enables question-answering grounded in visual evidence.</li>
+  <li>Configure generation of alt-text and extended image descriptions aligned to accessibility guidelines.</li>
+  <li>Implement visual understanding by configuring Azure Content Understanding in Foundry Tools to extract visual characteristics.</li>
+  <li>Implement video analysis workflows to process and interpret video segments.</li>
+  <li>Configure single-task and pro-mode Content Understanding pipelines.</li>
+  <li>Implement solutions that identify objects, components, or regions within images or video.</li>
+</ul>
+
+<h3>Implement responsible AI for multimodal content</h3>
+<ul>
+  <li>Implement filters to classify unsafe or disallowed visual content.</li>
+  <li>Detect and mitigate indirect prompt injection by using embedded text in images.</li>
+  <li>Enforce visual policy rules, such as applying watermarks, flagging prohibited symbols, upholding brand usage requirements, and detecting potentially inappropriate content.</li>
+</ul>
+
+<h2>Domain 4 · Implement text analysis solutions <span class="badge d4">10–15%</span></h2>
+
+<h3>Apply language model text analysis</h3>
+<ul>
+  <li>Implement solutions to extract entities, topics, summaries, and structured JSON outputs by using generative prompting and Foundry Tools.</li>
+  <li>Configure detection of sentiment, tone, safety issues, and sensitive content.</li>
+  <li>Build solutions that translate text by using Azure Translator in Foundry Tools or LLM-powered translation flows.</li>
+  <li>Customize language model outputs for domain tasks, such as compliance summarization and domain extraction.</li>
+</ul>
+
+<h3>Implement speech solutions</h3>
+<ul>
+  <li>Implement workflows to convert speech to text and text to speech for agentic interactions.</li>
+  <li>Integrate speech as an agent modality, including custom speech models.</li>
+  <li>Enable multimodal reasoning from audio inputs.</li>
+  <li>Translate speech into other languages by using language models and Foundry Tools.</li>
+</ul>
+
+<h2>Domain 5 · Implement information extraction solutions <span class="badge d5">10–15%</span></h2>
+
+<h3>Build retrieval and grounding pipelines</h3>
+<ul>
+  <li>Ingest and index content, such as documents, images, audio, and video.</li>
+  <li>Configure semantic search, hybrid search, and vector search for grounding.</li>
+  <li>Implement enrichment by using custom or built-in skills for text, images, and layout.</li>
+  <li>Configure RAG ingestion flow, including documents and using optical character recognition (OCR).</li>
+  <li>Connect retrieval pipelines directly to workflows and agent tools.</li>
+</ul>
+
+<h3>Extract content from documents</h3>
+<ul>
+  <li>Extract information by using multimodal pipelines that combine OCR, layout analysis, and field extraction.</li>
+  <li>Produce clean, grounded representations to use with agents and RAG by using Content Understanding.</li>
+  <li>Implement analyzers for generating structured or markdown outputs for downstream reasoning by using Content Understanding.</li>
+</ul>
+
+<div class="callout key">
+  <span class="label">Where the points are</span>
+  Domain 2 (generative AI + agents) is almost a third of the exam and centers on <b>Microsoft Foundry</b> — the SDK, RAG,
+  agent building blocks, and orchestration. Domain 1's planning/security/governance vocabulary is the next-biggest chunk
+  and is largely memorizable. Domains 3-5 are each smaller but service-name-dense — <b>Content Understanding</b> is the
+  connective tissue across vision, extraction, and part of text analysis, so know it well.
+</div>
 
 <div class="lesson-nav no-print">
   <a href="./cheat-sheet.html">→ Cheat Sheet</a>
