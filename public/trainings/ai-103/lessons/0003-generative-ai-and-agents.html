@@ -7,17 +7,79 @@
 
 <p class="eyebrow">AI-103 · Lesson 03 · <span class="badge d2">D2</span> 30–35%</p>
 <h1>Generative AI &amp; Agents with Foundry</h1>
-<p class="subtitle">Content authored in task T3.</p>
+<p class="subtitle">The heaviest domain on the exam. Two halves: building generative apps (deploy → RAG → workflows → evaluate → ship), then building agents on top of that same foundation (roles → tools → memory → orchestration).</p>
 
-<h2>Content coming in T3</h2>
-<p>This lesson's teaching content and full quiz bank are authored in task T3.</p>
+<h2>Build generative applications with Foundry</h2>
+<p>The build loop, in order:</p>
+<div class="table-wrap"><table>
+  <tr><th>Step</th><th>What you do</th></tr>
+  <tr><td>1. Deploy</td><td>Deploy an LLM, small model, code model, or multimodal model to a Foundry project</td></tr>
+  <tr><td>2. Connect</td><td>Configure the application to connect to the Foundry project (endpoint + credential)</td></tr>
+  <tr><td>3. Ground</td><td>Implement RAG so answers cite your data instead of hallucinating</td></tr>
+  <tr><td>4. Orchestrate</td><td>Design workflows, tool-augmented flows, and multistep reasoning pipelines</td></tr>
+  <tr><td>5. Evaluate</td><td>Score outputs for fabrication, relevance, quality, and safety — not just spot-check</td></tr>
+  <tr><td>6. Integrate</td><td>Wire it into the app via Foundry SDKs and connectors</td></tr>
+</table></div>
+
+<p>The client shape (Python, current Foundry API) — recognize each piece, don't memorize it:</p>
+<pre><code>from azure.identity import DefaultAzureCredential
+from azure.ai.projects import AIProjectClient
+
+project = AIProjectClient(
+    endpoint="https://my-resource.ai.azure.com/api/projects/my-project",
+    credential=DefaultAzureCredential(),   # keyless — ties to D1's security controls
+)
+openai = project.get_openai_client()
+response = openai.responses.create(
+    model="gpt-5-mini",                    # your deployment name, not a raw model file
+    input="Summarize the grounded context below in one sentence.",
+)
+print(response.output_text)</code></pre>
+
+<div class="callout key">
+  <span class="label">Evaluation isn't optional</span>
+  AI-103 expects you to know evaluation as a first-class build step: detecting <b>fabrication</b> (made-up facts),
+  scoring <b>relevance</b> and <b>quality</b>, and checking <b>safety</b> — before an app ships, and continuously after.
+</div>
+
+<h2>Build agents with Foundry</h2>
+<p>An <b>agent</b> is a model plus everything it needs to act on its own: a defined role, tools, memory, and knowledge.</p>
+<div class="table-wrap"><table>
+  <tr><th>Building block</th><th>What it defines</th></tr>
+  <tr><td>Role &amp; goal</td><td>What the agent is for and what "done" looks like</td></tr>
+  <tr><td>Conversation-tracking</td><td>How the agent remembers earlier turns (its memory)</td></tr>
+  <tr><td>Tool schema</td><td>The functions/APIs the agent is allowed to call, and their contracts</td></tr>
+  <tr><td>Knowledge integration</td><td>Retrieval, search, or content-understanding sources the agent can ground on</td></tr>
+</table></div>
+
+<p>Beyond a single agent, AI-103 tests <b>orchestration</b>:</p>
+<div class="table-wrap"><table>
+  <tr><th>Pattern</th><th>When</th></tr>
+  <tr><td>Single agent</td><td>One role is enough to complete the task end to end</td></tr>
+  <tr><td>Orchestrated multi-agent</td><td>Different specialized agents hand off work to each other</td></tr>
+  <tr><td>Autonomous / semi-autonomous with safeguards</td><td>The agent acts on its own but under approval-flow controls (D1's governance)</td></tr>
+</table></div>
+
+<div class="callout tip">
+  <span class="label">Exam cue</span>
+  "Multiple specialized roles collaborate on one task" → <b>orchestrated multi-agent</b>. "One assistant plans, calls an API, and composes a result" → a single well-tooled <b>agent</b>. Once deployed, agents still need <b>monitoring, behavior evaluation, and error analysis</b> — the same discipline as models.
+</div>
+
+<h2>Optimize and operationalize generative AI systems</h2>
+<div class="table-wrap"><table>
+  <tr><th>Technique</th><th>What it improves</th></tr>
+  <tr><td>Prompt engineering &amp; parameter tuning</td><td>Generation behavior (temperature, top-p, instructions)</td></tr>
+  <tr><td>Reflection / chain-of-thought evaluation / self-critique</td><td>The model checking and improving its own intermediate reasoning</td></tr>
+  <tr><td>Observability (tracing, token analytics, safety signals, latency)</td><td>Understanding what's happening in production, not just at deploy time</td></tr>
+  <tr><td>Orchestrating multiple models / hybrid rules engines</td><td>Combining strengths — e.g. a cheap model routes, an expensive one answers hard cases</td></tr>
+</table></div>
 
 <h2>Check yourself</h2>
 <div class="quiz" id="q-genai"></div>
 
 <div class="source">
   <span class="label">Primary source</span> &nbsp;
-  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103">Official AI-103 Study Guide</a>
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103">Official AI-103 Study Guide — "Implement generative AI and agentic solutions"</a>
 </div>
 
 <div class="lesson-nav no-print">

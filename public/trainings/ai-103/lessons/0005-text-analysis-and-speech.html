@@ -7,17 +7,45 @@
 
 <p class="eyebrow">AI-103 · Lesson 05 · <span class="badge d4">D4</span> 10–15%</p>
 <h1>Text Analysis &amp; Speech</h1>
-<p class="subtitle">Content authored in task T3.</p>
+<p class="subtitle">Two related skills: pulling structured meaning out of text (with either a language model or a purpose-built service), and moving between speech and text for agentic, voice-driven experiences.</p>
 
-<h2>Content coming in T3</h2>
-<p>This lesson's teaching content and full quiz bank are authored in task T3.</p>
+<h2>Apply language model text analysis</h2>
+<div class="table-wrap"><table>
+  <tr><th>Task</th><th>How you build it</th></tr>
+  <tr><td>Extract entities, topics, summaries, structured JSON</td><td>Generative prompting <em>or</em> Azure Language in Foundry Tools</td></tr>
+  <tr><td>Detect sentiment, tone, safety issues, sensitive content</td><td>Configure detection via Azure Language / content-safety signals</td></tr>
+  <tr><td>Translate text between languages</td><td>Azure Translator in Foundry Tools <em>or</em> an LLM-powered translation flow</td></tr>
+  <tr><td>Customize output for a domain task (e.g. compliance summarization)</td><td>Prompt/instruction customization on top of the base extraction capability</td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">Two doors, same outcome</span>
+  Text analysis on AI-103 can come from a <b>purpose-built service</b> (Azure Language: fast, structured, no prompt engineering)
+  or from <b>generative prompting</b> against an LLM (flexible, handles novel structured-output shapes on request). The exam expects
+  you to recognize both are valid — pick the service for standard tasks at scale, the LLM for flexible/novel shapes.
+</div>
+
+<h2>Implement speech solutions</h2>
+<div class="table-wrap"><table>
+  <tr><th>Task</th><th>Capability</th></tr>
+  <tr><td>Audio → text, for an agent to act on spoken input</td><td>Speech-to-text (recognition) workflow</td></tr>
+  <tr><td>Text → audio, for a spoken agent reply</td><td>Text-to-speech (synthesis) workflow</td></tr>
+  <tr><td>Speech as an agent's input/output modality</td><td>Integrate speech into the agent, including custom speech models</td></tr>
+  <tr><td>Reason directly over an audio clip's content</td><td>Multimodal reasoning from audio input</td></tr>
+  <tr><td>Speak a reply in a different language than the input</td><td>Speech translation via language models and Foundry Tools</td></tr>
+</table></div>
+
+<div class="callout tip">
+  <span class="label">Exam cue</span>
+  "Convert a recorded call into a transcript" → speech-to-text. "Read the agent's answer aloud" → text-to-speech. "The agent must both hear and speak in a live conversation loop" → speech integrated as an <b>agent modality</b>, not two separate one-off calls.
+</div>
 
 <h2>Check yourself</h2>
 <div class="quiz" id="q-text"></div>
 
 <div class="source">
   <span class="label">Primary source</span> &nbsp;
-  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103">Official AI-103 Study Guide</a>
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103">Official AI-103 Study Guide — "Implement text analysis solutions"</a>
 </div>
 
 <div class="lesson-nav no-print">
