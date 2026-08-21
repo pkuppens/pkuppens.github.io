@@ -7,11 +7,243 @@
 
 <p class="eyebrow">AI-103 · Reference</p>
 <h1>Cheat Sheet</h1>
-<p class="subtitle">Every term and service from this course, restated as one short, memorable definition each.</p>
+<p class="subtitle">Every skill from this course, restated as one short, memorable definition each. Built for a last-pass skim right before the exam — read top to bottom once, then jump to whatever domain feels shakiest.</p>
 
-<p>Content authored in task T7.</p>
+<div class="callout key">
+  <span class="label">How to use this on exam day</span>
+  Skim once fully (~10 min), then re-skim just the bolded term names, covering the definitions — if you can
+  say the definition from the name alone, you're done with that line.
+</div>
+
+<div class="source">
+  <span class="label">Primary source</span> &nbsp;
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103">Official Study Guide — Exam AI-103</a>
+  · every bullet in the "Skills measured" outline (as of <b>2026-04-16</b>) has a corresponding entry below.
+</div>
+
+<h2>Domain 1 · Plan and manage an Azure AI solution <span class="badge d1">25–30%</span></h2>
+<dl class="gloss">
+  <dt>Model selection (LLM / SLM / multimodal / Foundry Tools)</dt>
+  <dd>Choose an appropriate model for the task, including LLMs, small language models, multimodal models, and prebuilt Foundry Tools.</dd>
+
+  <dt>Foundry service selection</dt>
+  <dd>Pick the right Foundry service for generative tasks, grounding, vector search, agent workflows, or multimodal processing.</dd>
+
+  <dt>Retrieval/indexing method choice</dt>
+  <dd>Choose an appropriate method for retrieval and indexing content for grounding.</dd>
+
+  <dt>Agent memory/tool/knowledge services</dt>
+  <dd>Choose appropriate memory, tool, and knowledge-integration services for an agent solution.</dd>
+
+  <dt>Infrastructure design</dt>
+  <dd>Design the Azure infrastructure that will host an AI app or agent-based solution.</dd>
+
+  <dt>Deployment options</dt>
+  <dd>Choose appropriate deployment options — e.g. standard vs. provisioned throughput.</dd>
+
+  <dt>Model/agent deployment configuration</dt>
+  <dd>Configure the specifics of model and agent deployments — capacity, versioning, content filters.</dd>
+
+  <dt>CI/CD integration</dt>
+  <dd>Integrate Foundry projects with continuous integration and continuous deployment pipelines.</dd>
+
+  <dt>Quotas, scaling &amp; cost management</dt>
+  <dd>Manage quotas, scaling, rate limits, and cost footprints for model and agent workloads.</dd>
+
+  <dt>Model performance / drift / safety / grounding monitoring</dt>
+  <dd>Monitor model performance, drift, safety events, and grounding quality on an ongoing basis.</dd>
+
+  <dt>Ingestion &amp; index health monitoring</dt>
+  <dd>Monitor data ingestion quality, search index health, and relevance performance.</dd>
+
+  <dt>Security configuration</dt>
+  <dd>Configure managed identity, private networking, keyless credentials, and role-based access policies.</dd>
+
+  <dt>Safety filters &amp; content moderation</dt>
+  <dd>Configure safety filters, guardrails, risk detection, and content moderation.</dd>
+
+  <dt>Responsible AI instrumentation</dt>
+  <dd>Apply evaluators, safety evaluations, and explanation tooling to generative/agentic systems.</dd>
+
+  <dt>Auditing (trace logging, provenance, approvals)</dt>
+  <dd>Implement auditing through trace logging, provenance metadata, and approval workflows.</dd>
+
+  <dt>Agent oversight &amp; tool-access controls</dt>
+  <dd>Govern agent behavior with oversight modes, constraints, and tool-access controls.</dd>
+</dl>
+
+<h2>Domain 2 · Implement generative AI and agentic solutions <span class="badge d2">30–35%</span></h2>
+<dl class="gloss">
+  <dt>Model deployment &amp; consumption</dt>
+  <dd>Deploy and consume LLMs, small models, code models, and multimodal models.</dd>
+
+  <dt>RAG implementation</dt>
+  <dd>Implement retrieval-augmented generation in an application so answers ground in retrieved data.</dd>
+
+  <dt>Workflow / tool-augmented pipeline design</dt>
+  <dd>Design workflows, tool-augmented flows, and multistep reasoning pipelines.</dd>
+
+  <dt>Generative evaluation (fabrication/relevance/quality/safety)</dt>
+  <dd>Evaluate models and apps by detecting fabrications and scoring relevance, quality, and safety.</dd>
+
+  <dt>SDK / connector integration</dt>
+  <dd>Integrate generative workflows into applications by using Foundry SDKs and connectors.</dd>
+
+  <dt>Foundry project connection</dt>
+  <dd>Configure an application to connect to a Foundry project via endpoint and credential.</dd>
+
+  <dt>Agent role/goal/memory/tool-schema definition</dt>
+  <dd>Define an agent's role, goal, conversation-tracking approach, and tool schemas.</dd>
+
+  <dt>Agent retrieval + function-calling + memory</dt>
+  <dd>Build agents that integrate retrieval, function-calling, and conversation memory.</dd>
+
+  <dt>Agent tool integration</dt>
+  <dd>Integrate agent tools — APIs, knowledge stores, search, content understanding, custom functions.</dd>
+
+  <dt>Multi-agent orchestration</dt>
+  <dd>Implement orchestrated multi-agent solutions where specialized agents collaborate.</dd>
+
+  <dt>Semiautonomous workflow safeguards</dt>
+  <dd>Build autonomous or semiautonomous workflows with safeguards and approval-flow controls.</dd>
+
+  <dt>Agent monitoring &amp; error analysis</dt>
+  <dd>Integrate monitoring into deployed agents, evaluate agent behavior, and perform error analysis.</dd>
+
+  <dt>Prompt engineering &amp; parameter tuning</dt>
+  <dd>Tune generation behavior via prompt engineering and adjusting model parameters.</dd>
+
+  <dt>Self-critique &amp; reflection loops</dt>
+  <dd>Implement model reflection, chain-of-thought evaluations, and self-critique loops.</dd>
+
+  <dt>Observability (tracing/tokens/latency)</dt>
+  <dd>Set up observability with tracing, token analytics, safety signals, and latency breakdowns.</dd>
+
+  <dt>Multi-model orchestration / hybrid engines</dt>
+  <dd>Orchestrate multiple models, flows, or hybrid LLM-and-rules engines.</dd>
+</dl>
+
+<h2>Domain 3 · Implement computer vision solutions <span class="badge d3">10–15%</span></h2>
+<dl class="gloss">
+  <dt>Image generation</dt>
+  <dd>Generate images from text prompts and reference media.</dd>
+
+  <dt>Video generation</dt>
+  <dd>Generate videos from text prompts and reference media.</dd>
+
+  <dt>Image editing (inpainting/mask)</dt>
+  <dd>Configure image-editing workflows — inpainting, mask-based edits, prompt-driven modifications.</dd>
+
+  <dt>Video editing workflows</dt>
+  <dd>Implement workflows to edit already-generated videos.</dd>
+
+  <dt>Generation/editing controls</dt>
+  <dd>Select and apply platform-provided generation and editing controls (style, strength, seed, aspect ratio).</dd>
+
+  <dt>Visual context analysis</dt>
+  <dd>Build a solution that analyzes visual context by using multimodal models.</dd>
+
+  <dt>Image captioning</dt>
+  <dd>Configure apps to produce concise or detailed captions for single or multiple images.</dd>
+
+  <dt>Visual question-answering (VQA)</dt>
+  <dd>Enable question-answering grounded in visual evidence.</dd>
+
+  <dt>Alt-text / accessibility descriptions</dt>
+  <dd>Configure generation of alt-text and extended image descriptions aligned to accessibility guidelines.</dd>
+
+  <dt>Content Understanding visual extraction</dt>
+  <dd>Configure Azure Content Understanding in Foundry Tools to extract visual characteristics.</dd>
+
+  <dt>Video analysis</dt>
+  <dd>Implement video analysis workflows to process and interpret video segments.</dd>
+
+  <dt>Single-task vs. pro-mode</dt>
+  <dd>Configure single-task Content Understanding pipelines for one job, or pro-mode for several coordinated extractions in one pass.</dd>
+
+  <dt>Object/region identification</dt>
+  <dd>Implement solutions that identify objects, components, or regions within images or video.</dd>
+
+  <dt>Unsafe visual content filters</dt>
+  <dd>Implement filters to classify unsafe or disallowed visual content.</dd>
+
+  <dt>Indirect prompt injection (images)</dt>
+  <dd>Detect and mitigate indirect prompt injection carried as embedded text in images.</dd>
+
+  <dt>Visual policy enforcement</dt>
+  <dd>Enforce visual policy rules — watermarks, prohibited symbols, brand usage, inappropriate-content flags.</dd>
+</dl>
+
+<h2>Domain 4 · Implement text analysis solutions <span class="badge d4">10–15%</span></h2>
+<dl class="gloss">
+  <dt>Entity/topic/summary/JSON extraction</dt>
+  <dd>Extract entities, topics, summaries, and structured JSON via generative prompting and Foundry Tools.</dd>
+
+  <dt>Sentiment/tone/safety detection</dt>
+  <dd>Configure detection of sentiment, tone, safety issues, and sensitive content.</dd>
+
+  <dt>Text translation (Translator / LLM)</dt>
+  <dd>Translate text by using Azure Translator in Foundry Tools, or an LLM-powered translation flow.</dd>
+
+  <dt>Domain-customized text output</dt>
+  <dd>Customize language model outputs for domain tasks, such as compliance summarization.</dd>
+
+  <dt>Speech-to-text / text-to-speech</dt>
+  <dd>Implement workflows to convert speech to text and text to speech for agentic interactions.</dd>
+
+  <dt>Speech as agent modality / custom models</dt>
+  <dd>Integrate speech as an agent modality, including custom speech models tuned to domain vocabulary.</dd>
+
+  <dt>Audio multimodal reasoning</dt>
+  <dd>Enable multimodal reasoning directly from audio inputs, beyond a plain transcript.</dd>
+
+  <dt>Speech translation</dt>
+  <dd>Translate speech into other languages by using language models and Foundry Tools.</dd>
+</dl>
+
+<h2>Domain 5 · Implement information extraction solutions <span class="badge d5">10–15%</span></h2>
+<dl class="gloss">
+  <dt>Multimodal ingestion &amp; indexing</dt>
+  <dd>Ingest and index content — documents, images, audio, and video — into one searchable store.</dd>
+
+  <dt>Semantic/hybrid/vector search</dt>
+  <dd>Configure semantic search, hybrid search, and vector search for grounding relevance.</dd>
+
+  <dt>Enrichment skills</dt>
+  <dd>Implement enrichment by using custom or built-in skills for text, images, and layout.</dd>
+
+  <dt>RAG ingestion flow (OCR)</dt>
+  <dd>Configure the RAG ingestion flow for documents, including using OCR for scanned content.</dd>
+
+  <dt>Retrieval-to-agent connection</dt>
+  <dd>Connect retrieval pipelines directly to workflows and agent tools, with no manual hand-off.</dd>
+
+  <dt>Multimodal document extraction</dt>
+  <dd>Extract information by using multimodal pipelines that combine OCR, layout analysis, and field extraction.</dd>
+
+  <dt>Grounded representations (Content Understanding)</dt>
+  <dd>Produce clean, grounded representations for agents and RAG by using Content Understanding.</dd>
+
+  <dt>Structured/markdown analyzers</dt>
+  <dd>Implement analyzers generating structured or markdown outputs for downstream reasoning.</dd>
+</dl>
+
+<div class="callout warn">
+  <span class="label">Classic pairing traps</span>
+  <ul style="margin:.4rem 0 0; padding-left:1.2rem">
+    <li><b>SLM</b> (narrow, cheap, fast) vs. <b>LLM</b> (broad, capable) — pick by task shape, not by default reflex.</li>
+    <li><b>RAG</b> (grounds at inference time, always current) vs. <b>fine-tuning</b> (changes the weights, goes stale) — don't confuse "add data" with "retrain".</li>
+    <li><b>Single-task</b> Content Understanding (one job) vs. <b>pro-mode</b> (several coordinated extractions in one pass).</li>
+    <li><b>Managed identity</b> (authenticates keylessly) vs. <b>private networking</b> (hides traffic from the internet) — two different D1 security controls, often both needed together.</li>
+    <li><b>Vector search</b> (embedding similarity) vs. <b>semantic search</b> (relevance re-ranking) vs. <b>hybrid search</b> (keyword + vector combined).</li>
+    <li><b>Approval workflow</b> (human gates a specific action) vs. <b>tool-access control</b> (allow-list of what an agent may call at all).</li>
+    <li><b>Speech recognition</b> (audio→text) vs. <b>speech synthesis</b> (text→audio) vs. <b>speech translation</b> (crosses languages, either direction).</li>
+    <li><b>Fabrication evaluation</b> (did it invent facts?) vs. <b>safety evaluation</b> (is the content harmful?) — both named evaluation dimensions, testing different things.</li>
+  </ul>
+</div>
 
 <div class="lesson-nav no-print">
   <a href="./glossary.html">→ Glossary</a>
   <a href="./exam-blueprint.html">→ Exam Blueprint</a>
+  <a href="../lessons/weak-areas.html">Practice weak areas →</a>
 </div>
