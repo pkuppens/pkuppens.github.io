@@ -4,10 +4,10 @@ window.TRAINING_DATA['0004'] = {
   passMark: 0.7,
   questions: [
     { tag:"D3",
-      q:"A user wants to fill in a masked region of an existing product photo with a new background. Which capability fits?",
-      options:["Inpainting / mask-based image editing","Fresh text-to-image generation","Video generation","Optical character recognition"],
+      q:"A retailer wants to swap only the background behind an existing product photo, keeping the product itself pixel-for-pixel untouched. Which capability fits, and why not full text-to-image generation instead?",
+      options:["Inpainting / mask-based image editing — modifies just the masked region, leaving the rest of the source image intact","Text-to-image generation — a new image from a prompt gives the same guarantee that the product stays pixel-for-pixel unchanged","Video generation — produces a new video from a text prompt","OCR — extracts text from the image, unrelated to editing"],
       answer:0,
-      why:"Modifying part of an existing image is <b>inpainting / mask-based editing</b>, not generating a brand-new image from scratch. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/dall-e' target='_blank' rel='noopener'>Azure OpenAI image generation</a>." },
+      why:"<b>Inpainting / mask-based editing</b> operates on a mask relative to the existing source image, so everything outside the mask is preserved exactly. Text-to-image generation synthesizes a whole new image from a prompt with no guarantee that untouched regions stay pixel-identical to the original. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/dall-e' target='_blank' rel='noopener'>Azure OpenAI image generation</a>." },
 
     { tag:"D3",
       q:"An accessibility feature needs an extended description of an image for a screen reader, following accessibility guidelines. What do you configure?",
@@ -16,10 +16,10 @@ window.TRAINING_DATA['0004'] = {
       why:"Accessibility-aligned descriptions are produced by configuring <b>alt-text / extended description generation</b>. The other options don't target accessibility output. <a href='https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-image-analysis' target='_blank' rel='noopener'>Azure AI Vision Image Analysis</a>." },
 
     { tag:"D3",
-      q:"Which service extracts structured visual characteristics — objects, attributes, regions — from images and video in Foundry Tools?",
-      options:["Azure Content Understanding","Azure Translator","Azure AI Search","Azure OpenAI embeddings"],
+      q:"You need to extract a custom-defined schema of fields (product name, primary color, defect present: yes/no) from thousands of product photos — not just generic tags. Which service fits, and why not the simpler Azure AI Vision Image Analysis API?",
+      options:["Azure Content Understanding — lets you define a custom extraction schema and returns structured fields matching it","Azure AI Vision Image Analysis — extracts a fixed set of built-in tags, captions, and objects rather than a custom schema","Azure Translator — translates text, unrelated to image field extraction","Azure AI Search — indexes and retrieves content, but doesn't extract structured fields from an image"],
       answer:0,
-      why:"Structured visual extraction is <b>Azure Content Understanding</b>. Translator and embeddings don't process visual structure; AI Search indexes rather than extracts. <a href='https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103' target='_blank' rel='noopener'>AI-103 Study Guide — Computer vision</a>." },
+      why:"<b>Content Understanding</b> lets you define your own field schema and returns matching structured output; Image Analysis only returns its predefined feature set (tags, captions, objects, OCR) with no way to add a custom 'defect present' field. <a href='https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview' target='_blank' rel='noopener'>Azure AI Content Understanding overview</a>." },
 
     { tag:"D3",
       q:"You need several kinds of structured output from the same image in one pass (objects, text regions, and a caption together). Which pipeline mode fits?",

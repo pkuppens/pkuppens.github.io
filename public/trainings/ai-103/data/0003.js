@@ -10,16 +10,16 @@ window.TRAINING_DATA['0003'] = {
       why:"You call a model by its <b>deployment name</b>, not a raw file, region, or prompt id — same rule as D1's deployment planning. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/quickstarts/get-started-code' target='_blank' rel='noopener'>Foundry SDK quickstart</a>." },
 
     { tag:"D2",
-      q:"An app must answer questions using your company's current internal documents, not the model's training data. What do you implement?",
-      options:["Retrieval-augmented generation (RAG)","A longer system prompt only","A lower top-p value","Fine-tuning on last quarter's docs"],
+      q:"Your support bot must always reflect this week's return-policy changes with no retrain cycle each time policy changes. A colleague proposes fine-tuning the model on the current policy doc instead. Why is RAG the better fit here?",
+      options:["RAG retrieves the current policy at query time, so answers stay current without retraining; a fine-tune bakes in a snapshot that goes stale the moment policy changes again","Fine-tuning and RAG produce identical results, so either approach works equally well","Fine-tuning is inherently faster to keep current than RAG","RAG needs no data at all, while fine-tuning requires a curated dataset"],
       answer:0,
-      why:"Grounding on retrieved, current documents at inference time is <b>RAG</b>. Prompt length and sampling don't add facts; a stale fine-tune goes out of date immediately. <a href='https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview' target='_blank' rel='noopener'>RAG overview</a>." },
+      why:"<b>RAG</b> grounds answers in a live, retrievable index, so updates to the source documents are reflected immediately. Fine-tuning captures a point-in-time snapshot in the model's weights — retraining is required every time policy changes, which is slower and costlier, not faster; RAG still needs an index built from the policy documents, so it isn't data-free either. <a href='https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview' target='_blank' rel='noopener'>RAG overview</a>." },
 
     { tag:"D2", type:"multi",
-      q:"Select the TWO things a generative-AI evaluation step should specifically detect before an app ships.",
-      options:["Fabrication (made-up facts)","Safety issues","The exact GPU used to train the base model","Relevance to the user's question","The model's training cutoff date"],
+      q:"A code-review copilot's evaluation pipeline flags answers that cite API method names the model invented (they don't exist in the SDK), and separately flags answers that could enable data exfiltration if a developer followed them. Select the TWO evaluation dimensions this pipeline is scoring.",
+      options:["Fabrication and safety","Relevance and quality","Latency and cost","Model size and training cutoff date"],
       answers:[0,1],
-      why:"Evaluation targets <b>fabrication</b> and <b>safety</b> (plus relevance/quality — pick the two flagged here: fabrication and safety are the named risk categories). GPU hardware and training cutoff aren't evaluation outputs. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/evaluation-approach-gen-ai' target='_blank' rel='noopener'>Evaluation approach for generative AI apps</a>." },
+      why:"Inventing facts not grounded in reality (nonexistent API methods) is exactly <b>fabrication</b>; flagging output that could enable harmful real-world action is <b>safety</b>. Relevance/quality are also real evaluation dimensions, but this scenario's symptoms are specifically fabrication and safety, not off-topic or low-quality answers; latency/cost and model metadata aren't evaluation-quality signals at all. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/evaluation-approach-gen-ai' target='_blank' rel='noopener'>Evaluation approach for generative AI apps</a>." },
 
     { tag:"D2",
       q:"Which building block of a Foundry agent defines the functions/APIs it's allowed to call and their contracts?",

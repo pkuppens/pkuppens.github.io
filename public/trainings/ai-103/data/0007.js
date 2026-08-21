@@ -30,9 +30,9 @@ window.TRAINING_DATA['0007'] = {
       options:["An approval workflow","A safety evaluator","A trace log","A content filter"], answer:0,
       why:"A required human checkpoint before execution is an <b>approval workflow</b>. Evaluators score risk; trace logs record after the fact; filters block content, not actions. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-use-of-ai-overview' target='_blank' rel='noopener'>Responsible AI in Microsoft Foundry</a>." },
 
-    { tag:"D1", q:"What does 'oversight modes and tool-access controls' let you do for an agent?",
-      options:["Constrain what it's allowed to do autonomously","Increase its context window","Improve its embedding quality","Reduce its deployment cost"], answer:0,
-      why:"Oversight modes and tool-access controls <b>govern/constrain agent autonomy</b> — a D1 responsible-AI objective, not a performance or cost lever. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-use-of-ai-overview' target='_blank' rel='noopener'>Responsible AI in Microsoft Foundry</a>." },
+    { tag:"D1", q:"An agent's tool schema already restricts it to only the payments API — no other tools are callable. You additionally want a human to confirm the specific transaction amount before any payment is actually sent. Which control adds that confirmation step?",
+      options:["An approval workflow","Tighter tool-access controls (removing tools from the allow-list)","A larger context window","Reduced deployment cost"], answer:0,
+      why:"Tool-access controls decide <b>which</b> tools an agent may call at all — that's already been narrowed to just the payments API. Gating whether an already-permitted call actually executes, pending human confirmation, is the job of an <b>approval workflow</b>. Removing more tools wouldn't add a confirmation step, it would just remove capability. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-use-of-ai-overview' target='_blank' rel='noopener'>Responsible AI in Microsoft Foundry</a>." },
 
     { tag:"D1", q:"Which pair of concerns does 'manage, monitor, and secure AI systems' bundle together for model AND agent workloads alike?",
       options:["Cost/capacity footprint and security posture","Image style and video length","Translation language pairs","Caption tone"], answer:0,
@@ -71,9 +71,9 @@ window.TRAINING_DATA['0007'] = {
       options:["Chain-of-thought self-critique","Increasing the deployment quota","Adding a private endpoint","Switching to a smaller model"], answer:0,
       why:"Having the model evaluate and revise its own reasoning steps is <b>chain-of-thought self-critique</b>, a D2 optimization technique. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/evaluation-approach-gen-ai' target='_blank' rel='noopener'>Evaluation approach for generative AI apps</a>." },
 
-    { tag:"D2", q:"Once an agent is deployed, what should continue beyond initial testing?",
-      options:["Monitoring, behavior evaluation, and error analysis","Nothing — testing is complete at deployment","Re-running the diagnostic quiz","Re-training from scratch weekly"], answer:0,
-      why:"Deployed agents need ongoing <b>monitoring, evaluation, and error analysis</b> — the same operational discipline as models. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/evaluation-approach-gen-ai' target='_blank' rel='noopener'>Evaluation approach for generative AI apps</a>." },
+    { tag:"D2", q:"An agent's tool-calling accuracy was 95% during pre-launch evaluation. Three weeks after launch, support tickets show it increasingly invoking the wrong tool — but the original evaluation suite hasn't changed and still passes when re-run. What should have been running to catch this regression as it happened?",
+      options:["Continuous post-production monitoring and evaluation of live traffic","Nothing further — the pre-launch evaluation already covered this","A single re-run of the original pre-launch test suite","A larger deployment quota"], answer:0,
+      why:"Pre-launch evaluation is a point-in-time check against a fixed dataset — it can't see failure modes that emerge from real production traffic and drift after launch. Re-running the same fixed suite would keep passing for the same reason. Only <b>continuous post-production monitoring and evaluation</b> observes live behavior as it degrades. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/evaluation-approach-gen-ai' target='_blank' rel='noopener'>Evaluation approach for generative AI apps</a>." },
 
     { tag:"D2", type:"order", q:"Put the steps to build and ship a RAG-grounded generative app in order.",
       items:["Deploy a model to a Foundry project","Connect the app to the project via the SDK","Implement RAG grounding against your data","Evaluate for fabrication, relevance, and safety before shipping"],
@@ -97,9 +97,9 @@ window.TRAINING_DATA['0007'] = {
       why:"Multiple coordinated extraction steps in one pass is <b>pro-mode</b>. Single-task mode is for one narrow extraction job. <a href='https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-image-analysis' target='_blank' rel='noopener'>Azure AI Vision Image Analysis</a>." },
 
     // ---------- Domain 4 (4) ----------
-    { tag:"D4", q:"A compliance team needs a domain-specific summary style applied consistently across thousands of contracts. What's the right approach?",
-      options:["Customize language-model output for the domain task via prompting/instructions","Switch to speech-to-text","Use image captioning","Skip summarization entirely"], answer:0,
-      why:"Domain-specific, customized summarization output is achieved by <b>customizing the language model's output</b> for the task. <a href='https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103' target='_blank' rel='noopener'>AI-103 Study Guide — Text analysis</a>." },
+    { tag:"D4", q:"Legal wants every contract summary to follow a firm-specific template — parties, term, and a custom 1-5 termination-risk rating, in a fixed order. Azure Language's built-in summarization skill was proposed since it's cheaper per call. Why does it fall short here?",
+      options:["Built-in summarization returns a general-purpose summary and can't be configured to a firm-specific template or emit a custom risk-rating field — that needs generative prompting/instruction customization against a language model instead","Built-in summarization already supports arbitrary custom output schemas identical to prompting an LLM","Speech-to-text must run first because contracts are audio recordings","Image captioning covers this because contracts often contain scanned pages"], answer:0,
+      why:"Azure Language's built-in summarization produces a fixed-shape general summary with no schema customization; a firm-specific template with a custom risk field requires <b>customizing the language model's output via prompting/instructions</b>. The other options don't address structured, domain-specific summarization at all. <a href='https://learn.microsoft.com/en-us/azure/ai-services/language-service/overview' target='_blank' rel='noopener'>Azure AI Language overview</a>." },
 
     { tag:"D4", q:"An agent needs to detect that a user's message contains sensitive personal data before responding. Which capability applies?",
       options:["Detection of sensitive content via Azure Language","Speech synthesis","Image generation","Video analysis"], answer:0,
@@ -122,9 +122,9 @@ window.TRAINING_DATA['0007'] = {
       options:["Azure Content Understanding","Azure Translator","Azure Speech","Azure Monitor"], answer:0,
       why:"Structured document field extraction is the job of <b>Content Understanding</b>. <a href='https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview' target='_blank' rel='noopener'>Azure AI Content Understanding overview</a>." },
 
-    { tag:"D5", q:"Which ingestion step is required before a scanned, image-only PDF can be searched by keyword or embedding?",
-      options:["OCR as part of the RAG ingestion flow","Video segmentation","Speech synthesis","Image generation"], answer:0,
-      why:"Converting scanned image text into searchable text is <b>OCR</b>, part of RAG ingestion. <a href='https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview' target='_blank' rel='noopener'>Azure AI Content Understanding overview</a>." },
+    { tag:"D5", q:"A scanned, image-only lease PDF must be searchable by both exact keyword match on lease terms and semantic similarity. Which ingestion step must run first, and why doesn't skipping straight to indexing work?",
+      options:["OCR — both keyword search and text-embedding-based semantic search operate on extracted text, not raw image pixels","No ingestion step is needed; the scanned PDF can be indexed directly as-is","Video segmentation, since PDFs are processed as video frames","Speech synthesis, to narrate the PDF content before indexing"], answer:0,
+      why:"Keyword indexes and text embeddings are both built from text tokens, not raw image bytes — a scanned page has no extractable text until <b>OCR</b> runs. Skipping it leaves nothing for either search path to index against. <a href='https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview' target='_blank' rel='noopener'>Azure AI Content Understanding overview</a>." },
 
     { tag:"D5", type:"match", q:"Match each requirement to the extraction/search configuration that satisfies it.",
       items:["A ranked list of the most relevant passages for a natural-language query","Copy an invoice's total exactly as printed","Enrich ingested content with custom skills for layout and text"],
