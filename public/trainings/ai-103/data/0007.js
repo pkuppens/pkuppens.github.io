@@ -49,7 +49,7 @@ window.TRAINING_DATA['0007'] = {
 
     { tag:"D2", q:"Which Foundry agent building block stores what was said in earlier turns of a conversation?",
       options:["Conversation-tracking / memory","Tool schema","Knowledge integration","Deployment region"], answer:0,
-      why:"Multi-turn recall is the agent's <b>conversation-tracking approach (memory)</b>. Tool schema defines callable actions; knowledge integration is retrieval sources. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/agents/how-to/tools/function-calling' target='_blank' rel='noopener'>Function calling with Foundry agents</a>." },
+      why:"Multi-turn recall is the agent's <b>conversation-tracking approach (memory)</b>. Tool schema defines callable actions; knowledge integration is retrieval sources. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/agents/concepts/threads-runs-messages' target='_blank' rel='noopener'>Foundry agent threads and memory</a>." },
 
     { tag:"D2", q:"A workflow needs the model to call an external weather API mid-conversation and use the result in its answer. What must be defined for the agent?",
       options:["A tool schema for the weather API","A larger vector index","A safety filter","A deployment region change"], answer:0,
@@ -107,7 +107,7 @@ window.TRAINING_DATA['0007'] = {
 
     { tag:"D4", q:"A voice-driven agent needs to hear the caller, understand the request, and reply in the caller's own spoken language even if it differs from the agent's default. What's required?",
       options:["Speech translation via language models and Foundry Tools","Speech recognition only, no translation","Text-to-image generation","A vector index"], answer:0,
-      why:"Translating spoken input/output between languages is <b>speech translation</b>, distinct from plain recognition or synthesis. <a href='https://learn.microsoft.com/en-us/azure/ai-services/translator/overview' target='_blank' rel='noopener'>Azure AI Translator overview</a>." },
+      why:"Translating spoken input/output between languages is <b>speech translation</b>, distinct from plain recognition or synthesis. <a href='https://learn.microsoft.com/en-us/azure/ai-services/speech-service/overview' target='_blank' rel='noopener'>Azure AI Speech overview</a>." },
 
     { tag:"D4", q:"Which capability lets a voice agent reason about the emotional tone of a customer's recorded complaint, not just its transcribed words?",
       options:["Multimodal reasoning from audio input","Plain speech-to-text transcription","Text-to-speech synthesis","OCR"], answer:0,
