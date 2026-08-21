@@ -1,0 +1,26 @@
+# Config for the link-check CI workflow (.github/workflows/link-check.yml) and local dry runs
+# (`npx lychee --config lychee.toml ...`). See https://lychee.cli.rs/usage/config/ for all options.
+
+# Retry on transient failures, including HTTP 429 (rate-limited), with backoff.
+max_retries = 3
+retry_wait_time = 5
+
+# Be gentle with external hosts we hit a lot (learn.microsoft.com, etc.) to avoid tripping rate limits.
+max_concurrency = 8
+
+# Treat these status codes as acceptable rather than broken-link failures.
+accept = ["200..=299", "403", "429"]
+
+# Skip known-noisy/irrelevant targets rather than broken links:
+#  - mailto:/tel: links aren't checkable HTTP(S) links
+#  - localhost/127.0.0.1 links only resolve when a dev server is running
+#  - GitHub anchors on generated pages that lychee can't always resolve reliably
+exclude = [
+  "^mailto:",
+  "^tel:",
+  "^https?://localhost",
+  "^https?://127\\.0\\.0\\.1",
+]
+
+# Don't fail the run on anchors it can't verify inside markdown/HTML fragments we don't control.
+exclude_all_private = false

@@ -1,0 +1,46 @@
+name: Link check
+
+on:
+  pull_request:
+    paths:
+      - 'public/trainings/**/*.html'
+      - 'docs/**/*.md'
+      - 'README.md'
+      - 'CONTEXT.md'
+      - '.github/workflows/link-check.yml'
+      - 'lychee.toml'
+  push:
+    branches: [main]
+    paths:
+      - 'public/trainings/**/*.html'
+      - 'docs/**/*.md'
+      - 'README.md'
+      - 'CONTEXT.md'
+      - '.github/workflows/link-check.yml'
+      - 'lychee.toml'
+  schedule:
+    # Mirrors weekly-dependency-audit.yml's cadence: Thursday 00:30 UTC = 01:30 CET / 02:30 CEST
+    - cron: '30 0 * * 4'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Link check
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --config lychee.toml
+            --root-dir ${{ github.workspace }}/public
+            public/trainings/**/*.html
+            docs/**/*.md
+            README.md
+            CONTEXT.md
+          fail: true
