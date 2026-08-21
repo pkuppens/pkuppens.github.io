@@ -82,10 +82,10 @@ window.TRAINING_DATA['0001'] = {
       why:"Deploy, connect, ground, then evaluate — the D2 build loop in order." },
 
     { tag:"D3", type:"multi",
-      q:"Select the TWO computer-vision tasks below that are generation (not understanding) tasks.",
+      q:"AI-103's computer-vision domain splits into two exam objectives: 'image- and video-generation solutions' (produce new visual media from a prompt) and 'multimodal understanding workflows' (analyze an image or video that already exists, even if the output is text). Select the TWO capabilities below that belong to the <b>generation</b> objective.",
       options:["Text-to-image generation","Video generation from a text prompt","Image captioning","Visual question-answering"],
       answers:[0,1],
-      why:"<b>Text-to-image</b> and <b>video generation</b> create new content. Captioning and VQA interpret existing content." },
+      why:"The exam blueprint names these as two separate objectives. <b>Text-to-image</b> and <b>text-to-video generation</b> take a text prompt and produce brand-new visual media &mdash; that's the generation objective (Azure OpenAI image/video models). <b>Image captioning</b> and <b>visual question-answering</b> take an existing image as input and produce a text description of it &mdash; the model is analyzing visual content, so both sit under the understanding objective (Azure AI Vision Image Analysis) even though their output happens to be text." },
 
     { tag:"D5",
       q:"An extraction pipeline's output must reach an agent's knowledge without a manual copy-paste step. What's the correct integration?",
