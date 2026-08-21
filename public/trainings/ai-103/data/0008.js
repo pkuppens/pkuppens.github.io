@@ -10,9 +10,9 @@ window.TRAINING_DATA['0008'] = {
       options:["A multimodal model","An SLM tuned for text only","A pure vector-search index","A code model"], answer:0,
       why:"Reasoning across image + text requires choosing a <b>multimodal model</b> up front, a D1 planning decision. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/foundry-models-overview' target='_blank' rel='noopener'>Foundry model catalog</a>." },
 
-    { tag:"D1", q:"An architecture must keep model traffic entirely off the public internet, reachable only from inside the corporate VNet. What do you configure?",
-      options:["Private networking","A higher rate limit","A larger deployment quota","A safety evaluator"], answer:0,
-      why:"Keeping traffic off the public internet is a <b>private networking</b> configuration, a D1 security control. <a href='https://learn.microsoft.com/en-us/azure/ai-services/cognitive-services-virtual-networks' target='_blank' rel='noopener'>Virtual networks for Foundry Tools</a>." },
+    { tag:"D1", q:"An architecture must keep model traffic entirely off the public internet, reachable only from inside the corporate VNet. The app already uses managed identity so no API key is ever stored. Is managed identity alone sufficient for this new requirement?",
+      options:["No — managed identity removes the need for a stored secret, but traffic still traverses the public internet unless private networking is also configured","Yes — managed identity implies the traffic never leaves the VNet","No — private networking replaces the need for managed identity entirely","Yes, as long as a higher rate limit is also set"], answer:0,
+      why:"<b>Managed identity</b> and <b>private networking</b> solve two different problems: identity removes hard-coded secrets from authentication, while private networking controls the network path traffic takes. Neither substitutes for the other — this scenario needs both, but the new requirement (no public internet) specifically requires <b>private networking</b>. <a href='https://learn.microsoft.com/en-us/azure/ai-services/cognitive-services-virtual-networks' target='_blank' rel='noopener'>Virtual networks for Foundry Tools</a>." },
 
     { tag:"D1", q:"Which practice specifically catches search index degradation before users notice worse retrieval results?",
       options:["Monitoring data ingestion quality and search index health","A one-time load test before launch","Increasing the deployment quota","Adding a content filter"], answer:0,
@@ -30,9 +30,9 @@ window.TRAINING_DATA['0008'] = {
       options:["Tool-access controls","A larger context window","A cheaper model tier","A faster deployment region"], answer:0,
       why:"Restricting which tools an agent may invoke is a <b>tool-access control</b>, part of governing agent behavior. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-use-of-ai-overview' target='_blank' rel='noopener'>Responsible AI in Microsoft Foundry</a>." },
 
-    { tag:"D1", q:"Which two-word phrase describes designing the Azure infrastructure an AI app or agent will run on, before any model is deployed?",
-      options:["Infrastructure design","Model evaluation","Content moderation","Speech integration"], answer:0,
-      why:"Designing the hosting infrastructure for AI apps/agents is <b>infrastructure design</b>, the first step under 'set up AI solutions in Foundry'. <a href='https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103' target='_blank' rel='noopener'>AI-103 Study Guide — Plan and manage</a>." },
+    { tag:"D1", q:"A team has already decided which Azure region and hosting tier their agent-based app will run on. They now need to decide whether the model deployment bursts to extra capacity automatically or runs at a fixed, reserved throughput. Which D1 planning activity are they doing now, distinct from the infrastructure design step they already completed?",
+      options:["Choosing appropriate deployment options","Repeating infrastructure design","Configuring content moderation","Integrating speech as an agent modality"], answer:0,
+      why:"Infrastructure design (region, hosting tier) is a separate, earlier step from <b>choosing deployment options</b> (standard vs. provisioned throughput, regional vs. global) — both fall under 'set up AI solutions in Foundry' but answer different questions. Content moderation and speech integration are unrelated D1/D4 concerns. <a href='https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103' target='_blank' rel='noopener'>AI-103 Study Guide — Plan and manage</a>." },
 
     { tag:"D1", q:"A cost review shows one agent workload consuming a disproportionate share of quota. What should have flagged this earlier?",
       options:["Managing quotas, scaling, and cost footprint per workload","A safety evaluation","A private endpoint audit","A CI/CD pipeline check"], answer:0,
@@ -90,9 +90,9 @@ window.TRAINING_DATA['0008'] = {
       options:["Alt-text/extended description generation aligned to accessibility guidelines","Image inpainting","Object detection only","Video captioning"], answer:0,
       why:"This is specifically <b>alt-text/extended description generation</b> configured for accessibility, not raw object detection. <a href='https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-image-analysis' target='_blank' rel='noopener'>Azure AI Vision Image Analysis</a>." },
 
-    { tag:"D3", q:"An app must identify which specific region of a product image shows a defect. Which capability applies?",
-      options:["Identifying objects, components, or regions within images","Text-to-video generation","Speech translation","Sentiment analysis"], answer:0,
-      why:"Locating specific regions/components within an image is a named D3 Content Understanding capability. <a href='https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103' target='_blank' rel='noopener'>AI-103 Study Guide — Computer vision</a>." },
+    { tag:"D3", q:"A quality-control app must both read any printed batch code on a product photo AND draw a bounding box around the specific region showing a visible scratch. Reading the batch code alone would be handled by OCR — which additional capability is needed for the scratch's location, and why doesn't OCR cover it?",
+      options:["Identifying objects, components, or regions within images — OCR only reads text, it doesn't localize a visual defect that has no text to read","OCR alone — printed text and visual defects are both reachable through text extraction","Text-to-video generation, since the defect needs to be visualized as a short clip","Sentiment analysis, since the reviewer's notes about the defect carry tone"], answer:0,
+      why:"OCR extracts <b>text</b> from an image; a scratch is a visual defect with no text to read, so locating it requires the separate <b>object/region identification</b> capability. The two are complementary, not interchangeable — this scenario genuinely needs both. <a href='https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103' target='_blank' rel='noopener'>AI-103 Study Guide — Computer vision</a>." },
 
     { tag:"D3", q:"Which visual-safety control specifically enforces brand and prohibited-symbol rules on AI-generated marketing images?",
       options:["Visual policy enforcement (watermarks, brand usage, prohibited symbols)","Fabrication evaluation","Drift monitoring","Tool-access control"], answer:0,
@@ -116,9 +116,9 @@ window.TRAINING_DATA['0008'] = {
       why:"The study guide explicitly names <b>LLM-powered translation flows</b> as a valid alternative to Azure Translator for text. <a href='https://learn.microsoft.com/en-us/azure/ai-services/translator/overview' target='_blank' rel='noopener'>Azure AI Translator overview</a>." },
 
     // ---------- Domain 5 (4) ----------
-    { tag:"D5", q:"Which search type re-ranks results using language understanding, on top of an initial candidate set?",
-      options:["Semantic search","Plain keyword search","OCR","Field extraction"], answer:0,
-      why:"Relevance re-ranking via language understanding is <b>semantic search</b>. <a href='https://learn.microsoft.com/en-us/azure/search/semantic-search-overview' target='_blank' rel='noopener'>Azure AI Search semantic ranking</a>." },
+    { tag:"D5", q:"Your keyword search already runs fine, but result ordering is poor — exact matches on rare terms rank below loosely related ones. You only need better result ordering on the existing keyword results, not additional vector-based recall. Which single addition fixes just the ranking, without introducing a separate vector index?",
+      options:["Semantic search (re-ranking) on top of the existing keyword results","Hybrid search combining keyword and vector queries","Vector search replacing the keyword index entirely","OCR reprocessing of the source documents"], answer:0,
+      why:"<b>Semantic search</b> re-ranks an existing keyword (or hybrid) result set using language understanding — it doesn't require adding a vector index. Hybrid search would also improve results but requires building and querying vector fields, which the scenario says isn't needed; replacing keyword with vector-only search would lose the exact-match precision that's already working. <a href='https://learn.microsoft.com/en-us/azure/search/semantic-search-overview' target='_blank' rel='noopener'>Azure AI Search semantic ranking</a>." },
 
     { tag:"D5", q:"Which pipeline produces markdown output from a document, specifically formatted for downstream LLM reasoning?",
       options:["A Content Understanding analyzer configured for markdown output","Azure Translator","Azure Speech","A vector index alone"], answer:0,

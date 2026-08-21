@@ -22,10 +22,10 @@ window.TRAINING_DATA['0006'] = {
       why:"Image-based text becomes retrievable via <b>OCR</b> during ingestion. Synthesis and generation don't extract text; safety filters don't ingest content. <a href='https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview' target='_blank' rel='noopener'>Azure AI Content Understanding overview</a>." },
 
     { tag:"D5",
-      q:"Which service produces a clean, grounded representation of document content specifically for use with agents and RAG?",
-      options:["Azure Content Understanding","Azure Translator","Azure Speech","A vector index by itself"],
+      q:"Your RAG pipeline needs each ingested contract turned into a clean markdown representation — with figure descriptions and layout preserved — ready for an LLM to reason over, not just raw extracted text. Azure AI Search's own built-in enrichment skillsets were proposed. Why reach for Content Understanding instead?",
+      options:["Content Understanding analyzers can output structured markdown with figure descriptions and preserved layout, purpose-built for LLM reasoning; AI Search's built-in skillsets enrich fields during indexing but don't produce that markdown-ready representation","They're interchangeable — AI Search's built-in skillsets already output the same markdown structure","Azure Translator produces the same grounded markdown output as a side effect of translation","Azure Speech produces the markdown representation from any audio narration attached to the contract"],
       answer:0,
-      why:"<b>Content Understanding</b> analyzers are built to produce clean, grounded representations for agent/RAG consumption. Translator and Speech serve other modalities; an index alone doesn't extract content. <a href='https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview' target='_blank' rel='noopener'>Azure AI Content Understanding overview</a>." },
+      why:"<b>Content Understanding</b> analyzers are specifically built to produce clean, markdown-formatted, agent/RAG-ready representations, including figure descriptions and layout. AI Search's built-in enrichment skillsets add structure (entities, key phrases, OCR) during indexing, but that's a different step from producing the markdown document itself. Translator and Speech serve unrelated modalities. <a href='https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview' target='_blank' rel='noopener'>Azure AI Content Understanding overview</a>." },
 
     { tag:"D5", type:"multi",
       q:"Select the TWO components a multimodal document-extraction pipeline combines to pull data from a scanned invoice.",

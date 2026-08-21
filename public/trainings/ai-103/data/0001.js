@@ -4,10 +4,10 @@ window.TRAINING_DATA['0001'] = {
   passMark: 0.7,
   questions: [
     { tag:"D1",
-      q:"Which certification-relevant task is 'choosing an appropriate model for each task, including LLMs, SLMs, and multimodal models'?",
-      options:["Plan and manage an Azure AI solution","Implement generative AI and agentic solutions","Implement computer vision solutions","Implement information extraction solutions"],
+      q:"A retailer expects sharp, predictable traffic spikes during flash sales and needs guaranteed capacity with stable latency during those spikes, regardless of extra cost. Which deployment configuration should they choose?",
+      options:["Provisioned throughput deployment","Global Standard (pay-per-token) deployment","A smaller, cheaper model deployment","Requesting a higher default rate limit on the same deployment type"],
       answer:0,
-      why:"Choosing the right service/model class for a task is a <b>D1 planning</b> objective, done before you build anything. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/foundry-models-overview' target='_blank' rel='noopener'>Foundry model catalog</a>." },
+      why:"<b>Provisioned throughput</b> reserves dedicated capacity, giving guaranteed throughput and predictable latency even under bursty load — the tradeoff is fixed cost regardless of usage. Global Standard is pay-per-token but shares capacity, so it can see latency variability under sustained bursts; a smaller model or a higher rate limit don't guarantee dedicated capacity. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/openai/quotas-limits' target='_blank' rel='noopener'>Foundry quotas and limits</a>." },
 
     { tag:"D1",
       q:"A team needs to authenticate a Foundry SDK client without embedding an API key. What do they configure?",
@@ -22,10 +22,10 @@ window.TRAINING_DATA['0001'] = {
       why:"Grounding on retrieved current data is <b>RAG</b> — a core D2 build step. <a href='https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview' target='_blank' rel='noopener'>RAG overview</a>." },
 
     { tag:"D2",
-      q:"Which Foundry building block lets an agent call external APIs and functions?",
-      options:["A tool schema","A conversation object alone","A deployment region","A safety filter"],
+      q:"A support agent must be able to open a new ticket in the internal ticketing system whenever a customer reports a bug. It also cites the ticketing system's help docs when explaining SLAs, using a separate retrieval source. Which building block specifically makes the 'open a ticket' action possible?",
+      options:["A tool schema for the ticketing API","Knowledge integration pointing at the ticketing docs","A larger context window","Conversation-tracking / memory"],
       answer:0,
-      why:"Callable functions/APIs and their contracts are defined by an agent's <b>tool schema</b>. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/agents/how-to/tools/function-calling' target='_blank' rel='noopener'>Function calling with Foundry agents</a>." },
+      why:"Taking an action (calling an API to create a ticket) requires a defined <b>tool schema</b> the agent can invoke. Knowledge integration is for grounding on documents (the SLA docs), not for taking actions; context window and memory don't grant tool-calling capability. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/agents/how-to/tools/function-calling' target='_blank' rel='noopener'>Function calling with Foundry agents</a>." },
 
     { tag:"D2", type:"multi",
       q:"Select the TWO things a generative-AI evaluation step should score before shipping.",
@@ -58,10 +58,10 @@ window.TRAINING_DATA['0001'] = {
       why:"The study guide explicitly names <b>Azure Translator</b> and <b>LLM-powered translation flows</b> as the two valid text-translation approaches. <a href='https://learn.microsoft.com/en-us/azure/ai-services/translator/overview' target='_blank' rel='noopener'>Azure AI Translator overview</a>." },
 
     { tag:"D5",
-      q:"Which search approach combines exact keyword matching with embedding-similarity matching?",
-      options:["Hybrid search","Vector search alone","OCR","Field extraction"],
+      q:"A retail search index must match exact SKU codes (e.g. 'SKU-88231') with full precision, while also surfacing conceptually related products when a shopper types a natural-language query. Which single configuration satisfies both requirements in one query?",
+      options:["Hybrid search (keyword + vector)","Vector search alone","Semantic search alone (re-ranking on top of keyword results)","OCR applied to product listings"],
       answer:0,
-      why:"Combining keyword precision with vector-based semantic recall is <b>hybrid search</b>. <a href='https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview' target='_blank' rel='noopener'>Azure AI Search hybrid search</a>." },
+      why:"Vector-only search embeds text into similarity space, which blurs exact codes like SKU numbers; semantic search alone only re-ranks an initial keyword result set, it doesn't add vector-based conceptual recall. <b>Hybrid search</b> runs keyword and vector queries together and merges results, giving exact-match precision and conceptual recall in the same request. <a href='https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview' target='_blank' rel='noopener'>Azure AI Search hybrid search</a>." },
 
     { tag:"D5",
       q:"A scanned invoice must become structured fields (vendor, total, line items). Which service produces this?",

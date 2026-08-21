@@ -4,10 +4,10 @@ window.TRAINING_DATA['0005'] = {
   passMark: 0.7,
   questions: [
     { tag:"D4",
-      q:"You need standard entity/sentiment extraction at scale with no custom prompt engineering. Which approach fits best?",
-      options:["Azure Language in Foundry Tools","A raw LLM with a hand-written extraction prompt","Azure Speech","Azure Content Understanding for video"],
+      q:"You need standard entity and sentiment extraction across millions of support tickets per day, at the lowest cost and latency per call, with no custom output shape. A colleague suggests a hand-written LLM prompt since 'it can do anything.' Why is the purpose-built service the better choice here?",
+      options:["Azure Language in Foundry Tools — optimized for exactly this standard, high-volume task with lower cost/latency per call and no prompt-engineering overhead","A raw LLM with a hand-written extraction prompt — always cheaper and faster than a purpose-built service at high volume","Azure Translator — performs entity and sentiment extraction as a side effect of translation","Azure Content Understanding for video — analyzes video, not free-form ticket text"],
       answer:0,
-      why:"Standard, structured text tasks at scale are the strength of the purpose-built <b>Azure Language</b> service. An LLM prompt is more flexible but unnecessary overhead here. <a href='https://learn.microsoft.com/en-us/azure/ai-services/language-service/overview' target='_blank' rel='noopener'>Azure AI Language overview</a>." },
+      why:"For a standard, high-volume, fixed-shape task, the purpose-built <b>Azure Language</b> service is optimized for cost and latency and needs no prompt engineering; an LLM call is more flexible but carries per-call cost and latency overhead that's wasted here, so it is not 'always cheaper.' Translator and video-focused Content Understanding solve different problems. <a href='https://learn.microsoft.com/en-us/azure/ai-services/language-service/overview' target='_blank' rel='noopener'>Azure AI Language overview</a>." },
 
     { tag:"D4",
       q:"A request needs a novel, custom structured-JSON shape that no built-in extractor supports. Best approach?",
@@ -22,10 +22,10 @@ window.TRAINING_DATA['0005'] = {
       why:"Audio → text is <b>speech recognition</b>. Synthesis goes the other direction; translation crosses languages; sentiment scores tone, not transcription. <a href='https://learn.microsoft.com/en-us/azure/ai-services/speech-service/overview' target='_blank' rel='noopener'>Azure AI Speech overview</a>." },
 
     { tag:"D4",
-      q:"An agent must read its written answer aloud to the caller. Which capability is required?",
-      options:["Speech synthesis (text-to-speech)","Speech recognition","Optical character recognition","Entity detection"],
+      q:"An agent's written reply must be read aloud to the caller in a distinctive voice tied to the company's brand, not a generic out-of-the-box voice. Which capability is required?",
+      options:["Text-to-speech synthesis with a custom neural voice","Text-to-speech synthesis using only the default standard voice gallery","Speech recognition","Optical character recognition"],
       answer:0,
-      why:"Text → audio output is <b>speech synthesis</b>. Recognition is the reverse direction; OCR and entity detection are unrelated to audio output. <a href='https://learn.microsoft.com/en-us/azure/ai-services/speech-service/overview' target='_blank' rel='noopener'>Azure AI Speech overview</a>." },
+      why:"Text → audio output is <b>speech synthesis</b>, and a brand-distinctive voice specifically requires a <b>custom neural voice</b> rather than an out-of-the-box standard voice. Recognition is the reverse direction (audio → text); OCR is unrelated to audio output entirely. <a href='https://learn.microsoft.com/en-us/azure/ai-services/speech-service/overview' target='_blank' rel='noopener'>Azure AI Speech overview</a>." },
 
     { tag:"D4", type:"multi",
       q:"Select the TWO valid ways to translate text described in the study guide.",
