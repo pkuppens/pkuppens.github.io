@@ -7,9 +7,250 @@
 
 <p class="eyebrow">AI-103 · Reference</p>
 <h1>Glossary</h1>
-<p class="subtitle">The canonical AI-103 vocabulary. Every lesson uses these names.</p>
+<p class="subtitle">The canonical AI-103 vocabulary. Every lesson and quiz option uses these names.</p>
 
-<p>Content authored in task T6.</p>
+<h2>Platform &amp; services</h2>
+<dl class="gloss">
+  <dt>Microsoft Foundry</dt>
+  <dd>The unified platform for building, deploying, and managing AI apps and agents on Azure — portal, SDK, model catalog, and Foundry Tools in one place.</dd>
+
+  <dt>Foundry portal</dt>
+  <dd>The web UI where you deploy models, test prompts in a playground, and build/test agents without writing code.</dd>
+
+  <dt>Foundry project</dt>
+  <dd>The workspace inside a Foundry resource that an app's endpoint points at — the unit of work for deployments, agents, and connections.</dd>
+
+  <dt>Foundry SDK</dt>
+  <dd>The client library (<code>azure-ai-projects</code>, Python) for calling deployed models and agents from a lightweight client application.</dd>
+
+  <dt>Foundry Tools</dt>
+  <dd>Prebuilt AI capabilities available inside Foundry — Azure Speech, Azure Language, Azure Translator, Content Understanding — used instead of, or alongside, a raw model.</dd>
+
+  <dt>Foundry Agent Service</dt>
+  <dd>The managed service for building agents — a model plus instructions, tools, and knowledge that can plan and take actions to complete a goal.</dd>
+
+  <dt>azure-ai-projects</dt>
+  <dd>The Python package that is the current Foundry SDK. Provides <code>AIProjectClient</code>, <code>get_openai_client()</code>, and <code>responses.create(...)</code> for calling deployed models/agents.</dd>
+
+  <dt>DefaultAzureCredential</dt>
+  <dd>Keyless authentication using your signed-in identity (az login, managed identity) instead of a hard-coded API key.</dd>
+
+  <dt>Azure AI Search</dt>
+  <dd>The service that indexes and retrieves content for grounding — semantic, hybrid, and vector search over ingested documents.</dd>
+
+  <dt>Azure Content Understanding</dt>
+  <dd>Foundry's multimodal information-extraction service — pulls structured data and clean, grounded representations from documents, images, audio, and video.</dd>
+
+  <dt>Azure Language</dt>
+  <dd>Foundry Tools' purpose-built text-analysis service — entities, topics, summaries, sentiment/tone/safety detection — without custom prompt engineering.</dd>
+
+  <dt>Azure Speech</dt>
+  <dd>Foundry Tools' speech service — speech recognition (speech-to-text), speech synthesis (text-to-speech), and speech translation, including custom speech models.</dd>
+
+  <dt>Azure Translator</dt>
+  <dd>Foundry Tools' text-translation service — the named alternative to an LLM-powered translation flow.</dd>
+
+  <dt>Azure OpenAI / model catalog</dt>
+  <dd>Where foundation models (LLMs, SLMs, code models, multimodal, image-gen) are deployed and served through Foundry.</dd>
+
+  <dt>Azure Monitor</dt>
+  <dd>General Azure resource monitoring/alerting — distinct from AI-specific signals like drift or grounding-quality monitoring, which are Foundry-level concerns.</dd>
+</dl>
+
+<h2>Model &amp; generative concepts (Domain 2)</h2>
+<dl class="gloss">
+  <dt>LLM (large language model)</dt>
+  <dd>A broad, capable model for chat, reasoning, and long-context generation.</dd>
+
+  <dt>SLM (small language model)</dt>
+  <dd>A leaner model for narrow, well-defined, cost/latency-sensitive tasks.</dd>
+
+  <dt>Multimodal model</dt>
+  <dd>A model that accepts and/or produces more than one modality — e.g. reasons over an image and a question together.</dd>
+
+  <dt>Embedding model</dt>
+  <dd>A model that converts text (or other content) into vectors for similarity search.</dd>
+
+  <dt>Token</dt>
+  <dd>The unit a model reads and generates — prompt length, output length, and cost are measured in tokens.</dd>
+
+  <dt>Temperature / top-p</dt>
+  <dd>Decoding parameters that control randomness — low temperature/top-p is deterministic and focused, high is creative and varied.</dd>
+
+  <dt>Retrieval-augmented generation (RAG)</dt>
+  <dd>Grounding answers in retrieved, current data at inference time instead of relying only on training data — prevents fabrication and stays current without retraining.</dd>
+
+  <dt>Fine-tuning</dt>
+  <dd>Changing a model's weights by training on labelled examples — distinct from RAG, which adds data at inference time without touching weights.</dd>
+
+  <dt>Fabrication</dt>
+  <dd>A model inventing facts not supported by any source — a named evaluation dimension apps must be checked for before shipping.</dd>
+
+  <dt>Agent</dt>
+  <dd>A deployed model plus role/goal, conversation-tracking (memory), a tool schema, and knowledge integration — able to plan and act, not just answer once.</dd>
+
+  <dt>Tool schema</dt>
+  <dd>The definition of which functions/APIs an agent may call and their contracts.</dd>
+
+  <dt>Conversation-tracking (memory)</dt>
+  <dd>How an agent remembers what was said in earlier turns of a dialogue.</dd>
+
+  <dt>Knowledge integration</dt>
+  <dd>Retrieval, search, or Content Understanding sources an agent can ground its answers on.</dd>
+
+  <dt>Single agent</dt>
+  <dd>One role, tools, and memory sufficient to complete a task end to end.</dd>
+
+  <dt>Orchestration</dt>
+  <dd>Coordinating multiple agents (multi-agent orchestration) or multiple models/flows (hybrid rules engines) to work together, beyond what any single agent or call can do alone.</dd>
+
+  <dt>Orchestrated multi-agent solution</dt>
+  <dd>Multiple specialized agents (e.g. researcher, writer, QA) collaborating and handing off work to complete one task.</dd>
+
+  <dt>Error analysis</dt>
+  <dd>Diagnosing the cause of a deployed agent's mistakes or error-rate spikes — part of the ongoing monitoring/evaluation an agent needs after deployment.</dd>
+
+  <dt>Semiautonomous workflow</dt>
+  <dd>An agent that acts largely on its own but under safeguards — e.g. an approval workflow before a risky action executes.</dd>
+
+  <dt>Multistep reasoning pipeline</dt>
+  <dd>A workflow where the model reasons across several intermediate steps before producing a final answer, rather than answering in one shot.</dd>
+
+  <dt>Prompt engineering</dt>
+  <dd>Tuning generation behavior by adjusting instructions and parameters.</dd>
+
+  <dt>Chain-of-thought self-critique</dt>
+  <dd>Having the model check and revise its own intermediate reasoning steps.</dd>
+
+  <dt>Observability (tracing, token analytics, latency)</dt>
+  <dd>Runtime signals — request traces, token usage, and latency breakdowns — used to understand a deployed generative system in production.</dd>
+
+  <dt>Drift</dt>
+  <dd>Gradual degradation in model answer quality as real-world input shifts over time — requires ongoing monitoring, not a one-time evaluation.</dd>
+</dl>
+
+<h2>Planning, security &amp; governance (Domain 1)</h2>
+<dl class="gloss">
+  <dt>Managed identity / keyless credentials</dt>
+  <dd>Authenticating without a hard-coded secret, using the app's own Azure identity.</dd>
+
+  <dt>Private networking</dt>
+  <dd>Keeping model/agent traffic off the public internet, reachable only inside a private network.</dd>
+
+  <dt>Role-based access policies (RBAC)</dt>
+  <dd>Assigning least-privilege permissions for who can act on AI resources.</dd>
+
+  <dt>Quotas, scaling &amp; rate limits</dt>
+  <dd>Capacity and cost controls per model/agent workload.</dd>
+
+  <dt>CI/CD integration</dt>
+  <dd>Wiring a Foundry project into a repeatable, reviewed deployment pipeline instead of manual portal changes.</dd>
+
+  <dt>Deployment options</dt>
+  <dd>Choices such as standard vs. provisioned throughput that shape a deployment's capacity and predictability.</dd>
+
+  <dt>Infrastructure design</dt>
+  <dd>Designing the Azure infrastructure an AI app or agent-based solution will run on, before any model is deployed — the first step under "set up AI solutions in Foundry".</dd>
+
+  <dt>Safety filters &amp; guardrails</dt>
+  <dd>Controls that block or flag disallowed content before/after generation.</dd>
+
+  <dt>Content moderation</dt>
+  <dd>Ongoing classification of generated or ingested content for risk.</dd>
+
+  <dt>Safety evaluation</dt>
+  <dd>Checking that a generated answer doesn't contain unsafe or disallowed content, as part of the app's evaluation step.</dd>
+
+  <dt>Trace logging &amp; provenance metadata</dt>
+  <dd>An auditable record of what an agent did and where its answer's content came from.</dd>
+
+  <dt>Approval workflow</dt>
+  <dd>A required human checkpoint before a risky agent action executes.</dd>
+
+  <dt>Oversight modes &amp; tool-access controls</dt>
+  <dd>Constraints on what an agent is allowed to do autonomously, including which tools it may call.</dd>
+</dl>
+
+<h2>Computer vision vocabulary (Domain 3)</h2>
+<dl class="gloss">
+  <dt>Text-to-image generation</dt>
+  <dd>Creating a brand-new image from a text prompt.</dd>
+
+  <dt>Text-to-video generation</dt>
+  <dd>Creating a brand-new video from a text prompt.</dd>
+
+  <dt>Inpainting / mask-based editing</dt>
+  <dd>Modifying a targeted region of an existing image, distinct from generating a wholly new image.</dd>
+
+  <dt>Image captioning</dt>
+  <dd>Producing a concise or detailed description of one or more images.</dd>
+
+  <dt>Visual question-answering (VQA)</dt>
+  <dd>Answering a question grounded in what's actually shown in an image.</dd>
+
+  <dt>Alt-text / extended description generation</dt>
+  <dd>Generating accessibility-aligned image descriptions for assistive technology.</dd>
+
+  <dt>Video analysis</dt>
+  <dd>Processing and interpreting segments of a video via Content Understanding — the understanding-side counterpart to video generation.</dd>
+
+  <dt>Single-task vs. pro-mode (Content Understanding)</dt>
+  <dd>Single-task runs one narrow extraction job; pro-mode runs several coordinated extraction steps from one source in a single pass.</dd>
+
+  <dt>Indirect prompt injection (via images)</dt>
+  <dd>Text hidden inside an image's pixels that instructs a model to ignore its rules — a D3-specific responsible-AI risk.</dd>
+
+  <dt>Visual policy enforcement</dt>
+  <dd>Controls such as watermarking, prohibited-symbol flags, and brand-usage rules applied to generated visuals.</dd>
+</dl>
+
+<h2>Text &amp; speech vocabulary (Domain 4)</h2>
+<dl class="gloss">
+  <dt>Entity / topic / summary extraction</dt>
+  <dd>Pulling structured meaning from text, via Azure Language or generative prompting.</dd>
+
+  <dt>Sentiment / tone detection</dt>
+  <dd>Scoring the emotional tone or sensitivity of text.</dd>
+
+  <dt>Speech recognition (speech-to-text)</dt>
+  <dd>Converting audio into a written transcript.</dd>
+
+  <dt>Speech synthesis (text-to-speech)</dt>
+  <dd>Converting text into spoken audio.</dd>
+
+  <dt>Speech translation</dt>
+  <dd>Producing speech or text output in a different language than the spoken input.</dd>
+
+  <dt>Custom speech models</dt>
+  <dd>Speech models tuned to domain-specific vocabulary (e.g. medical or legal terms).</dd>
+
+  <dt>Multimodal reasoning from audio</dt>
+  <dd>Reasoning about the content of an audio clip directly, beyond a plain transcript.</dd>
+</dl>
+
+<h2>Information extraction vocabulary (Domain 5)</h2>
+<dl class="gloss">
+  <dt>Vector search</dt>
+  <dd>Matching results by embedding similarity — meaning, not exact wording.</dd>
+
+  <dt>Semantic search</dt>
+  <dd>Re-ranking results for relevance using language understanding.</dd>
+
+  <dt>Hybrid search</dt>
+  <dd>Combining keyword (exact-match) search with vector search — the usual production default.</dd>
+
+  <dt>Enrichment</dt>
+  <dd>Custom or built-in skills that add structure to text, images, and layout during ingestion.</dd>
+
+  <dt>Optical character recognition (OCR)</dt>
+  <dd>Turning scanned, image-based text into searchable text — part of the RAG ingestion flow.</dd>
+
+  <dt>Field extraction</dt>
+  <dd>Copying a specific value (e.g. an invoice total) verbatim from a document.</dd>
+
+  <dt>Content Understanding markdown analyzer</dt>
+  <dd>A Content Understanding configuration that produces structured or markdown output shaped for downstream LLM reasoning.</dd>
+</dl>
 
 <div class="lesson-nav no-print">
   <a href="./cheat-sheet.html">→ Cheat Sheet</a>
