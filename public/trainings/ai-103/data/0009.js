@@ -20,11 +20,11 @@ window.TRAINING_DATA['0009'] = {
 
     { tag:"D1", q:"Which monitoring signal specifically tells you whether a deployed model's safety behavior has changed since launch?",
       options:["Safety events monitoring","Rate-limit monitoring","Deployment quota monitoring","CI/CD pipeline status"], answer:0,
-      why:"Changes in safety behavior over time are caught by <b>safety events monitoring</b>, distinct from capacity/pipeline signals. <a href='https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/set-up-ci-cd-cli' target='_blank' rel='noopener'>Foundry CI/CD with GitHub Actions</a>." },
+      why:"Changes in safety behavior over time are caught by <b>safety events monitoring</b>, distinct from capacity/pipeline signals. <a href='https://learn.microsoft.com/en-us/azure/foundry/concepts/observability' target='_blank' rel='noopener'>Foundry observability</a>." },
 
     { tag:"D1", type:"multi", q:"Select the TWO items that belong under 'choose the appropriate Foundry services' rather than 'set up AI solutions in Foundry'.",
       options:["Choosing a method for retrieval and indexing","Choosing memory/tool/knowledge integration services for agents","Configuring model and agent deployments","Integrating CI/CD pipelines","Designing Azure infrastructure"], answers:[0,1],
-      why:"<b>Retrieval/indexing method</b> and <b>agent memory/tool/knowledge services</b> are service-selection decisions. Deployment config, CI/CD, and infra design are 'set up' tasks. <a href='https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/set-up-ci-cd-cli' target='_blank' rel='noopener'>Foundry CI/CD with GitHub Actions</a>." },
+      why:"<b>Retrieval/indexing method</b> and <b>agent memory/tool/knowledge services</b> are service-selection decisions. Deployment config, CI/CD, and infra design are 'set up' tasks. <a href='https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview' target='_blank' rel='noopener'>RAG overview</a>." },
 
     { tag:"D1", q:"An agent is granted access to a payments API but must never be allowed to call it without a human review step. Which control combination applies?",
       options:["Tool-access controls plus an approval workflow","A private endpoint alone","A larger deployment quota alone","A safety filter alone"], answer:0,
@@ -57,7 +57,7 @@ window.TRAINING_DATA['0009'] = {
 
     { tag:"D2", type:"multi", q:"Select the TWO practices that are part of 'optimize and operationalize generative AI systems' rather than 'build generative applications'.",
       options:["Setting up observability with tracing and latency breakdowns","Tuning generation behavior via prompt engineering","Implementing RAG in the application","Configuring the app to connect to a Foundry project"], answers:[0,1],
-      why:"<b>Observability setup</b> and <b>prompt/parameter tuning</b> are optimization/operationalization practices. RAG implementation and project connection are build-phase steps. <a href='https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview' target='_blank' rel='noopener'>RAG overview</a>." },
+      why:"<b>Observability setup</b> and <b>prompt/parameter tuning</b> are optimization/operationalization practices. RAG implementation and project connection are build-phase steps. <a href='https://learn.microsoft.com/en-us/azure/foundry/concepts/observability' target='_blank' rel='noopener'>Foundry observability</a>." },
 
     { tag:"D2", q:"Three specialized agents — intake, research, and response — must coordinate on one customer request. What must you implement beyond each individual agent?",
       options:["Orchestration across the agents","A single larger agent instead","A static rules engine only","A speech pipeline"], answer:0,

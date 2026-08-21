@@ -37,7 +37,7 @@ window.TRAINING_DATA['0002'] = {
       q:"Which practice gives you an auditable record of what an agent did and where its answer's content came from?",
       options:["Trace logging and provenance metadata","A safety filter","A private endpoint","A deployment quota"],
       answer:0,
-      why:"<b>Trace logging with provenance metadata</b> is the auditable record. Safety filters block content but don't log lineage; private endpoints and quotas are unrelated to audit trails. <a href='https://learn.microsoft.com/en-us/azure/ai-services/cognitive-services-virtual-networks' target='_blank' rel='noopener'>Virtual networks for Foundry Tools</a>." },
+      why:"<b>Trace logging with provenance metadata</b> is the auditable record. Safety filters block content but don't log lineage; private endpoints and quotas are unrelated to audit trails. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-use-of-ai-overview' target='_blank' rel='noopener'>Responsible AI in Microsoft Foundry</a>." },
 
     { tag:"D1",
       q:"An agent should not be allowed to send an email autonomously without a person confirming first. Which control implements this?",

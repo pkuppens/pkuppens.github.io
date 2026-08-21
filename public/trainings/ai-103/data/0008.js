@@ -32,7 +32,7 @@ window.TRAINING_DATA['0008'] = {
 
     { tag:"D1", q:"Which two-word phrase describes designing the Azure infrastructure an AI app or agent will run on, before any model is deployed?",
       options:["Infrastructure design","Model evaluation","Content moderation","Speech integration"], answer:0,
-      why:"Designing the hosting infrastructure for AI apps/agents is <b>infrastructure design</b>, the first step under 'set up AI solutions in Foundry'. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-use-of-ai-overview' target='_blank' rel='noopener'>Responsible AI in Microsoft Foundry</a>." },
+      why:"Designing the hosting infrastructure for AI apps/agents is <b>infrastructure design</b>, the first step under 'set up AI solutions in Foundry'. <a href='https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103' target='_blank' rel='noopener'>AI-103 Study Guide — Plan and manage</a>." },
 
     { tag:"D1", q:"A cost review shows one agent workload consuming a disproportionate share of quota. What should have flagged this earlier?",
       options:["Managing quotas, scaling, and cost footprint per workload","A safety evaluation","A private endpoint audit","A CI/CD pipeline check"], answer:0,
@@ -49,7 +49,7 @@ window.TRAINING_DATA['0008'] = {
 
     { tag:"D2", q:"Which Foundry agent building block lets it ground answers in your organization's documents, not just its own memory of the conversation?",
       options:["Knowledge integration","Conversation-tracking","Tool schema alone","Deployment region"], answer:0,
-      why:"Grounding on external documents is <b>knowledge integration</b>, distinct from conversation memory or callable tools. <a href='https://learn.microsoft.com/en-us/azure/ai-foundry/agents/concepts/threads-runs-messages' target='_blank' rel='noopener'>Foundry agent threads and memory</a>." },
+      why:"Grounding on external documents is <b>knowledge integration</b>, distinct from conversation memory or callable tools. <a href='https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview' target='_blank' rel='noopener'>RAG overview</a>." },
 
     { tag:"D2", q:"A pipeline routes easy questions to a cheap model and hard questions to an expensive one. What optimization pattern is this?",
       options:["Orchestrating multiple models / hybrid rules engines","Chain-of-thought self-critique","RAG grounding","A single-agent solution"], answer:0,

@@ -13,13 +13,13 @@ window.TRAINING_DATA['0005'] = {
       q:"A request needs a novel, custom structured-JSON shape that no built-in extractor supports. Best approach?",
       options:["Generative prompting against an LLM","Azure Translator","Speech-to-text","A fixed, unconfigurable extractor"],
       answer:0,
-      why:"Novel, flexible output shapes are best served by <b>generative prompting</b>. Translator and speech-to-text solve different problems; a fixed extractor can't adapt. <a href='https://learn.microsoft.com/en-us/azure/ai-services/translator/overview' target='_blank' rel='noopener'>Azure AI Translator overview</a>." },
+      why:"Novel, flexible output shapes are best served by <b>generative prompting</b>. Translator and speech-to-text solve different problems; a fixed extractor can't adapt. <a href='https://learn.microsoft.com/en-us/azure/ai-services/language-service/overview' target='_blank' rel='noopener'>Azure AI Language overview</a>." },
 
     { tag:"D4",
       q:"Converting a recorded customer call into a written transcript for downstream analysis is:",
       options:["Speech recognition (speech-to-text)","Speech synthesis (text-to-speech)","Speech translation","Sentiment analysis"],
       answer:0,
-      why:"Audio → text is <b>speech recognition</b>. Synthesis goes the other direction; translation crosses languages; sentiment scores tone, not transcription. <a href='https://learn.microsoft.com/en-us/azure/ai-services/translator/overview' target='_blank' rel='noopener'>Azure AI Translator overview</a>." },
+      why:"Audio → text is <b>speech recognition</b>. Synthesis goes the other direction; translation crosses languages; sentiment scores tone, not transcription. <a href='https://learn.microsoft.com/en-us/azure/ai-services/speech-service/overview' target='_blank' rel='noopener'>Azure AI Speech overview</a>." },
 
     { tag:"D4",
       q:"An agent must read its written answer aloud to the caller. Which capability is required?",
