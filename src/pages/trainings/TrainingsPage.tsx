@@ -6,9 +6,14 @@ type Training = {
   status: 'Live' | 'Planned'
   desc: string
   tags: string[]
+  /** Groups the catalog into headed sections, in TRACKS order. */
+  track: string
   /** Static course path under public/trainings/. Present only when Live. */
   href?: string
 }
+
+/** Track display order — TRAININGS entries are grouped and rendered in this order. */
+const TRACKS = ['Azure AI track', 'Azure Fundamentals', 'Other certifications']
 
 const TRAININGS: Training[] = [
   {
@@ -17,7 +22,17 @@ const TRAININGS: Training[] = [
     status: 'Live',
     desc: 'A focused, self-checking course for Microsoft Exam AI-901. Short lessons, auto-graded quizzes, and exam-weighted mock exams with per-domain readiness scoring. Pass mark: 700/1000.',
     tags: ['Azure', 'AI Fundamentals', 'Quizzes', 'Mock Exams'],
+    track: 'Azure AI track',
     href: '/trainings/ai-901/',
+  },
+  {
+    id: 'ai-103',
+    title: 'AI-103 — Azure AI Apps and Agents Developer Associate',
+    status: 'Live',
+    desc: 'A focused, self-checking course for Microsoft Exam AI-103. Building generative AI apps and agents on Microsoft Foundry — RAG, agent orchestration, computer vision, text analysis, and information extraction. Short lessons, auto-graded quizzes, and three exam-weighted mock exams with per-domain readiness scoring. Pass mark: 700/1000.',
+    tags: ['Azure', 'Microsoft Foundry', 'Agents', 'Quizzes', 'Mock Exams'],
+    track: 'Azure AI track',
+    href: '/trainings/ai-103/',
   },
   {
     id: 'dp-900',
@@ -25,6 +40,7 @@ const TRAININGS: Training[] = [
     status: 'Live',
     desc: 'Core data concepts and how they map to Azure data services — relational, non-relational, and analytics workloads. Short lessons, auto-graded quizzes, and three exam-weighted mock exams with per-domain readiness scoring. Pass mark: 700/1000.',
     tags: ['Azure', 'Data Fundamentals', 'Quizzes', 'Mock Exams'],
+    track: 'Azure Fundamentals',
     href: '/trainings/dp-900/',
   },
   {
@@ -33,6 +49,7 @@ const TRAININGS: Training[] = [
     status: 'Live',
     desc: 'For people who already know cloud computing and another provider (AWS/GCP) — a Microsoft-terminology recap plus exam-pattern drilling, not cloud fundamentals from zero. Short lessons, auto-graded quizzes, five exam-weighted mock exams, and adaptive weak-area practice. Pass mark: 700/1000.',
     tags: ['Azure', 'Cloud Fundamentals', 'Quizzes', 'Mock Exams'],
+    track: 'Azure Fundamentals',
     href: '/trainings/az-900/',
   },
   {
@@ -41,6 +58,7 @@ const TRAININGS: Training[] = [
     status: 'Live',
     desc: 'Built from Anthropic’s free public Academy — the 9 courses the Claude Certified Developer – Foundations certification recommends completing first. Short lessons, auto-graded quizzes, and two mock exams. Does not cover the certification’s own partner-gated exam guide.',
     tags: ['Claude', 'AI Fluency', 'Quizzes', 'Mock Exams'],
+    track: 'Other certifications',
     href: '/trainings/claude-dev-foundations/',
   },
   {
@@ -49,6 +67,7 @@ const TRAININGS: Training[] = [
     status: 'Planned',
     desc: 'Designing, building, and deploying cloud-native applications on Kubernetes. Hands-on, exam-oriented drills.',
     tags: ['Kubernetes', 'Cloud Native'],
+    track: 'Other certifications',
   },
 ]
 
@@ -72,37 +91,44 @@ export default function TrainingsPage() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <div className={styles.trainingsGrid}>
-            {TRAININGS.map(training => (
-              <div key={training.id} className={`card ${styles.trainingCard}`}>
-                <div className={styles.trainingHeader}>
-                  <span className={`badge ${training.status === 'Live' ? '' : 'badge-secondary'}`}>
-                    {training.status}
-                  </span>
-                </div>
-                <h2 className={styles.trainingTitle}>{training.title}</h2>
-                <p className={`text-muted mt-1 mb-3 ${styles.trainingDesc}`}>{training.desc}</p>
-                <div className="flex flex-wrap gap-1 mb-3">
-                  {training.tags.map(t => <span key={t} className="tag">{t}</span>)}
-                </div>
-                {training.href ? (
-                  // Static course lives outside the SPA (public/trainings/...), so use a
-                  // plain anchor for a full-page navigation, not react-router <Link>.
-                  <a href={training.href} className="btn btn-primary">
-                    Open Course
-                  </a>
-                ) : (
-                  <span className={`btn btn-outline ${styles.disabledBtn}`} aria-disabled="true">
-                    Coming soon
-                  </span>
-                )}
+      {TRACKS.map(track => {
+        const trainings = TRAININGS.filter(t => t.track === track)
+        if (trainings.length === 0) return null
+        return (
+          <section className="section" key={track}>
+            <div className="container">
+              <h2 className={styles.trackTitle}>{track}</h2>
+              <div className={styles.trainingsGrid}>
+                {trainings.map(training => (
+                  <div key={training.id} className={`card ${styles.trainingCard}`}>
+                    <div className={styles.trainingHeader}>
+                      <span className={`badge ${training.status === 'Live' ? '' : 'badge-secondary'}`}>
+                        {training.status}
+                      </span>
+                    </div>
+                    <h3 className={styles.trainingTitle}>{training.title}</h3>
+                    <p className={`text-muted mt-1 mb-3 ${styles.trainingDesc}`}>{training.desc}</p>
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      {training.tags.map(t => <span key={t} className="tag">{t}</span>)}
+                    </div>
+                    {training.href ? (
+                      // Static course lives outside the SPA (public/trainings/...), so use a
+                      // plain anchor for a full-page navigation, not react-router <Link>.
+                      <a href={training.href} className="btn btn-primary">
+                        Open Course
+                      </a>
+                    ) : (
+                      <span className={`btn btn-outline ${styles.disabledBtn}`} aria-disabled="true">
+                        Coming soon
+                      </span>
+                    )}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
+          </section>
+        )
+      })}
     </>
   )
 }
