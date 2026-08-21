@@ -7,17 +7,46 @@
 
 <p class="eyebrow">AI-103 · Lesson 06 · <span class="badge d5">D5</span> 10–15%</p>
 <h1>Information Extraction Solutions</h1>
-<p class="subtitle">Content authored in task T3.</p>
+<p class="subtitle">The plumbing that gets your organization's content into a form agents and RAG can use: ingest, index, enrich, extract — then hand the result to a retrieval pipeline or agent tool.</p>
 
-<h2>Content coming in T3</h2>
-<p>This lesson's teaching content and full quiz bank are authored in task T3.</p>
+<h2>Build retrieval and grounding pipelines</h2>
+<div class="table-wrap"><table>
+  <tr><th>Step</th><th>What it does</th></tr>
+  <tr><td>Ingest &amp; index</td><td>Bring in documents, images, audio, and video as searchable content</td></tr>
+  <tr><td>Search configuration</td><td>Semantic search, hybrid search, and vector search for grounding relevance</td></tr>
+  <tr><td>Enrichment</td><td>Custom or built-in skills that add structure to text, images, and layout during ingestion</td></tr>
+  <tr><td>RAG ingestion flow</td><td>Document ingestion using OCR so scanned/image-based text becomes retrievable</td></tr>
+  <tr><td>Connect to consumers</td><td>Wire the retrieval pipeline directly into workflows and agent tools</td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">Semantic vs. hybrid vs. vector search</span>
+  <b>Vector search</b> matches by embedding similarity (meaning, not exact words). <b>Semantic search</b> re-ranks results for
+  relevance using language understanding. <b>Hybrid search</b> combines keyword (exact-match) search with vector search for
+  the best of both — the usual production default when both precision and semantic recall matter.
+</div>
+
+<h2>Extract content from documents</h2>
+<div class="table-wrap"><table>
+  <tr><th>Task</th><th>Approach</th></tr>
+  <tr><td>Pull data from a mix of scanned text, tables, and layout</td><td>Multimodal pipeline combining OCR, layout analysis, and field extraction</td></tr>
+  <tr><td>Produce a clean, grounded representation for agents/RAG</td><td>Azure <b>Content Understanding</b> analyzers</td></tr>
+  <tr><td>Generate structured or markdown output for downstream reasoning</td><td>Content Understanding analyzers configured for that output shape</td></tr>
+</table></div>
+
+<div class="callout tip">
+  <span class="label">Exam cue</span>
+  "A scanned invoice must become structured fields (vendor, total, line items)" → OCR + layout + field extraction, produced through
+  <b>Content Understanding</b>. "That structured output must feed directly into an agent's knowledge" → connect the extraction
+  output straight into the agent's <b>tool/knowledge integration</b> (D2), not a manual copy-paste step.
+</div>
 
 <h2>Check yourself</h2>
 <div class="quiz" id="q-extract"></div>
 
 <div class="source">
   <span class="label">Primary source</span> &nbsp;
-  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103">Official AI-103 Study Guide</a>
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103">Official AI-103 Study Guide — "Implement information extraction solutions"</a>
 </div>
 
 <div class="lesson-nav no-print">

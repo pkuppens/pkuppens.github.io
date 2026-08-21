@@ -7,17 +7,68 @@
 
 <p class="eyebrow">AI-103 · Lesson 02 · <span class="badge d1">D1</span> 25–30%</p>
 <h1>Plan &amp; Manage AI Solutions</h1>
-<p class="subtitle">Content authored in task T3.</p>
+<p class="subtitle">The "before you build" domain: picking the right Foundry service for a task, standing up the infrastructure, then keeping it monitored, secured, and responsibly governed once it's live.</p>
 
-<h2>Content coming in T3</h2>
-<p>This lesson's teaching content and full quiz bank are authored in task T3.</p>
+<h2>Choose the right Foundry service</h2>
+<p>Every AI-103 planning question reduces to: <b>what kind of task is this, and which model/service class fits?</b></p>
+<div class="table-wrap"><table>
+  <tr><th>Task shape</th><th>Choose</th></tr>
+  <tr><td>Chat, reasoning, long-context generation</td><td>A large language model (LLM)</td></tr>
+  <tr><td>Same task, cost/latency-sensitive, narrower scope</td><td>A small language model (SLM)</td></tr>
+  <tr><td>Input or output spans text + image/audio/video</td><td>A multimodal model</td></tr>
+  <tr><td>Prebuilt capability (speech, translation, document extraction) instead of a raw model</td><td>A Foundry Tool (Azure Speech, Translator, Content Understanding, …)</td></tr>
+  <tr><td>Answers must cite your own current data</td><td>Retrieval-augmented generation (RAG) + a vector/hybrid index</td></tr>
+  <tr><td>The system must plan, call tools, and remember context across turns</td><td>An agent (Foundry Agent Service), with memory/tool/knowledge integration</td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">Exam cue</span>
+  If the scenario says "just needs a quick answer, cost matters" → SLM. If it says "must reason over a photo and a question together" → multimodal model. If it says "must never make things up about our internal policy" → RAG. If it says "must take multi-step actions" → agent.
+</div>
+
+<h2>Set up AI solutions in Foundry</h2>
+<p>Planning infrastructure means answering four questions before you deploy anything:</p>
+<div class="table-wrap"><table>
+  <tr><th>Question</th><th>What you decide</th></tr>
+  <tr><td>Where does compute for this app live?</td><td>Azure infrastructure design for the AI app / agent-hosting tier</td></tr>
+  <tr><td>How is it deployed?</td><td>Deployment option — standard vs. provisioned throughput, regional vs. global</td></tr>
+  <tr><td>How is the deployment itself configured?</td><td>Model/agent deployment settings — capacity, content filters, versioning</td></tr>
+  <tr><td>How does it ship repeatably?</td><td>Integrate the Foundry project with CI/CD so deployments aren't manual clicks</td></tr>
+</table></div>
+
+<h2>Manage, monitor, and secure AI systems</h2>
+<p>Once live, a Foundry solution needs the same operational discipline as any production system — plus AI-specific signals:</p>
+<div class="table-wrap"><table>
+  <tr><th>Concern</th><th>What you watch / configure</th></tr>
+  <tr><td>Cost &amp; capacity</td><td>Quotas, scaling, rate limits, cost footprint per model/agent workload</td></tr>
+  <tr><td>Model health</td><td>Performance, <b>drift</b>, safety events, grounding quality</td></tr>
+  <tr><td>Data/search health</td><td>Ingestion quality, search index health, relevance performance</td></tr>
+  <tr><td>Security</td><td>Managed identity, private networking, keyless credentials, role-based access policies</td></tr>
+</table></div>
+
+<div class="callout tip">
+  <span class="label">Exam cue</span>
+  "Authenticate without embedding a key" → <b>managed identity</b> / keyless credentials. "Keep the model call off the public internet" → <b>private networking</b>. "Notice the model's answers slowly getting worse over time" → <b>drift</b> monitoring, not a one-time evaluation.
+</div>
+
+<h2>Implement responsible AI across generative and agentic systems</h2>
+<p>Responsible AI on AI-103 is operational, not philosophical — it's about the controls you configure and the evidence you keep:</p>
+<div class="table-wrap"><table>
+  <tr><th>Control</th><th>Purpose</th></tr>
+  <tr><td>Safety filters &amp; guardrails</td><td>Block or flag disallowed content before/after generation</td></tr>
+  <tr><td>Content moderation</td><td>Ongoing classification of generated/ingested content for risk</td></tr>
+  <tr><td>Evaluators &amp; safety evaluations</td><td>Instrument the app to score fabrication, relevance, quality, and safety — not just eyeball outputs</td></tr>
+  <tr><td>Trace logging &amp; provenance metadata</td><td>Auditable record of what happened and where content came from</td></tr>
+  <tr><td>Approval workflows</td><td>A human checkpoint before a risky action executes</td></tr>
+  <tr><td>Oversight modes &amp; tool-access controls</td><td>Constrain what an agent is allowed to do autonomously</td></tr>
+</table></div>
 
 <h2>Check yourself</h2>
 <div class="quiz" id="q-plan"></div>
 
 <div class="source">
   <span class="label">Primary source</span> &nbsp;
-  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103">Official AI-103 Study Guide</a>
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103">Official AI-103 Study Guide — "Plan and manage an Azure AI solution"</a>
 </div>
 
 <div class="lesson-nav no-print">

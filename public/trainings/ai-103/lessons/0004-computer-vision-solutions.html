@@ -7,17 +7,63 @@
 
 <p class="eyebrow">AI-103 · Lesson 04 · <span class="badge d3">D3</span> 10–15%</p>
 <h1>Computer Vision Solutions</h1>
-<p class="subtitle">Content authored in task T3.</p>
+<p class="subtitle">Two build directions: generating visual content from prompts, and understanding visual content that already exists — plus the responsible-AI controls specific to images and video.</p>
 
-<h2>Content coming in T3</h2>
-<p>This lesson's teaching content and full quiz bank are authored in task T3.</p>
+<h2>Image- and video-generation solutions</h2>
+<div class="table-wrap"><table>
+  <tr><th>Capability</th><th>What it does</th></tr>
+  <tr><td>Text-to-image generation</td><td>Generates a new image from a text prompt and optional reference media</td></tr>
+  <tr><td>Text-to-video generation</td><td>Generates a new video from a text prompt and optional reference media</td></tr>
+  <tr><td>Image editing</td><td>Inpainting, mask-based edits, prompt-driven modifications to an existing image</td></tr>
+  <tr><td>Video editing workflows</td><td>Editing an already-generated video</td></tr>
+  <tr><td>Generation/editing controls</td><td>Platform-provided knobs (style, strength, seed, aspect ratio) applied during generation or edits</td></tr>
+</table></div>
+
+<div class="callout tip">
+  <span class="label">Exam cue</span>
+  "Fill in a masked region of an existing photo" → <b>inpainting / mask-based edit</b>, not a fresh generation. "Create a brand-new picture from a description" → <b>image generation</b>.
+</div>
+
+<h2>Multimodal understanding workflows</h2>
+<p>Understanding is the mirror image of generation — interpreting visual input rather than creating it:</p>
+<div class="table-wrap"><table>
+  <tr><th>Task</th><th>How it's done</th></tr>
+  <tr><td>Reason about an image + a question together</td><td>A multimodal model analyzing visual context</td></tr>
+  <tr><td>Concise or detailed caption for one or more images</td><td>Multimodal model captioning</td></tr>
+  <tr><td>Answer a question grounded in what's actually in the image</td><td>Visual question-answering (VQA)</td></tr>
+  <tr><td>Accessible alt-text / extended description</td><td>Generation configured to follow accessibility guidelines</td></tr>
+  <tr><td>Extract structured visual characteristics (objects, attributes, regions)</td><td><b>Azure Content Understanding</b> in Foundry Tools</td></tr>
+  <tr><td>Process and interpret segments of a video</td><td>Video analysis workflow (Content Understanding)</td></tr>
+  <tr><td>Identify objects, components, or regions within images/video</td><td>Content Understanding object/region identification</td></tr>
+</table></div>
+
+<div class="callout key">
+  <span class="label">Single-task vs. pro-mode</span>
+  Content Understanding pipelines can run as a focused <b>single-task</b> analyzer (one extraction job) or a broader <b>pro-mode</b> pipeline
+  (multiple coordinated extraction steps in one pass). Pick single-task for a narrow, well-defined field; pro-mode when you need several kinds
+  of structured output from the same visual source at once.
+</div>
+
+<h2>Responsible AI for multimodal content</h2>
+<div class="table-wrap"><table>
+  <tr><th>Risk</th><th>Control</th></tr>
+  <tr><td>Unsafe or disallowed image/video content</td><td>Classification filters</td></tr>
+  <tr><td>Text hidden inside an image instructing the model to ignore its rules</td><td>Detect and mitigate <b>indirect prompt injection</b> via embedded image text</td></tr>
+  <tr><td>Brand/compliance requirements on generated visuals</td><td>Enforce visual policy rules — watermarks, prohibited symbols, brand usage, inappropriate-content flags</td></tr>
+</table></div>
+
+<div class="callout warn">
+  <span class="label">Exam trap</span>
+  Prompt injection isn't only a text problem. An image containing instructive text ("ignore previous instructions...") baked into the pixels is
+  <b>indirect prompt injection via embedded text in images</b> — a named D3 objective, not a D2 generic-safety afterthought.
+</div>
 
 <h2>Check yourself</h2>
 <div class="quiz" id="q-vision"></div>
 
 <div class="source">
   <span class="label">Primary source</span> &nbsp;
-  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103">Official AI-103 Study Guide</a>
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103">Official AI-103 Study Guide — "Implement computer vision solutions"</a>
 </div>
 
 <div class="lesson-nav no-print">
