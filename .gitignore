@@ -36,5 +36,8 @@ test-results
 # Local scratch (LinkedIn scrape output, persistent browser profile)
 tmp/
 
+# Project-local Agent Skills installs (personal tooling, not project source)
+.claude/skills/
+
 # Environment variables (API keys, local overrides)
 .env
