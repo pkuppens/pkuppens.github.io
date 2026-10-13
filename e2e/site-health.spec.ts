@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 
 const LIVE_URL = 'https://pkuppens.github.io/'
-const PAGE_TITLE = 'Pieter Kuppens | Software, Data and AI Engineer'
+const PAGE_TITLE = 'Pieter Kuppens | Software, Data and AI Professional'
 const META_DESCRIPTION =
   'Software, data, and AI engineer with 30+ years in healthcare, finance, and high-tech. Experience in Python, C#/.NET, C/C++, SQL, cloud, GenAI/RAG, and non-LLM AI.'
 const CANONICAL_URL = 'https://pkuppens.github.io/'

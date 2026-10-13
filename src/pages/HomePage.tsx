@@ -45,11 +45,11 @@ export default function HomePage() {
         <div className="container">
           <div className={styles.heroContent}>
             <div className="page-hero-badge-wrap">
-              <div className="page-hero-badge">Available for assignments</div>
+              <div className="page-hero-badge">Open to future assignments</div>
             </div>
             <h1 className="page-hero-title">
               Pieter Kuppens
-              <span className="page-hero-subtitle">Software, Data, and AI Engineer</span>
+              <span className="page-hero-subtitle">Software, Data, and AI Professional</span>
             </h1>
             <p className="page-hero-lead">
               30+ years building production systems in high-tech, healthcare, and finance. Based in the Netherlands
@@ -102,7 +102,8 @@ export default function HomePage() {
           <h2 className={`mb-2 ${styles.sectionTitle}`}>Trainings</h2>
           <p className={`text-muted mb-4 ${styles.ctaDesc}`}>
             Self-checking certification study courses I build while preparing for exams — short lessons,
-            auto-graded quizzes, and exam-weighted mock exams. Starting with Azure AI Fundamentals (AI-901).
+            auto-graded quizzes, and exam-weighted mock exams. Covering Azure and AI certifications such as AZ-900,
+            DP-900, AI-901, and AI-103.
           </p>
           <Link to="/trainings" className="btn btn-primary">
             Browse Trainings
